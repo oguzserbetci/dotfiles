@@ -1,0 +1,5 @@
+[core]
+	excludesfile = ~/.gitignore
+[user]
+	email = oguz.serbetci@gmail.com
+	name = Oguz Serbetci

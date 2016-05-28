@@ -1,0 +1,7 @@
+.idea
+*.iml
+lib
+.classpath
+.project
+massim-2016-1.0/
+.DS_Store
