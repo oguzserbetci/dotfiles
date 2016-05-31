@@ -7,6 +7,7 @@ alias zshconfig="s ~/.zshrc"
 alias finder="open -R"
 alias s="subl"
 alias sn="subl -n"
+alias sm="subl -n /Users/oguzserbetci/Library/Mobile\ Documents/27N4MQEA55~pro~writer/Documents/"
 alias d="dirs -v"
 alias -g S="| subl -"
 alias grep='grep --color=auto'
@@ -38,7 +39,7 @@ export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40
 export ZSH=/Users/oguzserbetci/.oh-my-zsh
 export JAVA_HOME=$(/usr/libexec/java_home)
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$JAVA_HOME/jre/bin:~/anaconda3/bin:$PATH:/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin"
+export PATH=~/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-05-09-a.xctoolchain/usr/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$JAVA_HOME/jre/bin:~/anaconda3/bin
 
 source $ZSH/oh-my-zsh.sh
 

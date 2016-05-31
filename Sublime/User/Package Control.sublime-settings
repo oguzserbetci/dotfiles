@@ -1,0 +1,24 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"ASCII Replacer",
+		"Auto Hide Sidebar",
+		"Color Highlighter",
+		"GitGutter-Edge",
+		"LaTeXing",
+		"Markdown Extended",
+		"Markdown Preview",
+		"MarkdownEditing",
+		"Material Theme",
+		"Monokai Extended",
+		"Package Control",
+		"SideBarEnhancements",
+		"SublimeREPL",
+		"Swift for F*ing Sublime",
+		"Theme - Primer"
+	]
+}
