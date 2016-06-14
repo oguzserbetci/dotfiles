@@ -1,5 +1,4 @@
 # KEYBINDS
-kwmc bindsym ctrl-s mode activate prefix
 
 # Quit Kwm
 kwmc bind cmd+alt+ctrl-q quit
@@ -13,10 +12,10 @@ kwmc bind cmd+ctrl-r tree rotate 90
 kwmc bindsym cmd+ctrl-m exec sm
 
 # Modify Container
-kwmc bind ctrl-alt-i window -c split-mode toggle
-kwmc bind ctrl-alt-u window -c reduce 0.05
-kwmc bind ctrl-alt-o window -c expand 0.05
-kwmc bind ctrl-alt-p window -c type toggle
+kwmc bind prefix-x window -c split-mode toggle
+kwmc bind prefix-j window -c reduce 0.05
+kwmc bind prefix-k window -c expand 0.05
+kwmc bind prefix-o window -c type toggle
 
 # Give Focus To Window
 kwmc bind cmd+alt-h window -f west
