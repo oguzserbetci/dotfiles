@@ -17,6 +17,11 @@ kwmc bind prefix-j window -c reduce 0.05
 kwmc bind prefix-k window -c expand 0.05
 kwmc bind prefix-o window -c type toggle
 
+# Set Temporary Window Container
+kwmc bindsym prefix-f window -z fullscreen
+kwmc bindsym prefix-d window -z parent
+kwmc bindsym prefix-w window -t focused
+
 # Give Focus To Window
 kwmc bind cmd+alt-h window -f west
 kwmc bind cmd+alt-l window -f east
