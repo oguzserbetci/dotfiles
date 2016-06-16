@@ -3,3 +3,5 @@
 [user]
 	email = oguz.serbetci@gmail.com
 	name = Oguz Serbetci
+[color]
+	ui = auto
