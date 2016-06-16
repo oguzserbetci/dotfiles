@@ -7,8 +7,7 @@ tap 'homebrew/science'
 brew 'git'
 brew 'coreutils'
 brew 'R'
-
-brew 'git-extra'
+brew 'httpie'
 
 cask 'gitup'
 cask 'sublime-text3'

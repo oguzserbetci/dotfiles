@@ -1,0 +1,34 @@
+{
+	"user":
+	{
+		"@disable": true,
+		"lint_mode": "background",
+		"linters":
+		{
+			"json":
+			{
+				"@disable": false,
+				"args":
+				[
+				],
+				"excludes":
+				[
+				],
+				"strict": true
+			},
+			"pep8":
+			{
+				"@disable": false,
+				"args":
+				[
+				],
+				"excludes":
+				[
+				],
+				"ignore": "",
+				"max-line-length": null,
+				"select": ""
+			}
+		}
+	}
+}
