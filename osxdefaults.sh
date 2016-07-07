@@ -1,7 +1,10 @@
+#!/usr/bin/env bash
+
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
 defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
 defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
+defaults write -g ApplePressAndHoldEnabled -bool false
 
 # Trackpad: enable tap to click for this user and for the login screen
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
