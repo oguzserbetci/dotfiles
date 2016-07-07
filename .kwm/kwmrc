@@ -1,5 +1,5 @@
 # Set default values for screen padding
-kwmc config padding 3 3 3 3
+kwmc config padding 5 5 5 5
 kwmc config gap 5 5
 
 # Default tiling (bsp | monocle | float | off)
@@ -11,20 +11,14 @@ kwmc config lock-to-container on
 kwmc config focus-follows-mouse autoraise
 kwmc config standby-on-float on
 kwmc config mouse-follows-focus on
-kwmc config split-ratio 0.4
-kwmc config spawn left
+kwmc config split-ratio 0.5
+kwmc config spawn top
 
 # Enable border for focused window
 kwmc config focused-border on
-kwmc config focused-border size 2
+kwmc config focused-border size 1
 kwmc config focused-border color FFBDD322
 kwmc config focused-border radius 6
-
-# Enable border for marked window
-kwmc config marked-border on
-kwmc config marked-border size 2
-kwmc config marked-border color FFCC5577
-kwmc config marked-border radius 6
 
 # Enable the prefix mode
 kwmc config prefix-key ctrl-x
@@ -32,7 +26,7 @@ kwmc config prefix-global off
 kwmc config prefix-timeout 0.75
 
 kwmc config prefix-border on
-kwmc config prefix-border size 4
+kwmc config prefix-border size 2
 kwmc config prefix-border color FF458588
 kwmc config prefix-border radius 6
 

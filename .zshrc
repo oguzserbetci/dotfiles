@@ -7,7 +7,7 @@ alias zshconfig="s ~/.zshrc"
 alias finder="open -R"
 alias s="subl"
 alias sn="subl -n"
-alias sm="subl -n /Users/oguzserbetci/Library/Mobile\ Documents/27N4MQEA55~pro~writer/Documents/"
+alias sm="s --project /Users/oguzserbetci/Library/Mobile\ Documents/com~apple~CloudDocs/note-taking.sublime-project"
 alias d="dirs -v"
 alias -g S="| subl -"
 alias grep='grep --color=auto'

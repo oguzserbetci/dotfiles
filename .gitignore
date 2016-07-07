@@ -5,4 +5,6 @@ lib
 .project
 massim-2016-1.0/
 .DS_Store
-Package Control.cache
+Package\ Control.cache
+Package\ Control.last-run
+

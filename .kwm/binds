@@ -17,37 +17,36 @@ kwmc bind prefix-j window -c reduce 0.05
 kwmc bind prefix-k window -c expand 0.05
 kwmc bind prefix-o window -c type toggle
 
+# Set Temporary Window Container
+kwmc bind prefix-f window -z fullscreen
+kwmc bind prefix-d window -z parent
+kwmc bind prefix-w window -t focused
+
 # Give Focus To Window
-kwmc bind cmd+alt-h window -f west
-kwmc bind cmd+alt-l window -f east
-kwmc bind cmd+alt-j window -f south
-kwmc bind cmd+alt-k window -f north
+kwmc bind cmd+alt-j window -f west
+kwmc bind cmd+alt-k window -f east
+kwmc bind cmd+alt-u window -f south
+kwmc bind cmd+alt-m window -f north
 
 # Give Focus To Screen
 kwmc bind cmd+alt-1 display -f 0
 kwmc bind cmd+alt-2 display -f 1
 
 # Swap Focused Window
-kwmc bind ctrl+alt-h window -s west
-kwmc bind ctrl+alt-j window -s south
-kwmc bind ctrl+alt-k window -s north
-kwmc bind ctrl+alt-l window -s east
-kwmc bind ctrl+alt-m window -s mark
+kwmc bind ctrl+alt-j window -s west
+kwmc bind ctrl+alt-k window -s south
+kwmc bind ctrl+alt-u window -s north
+kwmc bind ctrl+alt-m window -s east
 
 # Pseudo containers
 kwmc bind cmd+ctrl+alt-p tree -pseudo create
 kwmc bind cmd+ctrl+alt-o tree -pseudo destroy
-kwmc bind ctrl+alt-p window -s prev
-kwmc bind ctrl+alt-n window -s next
 
 # Detach Focused Window And Reinsert In Direction
-kwmc bind ctrl+shift-k window -m north
-kwmc bind ctrl+shift-l window -m east
-kwmc bind ctrl+shift-j window -m south
-kwmc bind ctrl+shift-h window -m west
-
-# Detach Marked Window And Reinsert At Focused Window
-kwmc bind ctrl+shift-x window -m mark
+kwmc bind ctrl+shift-u window -m north
+kwmc bind ctrl+shift-k window -m east
+kwmc bind ctrl+shift-m window -m south
+kwmc bind ctrl+shift-j window -m west
 
 # Move Focused Window To Space
 kwmc bind ctrl+alt-left window -m space left
