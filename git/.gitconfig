@@ -5,3 +5,5 @@
 	name = Oguz Serbetci
 [color]
 	ui = auto
+[url "ssh://git@heroku.com/"]
+	insteadOf = https://git.heroku.com/
