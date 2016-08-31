@@ -14,6 +14,6 @@ ln -sfv "$DOTFILES_DIR/git/.gitignore_global" ~
 # Package managers & packages
 
 echo "› brew bundle"
-brew bundle
+# brew bundle
 
 . "$DOTFILES_DIR/osxdefaults.sh"
