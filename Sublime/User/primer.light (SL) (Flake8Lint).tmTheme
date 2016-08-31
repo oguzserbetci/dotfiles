@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+ "http://www.apple.com/DTDs/PropertyList-1.0.dtd"><plist version="1.0">
 <dict>
 	<key>author</key>
 	<string>Karel Vuong</string>
@@ -26,58 +26,26 @@
 
 	<key>settings</key>
 	<array>
-<dict>
-<key>name</key>
-<string>mon_color</string>
-<key>scope</key>
-<string>mcol_FF0000FF</string>
-<key>settings</key>
-<dict>
-<key>background</key>
-<string>#FF0000FF</string>
-<key>foreground</key>
-<string>#4C0000FF</string>
-<key>caret</key>
-<string>#4C0000FF</string>
-</dict>
-</dict>
-
-<dict>
-<key>name</key>
-<string>mon_text_color</string>
-<key>scope</key>
-<string>mcol_text_FF0000FF</string>
-<key>settings</key>
-<dict>
-<key>background</key>
-<string>#292C34FF</string>
-<key>foreground</key>
-<string>#FF0000FF</string>
-<key>caret</key>
-<string>#4C0000FF</string>
-</dict>
-</dict>
-
 		<dict>
 			<key>settings</key>
 			<dict>
 				
 				<key>background</key>
-				<string>#292C33</string>
+				<string>#FFFFFF</string>
 				<key>caret</key>
-				<string>#3D7AF5</string>
+				<string>#333333</string>
 				
 				<key>foreground</key>
-				<string>#95A2BB</string>
+				<string>#666666</string>
 				<key>invisibles</key>
 				<string>#5C6773</string>
 				
 				<key>lineHighlight</key>
-				<string>#343841</string>
+				<string>#F0F5FA</string>
 				<key>selection</key>
-				<string>#3F454F</string>
+				<string>#F0F5FA</string>
 				<key>selectionBorder</key>
-				<string>#3F454F</string>
+				<string>#4183C4</string>
 			</dict>
 		</dict>
 
@@ -93,9 +61,9 @@
 		  <key>settings</key>
 		  <dict>
 		  <key>background</key>
-		  <string>#292C33</string>
+		  <string>#ffffff</string>
 			<key>foreground</key>
-			<string>#95A2BB</string>
+			<string>#333333</string>
 		  </dict>
 		</dict>
 
@@ -112,7 +80,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#EDEDED</string>
+				<string>#333333</string>
 			</dict>
 		</dict>
 		<dict>
@@ -123,7 +91,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#5F6B85</string>
+				<string>#969896</string>
 			</dict>
 		</dict>
 		<dict>
@@ -134,7 +102,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#95A2BB</string>
+				<string>#173591</string>
 			</dict>
 		</dict>
 		<dict>
@@ -145,7 +113,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#EDEDED</string>
+				<string>#333333</string>
 			</dict>
 		</dict>
 		<dict>
@@ -156,7 +124,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#EDEDED</string>
+				<string>#333333</string>
 			</dict>
 		</dict>
 		<dict>
@@ -167,7 +135,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#B27ECD</string>
+				<string>#A71D5D</string>
 			</dict>
 		</dict>
 		<dict>
@@ -178,7 +146,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#BF6E7C</string>
+				<string>#ED6A43</string>
 			</dict>
 		</dict>
 		<dict>
@@ -189,7 +157,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#9B5C2E</string>
+				<string>#795DA3</string>
 			</dict>
 		</dict>
 		<dict>
@@ -200,7 +168,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#FFD2A7</string>
+				<string>#0086B3</string>
 			</dict>
 		</dict>
 		<dict>
@@ -211,7 +179,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#EDEDED</string>
+				<string>#333333</string>
 			</dict>
 		</dict>
 		<dict>
@@ -233,7 +201,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#88B379</string>
+				<string>#A71D5D</string>
 			</dict>
 		</dict>
 		<dict>
@@ -244,7 +212,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#F9EE98</string>
+				<string>#795DA3</string>
 			</dict>
 		</dict>
 		<dict>
@@ -255,7 +223,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#88B379</string>
+				<string>#183691</string>
 			</dict>
 		</dict>
 		<dict>
@@ -266,7 +234,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#D49A67</string>
+				<string>#0086B3</string>
 			</dict>
 		</dict>
 		<dict>
@@ -277,7 +245,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#D49A67</string>
+				<string>#0086B3</string>
 			</dict>
 		</dict>
 		<dict>
@@ -299,7 +267,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#D49A67</string>
+				<string>#795DA3</string>
 			</dict>
 		</dict>
 		<dict>
@@ -310,7 +278,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#BF6E7C</string>
+				<string>#ED6A43</string>
 			</dict>
 		</dict>
 		<dict>
@@ -321,7 +289,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#D49A67</string>
+				<string>#795DA3</string>
 			</dict>
 		</dict>
 		<dict>
@@ -332,7 +300,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#88B379</string>
+				<string>#795DA3</string>
 			</dict>
 		</dict>
 		<dict>
@@ -343,7 +311,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#88B379</string>
+				<string>#A71D5D</string>
 			</dict>
 		</dict>
 		<dict>
@@ -404,7 +372,7 @@
 				<key>fontStyle</key>
 				<string>italic</string>
 				<key>foreground</key>
-				<string>#88B379</string>
+				<string>#A71D5D</string>
 			</dict>
 		</dict>
 		<dict>
@@ -415,7 +383,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#88B379</string>
+				<string>#183691</string>
 			</dict>
 		</dict>
 		<dict>
@@ -472,7 +440,7 @@
 				<key>background</key>
 				<string>#4f5b66</string>
 				<key>foreground</key>
-				<string>#EDEDED</string>
+				<string>#333333</string>
 			</dict>
 		</dict>
 		<dict>
@@ -483,7 +451,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#88B379</string>
+				<string>#183691</string>
 			</dict>
 		</dict>
 		<dict>
@@ -505,7 +473,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#88B379</string>
+				<string>#A71D5D</string>
 			</dict>
 		</dict>
 		<dict>
@@ -538,7 +506,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#87C38A</string>
+				<string>#BF5656</string>
 			</dict>
 		</dict>
 		<dict>
@@ -584,7 +552,7 @@
 				<key>background</key>
 				<string>#ED6A43</string>
 				<key>foreground</key>
-				<string>#FD5FF1</string>
+				<string>#14171A</string>
 			</dict>
 		</dict>
 		<dict>
@@ -705,23 +673,33 @@
 		</dict>
 	<dict>
             <key>name</key>
-            <string>Python Flake8 Lint Error</string>
+            <string>SublimeLinter Error</string>
             <key>scope</key>
-            <string>flake8lint.mark.error</string>
+            <string>sublimelinter.mark.error</string>
             <key>settings</key>
             <dict>
                 <key>foreground</key>
-                <string>#DA2000</string>
+                <string>#D02000</string>
             </dict>
         </dict><dict>
             <key>name</key>
-            <string>Python Flake8 Lint Warning</string>
+            <string>SublimeLinter Gutter Mark</string>
             <key>scope</key>
-            <string>flake8lint.mark.warning</string>
+            <string>sublimelinter.gutter-mark</string>
             <key>settings</key>
             <dict>
                 <key>foreground</key>
-                <string>#EDBA00</string>
+                <string>#FFFFFF</string>
+            </dict>
+        </dict><dict>
+            <key>name</key>
+            <string>SublimeLinter Warning</string>
+            <key>scope</key>
+            <string>sublimelinter.mark.warning</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#DDB700</string>
             </dict>
         </dict><dict>
             <key>name</key>
@@ -745,33 +723,23 @@
             </dict>
         </dict><dict>
             <key>name</key>
-            <string>SublimeLinter Error</string>
+            <string>Python Flake8 Lint Warning</string>
             <key>scope</key>
-            <string>sublimelinter.mark.error</string>
-            <key>settings</key>
-            <dict>
-                <key>foreground</key>
-                <string>#DA2000</string>
-            </dict>
-        </dict><dict>
-            <key>name</key>
-            <string>SublimeLinter Gutter Mark</string>
-            <key>scope</key>
-            <string>sublimelinter.gutter-mark</string>
-            <key>settings</key>
-            <dict>
-                <key>foreground</key>
-                <string>#FFFFFF</string>
-            </dict>
-        </dict><dict>
-            <key>name</key>
-            <string>SublimeLinter Warning</string>
-            <key>scope</key>
-            <string>sublimelinter.mark.warning</string>
+            <string>flake8lint.mark.warning</string>
             <key>settings</key>
             <dict>
                 <key>foreground</key>
                 <string>#EDBA00</string>
+            </dict>
+        </dict><dict>
+            <key>name</key>
+            <string>Python Flake8 Lint Error</string>
+            <key>scope</key>
+            <string>flake8lint.mark.error</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#DA2000</string>
             </dict>
         </dict></array>
 	<key>uuid</key>
