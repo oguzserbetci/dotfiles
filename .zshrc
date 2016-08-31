@@ -9,6 +9,8 @@ alias s="subl"
 alias sn="subl -n"
 alias j="jupyter notebook"
 alias sm="s --project /Users/oguzserbetci/Library/Mobile\ Documents/com~apple~CloudDocs/note-taking.sublime-project"
+alias kbot="kibana -e https://c1ikqwa6:c2b3r0bieoetuzes@elm-9177573.eu-west-1.bonsai.io"
+alias kbot-s="kibana -e https://tulndj3z:3xucczja3elbwlm3@birch-5017864.eu-west-1.bonsai.io"
 alias d="dirs -v"
 alias -g S="| subl -"
 alias grep='grep --color=auto'
@@ -43,7 +45,11 @@ export JAVA_HOME=$(/usr/libexec/java_home)
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-export PATH=~/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-05-09-a.xctoolchain/usr/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$JAVA_HOME/jre/bin:~/anaconda3/bin:/Applications/Postgres.app/Contents/Versions/latest/bin
+export PATH=~/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-05-09-a.xctoolchain/usr/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$JAVA_HOME/jre/bin:~/anaconda3/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/Users/oguzserbetci/dev/corpus/TreeTagger/cmd:/Users/oguzserbetci/dev/corpus/TreeTagger/bin
+
+export STANFORDTOOLSDIR=/Users/oguzserbetci/dev/stanford-postagger-full-2015-12-09
+export CLASSPATH=/Users/oguzserbetci/dev/stanford-postagger-full-2015-12-09/stanford-postagger-3.6.0.jar:/Users/oguzserbetci/dev/stanford-postagger-full-2015-12-09/stanford-postagger.jar
+export STANFORD_MODELS=/Users/oguzserbetci/dev/stanford-postagger-full-2015-12-09/models
 
 source $ZSH/oh-my-zsh.sh
 
