@@ -1,7 +1,7 @@
-# RULES
+// RULES
 kwmc rule owner="Simulator" properties={float="true"}
 kwmc rule owner="Photoshop" properties={float="true"}
 kwmc rule owner="iTerm2" properties={role="AXDialog"}
 kwmc rule owner="iTunes" name="MiniPlayer" properties={float="true"}
 
-# TODO IntelliJ windows!
+// TODO IntelliJ windows!
