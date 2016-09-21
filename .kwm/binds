@@ -9,8 +9,8 @@ kwmc bindsym cmd+ctrl-d space -t float
 kwmc bindsym cmd+ctrl-r tree rotate 90
 
 // Launcher
-kwmc bindsym cmd+ctrl-m exec sm
-kwmc bindsym prefix-s exec open -na /Applications/SublimeText.app
+kwmc bindsym prefix-s exec open -na Sublime\ Text.app --project /Users/oguzserbetci/Library/Mobile\ Documents/com~apple~CloudDocs/note-taking.sublime-project
+kwmc bindsym prefix-e exec open -na /Applications/iTerm.app
 
 // Modify Container
 kwmc bindsym prefix-x window -c split-mode toggle
