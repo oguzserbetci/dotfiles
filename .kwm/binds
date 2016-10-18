@@ -1,6 +1,4 @@
-// KEYbindsymS
-
-// Quit Kwm
+# Quit Kwm
 kwmc bindsym cmd+alt+ctrl-q quit
 
 kwmc bindsym cmd+ctrl-a space -t bsp
@@ -8,52 +6,52 @@ kwmc bindsym cmd+ctrl-s space -t monocle
 kwmc bindsym cmd+ctrl-d space -t float
 kwmc bindsym cmd+ctrl-r tree rotate 90
 
-// Launcher
+# Launcher
 kwmc bindsym prefix-s exec open -na Sublime\ Text.app --project /Users/oguzserbetci/Library/Mobile\ Documents/com~apple~CloudDocs/note-taking.sublime-project
 kwmc bindsym prefix-e exec open -na /Applications/iTerm.app
 
-// Modify Container
+# Modify Container
 kwmc bindsym prefix-x window -c split-mode toggle
 kwmc bindsym prefix-j window -c reduce 0.05
 kwmc bindsym prefix-k window -c expand 0.05
 kwmc bindsym prefix-o window -c type toggle
 
-// Set Temporary Window Container
+# Set Temporary Window Container
 kwmc bindsym prefix-f window -z fullscreen
 kwmc bindsym prefix-d window -z parent
 kwmc bindsym prefix-w window -t focused
 
-// Give Focus To Window
+# Give Focus To Window
 kwmc bindsym cmd+alt-j window -f west
 kwmc bindsym cmd+alt-k window -f east
 kwmc bindsym cmd+alt-u window -f south
 kwmc bindsym cmd+alt-m window -f north
 
-// Swap Focused Window
+# Swap Focused Window
 kwmc bindsym ctrl+alt-j window -s west
 kwmc bindsym ctrl+alt-k window -s south
 kwmc bindsym ctrl+alt-u window -s north
 kwmc bindsym ctrl+alt-m window -s east
 
-// Pseudo containers
+# Pseudo containers
 kwmc bindsym cmd+ctrl+alt-p tree -pseudo create
 kwmc bindsym cmd+ctrl+alt-o tree -pseudo destroy
 
-// Detach Focused Window And Reinsert In Direction
+# Detach Focused Window And Reinsert In Direction
 kwmc bindsym ctrl+shift-u window -m north
 kwmc bindsym ctrl+shift-k window -m east
 kwmc bindsym ctrl+shift-m window -m south
 kwmc bindsym ctrl+shift-j window -m west
 
-// Move Focused Window To Space
+# Move Focused Window To Space
 kwmc bindsym ctrl+alt-left window -m space left
 kwmc bindsym ctrl+alt-right window -m space right
 
-// Move Focused Window To Screen
+# Move Focused Window To Screen
 kwmc bindsym ctrl+alt-down window -m display 0
 kwmc bindsym ctrl+alt-up window -m display 1
 
-// Autowrite
+# Autowrite
 kwmc bindsym cmd-7 write \
 kwmc bindsym cmd-8 write {
 kwmc bindsym cmd-9 write }
