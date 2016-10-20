@@ -1,15 +1,3 @@
-# Quit Kwm
-kwmc bindsym cmd+alt+ctrl-q quit
-
-kwmc bindsym cmd+ctrl-a space -t bsp
-kwmc bindsym cmd+ctrl-s space -t monocle
-kwmc bindsym cmd+ctrl-d space -t float
-kwmc bindsym cmd+ctrl-r tree rotate 90
-
-# Launcher
-kwmc bindsym prefix-s exec open -na Sublime\ Text.app --project /Users/oguzserbetci/Library/Mobile\ Documents/com~apple~CloudDocs/note-taking.sublime-project
-kwmc bindsym prefix-e exec open -na /Applications/iTerm.app
-
 # Modify Container
 kwmc bindsym prefix-x window -c split-mode toggle
 kwmc bindsym prefix-j window -c reduce 0.05
@@ -50,8 +38,3 @@ kwmc bindsym ctrl+alt-right window -m space right
 # Move Focused Window To Screen
 kwmc bindsym ctrl+alt-down window -m display 0
 kwmc bindsym ctrl+alt-up window -m display 1
-
-# Autowrite
-kwmc bindsym cmd-7 write \
-kwmc bindsym cmd-8 write {
-kwmc bindsym cmd-9 write }
