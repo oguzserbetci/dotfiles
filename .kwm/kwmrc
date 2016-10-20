@@ -20,5 +20,4 @@ kwmc config border focused size 2
 kwmc config border focused color 0xFFBDD322
 kwmc config border focused radius 6
 
-include binds
 include rules
