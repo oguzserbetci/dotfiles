@@ -7,5 +7,6 @@ massim-2016-1.0/
 .DS_Store
 Package\ Control.cache
 Package\ Control.last-run
-.merged-ca-bundle
-.system-ca-bundle
+*.crt
+*.merged-ca-bundle
+*.system-ca-bundle
