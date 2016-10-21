@@ -1,6 +1,11 @@
-ZSH_THEME="sorin"
+source $(brew --prefix)/share/antigen/antigen.zsh
 
-plugins=(git sublime gitignore python brew colorize brew-cask)
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-autosuggestions
+antigen theme pure
+antigen bundle zsh-users/zsh-completions
+
+antigen apply
 
 # ALIASES
 alias zshconfig="s ~/.zshrc"
@@ -50,8 +55,6 @@ export PATH=~/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-05-09
 export STANFORDTOOLSDIR=/Users/oguzserbetci/dev/stanford-postagger-full-2015-12-09
 export CLASSPATH=/Users/oguzserbetci/dev/stanford-postagger-full-2015-12-09/stanford-postagger-3.6.0.jar:/Users/oguzserbetci/dev/stanford-postagger-full-2015-12-09/stanford-postagger.jar
 export STANFORD_MODELS=/Users/oguzserbetci/dev/stanford-postagger-full-2015-12-09/models
-
-source $ZSH/oh-my-zsh.sh
 
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
