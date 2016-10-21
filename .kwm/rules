@@ -1,8 +1,13 @@
-// RULES
+# RULES
 kwmc rule owner="Simulator" properties={float="true"}
+kwmc rule owner="Facetime" properties={float="true"}
 kwmc rule owner="Photoshop" properties={float="true"}
-kwmc rule owner="iTerm2" properties={role="AXDialog"}
-kwmc rule owner="iTunes" name="MiniPlayer" properties={float="true"}
-kwmc rule owner="iTunes" name="Info" properties={float="true"}
 
-// TODO IntelliJ windows!
+kwmc rule owner="iTerm2" properties={role="AXDialog"}
+kwmc rule owner="iTerm2" name="Hotkey" properties={float="true"}
+
+kwmc rule owner="Zotero" properties={role="AXDialog"}
+
+kwmc rule owner="iTunes" name="Mini Player" properties={float="true"}
+
+kwmc rule owner="TogglDesktop" properties={float="true"}

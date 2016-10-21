@@ -1,9 +1,20 @@
+
 source $(brew --prefix)/share/antigen/antigen.zsh
 
+antigen use oh-my-zsh
+antigen bundle sublime
+antigen bundle gitignore
+antigen bundle brew
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
-antigen theme pure
 antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-history-substring-search
+antigen bundle git
+antigen theme pure
+
+antigen apply
+
+plugins=(git sublime gitignore python brew colorize brew-cask)
 
 antigen apply
 
