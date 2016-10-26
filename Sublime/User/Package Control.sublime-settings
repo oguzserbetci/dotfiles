@@ -20,11 +20,12 @@
 		"Markdown Preview",
 		"MarkdownEditing",
 		"Material Theme",
+		"Monokai - Spacegray",
 		"Monokai Extended",
 		"Package Control",
+		"PackageResourceViewer",
 		"Pretty JSON",
 		"Python Flake8 Lint",
-		"SFTP",
 		"SideBarEnhancements",
 		"SublimeLinter",
 		"SublimeLinter-json",
@@ -33,6 +34,7 @@
 		"Sublimerge 3",
 		"Swift for F*ing Sublime",
 		"Theme - Primer",
+		"Theme - Spacegray",
 		"YAML Nav"
 	]
 }
