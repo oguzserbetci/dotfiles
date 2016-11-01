@@ -9,13 +9,12 @@
 	[
 		"gray_antialias"
 	],
-	"font_size": 13,
+	"font_size": 17,
 	"highlight_line": true,
 	"ignored_packages":
 	[
 		"All Autocomplete",
 		"GitGutter",
-		"JSONLint",
 		"SublimeLinter-ruby",
 		"Sublimerge Pro",
 		"Swift for F*ing Sublime",
