@@ -6,6 +6,7 @@ antigen bundle sublime
 antigen bundle gitignore
 antigen bundle brew
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle psprint/zsh-navigation-tools
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-history-substring-search
