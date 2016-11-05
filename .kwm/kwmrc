@@ -10,6 +10,7 @@ kwmc config float-non-resizable on
 kwmc config lock-to-container on
 kwmc config focus-follows-mouse autoraise
 kwmc config standby-on-float on
+kwmc config center-on-float on
 kwmc config mouse-follows-focus on
 kwmc config split-ratio 0.5
 kwmc config spawn top
