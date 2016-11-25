@@ -4,10 +4,12 @@ kwmc rule owner="Facetime" properties={float="true"}
 kwmc rule owner="Photoshop" properties={float="true"}
 
 kwmc rule owner="iTerm2" properties={role="AXDialog"}
-kwmc rule owner="iTerm2" name="Hotkey" properties={float="true"}
+kwmc rule owner="iTerm2" name="Hotkey" role="AXDialog" properties={float="true"}
 
 kwmc rule owner="Zotero" properties={role="AXDialog"}
 
 kwmc rule owner="iTunes" name="Mini Player" properties={float="true"}
 
 kwmc rule owner="TogglDesktop" properties={float="true"}
+
+kwmc rule owner="System Preferences" properties={float="true"}
