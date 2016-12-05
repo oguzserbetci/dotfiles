@@ -1,7 +1,10 @@
 # RULES
 kwmc rule owner="Simulator" properties={float="true"}
-kwmc rule owner="Facetime" properties={float="true"}
+kwmc rule owner="FaceTime" properties={float="true"}
 kwmc rule owner="Photoshop" properties={float="true"}
+
+# Finder info
+kwmc rule owner="Info" properties={float="true"}
 
 kwmc rule owner="iTerm2" properties={role="AXDialog"}
 kwmc rule owner="iTerm2" name="Hotkey" role="AXDialog" properties={float="true"}
