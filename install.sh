@@ -29,8 +29,9 @@ brew services start koekeishiya/kwm/kwm
 
 chsh -s /usr/local/bin/zsh-5.2
 
-rm -rf ~/Library/Application\ Support/Sublime\ Text\ 3/Packages
-ln -sfv ~/Dropbox/Sublime/Packages ~/Library/Application\ Support/Sublime\ Text\ 3/
+echo "> setup sublime dropbox sync"
+echo "  rm -rf ~/Library/Application\ Support/Sublime\ Text\ 3/Packages"
+echo " ln -sfv ~/Dropbox/Sublime/Packages ~/Library/Application\ Support/Sublime\ Text\ 3/"
 
 . "$DOTFILES_DIR/osxdefaults.sh"
 
