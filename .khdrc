@@ -41,9 +41,9 @@ prefix - 1               :    kwmc display -f 0
 prefix - 2               :    kwmc display -f 1
 
 # Swap Focused Window
-ctrl + alt - j           :    kwmc window -s west
-ctrl + alt - k           :    kwmc window -s south
-ctrl + alt - i           :    kwmc window -s north
+ctrl + alt - h           :    kwmc window -s west
+ctrl + alt - j           :    kwmc window -s south
+ctrl + alt - k           :    kwmc window -s north
 ctrl + alt - l           :    kwmc window -s east
 
 # Pseudo containers

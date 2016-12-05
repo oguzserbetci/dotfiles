@@ -1,4 +1,3 @@
-
 source $(brew --prefix)/share/antigen/antigen.zsh
 
 antigen use oh-my-zsh
@@ -11,7 +10,8 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle git
-antigen theme pure
+antigen bundle mafredri/zsh-async
+antigen bundle sindresorhus/pure
 
 antigen apply
 
@@ -19,21 +19,28 @@ plugins=(git sublime gitignore python brew colorize brew-cask)
 
 antigen apply
 
+ssh-add -K ~/.ssh/id_rsa_gitlab
+ssh-add -K ~/.ssh/id_rsa_github
 # ALIASES
 alias zshconfig="s ~/.zshrc"
 alias finder="open -R"
 alias s="subl"
 alias sn="subl -n"
-alias j="jupyter notebook"
 alias sm="s --project /Users/oguzserbetci/Library/Mobile\ Documents/com~apple~CloudDocs/note-taking.sublime-project"
 alias kbot="kibana -e https://c1ikqwa6:c2b3r0bieoetuzes@elm-9177573.eu-west-1.bonsai.io"
 alias kbot-s="kibana -e https://tulndj3z:3xucczja3elbwlm3@birch-5017864.eu-west-1.bonsai.io"
+alias j="jupyter notebook"
+
 alias d="dirs -v"
 alias -g S="| subl -"
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias ls="command ls ${colorflag}"
+alias ls="command ls -G"
+
+# WORK
+alias kbot="kibana -e https://c1ikqwa6:c2b3r0bieoetuzes@elm-9177573.eu-west-1.bonsai.io"
+alias kbot-s="kibana -e https://tulndj3z:3xucczja3elbwlm3@birch-5017864.eu-west-1.bonsai.io"
 
 # Show/hide hidden files in Finder
 alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
@@ -59,11 +66,12 @@ export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40
 export ZSH=/Users/oguzserbetci/.oh-my-zsh
 export JAVA_HOME=$(/usr/libexec/java_home)
 
-export LC_ALL=en_US.UTF-8
+export LC_ALL=C
 export LANG=en_US.UTF-8
 
 export PATH=~/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-05-09-a.xctoolchain/usr/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$JAVA_HOME/jre/bin:~/anaconda3/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/Users/oguzserbetci/dev/corpus/TreeTagger/cmd:/Users/oguzserbetci/dev/corpus/TreeTagger/bin:/Library/TeX/texbin
 
+# WORK : NLP
 export STANFORDTOOLSDIR=/Users/oguzserbetci/dev/stanford-postagger-full-2015-12-09
 export CLASSPATH=/Users/oguzserbetci/dev/stanford-postagger-full-2015-12-09/stanford-postagger-3.6.0.jar:/Users/oguzserbetci/dev/stanford-postagger-full-2015-12-09/stanford-postagger.jar
 export STANFORD_MODELS=/Users/oguzserbetci/dev/stanford-postagger-full-2015-12-09/models
