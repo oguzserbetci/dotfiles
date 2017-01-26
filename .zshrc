@@ -19,8 +19,6 @@ plugins=(git sublime gitignore python brew colorize brew-cask)
 
 antigen apply
 
-ssh-add -K ~/.ssh/id_rsa_gitlab
-ssh-add -K ~/.ssh/id_rsa_github
 # ALIASES
 alias zshconfig="s ~/.zshrc"
 alias finder="open -R"
@@ -29,7 +27,7 @@ alias sn="subl -n"
 alias sm="s --project /Users/oguzserbetci/Library/Mobile\ Documents/com~apple~CloudDocs/note-taking.sublime-project"
 ***REMOVED***
 ***REMOVED***
-alias j="jupyter notebook"
+alias j="tmux new -s jupyter -d;tmux send-keys -t jupyter 'jupyter notebook' C-m"
 
 alias d="dirs -v"
 alias -g S="| subl -"
