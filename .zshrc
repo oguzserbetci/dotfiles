@@ -48,6 +48,12 @@ alias hide="defaults write com.apple.finder AppleShowAllFiles NO && killall Find
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
+# WORKFLOWS
+alias doml="open 'https://isis.tu-berlin.de/course/view.php?id=8410'; open ~/University/Machine\ Learning\ 1; atom -n ~/University/Machine\ Learning\ 1/exercises"
+alias doki="open 'https://isis.tu-berlin.de/course/view.php?id=8039'; open ~/University/Kunstliche\ Intelligenz/; open https://www.overleaf.com"
+alias doig="open 'https://isis.tu-berlin.de/course/view.php?id=8642'; open ~/University/Information\ Governance/; open https://docs.google.com; open /Applications/Zotero.app"
+alias dolo="open 'https://isis.tu-berlin.de/course/view.php?id=8227'; open ~/University/Logik\ WS16/ && atom -n ~/Dropbox/Logik"
+
 # KEYS
 bindkey -e
 bindkey '^[[1;9C' forward-word
