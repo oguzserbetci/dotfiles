@@ -19,7 +19,9 @@ plugins=(git sublime gitignore python brew colorize brew-cask)
 
 antigen apply
 
+########################################################################################################################
 # ALIASES
+########################################################################################################################
 alias zshconfig="s ~/.zshrc"
 alias finder="open -R"
 alias s="subl"
@@ -36,6 +38,15 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias ls="command ls -G"
 
+# GIT
+alias gs="git status -s"
+alias ga="git add--interactive"
+alias gc="git checkout"
+
+# PYTHON
+alias p3="python3"
+alias p="python"
+
 # WORK
 ***REMOVED***
 ***REMOVED***
@@ -47,6 +58,9 @@ alias hide="defaults write com.apple.finder AppleShowAllFiles NO && killall Find
 # Hide/show all desktop icons (useful when presenting)
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+
+########################################################################################################################
+
 
 # KEYS
 bindkey -e
@@ -70,7 +84,7 @@ export PYTHONIOENCODING=utf-8
 
 export PATH=~/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-05-09-a.xctoolchain/usr/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$JAVA_HOME/jre/bin:~/anaconda3/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/Users/oguzserbetci/dev/corpus/TreeTagger/cmd:/Users/oguzserbetci/dev/corpus/TreeTagger/bin:/Library/TeX/texbin
 
-# WORK : NLP
+# WORK: NLP
 export STANFORDTOOLSDIR=/Users/oguzserbetci/dev/stanford-postagger-full-2015-12-09
 export CLASSPATH=/Users/oguzserbetci/dev/stanford-postagger-full-2015-12-09/stanford-postagger-3.6.0.jar:/Users/oguzserbetci/dev/stanford-postagger-full-2015-12-09/stanford-postagger.jar
 export STANFORD_MODELS=/Users/oguzserbetci/dev/stanford-postagger-full-2015-12-09/models
@@ -78,7 +92,7 @@ export STANFORD_MODELS=/Users/oguzserbetci/dev/stanford-postagger-full-2015-12-0
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='subl'
+  export EDITOR='atom'
 fi
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
