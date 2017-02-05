@@ -19,7 +19,10 @@ plugins=(git sublime gitignore python brew colorize brew-cask)
 
 antigen apply
 
+########################################################################################################################
+
 # ALIASES
+
 alias zshconfig="s ~/.zshrc"
 alias finder="open -R"
 alias s="subl"
@@ -36,6 +39,15 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias ls="command ls -G"
 
+# GIT
+alias gs="git status -s"
+alias ga="git add--interactive"
+alias gc="git checkout"
+
+# PYTHON
+alias p3="python3"
+alias p="python"
+
 # WORK
 alias kbot="kibana -e https://c1ikqwa6:c2b3r0bieoetuzes@elm-9177573.eu-west-1.bonsai.io"
 alias kbot-s="kibana -e https://tulndj3z:3xucczja3elbwlm3@birch-5017864.eu-west-1.bonsai.io"
@@ -48,11 +60,16 @@ alias hide="defaults write com.apple.finder AppleShowAllFiles NO && killall Find
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
+########################################################################################################################
+
 # WORKFLOWS
+
 alias doml="open 'https://isis.tu-berlin.de/course/view.php?id=8410'; open ~/University/Machine\ Learning\ 1; atom -n ~/University/Machine\ Learning\ 1/exercises"
 alias doki="open 'https://isis.tu-berlin.de/course/view.php?id=8039'; open ~/University/Kunstliche\ Intelligenz/; open https://www.overleaf.com"
 alias doig="open 'https://isis.tu-berlin.de/course/view.php?id=8642'; open ~/University/Information\ Governance/; open https://docs.google.com; open /Applications/Zotero.app"
 alias dolo="open 'https://isis.tu-berlin.de/course/view.php?id=8227'; open ~/University/Logik\ WS16/ && atom -n ~/Dropbox/Logik"
+########################################################################################################################
+
 
 # KEYS
 bindkey -e
@@ -76,7 +93,7 @@ export PYTHONIOENCODING=utf-8
 
 export PATH=~/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-05-09-a.xctoolchain/usr/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$JAVA_HOME/jre/bin:~/anaconda3/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/Users/oguzserbetci/dev/corpus/TreeTagger/cmd:/Users/oguzserbetci/dev/corpus/TreeTagger/bin:/Library/TeX/texbin
 
-# WORK : NLP
+# WORK: NLP
 export STANFORDTOOLSDIR=/Users/oguzserbetci/dev/stanford-postagger-full-2015-12-09
 export CLASSPATH=/Users/oguzserbetci/dev/stanford-postagger-full-2015-12-09/stanford-postagger-3.6.0.jar:/Users/oguzserbetci/dev/stanford-postagger-full-2015-12-09/stanford-postagger.jar
 export STANFORD_MODELS=/Users/oguzserbetci/dev/stanford-postagger-full-2015-12-09/models
@@ -84,5 +101,7 @@ export STANFORD_MODELS=/Users/oguzserbetci/dev/stanford-postagger-full-2015-12-0
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='subl'
+  export EDITOR='atom'
 fi
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
