@@ -91,7 +91,7 @@ export LC_ALL=C
 export LANG=en_US.UTF-8
 export PYTHONIOENCODING=utf-8
 
-export PATH=~/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-05-09-a.xctoolchain/usr/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$JAVA_HOME/jre/bin:~/anaconda3/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/Users/oguzserbetci/dev/corpus/TreeTagger/cmd:/Users/oguzserbetci/dev/corpus/TreeTagger/bin:/Library/TeX/texbin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$JAVA_HOME/jre/bin:~/anaconda3/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/Users/oguzserbetci/dev/corpus/TreeTagger/cmd:/Users/oguzserbetci/dev/corpus/TreeTagger/bin:/Library/TeX/texbin
 
 # WORK: NLP
 export STANFORDTOOLSDIR=/Users/oguzserbetci/dev/stanford-postagger-full-2015-12-09
