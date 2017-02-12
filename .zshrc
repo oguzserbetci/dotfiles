@@ -28,8 +28,8 @@ alias finder="open -R"
 alias s="subl"
 alias sn="subl -n"
 alias sm="s --project /Users/oguzserbetci/Library/Mobile\ Documents/com~apple~CloudDocs/note-taking.sublime-project"
-***REMOVED***
-***REMOVED***
+alias kbot="kibana -e https://c1ikqwa6:c2b3r0bieoetuzes@elm-9177573.eu-west-1.bonsai.io"
+alias kbot-s="kibana -e https://tulndj3z:3xucczja3elbwlm3@birch-5017864.eu-west-1.bonsai.io"
 alias j="tmux new -s jupyter -d;tmux send-keys -t jupyter 'jupyter notebook' C-m"
 
 alias d="dirs -v"
@@ -49,8 +49,8 @@ alias p3="python3"
 alias p="python"
 
 # WORK
-***REMOVED***
-***REMOVED***
+alias kbot="kibana -e https://c1ikqwa6:c2b3r0bieoetuzes@elm-9177573.eu-west-1.bonsai.io"
+alias kbot-s="kibana -e https://tulndj3z:3xucczja3elbwlm3@birch-5017864.eu-west-1.bonsai.io"
 
 # Show/hide hidden files in Finder
 alias show="defaults write com.apple.finder AppleShowAllFiles YES && killall Finder"
@@ -65,8 +65,8 @@ alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && k
 # WORKFLOWS
 
 alias doml="open 'https://isis.tu-berlin.de/course/view.php?id=8410'; open ~/University/Machine\ Learning\ 1; atom -n ~/University/Machine\ Learning\ 1/exercises"
-***REMOVED***
-***REMOVED***
+alias doki="open 'https://isis.tu-berlin.de/course/view.php?id=8039'; open ~/University/Kunstliche\ Intelligenz/; open https://www.overleaf.com"
+alias doig="open 'https://isis.tu-berlin.de/course/view.php?id=8642'; open ~/University/Information\ Governance/; open https://docs.google.com; open /Applications/Zotero.app"
 alias dolo="open 'https://isis.tu-berlin.de/course/view.php?id=8227'; open ~/University/Logik\ WS16/ && atom -n ~/Dropbox/Logik"
 ########################################################################################################################
 
@@ -91,7 +91,7 @@ export LC_ALL=C
 export LANG=en_US.UTF-8
 export PYTHONIOENCODING=utf-8
 
-export PATH=~/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-05-09-a.xctoolchain/usr/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$JAVA_HOME/jre/bin:~/anaconda3/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/Users/oguzserbetci/dev/corpus/TreeTagger/cmd:/Users/oguzserbetci/dev/corpus/TreeTagger/bin:/Library/TeX/texbin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$JAVA_HOME/jre/bin:~/anaconda3/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/Users/oguzserbetci/dev/corpus/TreeTagger/cmd:/Users/oguzserbetci/dev/corpus/TreeTagger/bin:/Library/TeX/texbin
 
 # WORK: NLP
 export STANFORDTOOLSDIR=/Users/oguzserbetci/dev/stanford-postagger-full-2015-12-09
