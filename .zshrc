@@ -37,8 +37,6 @@ alias finder="open -R"
 alias s="subl"
 alias sn="subl -n"
 alias sm="s --project /Users/oguzserbetci/Library/Mobile\ Documents/com~apple~CloudDocs/note-taking.sublime-project"
-alias kbot="kibana -e https://c1ikqwa6:c2b3r0bieoetuzes@elm-9177573.eu-west-1.bonsai.io"
-alias kbot-s="kibana -e https://tulndj3z:3xucczja3elbwlm3@birch-5017864.eu-west-1.bonsai.io"
 alias j="tmux new -s jupyter -d;tmux send-keys -t jupyter 'jupyter notebook' C-m"
 
 alias d="dirs -v"
@@ -56,10 +54,6 @@ alias gc="git checkout"
 # PYTHON
 alias p3="python3"
 alias p="python"
-
-# WORK
-alias kbot="kibana -e https://c1ikqwa6:c2b3r0bieoetuzes@elm-9177573.eu-west-1.bonsai.io"
-alias kbot-s="kibana -e https://tulndj3z:3xucczja3elbwlm3@birch-5017864.eu-west-1.bonsai.io"
 
 # Show/hide hidden files in Finder
 alias show="defaults write com.apple.finder AppleShowAllFiles YES && killall Finder"
