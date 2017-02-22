@@ -4,23 +4,32 @@ antigen use oh-my-zsh
 antigen bundle sublime
 antigen bundle gitignore
 antigen bundle brew
-antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-completions
 antigen bundle psprint/zsh-navigation-tools
 antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle git
 antigen bundle mafredri/zsh-async
 antigen bundle sindresorhus/pure
+antigen bundle python
+antigen bundle colorize
+antigen bundle brew-cask
 
 antigen apply
 
-plugins=(git sublime gitignore python brew colorize brew-cask)
 
-antigen apply
+#########
+# OHMYZSH
 
-########################################################################################################################
+# TERMINAL OPTIONS
+HYPHEN_INSENSITIVE="true"
+# ENABLE_CORRECTION="true"
+COMPLETION_WAITING_DOTS="true"
+HIST_STAMPS="dd/mm/yyyy"
 
+
+#########
 # ALIASES
 
 alias zshconfig="s ~/.zshrc"
@@ -60,31 +69,34 @@ alias hide="defaults write com.apple.finder AppleShowAllFiles NO && killall Find
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
-########################################################################################################################
-
 # WORKFLOWS
-
 alias doml="open 'https://isis.tu-berlin.de/course/view.php?id=8410'; open ~/University/Machine\ Learning\ 1; atom -n ~/University/Machine\ Learning\ 1/exercises"
-alias doki="open 'https://isis.tu-berlin.de/course/view.php?id=8039'; open ~/University/Kunstliche\ Intelligenz/; open https://www.overleaf.com"
-alias doig="open 'https://isis.tu-berlin.de/course/view.php?id=8642'; open ~/University/Information\ Governance/; open https://docs.google.com; open /Applications/Zotero.app"
-alias dolo="open 'https://isis.tu-berlin.de/course/view.php?id=8227'; open ~/University/Logik\ WS16/ && atom -n ~/Dropbox/Logik"
-########################################################################################################################
 
 
+######
 # KEYS
-bindkey -e
-bindkey '^[[1;9C' forward-word
-bindkey '^[[1;9D' backward-word
 
-# TERMINAL OPTIONS
-HYPHEN_INSENSITIVE="true"
-# ENABLE_CORRECTION="true"
-COMPLETION_WAITING_DOTS="true"
-HIST_STAMPS="dd/mm/yyyy"
+bindkey '^[[1;9D' backward-word # iterm
+bindkey '^[^[[D' backward-word # tmux os x
+bindkey '^[[1;3D' backward-word # tmux ubuntu
+
+bindkey '^[[1;9C' forward-word # iterm
+bindkey '^[^[[C' forward-word # tmux os x
+bindkey '^[[1;3C' forward-word # tmux ubuntu
+
+bindkey '^[[H' beginning-of-line # iterm
+bindkey '^[[1~' beginning-of-line # tmux
+
+bindkey '^[[F' end-of-line # iterm
+bindkey '^[[4~' end-of-line # tmux
+
+
+########
+# OTHERS
 
 export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:'
 
-export ZSH=/Users/oguzserbetci/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 export JAVA_HOME=$(/usr/libexec/java_home)
 
 export LC_ALL=C
@@ -92,11 +104,6 @@ export LANG=en_US.UTF-8
 export PYTHONIOENCODING=utf-8
 
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$JAVA_HOME/jre/bin:~/anaconda3/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/Users/oguzserbetci/dev/corpus/TreeTagger/cmd:/Users/oguzserbetci/dev/corpus/TreeTagger/bin:/Library/TeX/texbin
-
-# WORK: NLP
-export STANFORDTOOLSDIR=/Users/oguzserbetci/dev/stanford-postagger-full-2015-12-09
-export CLASSPATH=/Users/oguzserbetci/dev/stanford-postagger-full-2015-12-09/stanford-postagger-3.6.0.jar:/Users/oguzserbetci/dev/stanford-postagger-full-2015-12-09/stanford-postagger.jar
-export STANFORD_MODELS=/Users/oguzserbetci/dev/stanford-postagger-full-2015-12-09/models
 
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'

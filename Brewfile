@@ -18,8 +18,15 @@ brew 'exercism'
 brew 'vim'
 brew 'zsh'
 brew 'heroku'
+brew 'nvim'
+brew 'fasd'
+brew 'peco'
+brew 'realpath'
+brew 'mackup'
 
 # Fonts
+brew 'fonts'
+
 # Quicklook
 cask 'qlcolorcode'
 cask 'qlmarkdown'
