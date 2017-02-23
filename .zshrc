@@ -105,6 +105,12 @@ export PYTHONIOENCODING=utf-8
 
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$JAVA_HOME/jre/bin:~/anaconda3/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/Users/oguzserbetci/dev/corpus/TreeTagger/cmd:/Users/oguzserbetci/dev/corpus/TreeTagger/bin:/Library/TeX/texbin
 
+if [ "$(uname 2> /dev/null)" != "Linux" ]; then
+  export PATH="$HOME/.linuxbrew/bin:$PATH" 
+  export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH" 
+  export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+fi
+
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
