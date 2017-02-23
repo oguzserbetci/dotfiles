@@ -9,8 +9,10 @@ antigen bundle sublime
 antigen bundle colorize
 antigen bundle brew-cask
 antigen bundle gitignore
-antigen bundle sindresorhus/pure
+
 antigen bundle mafredri/zsh-async
+antigen bundle sindresorhus/pure
+
 antigen bundle zsh-users/zsh-completions
 antigen bundle psprint/zsh-navigation-tools
 antigen bundle zsh-users/zsh-autosuggestions
