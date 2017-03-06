@@ -12,6 +12,7 @@ ln -sfv "$DOTFILES_DIR/.functions" ~
 ln -sfv "$DOTFILES_DIR/.gitconfig" ~
 ln -sfv "$DOTFILES_DIR/.gitignore" ~
 ln -sfv "$DOTFILES_DIR/.zsh_history" ~
+ln -sfv "$DOTFILES_DIR/.vimrc" ~
 
 # Package managers & packages
 echo "› brew bundle"
@@ -22,6 +23,7 @@ if [[ $? != 0 ]] ; then
 else
     brew update
 fi
+
 brew bundle
 
 brew services start koekeishiya/khd/khd
@@ -35,7 +37,7 @@ echo " ln -sfv ~/Dropbox/Sublime/Packages ~/Library/Application\ Support/Sublime
 
 . "$DOTFILES_DIR/osxdefaults.sh"
 
-git clone git://github.com/amix/vimrc.git ~/.dotfiles/.vim_runtime
-sh ~/.dotfiles/.vim_runtime/install_awesome_vimrc.sh
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 ln -sfv "$DOTFILES_DIR/.vim_runtime" ~
