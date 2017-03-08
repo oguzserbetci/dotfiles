@@ -43,6 +43,7 @@ alias sn="subl -n"
 alias sm="s --project /Users/oguzserbetci/Library/Mobile\ Documents/com~apple~CloudDocs/note-taking.sublime-project"
 alias j="tmux new -s jupyter -d;tmux send-keys -t jupyter 'jupyter notebook' C-m"
 
+alias vim="nvim"
 alias d="dirs -v"
 alias -g S="| subl -"
 alias grep='grep --color=auto'
