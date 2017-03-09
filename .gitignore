@@ -9,4 +9,5 @@ Package\ Control.cache
 Package\ Control.last-run
 *.crt
 *.merged-ca-bundle
+.zsh_history
 *.system-ca-bundle
