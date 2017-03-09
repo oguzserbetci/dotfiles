@@ -11,8 +11,6 @@ ln -sfv "$DOTFILES_DIR/.khdrc" ~
 ln -sfv "$DOTFILES_DIR/.functions" ~
 ln -sfv "$DOTFILES_DIR/.gitconfig" ~
 ln -sfv "$DOTFILES_DIR/.gitignore" ~
-ln -sfv "$DOTFILES_DIR/.zsh_history" ~
-ln -sfv "$DOTFILES_DIR/.vimrc" ~
 
 # Package managers & packages
 echo "› brew bundle"
@@ -26,21 +24,14 @@ fi
 
 brew bundle
 
-brew services start koekeishiya/khd/khd
-brew services start koekeishiya/kwm/kwm
+if [ "$(uname 2> /dev/null)" != "Linux" ]; then
+  brew services start koekeishiya/khd/khd
+  brew services start koekeishiya/kwm/kwm
+  . "$DOTFILES_DIR/osxdefaults.sh"
+fi
 
 if [ ${SHELL: -3} != "zsh" ] 
 then
   chsh -s $(which zsh)
 fi
 
-echo "> setup sublime dropbox sync"
-echo "  rm -rf ~/Library/Application\ Support/Sublime\ Text\ 3/Packages"
-echo " ln -sfv ~/Dropbox/Sublime/Packages ~/Library/Application\ Support/Sublime\ Text\ 3/"
-
-. "$DOTFILES_DIR/osxdefaults.sh"
-
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-ln -sfv "$DOTFILES_DIR/.vim_runtime" ~

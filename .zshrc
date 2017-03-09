@@ -79,7 +79,6 @@ alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && k
 # WORKFLOWS
 alias doml="open 'https://isis.tu-berlin.de/course/view.php?id=8410'; open ~/University/Machine\ Learning\ 1; atom -n ~/University/Machine\ Learning\ 1/exercises"
 
-
 ######
 # KEYS
 
@@ -111,7 +110,6 @@ export JAVA_HOME=$(/usr/libexec/java_home)
 export LC_ALL=C
 export LANG=en_US.UTF-8
 export PYTHONIOENCODING=utf-8
-
 
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
