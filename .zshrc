@@ -104,7 +104,7 @@ export LC_ALL=C
 export LANG=en_US.UTF-8
 export PYTHONIOENCODING=utf-8
 
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$JAVA_HOME/jre/bin:~/anaconda3/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/Users/oguzserbetci/dev/corpus/TreeTagger/cmd:/Users/oguzserbetci/dev/corpus/TreeTagger/bin:/Library/TeX/texbin
+export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$JAVA_HOME/jre/bin:~/anaconda3/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/Users/oguzserbetci/dev/corpus/TreeTagger/cmd:/Users/oguzserbetci/dev/corpus/TreeTagger/bin:/Library/TeX/texbin
 
 if [ "$(uname 2> /dev/null)" != "Linux" ]; then
   export PATH="$HOME/.linuxbrew/bin:$PATH" 
