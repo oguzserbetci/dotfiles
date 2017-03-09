@@ -29,7 +29,10 @@ brew bundle
 brew services start koekeishiya/khd/khd
 brew services start koekeishiya/kwm/kwm
 
-chsh -s /usr/local/bin/zsh-5.2
+if [ ${SHELL: -3} != "zsh" ] 
+then
+  chsh -s $(which zsh)
+fi
 
 echo "> setup sublime dropbox sync"
 echo "  rm -rf ~/Library/Application\ Support/Sublime\ Text\ 3/Packages"
