@@ -17,6 +17,10 @@ Plug 'chiel92/vim-autoformat'
 " TOOLS "
 Plug 'tpope/vim-fugitive'
 
+Plug 'xolox/vim-notes'
+Plug 'xolox/vim-misc'
+:let g:notes_directories = ['~/Dropbox/notes']
+
 Plug 'othree/html5.vim'
 Plug 'jcf/vim-latex'
 Plug 'scrooloose/syntastic'
