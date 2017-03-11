@@ -1,4 +1,4 @@
-if [ "$(uname 2> /dev/null)" != "Linux" ]; then
+if [ "$(uname)" != "Linux" ]; then
   echo 'works'
   export PATH="$HOME/.linuxbrew/bin:$PATH"
   export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
