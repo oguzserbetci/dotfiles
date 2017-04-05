@@ -20,6 +20,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'xolox/vim-notes'
 Plug 'xolox/vim-misc'
 :let g:notes_directories = ['~/Dropbox/notes']
+:let g:notes_suffix = '.notes'
 
 Plug 'othree/html5.vim'
 Plug 'jcf/vim-latex'
