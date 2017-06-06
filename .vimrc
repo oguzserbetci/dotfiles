@@ -1,6 +1,8 @@
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
 call plug#begin('~/.vim/plugged')
 
+" CODING "
+Plug 'Valloric/YouCompleteMe'
 
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
@@ -34,9 +36,15 @@ set ignorecase
 set number
 set ruler
 set showcmd
+set clipboard+=unnamedplus
 
 " SHORTCUTS "
 nnoremap ; :
+imap jk <esc>
+map <Up>   <C-W>k
+map <Down> <C-W>j
+map <Left> <C-W>h
+map <Right> <C-W>l
 
 " relative numbering "
 function! NumberToggle()

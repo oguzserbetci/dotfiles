@@ -46,20 +46,15 @@ ctrl + alt - j           :    kwmc window -s south
 ctrl + alt - k           :    kwmc window -s north
 ctrl + alt - l           :    kwmc window -s east
 
+# Move Focused Window To Screen
+ctrl + alt + cmd - h     :    kwmc window -m display 1 
+ctrl + alt + cmd - j     :    kwmc window -m display 0
+
+# Move Focused Window To Space
+ctrl + alt + cmd - k     :    kwmc window -m space right
+ctrl + alt + cmd - l     :    kwmc window -m space left
+
 # Pseudo containers
 cmd + ctrl + alt - p     :    kwmc tree -pseudo create
 cmd + ctrl + alt - o     :    kwmc tree -pseudo destroy
 
-# Detach Focused Window And Reinsert In Direction
-ctrl + shift - j         :    kwmc window -m north
-ctrl + shift - k         :    kwmc window -m east
-ctrl + shift - i         :    kwmc window -m south
-ctrl + shift - l         :    kwmc window -m west
-
-# Move Focused Window To Space
-ctrl + alt - left        :    kwmc window -m space left
-ctrl + alt - right       :    kwmc window -m space right
-
-# Move Focused Window To Screen
-ctrl + alt - down        :    kwmc window -m display 0
-ctrl + alt - up          :    kwmc window -m display 1
