@@ -28,8 +28,11 @@ cmd + ctrl - r           :    kwmc tree rotate 90
 # Modify Container
 prefix - x               :    kwmc window -c split-mode toggle
 prefix - o               :    kwmc window -c type toggle
-prefix - j               :    kwmc window -c reduce 0.05 east
-prefix - k               :    kwmc window -c expand 0.05 east
+
+prefix - h       :    kwmc window -c reduce 0.05 west
+prefix - j       :    kwmc window -c reduce 0.05 south
+prefix - k       :    kwmc window -c expand 0.05 south
+prefix - l       :    kwmc window -c expand 0.05 west
 
 # Set Temporary Window Container
 prefix - f               :    kwmc window -z fullscreen
@@ -47,12 +50,12 @@ ctrl + alt - k           :    kwmc window -s north
 ctrl + alt - l           :    kwmc window -s east
 
 # Move Focused Window To Screen
-ctrl + alt + cmd - h     :    kwmc window -m display 1 
+ctrl + alt + cmd - h     :    kwmc window -m space left 
 ctrl + alt + cmd - j     :    kwmc window -m display 0
 
 # Move Focused Window To Space
-ctrl + alt + cmd - k     :    kwmc window -m space right
-ctrl + alt + cmd - l     :    kwmc window -m space left
+ctrl + alt + cmd - k     :    kwmc window -m display 1
+ctrl + alt + cmd - l     :    kwmc window -m space right
 
 # Pseudo containers
 cmd + ctrl + alt - p     :    kwmc tree -pseudo create

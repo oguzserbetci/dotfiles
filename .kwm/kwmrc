@@ -5,7 +5,6 @@ kwmc config gap 5 5
 # Default tiling (bsp | monocle | float | off)
 kwmc config tiling bsp
 
-kwmc config hotkeys on
 kwmc config float-non-resizable on
 kwmc config lock-to-container on
 kwmc config focus-follows-mouse autoraise
