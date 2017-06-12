@@ -46,15 +46,3 @@ map <Down> <C-W>j
 map <Left> <C-W>h
 map <Right> <C-W>l
 
-" relative numbering "
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set nornu
-    set number
-  else
-    set rnu
-  endif
-endfunc
-
-nnoremap <leader>r :call NumberToggle()<cr>
-
