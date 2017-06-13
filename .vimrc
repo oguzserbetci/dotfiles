@@ -10,7 +10,7 @@ Plug 'junegunn/vim-easy-align'
 " INTERFACE "
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'vim-airline/vim-airline'
-Plug 'dracula/vim'
+Plug 'altercation/vim-colors-solarized'
 Plug 'airblade/vim-gitgutter'
 
 " CODE STYLE "
@@ -30,6 +30,11 @@ Plug 'scrooloose/syntastic'
 
 " Initialize plugin system
 call plug#end()
+
+" THEME "
+syntax enable
+set background=dark
+colorscheme solarized
 
 " SETUP "
 set ignorecase
