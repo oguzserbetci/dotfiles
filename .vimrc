@@ -6,6 +6,7 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'scrooloose/nerdcommenter'
 
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
@@ -15,15 +16,21 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'vim-airline/vim-airline'
 Plug 'altercation/vim-colors-solarized'
 Plug 'airblade/vim-gitgutter'
+nmap ]h <Plug>GitGutterNextHunk
+nmap [h <Plug>GitGutterPrevHunk
+nmap <Leader>hr <Plug>GitGutterUndoHunk
+
 Plug 'scrooloose/nerdtree'
 
 " CODE STYLE "
 Plug 'chiel92/vim-autoformat'
+Plug 'nathanaelkane/vim-indent-guides'
+
 
 " TOOLS "
 Plug 'tpope/vim-fugitive'
 Plug 'kien/ctrlp.vim'
-
+Plug 'tpope/vim-rhubarb'
 Plug 'xolox/vim-notes'
 Plug 'xolox/vim-misc'
 :let g:notes_directories = ['~/Dropbox/notes']
