@@ -39,7 +39,7 @@ Plug 'xolox/vim-misc'
 Plug 'othree/html5.vim'
 Plug 'jcf/vim-latex'
 Plug 'scrooloose/syntastic'
-
+Plug 'mileszs/ack.vim'
 let g:ackprg = 'ag --vimgrep'
 
 " Initialize plugin system
