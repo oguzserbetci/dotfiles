@@ -11,6 +11,7 @@ ln -sfv "$DOTFILES_DIR/.khdrc" ~
 ln -sfv "$DOTFILES_DIR/.functions" ~
 ln -sfv "$DOTFILES_DIR/.gitconfig" ~
 ln -sfv "$DOTFILES_DIR/.gitignore" ~
+ln -sfv "$DOTFILES_DIR/.vimrc" ~
 
 # Package managers & packages
 echo "› brew bundle"
@@ -32,6 +33,7 @@ fi
 
 if [ ${SHELL: -3} != "zsh" ] 
 then
+  dscl . -read /Users/$USER UserShell
   chsh -s $(which zsh)
 fi
 
