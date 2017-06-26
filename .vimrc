@@ -40,6 +40,8 @@ Plug 'othree/html5.vim'
 Plug 'jcf/vim-latex'
 Plug 'scrooloose/syntastic'
 
+let g:ackprg = 'ag --vimgrep'
+
 " Initialize plugin system
 call plug#end()
 
