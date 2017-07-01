@@ -13,9 +13,6 @@ khd mode prefix color 0xFF458588
 # Activate prefix mode
 ctrl - s                 :    khd -e "mode activate prefix"
 
-# Quit Kwm
-cmd + alt + ctrl - q     :    kwmc quit
-
 # Launch iTerm2
 prefix - t               :    open -na /Applications/iTerm2.app
 
