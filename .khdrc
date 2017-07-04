@@ -11,53 +11,65 @@ khd mode prefix restore default
 khd mode prefix color 0xFF458588
 
 # Activate prefix mode
-ctrl - s                 :    khd -e "mode activate prefix"
+ctrl - s                 : khd -e "mode activate prefix"
 
-# Quit Kwm
-cmd + alt + ctrl - q     :    kwmc quit
+# Rotate Tree
+alt - r 				 : chunkc desktop --rotate 90
 
-# Launch iTerm2
-prefix - t               :    open -na /Applications/iTerm2.app
+# mirror tree y-axis
+alt - y 				 : chunkc desktop --mirror vertical
 
-# Set Space Tiling
-cmd + ctrl - a           :    kwmc space -t bsp
-cmd + ctrl - s           :    kwmc space -t monocle
-cmd + ctrl - d           :    kwmc space -t float
-cmd + ctrl - r           :    kwmc tree rotate 90
+# mirror tree x-axis
+alt - x 				 : chunkc desktop --mirror horizontal
 
-# Modify Container
-prefix - x               :    kwmc window -c split-mode toggle
-prefix - o               :    kwmc window -c type toggle
+# toggle window split type
+alt - e 				 : chunkc window --toggle split
 
-prefix - h       :    kwmc window -c reduce 0.05 west
-prefix - j       :    kwmc window -c reduce 0.05 south
-prefix - k       :    kwmc window -c expand 0.05 south
-prefix - l       :    kwmc window -c expand 0.05 west
+# float / unfloat window
+alt - f 				 : chunkc window --toggle float
 
-# Set Temporary Window Container
-prefix - f               :    kwmc window -z fullscreen
-prefix - d               :    kwmc window -z parent
-prefix - w               :    kwmc window -t focused
+# float next window to be tiled
+shift + alt - t 		 : chunkc config window_float_next 1
 
-# Give Focus To Screen
-prefix - 1               :    kwmc display -f 0
-prefix - 2               :    kwmc display -f 1
+# change layout of desktop
+cmd + ctrl - a 			 : chunkc desktop --layout bsp
+cmd + ctrl - s 			 : chunkc desktop --layout monocle
+cmd + ctrl - d 			 : chunkc desktop --layout float
+
+prefix - h       		 : kwmc window -c reduce 0.05 west
+prefix - j       		 : kwmc window -c reduce 0.05 south
+prefix - k       		 : kwmc window -c expand 0.05 south
+prefix - l       		 : kwmc window -c expand 0.05 west
+
+# increase region size
+shift + alt - a 		 : chunkc window --use-temporary-ratio 0.1 --adjust-window-edge west
+shift + alt - s 		 : chunkc window --use-temporary-ratio 0.1 --adjust-window-edge south
+shift + alt - w 		 : chunkc window --use-temporary-ratio 0.1 --adjust-window-edge north
+shift + alt - d 		 : chunkc window --use-temporary-ratio 0.1 --adjust-window-edge east
+
+# decrease region size
+shift + cmd - a 		 : chunkc window --use-temporary-ratio -0.1 --adjust-window-edge west
+shift + cmd - s 	 	 : chunkc window --use-temporary-ratio -0.1 --adjust-window-edge south
+shift + cmd - w 		 : chunkc window --use-temporary-ratio -0.1 --adjust-window-edge north
+shift + cmd - d 		 : chunkc window --use-temporary-ratio -0.1 --adjust-window-edge east
 
 # Swap Focused Window
-ctrl + alt - h           :    kwmc window -s west
-ctrl + alt - j           :    kwmc window -s south
-ctrl + alt - k           :    kwmc window -s north
-ctrl + alt - l           :    kwmc window -s east
+ctrl + alt - h           : chunkc window --swap west
+ctrl + alt - j           : chunkc window --swap south
+ctrl + alt - k           : chunkc window --swap north
+ctrl + alt - l           : chunkc window --swap east
 
-# Move Focused Window To Screen
-ctrl + alt + cmd - h     :    kwmc window -m space left 
-ctrl + alt + cmd - j     :    kwmc window -m display 0
+# move window
+shift + cmd - h 		 : chunkc window --warp west
+shift + cmd - j 		 : chunkc window --warp south
+shift + cmd - k 		 : chunkc window --warp north
+shift + cmd - l 	     : chunkc window --warp east
 
-# Move Focused Window To Space
-ctrl + alt + cmd - k     :    kwmc window -m display 1
-ctrl + alt + cmd - l     :    kwmc window -m space right
-
-# Pseudo containers
-cmd + ctrl + alt - p     :    kwmc tree -pseudo create
-cmd + ctrl + alt - o     :    kwmc tree -pseudo destroy
+# Move Focused Windows through Screens and Spaces
+ctrl + alt + cmd - h     : chunkc window -m space left 
+ctrl + alt + cmd - j     : kwmc window -m display 0
+ctrl + cmd - h 			 : chunkc window --send-to-desktop prev
+ctrl + cmd - l 			 : chunkc window --send-to-desktop next
+ctrl + cmd - j  		 : chunkc window --send-to-monitor 1; chunkc monitor -f 1
+ctrl + cmd - k  		 : chunkc window --send-to-monitor 2; chunkc monitor -f 2
 
