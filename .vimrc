@@ -7,7 +7,22 @@ Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'scrooloose/nerdcommenter'
+Plug 'majutsushi/tagbar'
+Plug 'sirver/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'ervandew/supertab'
 
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+set relativenumber
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
 
@@ -25,7 +40,10 @@ Plug 'scrooloose/nerdtree'
 " CODE STYLE "
 Plug 'chiel92/vim-autoformat'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'sheerun/vim-polyglot'
 
+" THEME "
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
 
 " TOOLS "
 Plug 'tpope/vim-fugitive'
@@ -39,14 +57,18 @@ Plug 'xolox/vim-misc'
 Plug 'othree/html5.vim'
 Plug 'jcf/vim-latex'
 Plug 'scrooloose/syntastic'
+Plug 'mileszs/ack.vim'
+let g:ackprg = 'ag --vimgrep'
 
 " Initialize plugin system
 call plug#end()
 
 " THEME "
-syntax enable
-set background=dark
-colorscheme solarized
+syntax on
+set t_Co=256
+set cursorline
+colorscheme onehalfdark
+let g:airline_theme='onehalfdark'
 
 " GENERAL LAYOUT
 set splitbelow
