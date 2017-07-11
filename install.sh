@@ -11,6 +11,8 @@ ln -sfv "$DOTFILES_DIR/.khdrc" ~
 ln -sfv "$DOTFILES_DIR/.functions" ~
 ln -sfv "$DOTFILES_DIR/.gitconfig" ~
 ln -sfv "$DOTFILES_DIR/.gitignore" ~
+mkdir ~/.config/nvim
+ln -sfv "$DOTFILES_DIR/.vimrc" ~/.config/nvim/init.vim
 
 # Package managers & packages
 echo "› brew bundle"
