@@ -64,7 +64,8 @@ alias ls="command ls -G"
 # GIT
 alias gs="git status -s"
 alias ga="git add--interactive"
-alias gc="git checkout"
+alias gco="git checkout"
+alias gc="git clone"
 
 # PYTHON
 alias p3="python3"
