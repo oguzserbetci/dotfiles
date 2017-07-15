@@ -4,44 +4,44 @@ chunkc core::plugin_dir ~/.chunkwm_plugins
 chunkc core::hotload 1
 
 # TILING
-chunkc set tiling::global_desktop_mode           bsp
-chunkc set tiling::2_desktop_mode                monocle
-chunkc set tiling::5_desktop_mode                float
+chunkc set global_desktop_mode           bsp
 
-chunkc set tiling::1_desktop_tree                ~/.chunkwm_layouts/dev_1
+chunkc set 1_desktop_tree                ~/.chunkwm_layouts/dev_1
 
-chunkc set tiling::global_desktop_offset_top     3
-chunkc set tiling::global_desktop_offset_bottom  3
-chunkc set tiling::global_desktop_offset_left    3
-chunkc set tiling::global_desktop_offset_right   3
-chunkc set tiling::global_desktop_offset_gap     3
+chunkc set global_desktop_offset_top     8
+chunkc set global_desktop_offset_bottom  8
+chunkc set global_desktop_offset_left    8
+chunkc set global_desktop_offset_right   8
+chunkc set global_desktop_offset_gap     8
 
-chunkc set tiling::desktop_padding_step_size     3
-chunkc set tiling::desktop_gap_step_size         3
+chunkc set desktop_padding_step_size     8
+chunkc set desktop_gap_step_size         8
 
-chunkc set tiling::bsp_spawn_left                1
-chunkc set tiling::bsp_optimal_ratio             1.618
-chunkc set tiling::bsp_split_mode                optimal
-chunkc set tiling::bsp_split_ratio               0.5
+chunkc set bsp_spawn_left                1
+chunkc set bsp_optimal_ratio             1.618
+chunkc set bsp_split_mode                optimal
+chunkc set bsp_split_ratio               0.5
 
-chunkc set tiling::window_focus_cycle            monitor
-chunkc set tiling::mouse_follows_focus           1
-chunkc set tiling::window_float_next             0
-chunkc set tiling::window_float_center           1
-chunkc set tiling::window_region_locked          1
+chunkc set window_focus_cycle            monitor
+chunkc set mouse_follows_focus           1
+chunkc set window_float_next             0
+chunkc set window_float_center           1
+chunkc set window_region_locked          1
 
 # signal dock to make windows topmost when floated
 # requires chwm-sa (https://github.com/koekeishiya/chwm-sa)
-chunkc set tiling::window_float_topmost          0
+chunkc set window_float_topmost          0
 
 # BORDER
-chunkc set border::focused_border_color          0xffffff00
-chunkc set border::focused_border_width          4
-chunkc set border::focused_border_radius         4
+chunkc set focused_border_color          0xffffc5e5
+chunkc set focused_border_width          4
+chunkc set focused_border_radius         6
+chunkc set focused_border_skip_floating  		 1
 
 # NOTE: specify plugins to load when chunkwm starts.
-# chunkc tiling::rule --owner \"System Preferences\" --state tile
-# chunkc tiling::rule --owner Finder --name Copy --state float
+chunkc tiling::rule --owner \"System Preferences\" --state float
+chunkc tiling::rule --owner \"FaceTime\" --state float
+chunkc tiling::rule --owner \"Info\" --state float
 
 chunkc core::load tiling.so
 chunkc core::load ffm.so
