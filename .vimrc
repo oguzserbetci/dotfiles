@@ -46,7 +46,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'dracula/vim'
 syntax on
 set t_Co=256
-color dracula
+colorscheme dracula
 
 " TOOLS "
 Plug 'tpope/vim-fugitive'
