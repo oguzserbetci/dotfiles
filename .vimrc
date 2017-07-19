@@ -43,13 +43,10 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'sheerun/vim-polyglot'
 
 " THEME "
-Plug 'cseelus/vim-colors-clearance'
-syntax enable
-set background=dark
-set cursorline
+Plug 'dracula/vim'
+syntax on
 set t_Co=256
-colorscheme clearance
-let g:solarized_termcolors=256
+color dracula
 
 " TOOLS "
 Plug 'tpope/vim-fugitive'
@@ -66,10 +63,6 @@ Plug 'scrooloose/syntastic'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
 
 Plug 'mileszs/ack.vim'
 let g:ackprg = 'ag --vimgrep'
