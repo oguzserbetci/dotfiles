@@ -111,11 +111,7 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8 LANGUAGE=en.UTF-8
 export PYTHONIOENCODING=utf-8
 
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='atom'
-fi
+export EDITOR='vim'
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 

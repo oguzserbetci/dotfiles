@@ -43,7 +43,13 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'sheerun/vim-polyglot'
 
 " THEME "
-Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'altercation/vim-colors-solarized'
+syntax enable
+set background=dark
+set cursorline
+set t_Co=256
+colorscheme solarized
+let g:solarized_termcolors=256
 
 " TOOLS "
 Plug 'tpope/vim-fugitive'
@@ -62,13 +68,6 @@ let g:ackprg = 'ag --vimgrep'
 
 " Initialize plugin system
 call plug#end()
-
-" THEME "
-syntax on
-set t_Co=256
-set cursorline
-colorscheme onehalfdark
-let g:airline_theme='onehalfdark'
 
 " GENERAL LAYOUT
 set splitbelow
