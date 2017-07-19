@@ -43,12 +43,12 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'sheerun/vim-polyglot'
 
 " THEME "
-Plug 'altercation/vim-colors-solarized'
+Plug 'cseelus/vim-colors-clearance'
 syntax enable
 set background=dark
 set cursorline
 set t_Co=256
-colorscheme solarized
+colorscheme clearance
 let g:solarized_termcolors=256
 
 " TOOLS "
@@ -63,6 +63,14 @@ Plug 'xolox/vim-misc'
 Plug 'othree/html5.vim'
 Plug 'jcf/vim-latex'
 Plug 'scrooloose/syntastic'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+
 Plug 'mileszs/ack.vim'
 let g:ackprg = 'ag --vimgrep'
 
