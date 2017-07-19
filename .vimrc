@@ -43,12 +43,12 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'sheerun/vim-polyglot'
 
 " THEME "
-Plug 'altercation/vim-colors-solarized'
+Plug 'cseelus/vim-colors-clearance'
 syntax enable
 set background=dark
 set cursorline
 set t_Co=256
-colorscheme solarized
+colorscheme clearance
 let g:solarized_termcolors=256
 
 " TOOLS "
