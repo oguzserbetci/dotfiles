@@ -11,3 +11,4 @@ Package\ Control.last-run
 *.merged-ca-bundle
 .zsh_history
 *.system-ca-bundle
+*.log
