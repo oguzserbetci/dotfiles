@@ -1,6 +1,6 @@
 #!/bin/bash
 
-chunkc core::plugin_dir ~/.chunkwm_plugins
+chunkc core::plugin_dir /usr/local/opt/chunkwm/share/chunkwm_plugins
 chunkc core::hotload 1
 
 # TILING
@@ -42,6 +42,7 @@ chunkc set focused_border_skip_floating  		 1
 chunkc tiling::rule --owner \"System Preferences\" --state float
 chunkc tiling::rule --owner \"FaceTime\" --state float
 chunkc tiling::rule --owner \"Info\" --state float
+chunkc tiling::rule --owner \"Copy\" --state float
 
 chunkc core::load tiling.so
 chunkc core::load ffm.so
