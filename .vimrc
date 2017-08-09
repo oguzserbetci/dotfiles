@@ -1,5 +1,5 @@
 " PLUG
-  call plug#begin('~/.vim/plugged')
+  call plug#begin('~/.config/nvim/plugged')
 
   " CODING "
     Plug 'Valloric/YouCompleteMe'
@@ -47,6 +47,10 @@
     Plug 'nathanaelkane/vim-indent-guides'
     Plug 'sheerun/vim-polyglot'
 
+  " FILE EXTENSIONS "
+    Plug 'elzr/vim-json'
+    let g:vim_json_syntax_conceal = 1
+
   " THEME "
     Plug 'dracula/vim'
     syntax on
@@ -59,8 +63,8 @@
     Plug 'tpope/vim-rhubarb'
     Plug 'xolox/vim-notes'
     Plug 'xolox/vim-misc'
-    :let g:notes_directories = ['~/Dropbox/notes']
-    :let g:notes_suffix = '.notes'
+    let g:notes_directories = ['~/Dropbox/notes']
+    let g:notes_suffix = '.notes'
 
     Plug 'othree/html5.vim'
     Plug 'jcf/vim-latex'
