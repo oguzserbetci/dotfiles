@@ -65,6 +65,7 @@
   # GIT
   alias gs="git status -s"
   alias ga="git add--interactive"
+  alias gco="git checkout"
   alias gc="git checkout"
 
   # PYTHON
