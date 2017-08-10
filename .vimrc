@@ -89,7 +89,6 @@
   set si " Smart indent
   set foldmethod=indent
   set foldnestmax=10
-  set foldcolumn=1
 
 " CODING PREFS
   set autoindent
