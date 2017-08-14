@@ -75,6 +75,11 @@
 
     Plug 'mileszs/ack.vim'
     let g:ackprg = 'ag --vimgrep'
+
+    Plug 'janko-m/vim-test'
+    nmap <silent> <leader>T :TestFile<CR>
+    nmap <silent> <leader>t :TestNearest<CR>
+    nmap <silent> <leader>tl :TestLast<CR>
   call plug#end()
 
 " GENERAL LAYOUT
