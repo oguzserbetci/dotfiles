@@ -12,3 +12,5 @@ Package\ Control.last-run
 .zsh_history
 *.system-ca-bundle
 *.log
+.vim/plugged/
+.vim/.netrwhist
