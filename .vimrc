@@ -109,6 +109,7 @@
   set mouse=a
   set undolevels=1000
   set ignorecase
+  set wildignorecase
   set number
   set ruler
   set showcmd
