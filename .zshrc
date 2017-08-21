@@ -65,8 +65,8 @@
   # GIT
   alias gs="git status -s"
   alias ga="git add--interactive"
-  alias gco="git checkout"
-  alias gc="git checkout"
+  alias go="git checkout"
+  alias gc="git clone"
 
   # PYTHON
   alias p3="python3"
