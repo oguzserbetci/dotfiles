@@ -81,7 +81,7 @@
     nmap <silent> <leader>t :TestNearest<CR>
     nmap <silent> <leader>tl :TestLast<CR>
 
-    Plugin 'rhysd/vim-grammarous'
+    Plug 'rhysd/vim-grammarous'
 
   call plug#end()
 
