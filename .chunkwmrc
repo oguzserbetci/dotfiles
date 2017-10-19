@@ -57,3 +57,4 @@ chunkc tiling::rule --owner Finder --name Copy --state float
 chunkc tiling::rule --owner Finder --name Info --state float
 chunkc tiling::rule --owner Civilisation V --state float
 chunkc tiling::rule --owner Spotify --role AXWindow --subrole AXDialog --state tile
+chunkc tiling::rule --owner iTunes --name "Mini Player" --state float
