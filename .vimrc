@@ -99,6 +99,7 @@
 " CODING HELPERS
   set ai " Auto indent
   set si " Smart indent
+  set foldlevel=2
   set foldmethod=indent
   set foldnestmax=10
 

@@ -1,5 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/Users/oguzserbetci/Library/Mobile Documents/com~apple~CloudDocs/dev/NN coursera/assignment2'
 let g:netrw_dirhist_2='/Users/oguzserbetci'
 let g:netrw_dirhist_3='/Users/oguzserbetci/Library/Mobile Documents/com~apple~CloudDocs/dev/lstm-timeseries'
@@ -7,3 +7,4 @@ let g:netrw_dirhist_4='/Users/oguzserbetci/Library/Mobile Documents/com~apple~Cl
 let g:netrw_dirhist_5='/usr/local/Cellar/tmux/2.5/share/tmux'
 let g:netrw_dirhist_6='/Users/oguzserbetci/Library/Mobile Documents/com~apple~CloudDocs/dev/Time-Series'
 let g:netrw_dirhist_7='/Users/oguzserbetci/.dotfiles/.git'
+let g:netrw_dirhist_8='/Users/oguzserbetci/dev/sentence-aligner.prototype'
