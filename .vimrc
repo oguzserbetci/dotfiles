@@ -144,3 +144,4 @@
 " FILE SETTINGS "
   filetype on
   filetype plugin indent on
+  let g:tex_flavor='latex'
