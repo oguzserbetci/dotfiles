@@ -12,6 +12,9 @@ ln -sfv "$DOTFILES_DIR/.functions" ~
 ln -sfv "$DOTFILES_DIR/.gitconfig" ~
 ln -sfv "$DOTFILES_DIR/.gitignore" ~
 ln -sfv "$DOTFILES_DIR/.vimrc" ~
+ln -sfv "$DOTFILES_DIR/.ctags" ~
+ln -sfv "$DOTFILES_DIR/.vim" ~
+ln -sfv "$DOTFILES_DIR/flake8" "~/.config"
 
 # Package managers & packages
 echo "› brew bundle"
@@ -31,7 +34,7 @@ if [ "$(uname 2> /dev/null)" != "Linux" ]; then
   . "$DOTFILES_DIR/osxdefaults.sh"
 fi
 
-if [ ${SHELL: -3} != "zsh" ] 
+if [ ${SHELL: -3} != "zsh" ]
 then
   dscl . -read /Users/$USER UserShell
   chsh -s $(which zsh)

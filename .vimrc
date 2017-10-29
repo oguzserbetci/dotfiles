@@ -4,7 +4,6 @@
   " CODING "
     Plug 'Valloric/YouCompleteMe'
     Plug 'tpope/vim-surround'
-    Plug 'easymotion/vim-easymotion'
     Plug 'terryma/vim-multiple-cursors'
     Plug 'scrooloose/nerdcommenter'
     Plug 'majutsushi/tagbar'
@@ -82,6 +81,10 @@
     nmap <silent> <leader>tl :TestLast<CR>
 
     Plug 'rhysd/vim-grammarous'
+
+  " NAVIGATION "
+    Plug 'xolox/vim-easytags'
+    Plug 'easymotion/vim-easymotion'
 
   call plug#end()
 
