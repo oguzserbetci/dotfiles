@@ -6,7 +6,6 @@
     Plug 'tpope/vim-surround'
     Plug 'terryma/vim-multiple-cursors'
     Plug 'scrooloose/nerdcommenter'
-    Plug 'majutsushi/tagbar'
     Plug 'sirver/ultisnips'
     Plug 'honza/vim-snippets'
     Plug 'ervandew/supertab'
@@ -40,6 +39,7 @@
     nmap <Leader>hr <Plug>GitGutterUndoHunk
 
     Plug 'scrooloose/nerdtree'
+    Plug 'majutsushi/tagbar'
 
   " CODE STYLE "
     Plug 'chiel92/vim-autoformat'
@@ -84,7 +84,27 @@
 
   " NAVIGATION "
     Plug 'xolox/vim-easytags'
+    let g:easytags_cmd = '/usr/local/bin/ctags'
+    let g:easytags_languages = {
+    \   'latex': {
+    \     'cmd': g:easytags_cmd,
+    \        'args': [],
+    \        'fileoutput_opt': '-f',
+    \        'stdout_opt': '-f-',
+    \        'recurse_flag': '-R'
+    \   }
+    \}
     Plug 'easymotion/vim-easymotion'
+    Plug 'majutsushi/tagbar'
+    let g:tagbar_type_latex = {
+    \ 'ctagstype': 'latex',
+    \ 'kinds' : [
+        \'l:labels',
+        \'s:sections',
+        \'ss:subsections',
+        \'sss:subsubsections'
+    \]
+    \}
 
   call plug#end()
 
@@ -102,7 +122,6 @@
 " CODING HELPERS
   set ai " Auto indent
   set si " Smart indent
-  set foldlevel=2
   set foldmethod=indent
   set foldnestmax=10
 
