@@ -28,11 +28,11 @@
   " INTERFACE "
     Plug 'nathanaelkane/vim-indent-guides'
     Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
     let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
     let g:airline_section_z = '%l/%L:%c'
     let g:airline_section_x = '.%y'
 
-    Plug 'altercation/vim-colors-solarized'
     Plug 'airblade/vim-gitgutter'
     nmap ]h <Plug>GitGutterNextHunk
     nmap [h <Plug>GitGutterPrevHunk
@@ -49,12 +49,19 @@
   " FILE EXTENSIONS "
     Plug 'elzr/vim-json'
     let g:vim_json_syntax_conceal = 1
+    " Python folding "
+    Plug 'tmhedberg/simpylfold'
 
   " THEME "
-    Plug 'dracula/vim'
-    syntax on
-    set t_Co=256
-    colorscheme dracula
+    "Plug 'dracula/vim'
+    "syntax on
+    "set t_Co=256
+    "colorscheme dracula
+    Plug 'altercation/vim-colors-solarized'
+    Plug 'nlknguyen/papercolor-theme'
+    set background=light
+    colorscheme PaperColor
+    let g:airline_theme='papercolor'
 
   " TOOLS "
     Plug 'tpope/vim-fugitive'
