@@ -45,6 +45,7 @@
     Plug 'chiel92/vim-autoformat'
     Plug 'nathanaelkane/vim-indent-guides'
     Plug 'sheerun/vim-polyglot'
+    let g:polyglot_disabled = ['latex']
 
   " FILE EXTENSIONS "
     Plug 'elzr/vim-json'
@@ -66,7 +67,7 @@
     let g:notes_suffix = '.notes'
 
     Plug 'othree/html5.vim'
-    Plug 'jcf/vim-latex'
+    Plug 'lervag/vimtex'
     Plug 'scrooloose/syntastic'
     set statusline+=%#warningmsg#
     set statusline+=%{SyntasticStatuslineFlag()}
@@ -168,3 +169,6 @@
   filetype on
   filetype plugin indent on
   let g:tex_flavor='latex'
+
+" PERFORMANCE "
+  set lazyredraw
