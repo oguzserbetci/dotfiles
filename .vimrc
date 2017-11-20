@@ -4,12 +4,13 @@
   " CODING "
     Plug 'Valloric/YouCompleteMe'
     Plug 'tpope/vim-surround'
-    Plug 'terryma/vim-multiple-cursors'
     Plug 'scrooloose/nerdcommenter'
-    Plug 'sirver/ultisnips'
-    Plug 'honza/vim-snippets'
-    Plug 'ervandew/supertab'
     Plug 'bronson/vim-trailing-whitespace'
+
+    " Snippets, Autocomplete and tab overload
+    Plug 'ervandew/supertab'
+    Plug 'Valloric/YouCompleteMe'
+    Plug 'SirVer/ultisnips'
 
     " make YCM compatible with UltiSnips (using supertab)
     let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -18,11 +19,10 @@
 
     " better key bindings for UltiSnipsExpandTrigger
     let g:UltiSnipsExpandTrigger = "<tab>"
-    let g:UltiSnipsJumpForwardTrigger = "<tab>"
-    let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+    let g:UltiSnipsJumpForwardTrigger = "<Right>"
+    let g:UltiSnipsJumpBackwardTrigger = "<Left>"
 
     set relativenumber
-    " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
     Plug 'junegunn/vim-easy-align'
 
   " INTERFACE "
@@ -38,8 +38,6 @@
     nmap [h <Plug>GitGutterPrevHunk
     nmap <Leader>hr <Plug>GitGutterUndoHunk
 
-    Plug 'scrooloose/nerdtree'
-    Plug 'majutsushi/tagbar'
 
   " CODE STYLE "
     Plug 'chiel92/vim-autoformat'
@@ -102,6 +100,7 @@
     \   }
     \}
     Plug 'easymotion/vim-easymotion'
+    Plug 'scrooloose/nerdtree'
     Plug 'majutsushi/tagbar'
     let g:tagbar_type_latex = {
     \ 'ctagstype': 'latex',
