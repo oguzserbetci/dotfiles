@@ -41,7 +41,6 @@
 
   " CODE STYLE "
     Plug 'chiel92/vim-autoformat'
-    Plug 'nathanaelkane/vim-indent-guides'
     Plug 'sheerun/vim-polyglot'
     let g:polyglot_disabled = ['latex']
 
