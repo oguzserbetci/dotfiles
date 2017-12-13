@@ -27,6 +27,7 @@
 
   " INTERFACE "
     Plug 'nathanaelkane/vim-indent-guides'
+    let g:indent_guides_enable_on_vim_startup = 1
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
@@ -113,6 +114,10 @@
     \}
 
   call plug#end()
+
+
+" INTERFACE
+  set cursorline
 
 " GENERAL LAYOUT
   set splitbelow
