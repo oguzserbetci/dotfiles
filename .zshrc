@@ -124,9 +124,8 @@ setopt auto_cd
 
   [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-#############
-# DEVELOPMENT
-  export WORKON_HOME=$HOME/.virtualenvs
-  export PROJECT_HOME=$HOME/dev
-  VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-  source /usr/local/bin/virtualenvwrapper.sh
+##########
+# ENV VARS
+  export HOMEBREW_CASK_OPTS='--appdir=~/Applications --fontdir=/Library/Fonts'
+  export TERM=screen-256color
+
