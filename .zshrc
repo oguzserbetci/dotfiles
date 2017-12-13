@@ -103,6 +103,9 @@
   bindkey '^[[F' end-of-line # iterm
   bindkey '^[[4~' end-of-line # tmux
 
+######
+# NEW
+setopt auto_cd
 ########
 # OTHERS
   autoload -U colors
