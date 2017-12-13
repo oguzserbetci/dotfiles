@@ -106,6 +106,9 @@
 ######
 # NEW
 setopt auto_cd
+setopt correctall
+alias git status='nocorrect git status'
+
 ########
 # OTHERS
   autoload colors
