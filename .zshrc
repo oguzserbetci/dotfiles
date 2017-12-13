@@ -55,7 +55,10 @@
   alias sm="s --project /Users/oguzserbetci/Library/Mobile\ Documents/com~apple~CloudDocs/note-taking.sublime-project"
   alias j="tmux new -s jupyter -d;tmux send-keys -t jupyter 'cd ~; jupyter notebook' C-m"
 
+  alias llt="ls -1t | head -5"
+
   alias vim="nvim"
+  alias cleanswp="rm ~/.local/share/nvim/swap/*"
   alias d="dirs -v"
   alias grep='grep --color=auto'
   alias fgrep='fgrep --color=auto'
@@ -82,6 +85,7 @@
 
   # WORKFLOWS
   alias doml="open 'https://isis.tu-berlin.de/course/view.php?id=8410'; open ~/University/Machine\ Learning\ 1; atom -n ~/University/Machine\ Learning\ 1/exercises"
+
 
 ######
 # KEYS
