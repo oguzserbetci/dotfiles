@@ -158,6 +158,7 @@
   map <Down> <C-W>j
   map <Left> <C-W>h
   map <Right> <C-W>l
+  nmap <Leader><Leader>g :!gitup<CR>
 
 " Pane navigation
   nnoremap <C-J> <C-W><C-J>
