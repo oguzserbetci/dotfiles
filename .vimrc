@@ -52,15 +52,16 @@
     Plug 'tmhedberg/simpylfold'
 
   " THEME "
-    "Plug 'dracula/vim'
-    "syntax on
-    "set t_Co=256
-    "colorscheme dracula
-    Plug 'altercation/vim-colors-solarized'
-    Plug 'nlknguyen/papercolor-theme'
-    set background=light
-    colorscheme PaperColor
-    let g:airline_theme='papercolor'
+    Plug 'dracula/vim'
+    syntax on
+    set t_Co=256
+    colorscheme dracula
+    let g:airline_theme='dracula'
+    "Plug 'altercation/vim-colors-solarized'
+    "Plug 'nlknguyen/papercolor-theme'
+    "set background=light
+    "colorscheme PaperColor
+    "let g:airline_theme='papercolor'
 
   " TOOLS "
     Plug 'tpope/vim-fugitive'
