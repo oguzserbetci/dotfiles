@@ -129,3 +129,15 @@ setopt auto_cd
   export HOMEBREW_CASK_OPTS='--appdir=~/Applications --fontdir=/Library/Fonts'
   export TERM=screen-256color
 
+############
+# EXTENSIONS
+
+  # https://michael.stapelberg.de/Artikel/zsh_recent_completion
+  # 'ctrl-x r' will complete the 12 last modified (mtime) files/directories
+  zle -C newest-files complete-word _generic
+  bindkey '^Xr' newest-files
+  zstyle ':completion:newest-files:*' completer _files
+  zstyle ':completion:newest-files:*' file-patterns '*~.*(omN[1,12])'
+  zstyle ':completion:newest-files:*' menu select yes
+  zstyle ':completion:newest-files:*' sort false
+  zstyle ':completion:newest-files:*' matcher-list 'b:=*' # important
