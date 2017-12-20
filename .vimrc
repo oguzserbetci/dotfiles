@@ -10,7 +10,7 @@
     " Snippets, Autocomplete and tab overload
     Plug 'ervandew/supertab'
     Plug 'Valloric/YouCompleteMe'
-    Plug 'SirVer/ultisnips'
+    Plug 'sirver/ultisnips'
 
     " make YCM compatible with UltiSnips (using supertab)
     let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
