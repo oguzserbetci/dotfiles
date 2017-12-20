@@ -39,7 +39,6 @@
     nmap [h <Plug>GitGutterPrevHunk
     nmap <Leader>hr <Plug>GitGutterUndoHunk
 
-
   " CODE STYLE "
     Plug 'chiel92/vim-autoformat'
     Plug 'sheerun/vim-polyglot'
@@ -50,6 +49,9 @@
     let g:vim_json_syntax_conceal = 1
     " Python folding "
     Plug 'tmhedberg/simpylfold'
+    Plug 'JamshedVesuna/vim-markdown-preview'
+    let vim_markdown_preview_github=1
+    let vim_markdown_preview_toggle=2
 
   " THEME "
     Plug 'dracula/vim'
@@ -75,6 +77,7 @@
     Plug 'othree/html5.vim'
     Plug 'lervag/vimtex'
     Plug 'scrooloose/syntastic'
+    set statusline=%{fugitive#statusline()}+statusline
     set statusline+=%#warningmsg#
     set statusline+=%{SyntasticStatuslineFlag()}
     set statusline+=%*
@@ -88,6 +91,7 @@
     nmap <silent> <leader>tl :TestLast<CR>
 
     Plug 'rhysd/vim-grammarous'
+    Plug 'rizzatti/dash.vim'
 
   " NAVIGATION "
     Plug 'xolox/vim-easytags'
@@ -103,6 +107,7 @@
     \}
     Plug 'easymotion/vim-easymotion'
     Plug 'scrooloose/nerdtree'
+    Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'majutsushi/tagbar'
     let g:tagbar_type_latex = {
     \ 'ctagstype': 'latex',
