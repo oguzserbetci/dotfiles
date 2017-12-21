@@ -8,19 +8,21 @@
     Plug 'bronson/vim-trailing-whitespace'
 
     " Snippets, Autocomplete and tab overload
-    Plug 'ervandew/supertab'
-    Plug 'Valloric/YouCompleteMe'
+    Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
     Plug 'sirver/ultisnips'
+    Plug 'honza/vim-snippets'
 
-    " make YCM compatible with UltiSnips (using supertab)
-    let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-    let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-    let g:SuperTabDefaultCompletionType = '<C-n>'
+    " YouCompleteMe setup
+    let g:ycm_autoclose_preview_window_after_completion = 1
+    let g:ycm_filetype_blacklist={'unite': 1}
+    let g:ycm_min_num_of_chars_for_completion = 1
+    nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
-    " better key bindings for UltiSnipsExpandTrigger
-    let g:UltiSnipsExpandTrigger = "<tab>"
-    let g:UltiSnipsJumpForwardTrigger = "<Right>"
-    let g:UltiSnipsJumpBackwardTrigger = "<Left>"
+    " UltiSnips setup
+    let g:UltiSnipsExpandTrigger='<c-j>'
+    let g:UltiSnipsJumpForwardTrigger='<c-n>'
+    let g:UltiSnipsJumpBackwardTrigger='<c-p>'
+    let g:UltiSnipsSnippetsDir='~/.config/nvim/plugged/vim-snippets/UltiSnips'
 
     set relativenumber
     Plug 'junegunn/vim-easy-align'
