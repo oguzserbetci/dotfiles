@@ -188,6 +188,7 @@
   filetype on
   filetype plugin indent on
   let g:tex_flavor='latex'
+  set wildignore+=*.aux,*.fls,*.out,*.bbl,*.bcf,*.blg,*.latexmain,*.upa,*.upb,*.dvi,*.fdb_latexmk
 
 " PERFORMANCE "
   set lazyredraw
