@@ -64,3 +64,32 @@ ctrl + cmd - l 			 : chunkc tiling::window --send-to-desktop next
 ctrl + cmd - j  		 : chunkc tiling::window --send-to-monitor 1; chunkc monitor -f 1
 ctrl + cmd - k  		 : chunkc tiling::window --send-to-monitor 2; chunkc monitor -f 2
 
+##########
+# VIM MODE
+# remap left-control h/j/k/l -> arrow keys
+    lctrl - h         ![HyperTerm,Terminal,iTerm2]      :   khd -p "- left"
+    lctrl - j         ![HyperTerm,Terminal,iTerm2]      :   khd -p "- down"
+    lctrl - k         ![HyperTerm,Terminal,iTerm2]      :   khd -p "- up"
+    lctrl - l         ![HyperTerm,Terminal,iTerm2]      :   khd -p "- right"
+
+    shift + lctrl - h ![HyperTerm,Terminal,iTerm2]      :   khd -p "shift - left"
+    shift + lctrl - j ![HyperTerm,Terminal,iTerm2]      :   khd -p "shift - down"
+    shift + lctrl - k ![HyperTerm,Terminal,iTerm2]      :   khd -p "shift - up"
+    shift + lctrl - l ![HyperTerm,Terminal,iTerm2]      :   khd -p "shift - right"
+
+# remap left-control g / G   -> start / end of text
+    lctrl - g         ![HyperTerm,Terminal,iTerm2]      :   khd -p "cmd - up"
+    lctrl + shift - g ![HyperTerm,Terminal,iTerm2]      :   khd -p "cmd - down"
+
+    shift + lctrl - 0 ![HyperTerm,Terminal,iTerm2]      :   khd -p "shift + cmd - left"
+    shift + lctrl - 4 ![HyperTerm,Terminal,iTerm2]      :   khd -p "shift + cmd - right"
+
+# remap left-control b / e   -> start / end of word
+    lctrl - b         ![HyperTerm,Terminal,iTerm2]      :   khd -p "alt - left"
+    lctrl - e         ![HyperTerm,Terminal,iTerm2]      :   khd -p "alt - right"
+
+    shift + lctrl - b ![HyperTerm,Terminal,iTerm2]      :   khd -p "shift + alt - left"
+    shift + lctrl - e ![HyperTerm,Terminal,iTerm2]      :   khd -p "shift + alt - right"
+
+# remap left-control x       -> forward delete
+    lctrl - x         ![HyperTerm,Terminal,iTerm2]      :   khd -p "- delete"
