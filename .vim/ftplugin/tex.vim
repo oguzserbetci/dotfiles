@@ -1,3 +1,3 @@
 set spell
 set spelllang=en
-nmap <silent> <leader>c :VimtexTocToggle<CR>
+nmap <silent> <leader>T :VimtexTocToggle<CR>
