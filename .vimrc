@@ -78,7 +78,10 @@
 
     Plug 'othree/html5.vim'
     Plug 'lervag/vimtex'
+
+    Plug 'amperser/proselint'
     Plug 'scrooloose/syntastic'
+    let g:syntastic_aggregate_errors = 1
     set statusline=%{fugitive#statusline()}+statusline
     set statusline+=%#warningmsg#
     set statusline+=%{SyntasticStatuslineFlag()}

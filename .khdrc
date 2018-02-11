@@ -1,13 +1,17 @@
-# Enable the crazy mode
+# Enable the boxing mode
 khd mode default on_enter chunkc border::color 0xffE8FF63
-khd mode crazy on_enter chunkc border::color 0xffE82D63
+khd mode boxing on_enter chunkc border::color 0xffE82D63
+khd mode focus on_enter chunkc border::color 0xffE82D63
 
-# Activate crazy mode
-ctrl + alt - s           : khd -e "mode activate crazy"
-crazy + ctrl + alt - s   : khd -e "mode activate default"
+# Activate boxing mode
+ctrl + alt - s           : khd -e "mode activate boxing"
+boxing + ctrl + alt - s  : khd -e "mode activate default"
+ctrl + alt - f           : khd -e "mode activate focus"
+focus + ctrl + alt - f  : khd -e "mode activate default"
 
 # Rotate Tree
 alt - r 			     : chunkc tiling::desktop --rotate 90
+ctrl + alt - r           : chunkc tiling::window --grid-layout width:900
 
 # mirror tree y-axis
 alt - y 				 : chunkc tiling::desktop --mirror vertical
@@ -24,27 +28,38 @@ alt - f 				 : chunkc tiling::window --toggle float
 # float next window to be tiled
 shift + alt - t 		 : chunkc tiling::window_float_next 1
 
+shift + alt - f          : chunkc tiling::window --toggle float; chunkc tiling::window --grid-layout 5:5:1:0:3:5; khd -p "cmd + alt -h"
+
+
 # change layout of desktop
 cmd + ctrl - a 			 : chunkc tiling::desktop --layout bsp
 cmd + ctrl - s 			 : chunkc tiling::desktop --layout monocle
 cmd + ctrl - d 			 : chunkc tiling::desktop --layout float
 
 # increase region size
-crazy - h       		 : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge west
-crazy - j       		 : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge south
-crazy - k       		 : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge north
-crazy - l       		 : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge east
+boxing - h       		 : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge west
+boxing - j       		 : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge south
+boxing - k       		 : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge north
+boxing - l       		 : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge east
 
 # decrease region size
-crazy + alt - h        	 : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge east
-crazy + alt - j          : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge north
-crazy + alt - k          : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge south
-crazy + alt - l          : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge west
+boxing + alt - h        	 : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge east
+boxing + alt - j          : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge north
+boxing + alt - k          : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge south
+boxing + alt - l          : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge west
 
-cmd + alt - h            : chunkc tiling::window -i west
-cmd + alt - j            : chunkc tiling::window -i south
-cmd + alt - k            : chunkc tiling::window -i north
-cmd + alt - h            : chunkc tiling::window -i east
+#cmd + alt - h            : chunkc tiling::window -i west
+#cmd + alt - j            : chunkc tiling::window -i south
+#cmd + alt - k            : chunkc tiling::window -i north
+#cmd + alt - h            : chunkc tiling::window -i east
+
+# Focus window
+focus - h                  : chunkc tiling::window --focus west
+focus - j                  : chunkc tiling::window --focus south
+focus - k                  : chunkc tiling::window --focus north
+focus - l                  : chunkc tiling::window --focus east
+focus - p                  : chunkc tiling::window --focus prev
+focus - n                  : chunkc tiling::window --focus next
 
 # Swap Focused Window
 ctrl + alt - h           : chunkc tiling::window --swap west
