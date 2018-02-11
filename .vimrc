@@ -78,6 +78,11 @@
 
     Plug 'othree/html5.vim'
     Plug 'lervag/vimtex'
+    augroup vimtex
+      autocmd!
+      autocmd BufWritePost *.tex call vimtex#toc#refresh()
+    augroup END
+
 
     Plug 'amperser/proselint'
     Plug 'scrooloose/syntastic'
