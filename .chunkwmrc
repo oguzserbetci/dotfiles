@@ -50,14 +50,21 @@ chunkc core::load tiling.so
 chunkc core::load ffm.so
 
 # NOTE: specify plugins to load when chunkwm starts.
+# Set floating apps
 chunkc tiling::rule --owner \"System Preferences\" --state float
 chunkc tiling::rule --owner FaceTime --state float
-chunkc tiling::rule --name Preferences --state float
 chunkc tiling::rule --owner Things --state float
+chunkc tiling::rule --owner Civilisation V --state float
+
+# Set roles
+chunkc tiling::rule --owner Spotify --role AXWindow --subrole AXDialog --state tile
+chunkc tiling::rule --owner XMind --role AXWindow --subrole AXDialog --state tile
+chunkc tiling::rule --owner Dash --role AXWindow --subrole AXDialog --state tile
+
+# Set floating panes
+chunkc tiling::rule --owner iTunes --name \"Mini Player\" --state float
 chunkc tiling::rule --owner Finder --name Copy --state float
 chunkc tiling::rule --owner Finder --name iCloud Progress --state float
 chunkc tiling::rule --owner Finder --name Info --state float
-chunkc tiling::rule --owner Civilisation V --state float
-chunkc tiling::rule --owner Spotify --role AXWindow --subrole AXDialog --state tile
-chunkc tiling::rule --owner Dash --role AXWindow --subrole AXDialog --state tile
-chunkc tiling::rule --owner iTunes --name "Mini Player" --state float
+chunkc tiling::rule --name Preferences --state float
+
