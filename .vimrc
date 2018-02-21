@@ -80,12 +80,11 @@
 
 
     Plug 'amperser/proselint'
-    Plug 'scrooloose/syntastic'
-    let g:syntastic_aggregate_errors = 1
+    Plug 'w0rp/ale'
+    let g:airline#extensions#ale#enabled = 1
+    nmap <silent> [e <Plug>(ale_previous_wrap)
+    nmap <silent> ]e <Plug>(ale_next_wrap)
     set statusline=%{fugitive#statusline()}+statusline
-    set statusline+=%#warningmsg#
-    set statusline+=%{SyntasticStatuslineFlag()}
-    set statusline+=%*
 
     Plug 'mileszs/ack.vim'
     let g:ackprg = 'ag --vimgrep'
