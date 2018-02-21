@@ -135,7 +135,10 @@
 
 " CODING LAYOUT "
   set tabstop=4 " the visible width of tabs
+  set expandtab
   set copyindent
+  set autoindent
+  set shiftwidth=4
   set colorcolumn=180
   set showmode
   set nowrap " No Wrap lines
@@ -145,12 +148,6 @@
   set si " Smart indent
   set foldmethod=indent
   set foldnestmax=10
-
-" CODING PREFS
-  set autoindent
-  set expandtab
-  set tabstop=4
-  set shiftwidth=4
 
 " SETUP "
   set mouse=a
