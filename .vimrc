@@ -2,21 +2,16 @@
   call plug#begin('~/.config/nvim/plugged')
 
   " CODING "
-    Plug 'Valloric/YouCompleteMe'
     Plug 'tpope/vim-surround'
     Plug 'scrooloose/nerdcommenter'
     Plug 'bronson/vim-trailing-whitespace'
 
     " Snippets, Autocomplete and tab overload
-    Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
+    "Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    let g:deoplete#enable_at_startup = 1
     Plug 'sirver/ultisnips'
     Plug 'honza/vim-snippets'
-
-    " YouCompleteMe setup
-    let g:ycm_autoclose_preview_window_after_completion = 1
-    let g:ycm_filetype_blacklist={'unite': 1}
-    let g:ycm_min_num_of_chars_for_completion = 1
-    nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
     " UltiSnips setup
     let g:UltiSnipsExpandTrigger='<c-j>'
