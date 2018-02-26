@@ -2,21 +2,16 @@
   call plug#begin('~/.config/nvim/plugged')
 
   " CODING "
-    Plug 'Valloric/YouCompleteMe'
     Plug 'tpope/vim-surround'
     Plug 'scrooloose/nerdcommenter'
     Plug 'bronson/vim-trailing-whitespace'
 
     " Snippets, Autocomplete and tab overload
-    Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
+    "Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    let g:deoplete#enable_at_startup = 1
     Plug 'sirver/ultisnips'
     Plug 'honza/vim-snippets'
-
-    " YouCompleteMe setup
-    let g:ycm_autoclose_preview_window_after_completion = 1
-    let g:ycm_filetype_blacklist={'unite': 1}
-    let g:ycm_min_num_of_chars_for_completion = 1
-    nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
     " UltiSnips setup
     let g:UltiSnipsExpandTrigger='<c-j>'
@@ -85,12 +80,11 @@
 
 
     Plug 'amperser/proselint'
-    Plug 'scrooloose/syntastic'
-    let g:syntastic_aggregate_errors = 1
+    Plug 'w0rp/ale'
+    let g:airline#extensions#ale#enabled = 1
+    nmap <silent> [e <Plug>(ale_previous_wrap)
+    nmap <silent> ]e <Plug>(ale_next_wrap)
     set statusline=%{fugitive#statusline()}+statusline
-    set statusline+=%#warningmsg#
-    set statusline+=%{SyntasticStatuslineFlag()}
-    set statusline+=%*
 
     Plug 'mileszs/ack.vim'
     let g:ackprg = 'ag --vimgrep'
@@ -141,7 +135,10 @@
 
 " CODING LAYOUT "
   set tabstop=4 " the visible width of tabs
+  set expandtab
   set copyindent
+  set autoindent
+  set shiftwidth=4
   set colorcolumn=180
   set showmode
   set nowrap " No Wrap lines
@@ -151,12 +148,6 @@
   set si " Smart indent
   set foldmethod=indent
   set foldnestmax=10
-
-" CODING PREFS
-  set autoindent
-  set expandtab
-  set tabstop=4
-  set shiftwidth=4
 
 " SETUP "
   set mouse=a
