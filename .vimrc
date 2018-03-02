@@ -29,12 +29,12 @@
 
   " INTERFACE "
     Plug 'nathanaelkane/vim-indent-guides'
-    let g:indent_guides_enable_on_vim_startup = 1
+    let g:indent_guides_enable_on_vim_startup=1
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
-    let g:airline_section_z = '%l/%L:%c'
-    let g:airline_section_x = '.%y'
+    let g:airline_section_z='%l/%L:%c'
+    let g:airline_section_x='.%y'
 
     Plug 'airblade/vim-gitgutter'
     nmap ]h <Plug>GitGutterNextHunk
@@ -44,11 +44,11 @@
   " CODE STYLE "
     Plug 'chiel92/vim-autoformat'
     Plug 'sheerun/vim-polyglot'
-    let g:polyglot_disabled = ['latex']
+    let g:polyglot_disabled=['latex']
 
   " FILE EXTENSIONS "
     Plug 'elzr/vim-json'
-    let g:vim_json_syntax_conceal = 1
+    let g:vim_json_syntax_conceal=1
     " Python folding "
     Plug 'tmhedberg/simpylfold'
     Plug 'JamshedVesuna/vim-markdown-preview'
@@ -73,8 +73,8 @@
     Plug 'tpope/vim-rhubarb'
     Plug 'xolox/vim-notes'
     Plug 'xolox/vim-misc'
-    let g:notes_directories = ['~/Dropbox/notes']
-    let g:notes_suffix = '.notes'
+    let g:notes_directories=['~/Dropbox/notes']
+    let g:notes_suffix='.notes'
 
     Plug 'othree/html5.vim'
     Plug 'lervag/vimtex'
@@ -86,13 +86,13 @@
 
     Plug 'amperser/proselint'
     Plug 'w0rp/ale'
-    let g:airline#extensions#ale#enabled = 1
+    let g:airline#extensions#ale#enabled=1
     nmap <silent> [e <Plug>(ale_previous_wrap)
     nmap <silent> ]e <Plug>(ale_next_wrap)
     set statusline=%{fugitive#statusline()}+statusline
 
     Plug 'mileszs/ack.vim'
-    let g:ackprg = 'ag --vimgrep'
+    let g:ackprg='ag --vimgrep'
 
     Plug 'janko-m/vim-test'
     nmap <silent> <leader>T :TestFile<CR>
@@ -104,8 +104,9 @@
 
   " NAVIGATION "
     Plug 'xolox/vim-easytags'
-    let g:easytags_cmd = '/usr/local/bin/ctags'
-    let g:easytags_languages = {
+    let g:easytags_async=1
+    let g:easytags_cmd='/usr/local/bin/ctags'
+    let g:easytags_languages={
     \   'latex': {
     \     'cmd': g:easytags_cmd,
     \        'args': [],
@@ -118,7 +119,7 @@
     Plug 'scrooloose/nerdtree'
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'majutsushi/tagbar'
-    let g:tagbar_type_latex = {
+    let g:tagbar_type_latex={
     \ 'ctagstype': 'latex',
     \ 'kinds' : [
         \'l:labels',
