@@ -9,7 +9,12 @@
     " Snippets, Autocomplete and tab overload
     "Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    let g:deoplete#enable_at_startup = 1
+    let g:deoplete#enable_at_startup=1
+    Plug 'zchee/deoplete-jedi'
+    Plug 'shougo/neco-vim'
+    Plug 'zchee/deoplete-zsh'
+    Plug 'wellle/tmux-complete.vim'
+
     Plug 'sirver/ultisnips'
     Plug 'honza/vim-snippets'
 
