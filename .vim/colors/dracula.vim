@@ -136,6 +136,15 @@ hi vimHiCtermFgBg ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE
 hi vimHiGuiFgBg ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE
 " }}}
 
+" VimWiki {{{
+hi VimwikiHeader1 ctermfg=211 ctermbg=NONE cterm=NONE guifg=#909194 guibg=#282a36 gui=NONE
+hi VimwikiHeader2 ctermfg=218 ctermbg=NONE cterm=NONE guifg=#909194 guibg=#282a36 gui=NONE
+hi VimwikiHeader3 ctermfg=223 ctermbg=NONE cterm=NONE guifg=#909194 guibg=#282a36 gui=NONE
+hi VimwikiHeader4 ctermfg=223 ctermbg=NONE cterm=NONE guifg=#909194 guibg=#282a36 gui=NONE
+hi VimwikiHeader5 ctermfg=223 ctermbg=NONE cterm=NONE guifg=#909194 guibg=#282a36 gui=NONE
+hi VimwikiHeader6 ctermfg=223 ctermbg=NONE cterm=NONE guifg=#909194 guibg=#282a36 gui=NONE
+
+" }}}
 
 "
 "cygwin has an annoying behavior where it resets background to light

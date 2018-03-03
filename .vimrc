@@ -71,6 +71,10 @@
     let g:notes_directories = ['~/Dropbox/notes']
     let g:notes_suffix = '.notes'
 
+    Plug 'vimwiki/vimwiki'
+    let g:vimwiki_list = [{'path': '~/notes/'}]
+    set nocompatible
+
     Plug 'othree/html5.vim'
     Plug 'lervag/vimtex'
     augroup vimtex
