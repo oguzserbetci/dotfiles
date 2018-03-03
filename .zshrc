@@ -127,6 +127,7 @@ setopt auto_cd
   export LC_ALL=en_US.UTF-8
   export LANG=en_US.UTF-8 LANGUAGE=en.UTF-8
   export PYTHONIOENCODING=utf-8
+  eval "$(pyenv init -)"
 
   export EDITOR='vim'
 
