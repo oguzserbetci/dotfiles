@@ -30,6 +30,7 @@
 
     antigen bundle zsh-users/zsh-completions
     antigen bundle psprint/zsh-navigation-tools
+    antigen bundle djui/alias-tips
     antigen bundle zsh-users/zsh-autosuggestions
     antigen bundle zsh-users/zsh-syntax-highlighting
     antigen bundle zsh-users/zsh-history-substring-search
