@@ -1,1 +1,1 @@
-set folding=syntax
+set foldmethod=syntax
