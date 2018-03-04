@@ -64,7 +64,6 @@
 
   " TOOLS "
     Plug 'tpope/vim-fugitive'
-    Plug 'kien/ctrlp.vim'
     Plug 'tpope/vim-rhubarb'
     Plug 'xolox/vim-misc'
 
@@ -99,6 +98,7 @@
     Plug 'rizzatti/dash.vim'
 
   " NAVIGATION "
+    Plug '/usr/local/opt/fzf'
     Plug 'xolox/vim-easytags'
     let g:easytags_cmd = '/usr/local/bin/ctags'
     let g:easytags_languages = {
