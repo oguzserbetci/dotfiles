@@ -66,10 +66,7 @@
     Plug 'tpope/vim-fugitive'
     Plug 'kien/ctrlp.vim'
     Plug 'tpope/vim-rhubarb'
-    Plug 'xolox/vim-notes'
     Plug 'xolox/vim-misc'
-    let g:notes_directories = ['~/Dropbox/notes']
-    let g:notes_suffix = '.notes'
 
     Plug 'vimwiki/vimwiki'
     let g:vimwiki_list = [{'path': '~/notes/'}]
