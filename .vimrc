@@ -131,6 +131,9 @@
 
   call plug#end()
 
+" SYSTEM
+  let g:python3_host_prog = '/Users/oguzserbetci/.pyenv/versions/neovim3/bin/python'
+  let g:python_host_prog = '/Users/oguzserbetci/.pyenv/versions/neovim2/bin/python'
 
 " INTERFACE
   set cursorline
