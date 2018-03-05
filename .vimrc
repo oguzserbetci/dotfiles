@@ -173,6 +173,15 @@
   set foldmethod=indent
   set foldnestmax=10
 
+  function! MyFoldText()
+    let nl = v:foldend - v:foldstart + 1
+    let comment = substitute(getline(v:foldstart-1),"^ *","",1)
+    let linetext = substitute(getline(v:foldstart),"^ *","",1)
+    let txt = '+ ' . linetext . ' : "' . comment . '"'
+    return txt
+  endfunction
+  set foldtext=MyFoldText()
+
 " SETUP "
   set mouse=a
   set undolevels=1000
