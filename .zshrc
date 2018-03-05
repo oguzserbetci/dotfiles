@@ -1,5 +1,6 @@
 ###########
 # ANTIGEN
+export PATH=$HOME/bin:$PATH
   if [ $(uname) = "Linux" ]; then
     export PATH="$HOME/.linuxbrew/bin:$PATH"
     export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
@@ -127,7 +128,6 @@ setopt auto_cd
   export LC_ALL=en_US.UTF-8
   export LANG=en_US.UTF-8 LANGUAGE=en.UTF-8
   export PYTHONIOENCODING=utf-8
-  export PYENV_ROOT='~/.pyenv'
   eval "$(pyenv init -)"
   eval "$(pyenv virtualenv-init -)"
 
