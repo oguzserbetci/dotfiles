@@ -149,3 +149,4 @@ setopt auto_cd
   zstyle ':completion:newest-files:*' menu select yes
   zstyle ':completion:newest-files:*' sort false
   zstyle ':completion:newest-files:*' matcher-list 'b:=*' # important
+export PATH="/usr/local/opt/icu4c/bin:$PATH"
