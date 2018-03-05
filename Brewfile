@@ -22,6 +22,7 @@ brew 'realpath'
 brew 'mackup'
 
 brew 'pyenv'
+brew 'pyenv-virtualenv'
 
 # Fonts
 brew 'fonts'
