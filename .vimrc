@@ -15,6 +15,9 @@
     Plug 'zchee/deoplete-zsh'
     Plug 'wellle/tmux-complete.vim'
 
+    Plug 'shougo/echodoc'
+    let g:echodoc#enable_at_startup=1
+
     Plug 'sirver/ultisnips'
     Plug 'honza/vim-snippets'
 
