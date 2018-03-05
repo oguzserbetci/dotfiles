@@ -72,12 +72,14 @@
 
   " TOOLS "
     Plug 'tpope/vim-fugitive'
-    Plug 'kien/ctrlp.vim'
     Plug 'tpope/vim-rhubarb'
-    Plug 'xolox/vim-notes'
     Plug 'xolox/vim-misc'
     let g:notes_directories=['~/Dropbox/notes']
     let g:notes_suffix='.notes'
+
+    Plug 'vimwiki/vimwiki'
+    let g:vimwiki_list = [{'path': '~/notes/'}]
+    set nocompatible
 
     Plug 'othree/html5.vim'
     Plug 'lervag/vimtex'
@@ -107,6 +109,7 @@
     Plug 'rizzatti/dash.vim'
 
   " NAVIGATION "
+    Plug '/usr/local/opt/fzf'
     Plug 'xolox/vim-easytags'
     let g:easytags_async=1
     let g:easytags_cmd='/usr/local/bin/ctags'
@@ -120,7 +123,12 @@
     \   }
     \}
     Plug 'easymotion/vim-easymotion'
-    Plug 'scrooloose/nerdtree'
+    Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+    autocmd vimenter * NERDTree
+    autocmd StdinReadPre * let s:std_in=1
+    autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+    autocmd StdinReadPre * let s:std_in=1
+    autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'majutsushi/tagbar'
     let g:tagbar_type_latex={
@@ -135,6 +143,9 @@
 
   call plug#end()
 
+" SYSTEM
+  let g:python3_host_prog = '/Users/oguzserbetci/.pyenv/versions/neovim3/bin/python'
+  let g:python_host_prog = '/Users/oguzserbetci/.pyenv/versions/neovim2/bin/python'
 
 " INTERFACE
   set cursorline

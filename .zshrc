@@ -30,9 +30,11 @@
 
     antigen bundle zsh-users/zsh-completions
     antigen bundle psprint/zsh-navigation-tools
+    antigen bundle djui/alias-tips
     antigen bundle zsh-users/zsh-autosuggestions
     antigen bundle zsh-users/zsh-syntax-highlighting
     antigen bundle zsh-users/zsh-history-substring-search
+    bindkey "^R" history-incremental-search-backward
 
     antigen apply
   fi
@@ -125,6 +127,9 @@ setopt auto_cd
   export LC_ALL=en_US.UTF-8
   export LANG=en_US.UTF-8 LANGUAGE=en.UTF-8
   export PYTHONIOENCODING=utf-8
+  export PYENV_ROOT='~/.pyenv'
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
 
   export EDITOR='vim'
 

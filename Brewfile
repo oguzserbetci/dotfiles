@@ -21,6 +21,8 @@ brew 'peco'
 brew 'realpath'
 brew 'mackup'
 
+brew 'pyenv'
+
 # Fonts
 brew 'fonts'
 
