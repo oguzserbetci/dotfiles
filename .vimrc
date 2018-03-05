@@ -95,6 +95,7 @@
     let g:ackprg='ag --vimgrep'
 
     Plug 'janko-m/vim-test'
+    let test#python#runner='pytest'
     nmap <silent> <leader>T :TestFile<CR>
     nmap <silent> <leader>t :TestNearest<CR>
     nmap <silent> <leader>tl :TestLast<CR>
