@@ -52,6 +52,9 @@
   " FILE EXTENSIONS "
     Plug 'elzr/vim-json'
     let g:vim_json_syntax_conceal=1
+    Plug 'konfekt/fastfold'
+    nmap zuz <Plug>(FastFoldUpdate)
+    let g:fastfold_savehook = 1
     " Python folding "
     Plug 'tmhedberg/simpylfold'
     Plug 'JamshedVesuna/vim-markdown-preview'
