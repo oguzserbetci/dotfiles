@@ -205,7 +205,7 @@
   map <Right> <C-W>l
   nmap <Leader><Leader>g :!gitup<CR>
 
-" Pane navigation
+" PANE NAVIGATION
   nnoremap <C-J> <C-W><C-J>
   nnoremap <C-K> <C-W><C-K>
   nnoremap <C-L> <C-W><C-L>
