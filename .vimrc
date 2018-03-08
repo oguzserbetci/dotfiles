@@ -7,7 +7,6 @@
     Plug 'bronson/vim-trailing-whitespace'
 
     " Snippets, Autocomplete and tab overload
-    "Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     let g:deoplete#enable_at_startup=1
     Plug 'zchee/deoplete-jedi'
@@ -121,6 +120,7 @@
     \   }
     \}
     Plug 'easymotion/vim-easymotion'
+
     Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
     autocmd vimenter * NERDTree
     autocmd StdinReadPre * let s:std_in=1
