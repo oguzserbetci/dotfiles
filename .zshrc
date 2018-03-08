@@ -66,6 +66,7 @@ export PATH=$HOME/bin:$PATH
   alias llt='ls -1t | head -5'
 
   alias vim='nvim'
+  alias wim='vim -c VimwikiIndex'
   alias ipython='ipython --TerminalInteractiveShell.editing_mode=vi'
   alias ipython3='ipython3 --TerminalInteractiveShell.editing_mode=vi'
   alias cleanswp='rm ~/.local/share/nvim/swap/*'
