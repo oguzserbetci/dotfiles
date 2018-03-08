@@ -96,6 +96,9 @@ export PATH=$HOME/bin:$PATH
   # WORKFLOWS
   alias doml="open 'https://isis.tu-berlin.de/course/view.php?id=8410'; open ~/University/Machine\ Learning\ 1; atom -n ~/University/Machine\ Learning\ 1/exercises"
 
+  # FIX
+  alias ssh='TERM=xterm-256color ssh'
+
 
 ######
 # KEYS
