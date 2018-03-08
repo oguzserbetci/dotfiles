@@ -140,7 +140,6 @@ setopt auto_cd
 ##########
 # ENV VARS
   export HOMEBREW_CASK_OPTS='--appdir=/Applications --fontdir=/Library/Fonts'
-  export TERM=screen-256color
 
 ############
 # EXTENSIONS

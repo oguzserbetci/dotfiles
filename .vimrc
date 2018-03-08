@@ -67,11 +67,6 @@
     set t_Co=256
     colorscheme dracula
     let g:airline_theme='dracula'
-    "Plug 'altercation/vim-colors-solarized'
-    "Plug 'nlknguyen/papercolor-theme'
-    "set background=light
-    "colorscheme PaperColor
-    "let g:airline_theme='papercolor'
 
   " TOOLS "
     Plug 'tpope/vim-fugitive'
@@ -153,6 +148,12 @@
 " INTERFACE
   set cursorline
 
+  " Italics
+    let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+    set termguicolors
+    let g:dracula_italic = 1
+
 " GENERAL LAYOUT
   set splitbelow
   set splitright
@@ -187,6 +188,8 @@
   set undolevels=1000
   set ignorecase
   set wildignorecase
+  set hlsearch
+  set incsearch
   set number
   set ruler
   set showcmd
