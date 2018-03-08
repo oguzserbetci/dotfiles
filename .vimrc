@@ -176,16 +176,18 @@
 " SETUP "
   set mouse=a
   set undolevels=1000
-  set ignorecase
-  set wildignorecase
-  set hlsearch
-  set incsearch
   set number
   set ruler
   set showcmd
   set clipboard+=unnamedplus
   set encoding=utf-8
   set autochdir
+
+" SEARCH "
+  set ignorecase
+  set wildignorecase
+  set hlsearch
+  set incsearch
   set wildmode=longest,list,full
   set wildmenu
 
