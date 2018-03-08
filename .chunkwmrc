@@ -6,10 +6,10 @@ chunkc core::hotload 1
 # TILING
 chunkc set global_desktop_mode           bsp
 
-chunkc set global_desktop_offset_top     4
-chunkc set global_desktop_offset_bottom  4
-chunkc set global_desktop_offset_left    4
-chunkc set global_desktop_offset_right   4
+chunkc set global_desktop_offset_top     40
+chunkc set global_desktop_offset_bottom  40
+chunkc set global_desktop_offset_left    40
+chunkc set global_desktop_offset_right   40
 chunkc set global_desktop_offset_gap     4
 
 chunkc set desktop_padding_step_size     5
