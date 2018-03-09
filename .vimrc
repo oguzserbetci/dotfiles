@@ -226,9 +226,12 @@
 
 " CODING HELPERS
   set ai " Auto indent
-  set si " Smart indent
-  set foldmethod=indent
-  set foldnestmax=10
+
+  " INDENT
+    set foldmethod=indent
+    set foldnestmax=10
+    " Enable folding with the spacebar
+    nnoremap <space> za
 
 " SETUP "
   set mouse=a
@@ -239,6 +242,7 @@
   set clipboard+=unnamedplus
   set encoding=utf-8
   set autochdir
+
 
 " SEARCH "
   set ignorecase
