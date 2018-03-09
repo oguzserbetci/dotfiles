@@ -259,9 +259,12 @@
   map <Down> <C-W>j
   map <Left> <C-W>h
   map <Right> <C-W>l
-  nmap <Leader><Leader>g :!gitup<CR>
+  nmap <Leader><Leader>g :silent !gitup<CR>
 
-" PANE NAVIGATION
+" PANES
+  set splitbelow
+  set splitright
+  
   nnoremap <C-J> <C-W><C-J>
   nnoremap <C-K> <C-W><C-K>
   nnoremap <C-L> <C-W><C-L>
