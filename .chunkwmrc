@@ -35,13 +35,13 @@ chunkc set window_fade_duration          0.5
 chunkc set mouse_modifier                fn
 chunkc set mouse_follows_focus           intrinsic
 
-chunkc set preselect_border_color        0xffffff00
+chunkc set preselect_border_color        0xffff92d0
 chunkc set preselect_border_width        3
 chunkc set preselect_border_radius       6
 
 # BORDER
-chunkc set focused_border_color          0xffffc5e5
-chunkc set focused_border_width          3
+chunkc set focused_border_color          0xff282a36
+chunkc set focused_border_width          4
 chunkc set focused_border_radius         6
 chunkc set focused_border_skip_floating  0
 

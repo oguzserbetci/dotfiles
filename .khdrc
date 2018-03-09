@@ -1,13 +1,10 @@
 # Enable the boxing mode
-khd mode default on_enter chunkc border::color 0xffE8FF63
+khd mode default on_enter chunkc border::color 0xff282a36
 khd mode boxing on_enter chunkc border::color 0xffE82D63
-khd mode focus on_enter chunkc border::color 0xffE82D63
 
 # Activate boxing mode
 ctrl + alt - s           : khd -e "mode activate boxing"
 boxing + ctrl + alt - s  : khd -e "mode activate default"
-ctrl + alt - f           : khd -e "mode activate focus"
-focus + ctrl + alt - f  : khd -e "mode activate default"
 
 # Rotate Tree
 alt - r 			     : chunkc tiling::desktop --rotate 90
