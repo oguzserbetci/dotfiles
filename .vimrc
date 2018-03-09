@@ -6,13 +6,27 @@
     Plug 'scrooloose/nerdcommenter'
     Plug 'bronson/vim-trailing-whitespace'
 
-    " Snippets, Autocomplete and tab overload
+    " Autocomplete and tab overload
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     let g:deoplete#enable_at_startup=1
+    autocmd CompleteDone * silent! pclose!
     Plug 'zchee/deoplete-jedi'
     Plug 'shougo/neco-vim'
     Plug 'zchee/deoplete-zsh'
     Plug 'wellle/tmux-complete.vim'
+
+    let g:jedi#auto_vim_configuration = 0
+    let g:jedi#goto_assignments_command = ''  " dynamically done for ft=python.
+    let g:jedi#goto_definitions_command = ''  " dynamically done for ft=python.
+    let g:jedi#use_tabs_not_buffers = 0  " current default is 1.
+    let g:jedi#rename_command = '<Leader>gR'
+    let g:jedi#usages_command = '<Leader>gu'
+    let g:jedi#completions_enabled = 0
+    let g:jedi#smart_auto_mappings = 1
+
+    " Unite/ref and pydoc are more useful.
+    let g:jedi#documentation_command = '<Leader>_K'
+    let g:jedi#auto_close_doc = 1
 
     Plug 'shougo/echodoc'
     let g:echodoc#enable_at_startup=1
