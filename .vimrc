@@ -46,6 +46,10 @@
     set relativenumber
     Plug 'junegunn/vim-easy-align'
 
+  " IDE "
+    Plug 'BurningEther/iron.nvim', {'do': ':UpdateRemotePlugins'}
+
+
   " INTERFACE "
     Plug 'Yggdroot/indentLine'
     let g:indentLine_char = '▏'
