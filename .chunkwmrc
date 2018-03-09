@@ -60,12 +60,9 @@ chunkc tiling::rule --owner Spotify --role AXWindow --subrole AXDialog --state t
 chunkc tiling::rule --owner XMind --role AXWindow --subrole AXDialog --state tile
 chunkc tiling::rule --owner Dash --role AXStandardWindow --subrole AXDialog --state tile
 chunkc tiling::rule --owner Anki --role AXStandardWindow --subrole AXDialog --state tile
-chunkc tiling::rule --owner Things --role AXStandardWindow --subrole AXDialog --state tile
-chunkc tiling::rule --owner iTunes --role AXStandardWindow --name \"Mini Player\" --state float
+chunkc tiling::rule --owner Things --role AXStandardWindow --subrole AXDialog --state float
 
 # Set floating panes
-chunkc tiling::rule --owner Things --state float
-
 chunkc tiling::rule --owner iTunes --name \"Mini Player\" --state float
 chunkc tiling::rule --owner Finder --name Copy --state float
 chunkc tiling::rule --owner Finder --name iCloud Progress --state float
