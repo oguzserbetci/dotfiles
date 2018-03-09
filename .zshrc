@@ -33,6 +33,9 @@ export PATH=$HOME/bin:$PATH
     antigen bundle psprint/zsh-navigation-tools
     antigen bundle djui/alias-tips
     antigen bundle zsh-users/zsh-autosuggestions
+    bindkey '^n' autosuggest-accept
+    bindkey '^j' autosuggest-execute
+    ZSH_AUTOSUGGEST_USE_ASYNC='true'
     antigen bundle zsh-users/zsh-syntax-highlighting
     antigen bundle zsh-users/zsh-history-substring-search
     bindkey '^R' history-incremental-search-backward
