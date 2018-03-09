@@ -1,2 +1,1 @@
-setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=8
-setlocal foldignore=
+setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
