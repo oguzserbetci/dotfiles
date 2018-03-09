@@ -31,6 +31,9 @@
     Plug 'shougo/echodoc'
     let g:echodoc#enable_at_startup=1
 
+    Plug 'fisadev/FixedTaskList.vim'
+
+    " Snippets
     Plug 'sirver/ultisnips'
     Plug 'honza/vim-snippets'
 
