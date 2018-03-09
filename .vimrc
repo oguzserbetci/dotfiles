@@ -183,6 +183,7 @@
     call NERDTreeHighlightFile('js', 'cyan', 'none', '#ffa500', '#151515')
 
     Plug 'Xuyuanp/nerdtree-git-plugin'
+    Plug 'jistr/vim-nerdtree-tabs'
     let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
     Plug 'majutsushi/tagbar'
