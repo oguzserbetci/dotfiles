@@ -83,8 +83,16 @@
     Plug 'konfekt/fastfold'
     nmap zuz <Plug>(FastFoldUpdate)
     let g:fastfold_savehook = 1
-    " Python folding "
-    Plug 'tmhedberg/simpylfold'
+
+    " Python "
+        Plug 'tmhedberg/simpylfold', {'for': ['python', 'python3']}
+        let g:SimpylFold_docstring_preview=1
+
+        Plug 'vim-python/python-syntax', {'for': ['python', 'python3']}
+        Plug 'hynek/vim-python-pep8-indent', {'for': ['python', 'python3']}
+        let python_highlight_all=1
+
+
     Plug 'JamshedVesuna/vim-markdown-preview'
     let vim_markdown_preview_github=1
     let vim_markdown_preview_toggle=2
@@ -175,6 +183,7 @@
     call NERDTreeHighlightFile('js', 'cyan', 'none', '#ffa500', '#151515')
 
     Plug 'Xuyuanp/nerdtree-git-plugin'
+    let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
     Plug 'majutsushi/tagbar'
     let g:tagbar_type_latex={
