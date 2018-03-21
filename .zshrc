@@ -138,6 +138,7 @@ setopt auto_cd
   export PYTHONIOENCODING=utf-8
   eval "$(pyenv init -)"
   eval "$(pyenv virtualenv-init -)"
+  export PYENV_ROOT=~/.pyenv
 
   export EDITOR='vim'
 
