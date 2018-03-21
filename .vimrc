@@ -29,6 +29,7 @@
     let g:jedi#auto_close_doc = 1
 
     Plug 'shougo/echodoc'
+    set noshowmode
     let g:echodoc#enable_at_startup=1
 
     Plug 'fisadev/FixedTaskList.vim'
