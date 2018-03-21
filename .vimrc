@@ -113,7 +113,12 @@
     let g:notes_suffix='.notes'
 
     Plug 'vimwiki/vimwiki'
-    let g:vimwiki_list = [{'path': '~/notes/'}]
+    let g:vimwiki_list = [{
+      \ 'path': '$HOME/notes/',
+      \ 'template_path': '$HOME/notes/templates',
+      \ 'template_default': 'default',
+      \ 'template_ext': '.html'}]
+
     set nocompatible
 
     Plug 'othree/html5.vim'
