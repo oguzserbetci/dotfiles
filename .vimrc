@@ -6,7 +6,9 @@
     Plug 'scrooloose/nerdcommenter'
     Plug 'bronson/vim-trailing-whitespace'
 
-    " Autocomplete and tab overload
+    Plug 'sirver/ultisnips'
+
+    " Autocomplete
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     let g:deoplete#enable_at_startup=1
     autocmd CompleteDone * silent! pclose!
@@ -35,7 +37,6 @@
     Plug 'fisadev/FixedTaskList.vim'
 
     " Snippets
-    Plug 'sirver/ultisnips'
     Plug 'honza/vim-snippets'
 
     " UltiSnips setup
