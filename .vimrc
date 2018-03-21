@@ -161,31 +161,8 @@
     Plug 'easymotion/vim-easymotion'
 
     Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-    autocmd StdinReadPre * let s:std_in=1
-    autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-    " NERDTress File highlighting
-    function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
-     exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
-     exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
-    endfunction
-
-    call NERDTreeHighlightFile('py', 'green', 'none', 'yellow', '#151515')
-    call NERDTreeHighlightFile('java', 'green', 'none', 'yellow', '#151515')
-    call NERDTreeHighlightFile('pyx', 'green', 'none', 'yellow', '#151515')
-    call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
-    call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
-    call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
-    call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
-    call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
-    call NERDTreeHighlightFile('csv', 'yellow', 'none', 'yellow', '#151515')
-    call NERDTreeHighlightFile('html', 'cyan', 'none', 'yellow', '#151515')
-    call NERDTreeHighlightFile('wiki', 'cyan', 'none', 'yellow', '#151515')
-    call NERDTreeHighlightFile('tex', 'cyan', 'none', 'yellow', '#151515')
-    call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
-    call NERDTreeHighlightFile('js', 'cyan', 'none', '#ffa500', '#151515')
 
     Plug 'Xuyuanp/nerdtree-git-plugin'
-    Plug 'jistr/vim-nerdtree-tabs'
     let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
     Plug 'majutsushi/tagbar'
