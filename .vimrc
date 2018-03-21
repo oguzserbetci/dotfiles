@@ -243,7 +243,9 @@
   map <Down> <C-W>j
   map <Left> <C-W>h
   map <Right> <C-W>l
-  nmap <Leader><Leader>g :silent !gitup<CR>
+  nmap <Leader>gg :silent !gitup<CR>
+  nmap <Leader>gc :Gcommit -m
+  nmap <Leader>gs :Gstatus<CR>
 
 " PANES
   set splitbelow
