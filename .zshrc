@@ -1,46 +1,40 @@
 ###########
-# ANTIGEN
+# PLUG
 export PATH=$HOME/bin:$PATH
-  if [ $(uname) = "Linux" ]; then
-    export PATH=$HOME/.linuxbrew/bin:$PATH
-    export MANPATH=$HOME/.linuxbrew/share/man:$MANPATH
-    export INFOPATH=$HOME/.linuxbrew/share/info:$INFOPATH
-  else
-    export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:$HOME/.dotfiles/.tex
-    # JAVA
-    export PATH=$JAVA_HOME/jre/bin:$PATH
-    # Tcl/tk for RST analysis
-    export PATH=/usr/local/opt/tcl-tk/bin:$PATH
-  fi
+export ZPLUG_HOME=/usr/local/opt/zplug
 
-  if [ $(brew --prefix) ]; then
-    source $(brew --prefix)/share/antigen/antigen.zsh
+if [ $(uname) = "Linux" ]; then
+  export PATH=$HOME/.linuxbrew/bin:$PATH
+  export MANPATH=$HOME/.linuxbrew/share/man:$MANPATH
+  export INFOPATH=$HOME/.linuxbrew/share/info:$INFOPATH
+else
+  export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:$HOME/.dotfiles/.tex
+  # JAVA
+  export PATH=$JAVA_HOME/jre/bin:$PATH
+  # Tcl/tk for RST analysis
+  export PATH=/usr/local/opt/tcl-tk/bin:$PATH
+fi
 
-    antigen use oh-my-zsh
+if [ $(brew --prefix) ]; then
+  source $ZPLUG_HOME/init.zsh
 
-    antigen bundle git
-    antigen bundle brew
-    antigen bundle python
-    antigen bundle sublime
-    antigen bundle colorize
-    antigen bundle brew-cask
-    antigen bundle gitignore
+  zplug "mafredri/zsh-async", from:github
+  zplug "sindresorhus/pure"
 
-    antigen bundle mafredri/zsh-async
-    antigen bundle sindresorhus/pure
+  zplug "zsh-users/zsh-completions"
+  zplug "psprint/zsh-navigation-tools"
+  zplug "djui/alias-tips"
+  zplug "zsh-users/zsh-autosuggestions"
+  bindkey '^k' autosuggest-accept
+  bindkey '^j' autosuggest-execute
+  zplug "zsh-users/zsh-syntax-highlighting"
+  zplug "zsh-users/zsh-history-substring-search"
+  bindkey '^R' history-incremental-search-backward
+  zplug 'dracula/zsh', as:theme
+  zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 
-    antigen bundle zsh-users/zsh-completions
-    antigen bundle psprint/zsh-navigation-tools
-    antigen bundle djui/alias-tips
-    antigen bundle zsh-users/zsh-autosuggestions
-    bindkey '^k' autosuggest-accept
-    bindkey '^j' autosuggest-execute
-    antigen bundle zsh-users/zsh-syntax-highlighting
-    antigen bundle zsh-users/zsh-history-substring-search
-    bindkey '^R' history-incremental-search-backward
-
-    antigen apply
-  fi
+  zplug load
+fi
 
 ###########
 # OHMYZSH
