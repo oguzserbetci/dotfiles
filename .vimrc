@@ -21,12 +21,12 @@
     let g:jedi#goto_assignments_command = ''  " dynamically done for ft=python.
     let g:jedi#goto_definitions_command = ''  " dynamically done for ft=python.
     let g:jedi#use_tabs_not_buffers = 0  " current default is 1.
-    let g:jedi#rename_command = '<Leader>gR'
-    let g:jedi#usages_command = '<Leader>gu'
+    let g:jedi#rename_command = '<Leader>jR'
+    let g:jedi#usages_command = '<Leader>ju'
     let g:jedi#smart_auto_mappings = 1
 
     " Unite/ref and pydoc are more useful.
-    let g:jedi#documentation_command = '<Leader>_K'
+    let g:jedi#documentation_command = '<Leader>jd'
     let g:jedi#auto_close_doc = 1
 
     Plug 'shougo/echodoc'
@@ -114,6 +114,7 @@
       \ 'template_path': '$HOME/notes/templates',
       \ 'template_default': 'default',
       \ 'template_ext': '.html'}]
+    nmap <Leader>wg :VimwikiGoto
 
     set nocompatible
 
