@@ -19,7 +19,6 @@ if [ $(brew --prefix) ]; then
   source $ZPLUG_HOME/init.zsh
 
   zplug "mafredri/zsh-async", from:github
-  zplug "sindresorhus/pure"
 
   zplug "zsh-users/zsh-completions"
   zplug "psprint/zsh-navigation-tools"
@@ -30,7 +29,6 @@ if [ $(brew --prefix) ]; then
   zplug "zsh-users/zsh-syntax-highlighting"
   zplug "zsh-users/zsh-history-substring-search"
   bindkey '^R' history-incremental-search-backward
-  zplug 'dracula/zsh', as:theme
   zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 
   zplug load
