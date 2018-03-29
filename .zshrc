@@ -35,7 +35,6 @@ export PATH=$HOME/bin:$PATH
     antigen bundle zsh-users/zsh-autosuggestions
     bindkey '^k' autosuggest-accept
     bindkey '^j' autosuggest-execute
-    ZSH_AUTOSUGGEST_USE_ASYNC='true'
     antigen bundle zsh-users/zsh-syntax-highlighting
     antigen bundle zsh-users/zsh-history-substring-search
     bindkey '^R' history-incremental-search-backward
@@ -49,6 +48,7 @@ export PATH=$HOME/bin:$PATH
   ENABLE_CORRECTION='true'
   COMPLETION_WAITING_DOTS='true'
   HIST_STAMPS='dd/mm/yyyy'
+  ZSH_AUTOSUGGEST_USE_ASYNC='true'
 
   fpath=(/usr/local/share/zsh-completions $fpath)
 
