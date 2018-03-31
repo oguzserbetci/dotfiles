@@ -29,4 +29,7 @@ defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
 defaults write com.apple.mail DisableSendAnimations -bool true
 defaults write com.apple.mail DisableReplyAnimations -bool true
 
+# DOCK
+defaults write com.apple.dock static-only -bool true
+
 killall Dock
