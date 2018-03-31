@@ -15,6 +15,7 @@ ln -sfv "$DOTFILES_DIR/.vimrc" ~
 ln -sfv "$DOTFILES_DIR/.ctags" ~
 ln -sfv "$DOTFILES_DIR/.vim" ~
 ln -sfv "$DOTFILES_DIR/flake8" "~/.config"
+ln -sfv "$DOTFILES_DIR/alias" "~/.alias"
 
 # Package managers & packages
 echo "› brew bundle"
