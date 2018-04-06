@@ -189,7 +189,6 @@
   set encoding=utf-8
   set autochdir
 
-
 " SEARCH "
   set ignorecase
   set wildignorecase
