@@ -4,9 +4,16 @@
   " CODING "
     Plug 'tpope/vim-surround'
     Plug 'scrooloose/nerdcommenter'
-    Plug 'bronson/vim-trailing-whitespace'
+    Plug 'ntpeters/vim-better-whitespace'
 
     Plug 'sirver/ultisnips'
+    " UltiSnips setup
+    let g:UltiSnipsExpandTrigger='<c-j>'
+    let g:UltiSnipsJumpForwardTrigger='<c-n>'
+    let g:UltiSnipsJumpBackwardTrigger='<c-p>'
+    let g:UltiSnipsSnippetsDir='~/.config/nvim/plugged/vim-snippets/UltiSnips'
+    " Snippets
+    Plug 'honza/vim-snippets'
 
     " Autocomplete
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -33,20 +40,6 @@
     set noshowmode
     let g:echodoc#enable_at_startup=1
 
-    Plug 'fisadev/FixedTaskList.vim'
-
-    " Snippets
-    Plug 'honza/vim-snippets'
-
-    " UltiSnips setup
-    let g:UltiSnipsExpandTrigger='<c-j>'
-    let g:UltiSnipsJumpForwardTrigger='<c-n>'
-    let g:UltiSnipsJumpBackwardTrigger='<c-p>'
-    let g:UltiSnipsSnippetsDir='~/.config/nvim/plugged/vim-snippets/UltiSnips'
-
-    set relativenumber
-    Plug 'junegunn/vim-easy-align'
-
   " INTERFACE "
     Plug 'Yggdroot/indentLine'
     let g:indentLine_char = '▏'
@@ -60,14 +53,6 @@
     nmap ]h <Plug>GitGutterNextHunk
     nmap [h <Plug>GitGutterPrevHunk
     nmap <Leader>hr <Plug>GitGutterUndoHunk
-
-    Plug 'yuttie/comfortable-motion.vim'
-    let g:comfortable_motion_scroll_down_key = "j"
-    let g:comfortable_motion_scroll_up_key = "k"
-    nnoremap <silent> <C-d> :call comfortable_motion#flick(100)<CR>
-    nnoremap <silent> <C-u> :call comfortable_motion#flick(-100)<CR>
-    nnoremap <silent> <C-f> :call comfortable_motion#flick(200)<CR>
-    nnoremap <silent> <C-b> :call comfortable_motion#flick(-200)<CR>
 
   " CODE STYLE "
     Plug 'chiel92/vim-autoformat'
@@ -105,8 +90,6 @@
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-rhubarb'
     Plug 'xolox/vim-misc'
-    let g:notes_directories=['~/Dropbox/notes']
-    let g:notes_suffix='.notes'
 
     Plug 'vimwiki/vimwiki'
     let g:vimwiki_list = [{
@@ -126,15 +109,11 @@
     augroup END
 
 
-    Plug 'amperser/proselint'
     Plug 'w0rp/ale'
     let g:airline#extensions#ale#enabled=1
     nmap <silent> [e <Plug>(ale_previous_wrap)
     nmap <silent> ]e <Plug>(ale_next_wrap)
     set statusline=%{fugitive#statusline()}+statusline
-
-    Plug 'mileszs/ack.vim'
-    let g:ackprg='ag --vimgrep'
 
     Plug 'janko-m/vim-test'
     let test#python#runner='pytest'
@@ -143,7 +122,6 @@
     nmap <silent> <leader>tl :TestLast<CR>
 
     Plug 'rhysd/vim-grammarous'
-    Plug 'rizzatti/dash.vim'
 
   " NAVIGATION "
     Plug '/usr/local/opt/fzf'
@@ -163,20 +141,6 @@
 
     Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
-    Plug 'Xuyuanp/nerdtree-git-plugin'
-    let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
-
-    Plug 'majutsushi/tagbar'
-    let g:tagbar_type_latex={
-    \ 'ctagstype': 'latex',
-    \ 'kinds' : [
-        \'l:labels',
-        \'s:sections',
-        \'ss:subsections',
-        \'sss:subsubsections'
-    \]
-    \}
-
   call plug#end()
 
 " SYSTEM
@@ -194,6 +158,7 @@
 " GENERAL LAYOUT
   set splitbelow
   set splitright
+  set relativenumber
 
 " CODING LAYOUT "
   set tabstop=4 " the visible width of tabs
@@ -233,7 +198,7 @@
   set wildmode=longest,list,full
   set wildmenu
 
-" SHORTCUTS "
+" MAPS "
   nnoremap ; :
   imap jk <esc>
   map <Up>   <C-W>k
