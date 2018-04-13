@@ -5,17 +5,20 @@ export DOTFILES_DIR
 DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Bunch of symlinks
-ln -sfv "$DOTFILES_DIR/.zshrc" ~
-ln -sfv "$DOTFILES_DIR/.kwm" ~
-ln -sfv "$DOTFILES_DIR/.khdrc" ~
-ln -sfv "$DOTFILES_DIR/.functions" ~
-ln -sfv "$DOTFILES_DIR/.gitconfig" ~
-ln -sfv "$DOTFILES_DIR/.gitignore" ~
-ln -sfv "$DOTFILES_DIR/.vimrc" ~
-ln -sfv "$DOTFILES_DIR/.ctags" ~
-ln -sfv "$DOTFILES_DIR/.vim" ~
-ln -sfv "$DOTFILES_DIR/flake8" "~/.config"
-ln -sfv "$DOTFILES_DIR/alias" "~/.alias"
+ln -sfv "$DOTFILES_DIR/vim" ~/.vim
+ln -sfv "$DOTFILES_DIR/vimrc" ~/.vimrc
+ln -sfv "$DOTFILES_DIR/zshrc" ~/.zshrc
+ln -sfv "$DOTFILES_DIR/tmux.conf" ~/.tmux.conf
+
+ln -sfv "$DOTFILES_DIR/khd" ~/.khd
+ln -sfv "$DOTFILES_DIR/chumkwmrc" ~/.chunkwmrc
+
+ln -sfv "$DOTFILES_DIR/ctags" ~/.ctags
+ln -sfv "$DOTFILES_DIR/alias" ~/.alias
+ln -sfv "$DOTFILES_DIR/flake8" ~/.config
+ln -sfv "$DOTFILES_DIR/functions" ~/.functions
+ln -sfv "$DOTFILES_DIR/gitconfig" ~/.gitconfig
+ln -sfv "$DOTFILES_DIR/gitignore" ~/.gitignore
 
 # Package managers & packages
 echo "› brew bundle"

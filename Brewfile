@@ -1,29 +1,35 @@
 tap 'homebrew/bundle'
 tap 'homebrew/science'
-tap 'koekeishiya/kwm'
 
-brew 'git'
-brew 'coreutils'
-brew 'zsh-completions'
-brew 'koekeishiya/khd/khd'
-brew 'koekeishiya/kwm/kwm'
-brew 'python3'
-brew 'antigen'
-brew 'git-extras'
-brew 'awscli'
-brew 'elasticsearch'
-brew 'exercism'
-brew 'zsh'
-brew 'heroku'
-brew 'neovim/neovim/neovim'
-brew 'fasd'
+# Scrap
 brew 'peco'
-brew 'realpath'
-brew 'mackup'
+brew 'fasd'
 
+# Development
+brew 'git'
+brew 'neovim/neovim/neovim'
+
+# Helpers
+brew 'coreutils'
+brew 'git-extras'
+
+# Python
 brew 'pyenv'
 brew 'pyenv-virtualenv'
 
+# Shell
+brew 'zsh'
+brew 'zsh-completions'
+brew 'zplug'
+
+# OSX
+brew 'koekeishiya/khd/khd'
+brew 'crisidev/chunkwm'
+
+# Services
+brew 'heroku'
+brew 'awscli'
+brew 'exercism'
+
 # Fonts
 brew 'fonts'
-
