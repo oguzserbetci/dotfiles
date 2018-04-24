@@ -80,16 +80,15 @@
     let vim_markdown_preview_toggle=2
 
   " THEME "
-    "Plug 'dracula/vim'
+    Plug 'dracula/vim'
     syntax on
     set t_Co=256
-    "colorscheme dracula
-    "let g:airline_theme='dracula'
-    let g:airline_theme='papercolor'
-    Plug 'NLKNguyen/papercolor-theme'
-    set background=light
-    colorscheme PaperColor
-
+    colorscheme dracula
+    let g:airline_theme='dracula'
+    "let g:airline_theme='papercolor'
+    "Plug 'NLKNguyen/papercolor-theme'
+    "set background=light
+    "colorscheme PaperColor
 
   " TOOLS "
     Plug 'tpope/vim-fugitive'
