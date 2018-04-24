@@ -14,3 +14,5 @@ Package\ Control.last-run
 *.log
 vim/plugged/
 vim/.netrwhist
+vim
+.vim_runtime
