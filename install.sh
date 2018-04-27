@@ -4,28 +4,13 @@
 DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 export DOTFILES_DIR
 
-# Bunch of symlinks
-ln -sfv $DOTFILES_DIR/vim ~/.vim
-ln -sfv $DOTFILES_DIR/vimrc ~/.vimrc
-ln -sfv $DOTFILES_DIR/zshrc ~/.zshrc
-ln -sfv $DOTFILES_DIR/tmux.conf ~/.tmux.conf
-
-ln -sfv $DOTFILES_DIR/khd ~/.khd
-ln -sfv $DOTFILES_DIR/chumkwmrc ~/.chunkwmrc
-
-ln -sfv $DOTFILES_DIR/ctags ~/.ctags
-ln -sfv $DOTFILES_DIR/alias ~/.alias
-ln -sfv $DOTFILES_DIR/flake8 ~/.config
-ln -sfv $DOTFILES_DIR/functions ~/.functions
-ln -sfv $DOTFILES_DIR/gitconfig ~/.gitconfig
-ln -sfv $DOTFILES_DIR/gitignore ~/.gitignore
-
 # Package managers & packages
 echo "› brew bundle"
 which -s brew
 if [[ $? != 0 ]] ; then
     # Install Homebrew
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    curl https://raw.githubusercontent.com/mitsuhiko/pipsi/master/get-pipsi.py | python
 else
     brew update
 fi
@@ -33,15 +18,31 @@ fi
 brew bundle
 
 if [ "$(uname 2> /dev/null)" != "Linux" ]; then
-  brew services start koekeishiya/khd/khd
-  brew services start koekeishiya/kwm/kwm
-  . "$DOTFILES_DIR/osxdefaults.sh"
+  brew services start khd
+  brew services start chunkwm
+  sh $DOTFILES_DIR/osxdefaults.sh
 fi
 
 if [ ${SHELL: -3} != "zsh" ]
 then
   dscl . -read /Users/$USER UserShell
+  sudo sh -c "echo $(which zsh) >> /etc/shells"
   chsh -s $(which zsh)
+  tic "$DOTFILES_DIR/xterm-256color-italic.terminfo"
 fi
 
-sh python_setup.sh
+# Bunch of symlinks
+mkdir "$HOME/.config"
+ln -siv "$DOTFILES_DIR/vim" "$HOME/.config/nvim"
+ln -siv "$DOTFILES_DIR/zshrc" "$HOME/.zshrc"
+ln -siv "$DOTFILES_DIR/tmux.conf" "$HOME/.tmux.conf"
+
+ln -siv "$DOTFILES_DIR/khdrc" "$HOME/.khdrc"
+ln -siv "$DOTFILES_DIR/chumkwmrc" "$HOME/.chunkwmrc"
+
+ln -siv "$DOTFILES_DIR/ctags" "$HOME/.ctags"
+ln -siv "$DOTFILES_DIR/alias" "$HOME/.alias"
+ln -siv "$DOTFILES_DIR/flake8" "$HOME/.config/flake8"
+ln -siv "$DOTFILES_DIR/functions" "$HOME/.functions"
+ln -siv "$DOTFILES_DIR/gitconfig" "$HOME/.gitconfig"
+ln -siv "$DOTFILES_DIR/gitignore" "$HOME/.gitignore"

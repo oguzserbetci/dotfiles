@@ -1,12 +1,13 @@
 #######################
 
 tap 'homebrew/bundle'
-tap 'homebrew/science'
+tap 'koekeishiya/formulae'
+tap 'crisidev/homebrew-chunkwm'
 
 # Development
 brew 'git'
 brew 'git-extras'
-brew 'neovim/neovim/neovim'
+brew 'neovim'
 brew 'ctags'
 brew 'curl'
 
@@ -18,7 +19,6 @@ brew 'fzf'
 
 # Python
 brew 'pyenv'
-brew 'pipenv'
 brew 'pyenv-virtualenv'
 
 # Shell
@@ -28,40 +28,36 @@ brew 'zplug'
 brew 'tmux'
 
 # OSX
-brew 'koekeishiya/khd/khd'
-brew 'crisidev/chunkwm'
+brew 'koekeishiya/formulae/khd'
+brew 'chunkwm'
 brew 'contacts'
 
 # Services
 brew 'heroku'
 brew 'awscli'
-brew 'exercism'
-
-# Fonts
-brew 'fonts'
 
 # Learning Tools
 brew 'exercism'
 
 #######################
 
+cask_args appdir: '/Applications'
+tap 'caskroom/cask'
 tap 'caskroom/versions'
 tap 'caskroom/fonts'
 
 # Development
 cask 'java'
 cask 'java8'
-cask 'java9'
-cask 'dash3'
+cask 'dash'
 cask 'gitup'
 cask 'postman'
 cask 'iterm2-beta'
-cask 'sublime-text3'
+cask 'sublime-text'
 cask 'haskell-platform'
 cask 'intellij-idea'
 cask 'font-fira-code'
 
-# Browse
 cask 'spotify'
 cask 'soulseek'
 cask 'google-chrome'
@@ -77,10 +73,10 @@ cask 'numi'
 cask 'alfred'
 cask 'timing'
 cask 'dropbox'
+cask 'contexts'
 cask 'grammarly'
 cask 'appcleaner'
-cask 'amphetamine'
-cask 'google-drive'
+cask 'google-backup-and-sync'
 
 # Quicklook
 cask 'qlstephen'
@@ -91,4 +87,3 @@ cask 'qlprettypatch'
 cask 'quicklook-csv'
 cask 'epubquicklook'
 cask 'quicklook-json'
-cask 'animated-gif-quicklook'

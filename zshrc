@@ -8,7 +8,7 @@ if [ $(uname) = "Linux" ]; then
   export MANPATH=$HOME/.linuxbrew/share/man:$MANPATH
   export INFOPATH=$HOME/.linuxbrew/share/info:$INFOPATH
 else
-  export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:$HOME/.dotfiles/.tex
+  export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:$HOME/.dotfiles/.tex:$PATH
   # JAVA
   export PATH=$JAVA_HOME/jre/bin:$PATH
   # Tcl/tk for RST analysis
@@ -128,4 +128,4 @@ fi
   zstyle ':completion:newest-files:*' menu select yes
   zstyle ':completion:newest-files:*' sort false
   zstyle ':completion:newest-files:*' matcher-list 'b:=*' # important
-export PATH=/usr/local/opt/icu4c/bin:$PATH
+export PATH=/usr/local/opt/icu4c/bin:$HOME/.local/bin:$PATH

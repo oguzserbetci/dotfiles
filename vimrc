@@ -84,7 +84,7 @@
     syntax on
     set t_Co=256
     colorscheme dracula
-    let g:airline_theme='dracula'
+    "let g:airline_theme='dracula'
     "let g:airline_theme='papercolor'
     "Plug 'NLKNguyen/papercolor-theme'
     "set background=light
@@ -148,8 +148,8 @@
   call plug#end()
 
 " SYSTEM
-  let g:python3_host_prog = '/Users/oguzserbetci/.pyenv/versions/neovim3/bin/python'
-  let g:python_host_prog = '/Users/oguzserbetci/.pyenv/versions/neovim2/bin/python'
+  let g:python3_host_prog = '/Users/oguz/.pyenv/versions/neovim3/bin/python'
+  let g:python_host_prog = '/Users/oguz/.pyenv/versions/neovim2/bin/python'
 
 " INTERFACE
   set cursorline

@@ -1,1 +1,1 @@
-/Users/oguzserbetci/.vimrc
+/Users/oguz/.dotfiles/vimrc
