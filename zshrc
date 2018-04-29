@@ -32,6 +32,9 @@ if [ $(brew --prefix) ]; then
   bindkey '^R' history-incremental-search-backward
   zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 
+  zplug "srijanshetty/zsh-pip-completion"
+  zplug "gangleri/pipenv"
+
   zplug load
 fi
 
