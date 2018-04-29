@@ -56,9 +56,7 @@ chunkc tiling::rule --owner FaceTime --state float
 chunkc tiling::rule --owner Civilisation V --state float
 
 # Set roles
-chunkc tiling::rule --owner Spotify --role AXWindow --subrole AXDialog --state tile
 chunkc tiling::rule --owner XMind --role AXWindow --subrole AXDialog --state tile
-chunkc tiling::rule --owner Dash --role AXStandardWindow --subrole AXDialog --state tile
 chunkc tiling::rule --owner Anki --role AXStandardWindow --subrole AXDialog --state tile
 
 # Set floating panes
