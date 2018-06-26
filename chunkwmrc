@@ -35,17 +35,17 @@ chunkc set window_fade_duration          0.5
 chunkc set mouse_modifier                fn
 chunkc set mouse_follows_focus           intrinsic
 
-chunkc set preselect_border_color        0xffff92d0
-chunkc set preselect_border_width        3
-chunkc set preselect_border_radius       6
+#chunkc set preselect_border_color        0xffff92d0
+#chunkc set preselect_border_width        3
+#chunkc set preselect_border_radius       6
 
 # BORDER
-chunkc set focused_border_color          0xff282a36
-chunkc set focused_border_width          4
-chunkc set focused_border_radius         6
-chunkc set focused_border_skip_floating  0
+#chunkc set focused_border_color          0xff282a36
+#chunkc set focused_border_width          4
+#chunkc set focused_border_radius         6
+#chunkc set focused_border_skip_floating  0
 
-chunkc core::load border.so
+#chunkc core::load border.so
 chunkc core::load tiling.so
 chunkc core::load ffm.so
 
@@ -58,6 +58,7 @@ chunkc tiling::rule --owner Civilisation V --state float
 # Set roles
 chunkc tiling::rule --owner XMind --role AXWindow --subrole AXDialog --state tile
 chunkc tiling::rule --owner Anki --role AXStandardWindow --subrole AXDialog --state tile
+chunkc tiling::rule --owner Dash --role AXStandardWindow --subrole AXDialog --state tile
 
 # Set floating panes
 chunkc tiling::rule --owner iTunes --name \"Mini Player\" --state float

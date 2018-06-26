@@ -3,7 +3,7 @@
 export PATH=$HOME/bin:$PATH
 export ZPLUG_HOME=/usr/local/opt/zplug
 
-if [ $(uname) = "Linux" ]; then
+if [ uname = "Linux" ]; then
   export PATH=$HOME/.linuxbrew/bin:$PATH
   export MANPATH=$HOME/.linuxbrew/share/man:$MANPATH
   export INFOPATH=$HOME/.linuxbrew/share/info:$INFOPATH

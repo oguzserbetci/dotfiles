@@ -22,9 +22,7 @@ pip install flake8
 ln -s `pyenv which flake8` ~/bin/flake8  # Assumes that $HOME/bin is in $PATH
 
 pyenv virtualenv 3.6.5 jupyter3
-pyenv virtualenv 3.6.5 tools3
 pyenv virtualenv 2.7.14 ipython2
-pyenv virtualenv 2.7.14 tools2
 
 #jupyter labextension install jupyterlab-toc
 

@@ -16,19 +16,18 @@ brew 'coreutils'
 brew 'peco'
 brew 'fasd'
 brew 'fzf'
+brew 'autojump'
 
 # Python
 brew 'pyenv'
 brew 'pyenv-virtualenv'
 
 # Shell
-brew 'zsh'
-brew 'zsh-completions'
-brew 'zplug'
+brew 'fish'
 brew 'tmux'
 
 # OSX
-brew 'koekeishiya/formulae/khd'
+brew 'khd'
 brew 'chunkwm'
 brew 'contacts'
 
@@ -48,7 +47,6 @@ tap 'caskroom/fonts'
 
 # Development
 cask 'java'
-cask 'java8'
 cask 'dash'
 cask 'gitup'
 cask 'postman'

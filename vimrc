@@ -4,41 +4,26 @@
   " CODING "
     Plug 'tpope/vim-surround'
     Plug 'scrooloose/nerdcommenter'
-    Plug 'ntpeters/vim-better-whitespace'
 
     Plug 'sirver/ultisnips'
-    " UltiSnips setup
     let g:UltiSnipsExpandTrigger='<c-j>'
-    let g:UltiSnipsJumpForwardTrigger='<c-n>'
-    let g:UltiSnipsJumpBackwardTrigger='<c-p>'
-    let g:UltiSnipsSnippetsDir='~/.config/nvim/plugged/vim-snippets/UltiSnips'
+    let g:UltiSnipsJumpForwardTrigger='<c-b>'
+    let g:UltiSnipsJumpBackwardTrigger='<c-z>'
+    let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/UltiSnips', $HOME.'/.config/nvim/plugged/vim-snippets/UltiSnips']
+
     " Snippets
     Plug 'honza/vim-snippets'
 
     " Autocomplete
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     let g:deoplete#enable_at_startup=1
-    autocmd CompleteDone * silent! pclose!
+    "autocmd CompleteDone * silent! pclose!
     Plug 'zchee/deoplete-jedi'
+    let g:deoplete#sources#jedi#show_docstring=1
+    let g:deoplete#sources#jedi#python_path=$HOME . '/.pyenv/versions/neovim3/bin/python'
+    Plug 'davidhalter/jedi-vim'
     Plug 'shougo/neco-vim'
-    Plug 'zchee/deoplete-zsh'
     Plug 'wellle/tmux-complete.vim'
-
-    let g:jedi#auto_vim_configuration = 0
-    let g:jedi#goto_assignments_command = ''  " dynamically done for ft=python.
-    let g:jedi#goto_definitions_command = ''  " dynamically done for ft=python.
-    let g:jedi#use_tabs_not_buffers = 0  " current default is 1.
-    let g:jedi#rename_command = '<Leader>jR'
-    let g:jedi#usages_command = '<Leader>ju'
-    let g:jedi#smart_auto_mappings = 1
-
-    " Unite/ref and pydoc are more useful.
-    let g:jedi#documentation_command = '<Leader>jd'
-    let g:jedi#auto_close_doc = 1
-
-    Plug 'shougo/echodoc'
-    set noshowmode
-    let g:echodoc#enable_at_startup=1
 
   " INTERFACE "
     Plug 'Yggdroot/indentLine'
@@ -55,7 +40,6 @@
     nmap <Leader>hr <Plug>GitGutterUndoHunk
 
   " CODE STYLE "
-    Plug 'chiel92/vim-autoformat'
     Plug 'sheerun/vim-polyglot'
     let g:polyglot_disabled=['latex']
 
@@ -71,29 +55,16 @@
         let g:SimpylFold_docstring_preview=1
 
         Plug 'vim-python/python-syntax', {'for': ['python', 'python3']}
-        Plug 'hynek/vim-python-pep8-indent', {'for': ['python', 'python3']}
-        let python_highlight_all=1
-
 
     Plug 'JamshedVesuna/vim-markdown-preview'
     let vim_markdown_preview_github=1
     let vim_markdown_preview_toggle=2
 
   " THEME "
-    Plug 'dracula/vim'
-    syntax on
-    set t_Co=256
-    colorscheme dracula
-    "let g:airline_theme='dracula'
-    "let g:airline_theme='papercolor'
-    "Plug 'NLKNguyen/papercolor-theme'
-    "set background=light
-    "colorscheme PaperColor
+    Plug 'dracula/vim', { 'as': 'dracula' }
 
   " TOOLS "
     Plug 'tpope/vim-fugitive'
-    Plug 'tpope/vim-rhubarb'
-    Plug 'xolox/vim-misc'
 
     Plug 'vimwiki/vimwiki'
     let g:vimwiki_list = [{
@@ -115,6 +86,16 @@
 
     Plug 'w0rp/ale'
     let g:airline#extensions#ale#enabled=1
+    let virtual_env_path = $HOME . '/.pyenv/versions/neovim3/bin/'
+    let g:ale_lint_on_save=1
+    let g:ale_lint_on_text_changed=0
+    let g:ale_fixers = {'python': ['black', 'trim_whitespace', 'isort']}
+    let g:ale_python_black_executable = virtual_env_path . 'black'
+    let g:ale_python_isort_executable = virtual_env_path . 'isort'
+    let g:ale_linters = {'python': ['prospector', 'pycodestyle', 'pylint']}
+    let g:ale_python_prospector_executable = virtual_env_path . 'prospector'
+    let g:ale_python_pycodestyle_executable = virtual_env_path . 'pycodestyle'
+    let g:ale_python_pylint_executable = virtual_env_path . 'pylint'
     nmap <silent> [e <Plug>(ale_previous_wrap)
     nmap <silent> ]e <Plug>(ale_next_wrap)
     set statusline=%{fugitive#statusline()}+statusline
@@ -129,7 +110,23 @@
 
   " NAVIGATION "
     Plug '/usr/local/opt/fzf'
+    Plug 'junegunn/fzf.vim'
+    " Mapping selecting mappings
+    nmap <leader><tab> <plug>(fzf-maps-n)
+    xmap <leader><tab> <plug>(fzf-maps-x)
+    omap <leader><tab> <plug>(fzf-maps-o)
+
+    " Insert mode completion
+    imap <c-x><c-k> <plug>(fzf-complete-word)
+    imap <c-x><c-f> <plug>(fzf-complete-path)
+    imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+    imap <c-x><c-l> <plug>(fzf-complete-line)
+
+    " Advanced customization using autoload functions
+    inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
+    Plug 'easymotion/vim-easymotion'
     Plug 'xolox/vim-easytags'
+      Plug 'xolox/vim-misc'
     let g:easytags_async=1
     let g:easytags_cmd='/usr/local/bin/ctags'
     let g:easytags_languages={
@@ -141,9 +138,8 @@
     \        'recurse_flag': '-R'
     \   }
     \}
-    Plug 'easymotion/vim-easymotion'
 
-    Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+    Plug 'scrooloose/nerdtree'
 
   call plug#end()
 
@@ -153,6 +149,11 @@
 
 " INTERFACE
   set cursorline
+  syntax on
+  set t_Co=256
+  colorscheme dracula
+  set termguicolors
+  let g:airline_theme='dracula'
 
   " Italics
     let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
@@ -230,7 +231,7 @@
   filetype on
   filetype plugin indent on
   let g:tex_flavor='latex'
-  set wildignore+=*.aux,*.fls,*.out,*.bbl,*.bcf,*.blg,*.latexmain,*.upa,*.upb,*.dvi,*.fdb_latexmk
+  set wildignore+=*.aux,*.fls,*.out,*.bbl,*.bcf,*.blg,*.latexmain,*.upa,*.upb,*.dvi,*.fdb_latexmk,*.pdf,*.ipynb
 
 " PERFORMANCE "
   set lazyredraw

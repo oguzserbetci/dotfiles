@@ -29,6 +29,6 @@ defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
 defaults write com.apple.mail DisableSendAnimations -bool true
 defaults write com.apple.mail DisableReplyAnimations -bool true
 
-defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
+#defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
 
 killall Dock

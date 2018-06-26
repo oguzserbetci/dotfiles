@@ -32,12 +32,12 @@ alias p3='python3'
 alias p='python'
 
 # Show/hide hidden files in Finder
-alias show='defaults write com.apple.finder AppleShowAllFiles YES && killall Finder'
-alias hide='defaults write com.apple.finder AppleShowAllFiles NO && killall Finder'
+alias show='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder'
+alias hide='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder'
 
 # Hide/show all desktop icons (useful when presenting)
-alias hidedesktop='defaults write com.apple.finder CreateDesktop -bool false && killall Finder'
-alias showdesktop='defaults write com.apple.finder CreateDesktop -bool true && killall Finder'
+alias hidedesktop='defaults write com.apple.finder CreateDesktop -bool false; killall Finder'
+alias showdesktop='defaults write com.apple.finder CreateDesktop -bool true; killall Finder'
 
 # WORKFLOWS
 alias doml='open "https://isis.tu-berlin.de/course/view.php?id=8410"; open ~/University/Machine\ Learning\ 1; atom -n ~/University/Machine\ Learning\ 1/exercises'
