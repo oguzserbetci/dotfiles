@@ -21,7 +21,6 @@
     Plug 'zchee/deoplete-jedi'
     let g:deoplete#sources#jedi#show_docstring=1
     let g:deoplete#sources#jedi#python_path=$HOME . '/.pyenv/versions/neovim3/bin/python'
-    Plug 'davidhalter/jedi-vim'
     Plug 'shougo/neco-vim'
     Plug 'wellle/tmux-complete.vim'
 
