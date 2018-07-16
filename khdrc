@@ -75,6 +75,10 @@ ctrl + cmd - l 			 : chunkc tiling::window --send-to-desktop next
 ctrl + cmd - j  		 : chunkc tiling::window --send-to-monitor 1; chunkc monitor -f 1
 ctrl + cmd - k  		 : chunkc tiling::window --send-to-monitor 2; chunkc monitor -f 2
 
+# float / unfloat window and center on screen
+alt - t : chunkc tiling::window --toggle float;\
+          chunkc tiling::window --grid-layout 5:5:1:0:3:4
+
 ##########
 # VIM MODE
 # remap left-control h/j/k/l -> arrow keys
