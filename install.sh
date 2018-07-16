@@ -23,7 +23,7 @@ if [ "$(uname 2> /dev/null)" != "Linux" ]; then
   sh $DOTFILES_DIR/osxdefaults.sh
 fi
 
-if [ ${SHELL: -3} != "fish" ]
+if [ ${SHELL: -4} != "fish" ]
 then
   dscl . -read /Users/$USER UserShell
   sudo sh -c "echo $(which fish) >> /etc/shells"
@@ -36,16 +36,19 @@ echo 'backend:TkAgg' >> ~/.matplotlib/matplotlibrc
 
 # Bunch of symlinks
 mkdir $HOME/.config
-ln -siv $DOTFILES_DIR/vim $HOME/.config/nvim
-ln -siv $DOTFILES_DIR/zshrc $HOME/.zshrc
-ln -siv $DOTFILES_DIR/tmux.conf $HOME/.tmux.conf
+ln -sivf $DOTFILES_DIR/vim $HOME/.config/nvim
+ln -sivf $DOTFILES_DIR/bin $HOME/.bin
+ln -sivf $DOTFILES_DIR/git $HOME/.config
+ln -sivf $DOTFILES_DIR/config.fish $HOME/.config/fish
+ln -sivf $DOTFILES_DIR/zshrc $HOME/.zshrc
+ln -sivf $DOTFILES_DIR/tmux.conf $HOME/.tmux.conf
 
-ln -siv $DOTFILES_DIR/khdrc $HOME/.khdrc
-ln -siv $DOTFILES_DIR/chumkwmrc $HOME/.chunkwmrc
+ln -sivf $DOTFILES_DIR/khdrc $HOME/.khdrc
+ln -sivf $DOTFILES_DIR/chumkwmrc $HOME/.chunkwmrc
 
-ln -siv $DOTFILES_DIR/ctags $HOME/.ctags
-ln -siv $DOTFILES_DIR/alias $HOME/.alias
-ln -siv $DOTFILES_DIR/flake8 $HOME/.config/flake8
-ln -siv $DOTFILES_DIR/functions $HOME/.functions
-ln -siv $DOTFILES_DIR/gitconfig $HOME/.gitconfig
-ln -siv $DOTFILES_DIR/gitignore $HOME/.gitignore
+ln -sivf $DOTFILES_DIR/ctags $HOME/.ctags
+ln -sivf $DOTFILES_DIR/alias $HOME/.alias
+ln -sivf $DOTFILES_DIR/flake8 $HOME/.config/flake8
+ln -sivf $DOTFILES_DIR/functions $HOME/.functions
+ln -sivf $DOTFILES_DIR/gitconfig $HOME/.gitconfig
+ln -sivf $DOTFILES_DIR/gitignore $HOME/.gitignore
