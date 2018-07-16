@@ -66,13 +66,15 @@
   " TOOLS "
     Plug 'tpope/vim-fugitive'
 
-    Plug 'vimwiki/vimwiki'
+    Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
+    let g:vimwiki_folding='list'
     let g:vimwiki_list = [{
       \ 'path': '$HOME/notes/',
-      \ 'template_path': '$HOME/notes/templates',
+      \ 'template_path': '$HOME/Dropbox/notes/templates',
       \ 'template_default': 'default',
+      \ 'path_html': '$HOME/notes/html/',
       \ 'template_ext': '.html'}]
-    nmap <Leader>wg :VimwikiGoto
+    nmap <Leader>wg ':VimwikiGoto '
 
     set nocompatible
 
@@ -92,9 +94,10 @@
     let g:ale_fixers = {'python': ['black', 'trim_whitespace', 'isort']}
     let g:ale_python_black_executable = virtual_env_path . 'black'
     let g:ale_python_isort_executable = virtual_env_path . 'isort'
-    let g:ale_linters = {'python': ['prospector', 'pycodestyle', 'pylint']}
-    let g:ale_python_prospector_executable = virtual_env_path . 'prospector'
-    let g:ale_python_pycodestyle_executable = virtual_env_path . 'pycodestyle'
+    let g:ale_linters = {'python': ['pylint']}
+    "let g:ale_linters = {'python': ['prospector', 'pycodestyle', 'pylint']}
+    "let g:ale_python_prospector_executable = virtual_env_path . 'prospector'
+    "let g:ale_python_pycodestyle_executable = virtual_env_path . 'pycodestyle'
     let g:ale_python_pylint_executable = virtual_env_path . 'pylint'
     nmap <silent> [e <Plug>(ale_previous_wrap)
     nmap <silent> ]e <Plug>(ale_next_wrap)
@@ -125,19 +128,7 @@
     " Advanced customization using autoload functions
     inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
     Plug 'easymotion/vim-easymotion'
-    Plug 'xolox/vim-easytags'
-      Plug 'xolox/vim-misc'
-    let g:easytags_async=1
-    let g:easytags_cmd='/usr/local/bin/ctags'
-    let g:easytags_languages={
-    \   'latex': {
-    \     'cmd': g:easytags_cmd,
-    \        'args': [],
-    \        'fileoutput_opt': '-f',
-    \        'stdout_opt': '-f-',
-    \        'recurse_flag': '-R'
-    \   }
-    \}
+    Plug 'ludovicchabant/vim-gutentags'
 
     Plug 'scrooloose/nerdtree'
 
