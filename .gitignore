@@ -16,3 +16,16 @@ vim/plugged/
 vim/.netrwhist
 vim
 .vim_runtime
+.python-environments
+eshell/
+elpa/
+auto-save-list/
+ac-comphist.dat
+.emacs.d/configuration.el
+network-security.data
+projectile-bookmarks.eld
+smex-items
+places
+bookmarks
+/emacs/.emacs.d/configuration.el
+*~
