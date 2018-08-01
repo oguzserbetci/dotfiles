@@ -37,6 +37,7 @@ echo 'backend:TkAgg' >> ~/.matplotlib/matplotlibrc
 # Bunch of symlinks
 mkdir $HOME/.config
 ln -sivf $DOTFILES_DIR/vim $HOME/.config/nvim
+ln -sivf $DOTFILES_DIR/emacs.d $HOME/.emacs.d
 ln -sivf $DOTFILES_DIR/bin $HOME/.bin
 ln -sivf $DOTFILES_DIR/git $HOME/.config
 ln -sivf $DOTFILES_DIR/config.fish $HOME/.config/fish

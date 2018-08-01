@@ -46,6 +46,7 @@ tap 'caskroom/versions'
 tap 'caskroom/fonts'
 
 # Development
+cask 'emacs-mac'
 cask 'java'
 cask 'dash'
 cask 'gitup'

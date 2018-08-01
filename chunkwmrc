@@ -55,6 +55,9 @@ chunkc tiling::rule --owner \"System Preferences\" --state float
 chunkc tiling::rule --owner FaceTime --state float
 chunkc tiling::rule --owner Civilisation V --state float
 
+# Force tiling
+chunkc tiling::rule --owner "Emacs.*" --state tile
+
 # Set roles
 chunkc tiling::rule --owner XMind --role AXWindow --subrole AXDialog --state tile
 chunkc tiling::rule --owner Anki --role AXStandardWindow --subrole AXDialog --state tile

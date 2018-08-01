@@ -7,20 +7,20 @@ ctrl + alt - s           : khd -e "mode activate boxing"
 boxing + ctrl + alt - s  : khd -e "mode activate default"
 
 # Rotate Tree
-alt - r 			     : chunkc tiling::desktop --rotate 90
+#alt - r 			     : chunkc tiling::desktop --rotate 90
 ctrl + alt - r           : chunkc tiling::window --grid-layout width:900
 
 # mirror tree y-axis
-alt - y 				 : chunkc tiling::desktop --mirror vertical
+#alt - y 				 : chunkc tiling::desktop --mirror vertical
 
 # mirror tree x-axis
-alt - x 				 : chunkc tiling::desktop --mirror horizontal
+#alt - x 				 : chunkc tiling::desktop --mirror horizontal
 
 # toggle window split type
-alt - e 				 : chunkc tiling::window --toggle split
+#alt - e 				 : chunkc tiling::window --toggle split
 
 # float / unfloat window
-alt - f 				 : chunkc tiling::window --toggle float
+#alt - f 				 : chunkc tiling::window --toggle float
 
 # float next window to be tiled
 shift + alt - t 		 : chunkc tiling::window_float_next 1
