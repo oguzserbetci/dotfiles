@@ -14,7 +14,7 @@
  '(ido-case-fold nil)
  '(package-selected-packages
    (quote
-    (auto-compile evil-magit leuven-theme synosaurus use-package smex projectile powerline org-fancy-priorities org-evil org-bullets org-ac markdown-mode magit instapaper ido-vertical-mode flycheck-color-mode-line flx-ido evil-surround evil-org evil-leader evil-indent-textobject evil-escape eterm-256color engine-mode elpy dracula-theme dired-open dired-details diff-hl company-jedi auctex-lua))))
+    (doom-modeline solaire-mode nlinum doom-themes doom auto-compile evil-magit leuven-theme synosaurus use-package smex projectile powerline org-fancy-priorities org-evil org-bullets org-ac markdown-mode magit instapaper ido-vertical-mode flycheck-color-mode-line flx-ido evil-surround evil-org evil-leader evil-indent-textobject evil-escape eterm-256color engine-mode elpy dracula-theme dired-open dired-details diff-hl company-jedi auctex-lua))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

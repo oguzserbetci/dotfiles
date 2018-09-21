@@ -45,6 +45,14 @@ Always compile packages, and use the newest version available.
 
 #+END_SRC
 
+* Tools
+
+
+#+BEGIN_SRC emacs-lisp
+  (use-package guide-key
+    :ensure t)
+#+END_SRC
+
 * Set personal information
 
 ** Who am I? Where am I?
@@ -207,7 +215,33 @@ I like the dracula theme. I prefer keeping all the characters in the same
 side and font, though.
 
 #+BEGIN_SRC emacs-lisp
-  (load-theme 'leuven t)
+  (require 'doom)
+  (load-theme 'doom-dracula t)
+  (doom-themes-org-config)
+  (doom-themes-visual-bell-config)
+  (use-package nlinum
+    :ensure t
+    :config
+    (setq nlinum-highlight-current-line t))
+#+END_SRC
+
+Visually brighten some windows.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package solaire-mode
+    :hook ((change-major-mode after-revert ediff-prepare-buffer) . turn-on-solaire-mode)
+    :config
+    (add-hook 'minibuffer-setup-hook #'solaire-mode-in-minibuffer)
+    (solaire-mode-swap-bg))
+#+END_SRC
+
+Doom mode-line.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package doom-modeline
+    :ensure t
+    :defer t
+    :hook (after-init . doom-modeline-init))
 #+END_SRC
 
 ** Disable visual bell
@@ -681,16 +715,16 @@ the location of an index file (my main todo list), and archive finished tasks in
 =~/documents/org/archive.org=.
 
 #+BEGIN_SRC emacs-lisp
-  (setq org-directory "~/documents/org")
+  (setq org-directory "~/Dropbox/org")
 
   (defun org-file-path (filename)
     "Return the absolute address of an org file, given its relative name."
     (concat (file-name-as-directory org-directory) filename))
 
-  (setq org-inbox-file "~/Dropbox/inbox.org")
-  (setq org-index-file (org-file-path "index.org"))
+  (setq org-inbox-file (org-file-path "/home.org"))
+  (setq org-index-file (org-file-path "/home.org"))
   (setq org-archive-location
-        (concat (org-file-path "archive.org") "::* From %s"))
+        (concat (org-file-path "/archive.org") "::* From %s"))
 #+END_SRC
 
 I use [[http://agiletortoise.com/drafts/][Drafts]] to create new tasks, format them according to a template, and
@@ -733,6 +767,25 @@ Record the time that a todo was archived.
   (setq org-log-done 'time)
 #+END_SRC
 
+States from http://doc.norang.ca/org-mode.html#GettingOrgModeWithGit.
+
+#+BEGIN_SRC emacs-lisp
+  (setq org-todo-keywords
+        (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
+                (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING"))))
+
+  (setq org-todo-keyword-faces
+        (quote (("TODO" :foreground "red" :weight bold)
+                ("NEXT" :foreground "blue" :weight bold)
+                ("DONE" :foreground "forest green" :weight bold)
+                ("WAITING" :foreground "orange" :weight bold)
+                ("HOLD" :foreground "magenta" :weight bold)
+                ("CANCELLED" :foreground "forest green" :weight bold)
+                ("MEETING" :foreground "forest green" :weight bold)
+                ("PHONE" :foreground "forest green" :weight bold))))
+
+#+END_SRC
+
 **** Priorities
      
 Use priorities as simple labels in notes.
@@ -751,37 +804,40 @@ Define a few common tasks as capture templates. Specifically, I frequently:
 - Convert emails into todos to maintain an empty inbox.
 
 #+BEGIN_SRC emacs-lisp
-    (setq org-capture-templates
-          '(("b" "Blog idea"
-             entry
-             (file (org-file-path "blog-ideas.org"))
-             "* %?\n")
+  (setq org-capture-templates
+        '(("b" "Blog idea"
+           entry
+           (file (org-file-path "/blog-ideas.org"))
+           "* %?\n")
 
-            ("e" "Email" entry
-             (file+headline org-index-file "Inbox")
-             "* TODO %?\n\n%a\n\n")
+          ("n" "note" entry (file (org-file-path "/refile.org"))
+           "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
 
-            ("f" "Finished book"
-             table-line (file "~/documents/notes/books-read.org")
-             "| %^{Title} | %^{Author} | %u |")
+          ("e" "Email" entry
+           (file+headline org-index-file "Inbox")
+           "* TODO %?\n\n%a\n\n")
 
-            ("r" "Reading"
-             checkitem
-             (file (org-file-path "to-read.org")))
+          ("a" "Annotate"
+           entry (file "~/org/refile.org")
+                 "* [[%^{link}][%^{title}]] :NOTE:\n%U\n%a\n%?" :clock-in t)
 
-            ("s" "Subscribe to an RSS feed"
-             plain
-             (file "~/documents/rss/urls")
-             "%^{Feed URL} \"~%^{Feed name}\"")
+          ("s" "Subscribe to an RSS feed"
+           plain
+           (file "~/documents/rss/urls")
+           "%^{Feed URL} \"~%^{Feed name}\"")
 
-            ("t" "Todo"
-             entry
-             (file+headline org-index-file "Inbox")
-             "* TODO %?\n")))
+          ("t" "Todo"
+           entry
+           (file+headline org-index-file "Inbox")
+           "* TODO %?\n")
 
-  (setq org-capture-templates '(("k" "knowledge" entry (file+olp+datetree "~/org/capture.org" "Knowledge") (file "~/org/templates/knowledge-capture.org"))
-                                ("t" "Todo" entry (file+headline "~/org/home.org" "INBOX") "* TODO %?\n  %i\n  %a")
-                                ("j" "Journal" entry (file+olp+datetree "~/org/journal.org") "* %?\nEntered on %U\n  %i\n  %a")))
+          ("j" "Journal" entry (file+datetree "~/git/org/diary.org")
+           "* %?\n%U\n" :clock-in t :clock-resume t)
+
+          ("h" "Habit"
+           entry (file (org-file-path "/refile.org"))
+           "* NEXT %?\n%U\n%a\nSCHEDULED: %(format-time-string \"%<<%Y-%m-%d %a .+1d/3d>>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n")))
+
 #+END_SRC
 
 When I'm starting an Org capture template I'd like to begin in insert mode. I'm
@@ -796,6 +852,19 @@ When refiling an item, I'd like to use ido for completion.
 #+BEGIN_SRC emacs-lisp
   (setq org-refile-use-outline-path t)
   (setq org-outline-path-complete-in-steps nil)
+#+END_SRC
+
+Custom agenda. 
+
+#+BEGIN_SRC emacs-lisp
+  (setq org-agenda-custom-commands
+        (quote (("N" "Notes" tags "NOTE"
+                 ((org-agenda-overriding-header "Notes")
+                  (org-tags-match-list-sublevels t)))
+                ("h" "Habits" tags-todo "STYLE=\"habit\""
+                 ((org-agenda-overriding-header "Habits")
+                  (org-agenda-sorting-strategy
+                   '(todo-state-down effort-up category-keep)))))))
 #+END_SRC
 
 **** Keybindings
@@ -1079,47 +1148,6 @@ This selects and inserts a tag:
     (interactive)
     (insert
      (ido-completing-read "Insert tag at point: " (hrs/existing-blog-tags))))
-#+END_SRC
-
-* Daily checklist
-
-There are certain things I want to do regularly. I store those in a checklist.
-Because different things happen on different days, the checklist is an Org
-document generated by a Ruby script.
-
-Running =hrs/today= either opens today's existing checklist (if it exists), or
-renders today's new checklist, copies it into an Org file in =/tmp=, and opens
-it.
-
-#+BEGIN_SRC emacs-lisp
-  (setq hrs/checklist-script "~/bin/daily-checklist")
-
-  (defun hrs/today-checklist-filename ()
-    "The filename of today's checklist."
-    (concat "/home/hrs/documents/checklists/daily-checklist-" (format-time-string "%Y-%m-%d") ".org"))
-
-  (defun hrs/today ()
-    "Take a look at today's checklist."
-    (interactive)
-    (let ((filename (hrs/today-checklist-filename)))
-      (if (file-exists-p filename)
-          (find-file filename)
-        (progn
-          (shell-command (concat hrs/checklist-script " > " filename))
-          (find-file filename)))))
-#+END_SRC
-
-Open the checklist and my TODO list side-by-side:
-
-#+BEGIN_SRC emacs-lisp
-  (defun hrs/dashboard ()
-    (interactive)
-    (delete-other-windows)
-    (hrs/today)
-    (split-window-right)
-    (hrs/open-index-file))
-
-  (global-set-key (kbd "C-c d") 'hrs/dashboard)
 #+END_SRC
 
 * Writing prose
