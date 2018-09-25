@@ -4,7 +4,7 @@ case Linux
   set -x MANPATH $HOME/.linuxbrew/share/man $MANPATH
   set -x INFOPATH $HOME/.linuxbrew/share/info $INFOPATH
 case Darwin
-  set -x PATH /usr/local/bin /usr/bin /bin /usr/sbin /sbin /Library/TeX/texbin $HOME/.dotfiles/tex $HOME/.local/bin $HOME/.bin $PATH
+  set -x PATH /usr/local/bin /usr/bin /bin /usr/sbin /sbin /Library/TeX/texbin $HOME/.dotfiles/tex $HOME/.bin $PATH
   # JAVA
   set -x PATH $JAVA_HOME/jre/bin $PATH
 end

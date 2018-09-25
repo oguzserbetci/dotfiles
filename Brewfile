@@ -1,8 +1,5 @@
 #######################
-
 tap 'homebrew/bundle'
-tap 'koekeishiya/formulae'
-tap 'crisidev/homebrew-chunkwm'
 
 # Development
 brew 'git'
@@ -13,9 +10,9 @@ brew 'curl'
 
 # Helpers
 brew 'coreutils'
-brew 'peco'
-brew 'fasd'
-brew 'fzf'
+#brew 'peco'
+#brew 'fasd'
+#brew 'fzf'
 brew 'autojump'
 
 # Python
@@ -27,7 +24,9 @@ brew 'fish'
 brew 'tmux'
 
 # OSX
+tap 'koekeishiya/formulae'
 brew 'khd'
+tap 'crisidev/homebrew-chunkwm'
 brew 'chunkwm'
 brew 'contacts'
 
@@ -46,23 +45,25 @@ tap 'caskroom/versions'
 tap 'caskroom/fonts'
 
 # Development
+brew tap 'railwaycat/emacsmacport'
 cask 'emacs-mac'
-cask 'java'
+#cask 'java'
 cask 'dash'
 cask 'gitup'
 cask 'postman'
-cask 'iterm2-beta'
+cask 'kitty'  #'iterm2-beta'
 cask 'sublime-text'
 cask 'haskell-platform'
-cask 'intellij-idea'
+#cask 'intellij-idea'
 cask 'font-fira-code'
 
 cask 'spotify'
 cask 'soulseek'
 cask 'google-chrome'
+cask 'firefox-nightly'
 
 # Create
-cask 'xmind'
+#cask 'xmind'
 cask 'mactex'
 cask 'blender'
 
