@@ -465,19 +465,19 @@ you should place your code here."
           ;; (add-to-list 'python-shell-extra-pythonpaths "/Users/oguzserbetci/.pyenv/shims")
           (setq flycheck-python-pylint-executable "/Users/oguzserbetci/.pyenv/shims/pylint")
 
+          (require 'flycheck) 
           (flycheck-define-checker proselint
-            "Flycheck checker using Proselint.
-            See URL `http://proselint.com/'."
-            :command ("proselint" "--json" "-")
-            :standard-input t
-            :error-parser flycheck-proselint-parse-errors
-            :modes (text-mode markdown-mode gfm-mode message-mode org-mode latex-mode))
+            "A linter for prose."
+            :command ("proselint" source-inplace)
+            :error-patterns
+            ((warning line-start (file-name) ":" line ":" column ": "
+	                    (id (one-or-more (not (any " "))))
+	                    (message) line-end))
+            :modes (text-mode markdown-mode gfm-mode))
 
-          (flycheck-prospector-setup)
+          (add-to-list 'flycheck-checkers 'proselint)
+
           (setq anaconda-mode-localhost-address "localhost")
-
-          (setq-default dotspacemacs-configuration-layers
-                        '((shell :variables shell-default-term-shell "/usr/local/bin/fish")))
   )
 
 (defun org-export-latex-no-toc (depth)
