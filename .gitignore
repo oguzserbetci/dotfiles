@@ -29,3 +29,6 @@ places
 bookmarks
 /emacs/.emacs.d/configuration.el
 *~
+/setup_python.sh
+/setup_tmux.sh
+tags
