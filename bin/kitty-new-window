@@ -1,0 +1,7 @@
+#!/usr/bin/osascript
+
+tell application "System Events"
+    tell process "kitty"
+        click menu item "New OS window" of menu "File" of menu bar 1
+    end tell
+end tell

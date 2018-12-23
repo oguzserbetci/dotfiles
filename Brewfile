@@ -16,8 +16,7 @@ brew 'coreutils'
 brew 'autojump'
 
 # Python
-brew 'pyenv'
-brew 'pyenv-virtualenv'
+brew 'pipenv'
 
 # Shell
 brew 'fish'
@@ -36,6 +35,10 @@ brew 'awscli'
 
 # Learning Tools
 brew 'exercism'
+
+# Writing
+brew 'proselint'
+brew 'ispell'
 
 #######################
 

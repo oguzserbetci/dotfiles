@@ -17,7 +17,6 @@ set -x PYENV_ROOT $HOME/.pyenv
 # GENERAL
 set -x LC_ALL en_US.UTF-8
 set -x LANG en_US.UTF-8 LANGUAGE=en.UTF-8
-set -x EDITOR 'nvim'
 set -x HOMEBREW_CASK_OPTS '--appdir=/Applications --fontdir=/Library/Fonts'
 
 set PROMPT_TITLE 'echo -ne "\033]0;$USER@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
@@ -30,7 +29,7 @@ bind \cj "commandline -f accept-autosuggestion execute"
 
 . $HOME/.alias
 
-egrep "^export " ~/.bash_profile | while read e
+egrep "^export " ~/.profile | while read e
 	  set var (echo $e | sed -E "s/^export ([A-Za-z_]+)=(.*)\$/\1/")
 	  set value (echo $e | sed -E "s/^export ([A-Za-z_]+)=(.*)\$/\2/")
 

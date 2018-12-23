@@ -27,10 +27,12 @@ values."
    ;; If non-nil layers with lazy install support are lazy installed.
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
-   dotspacemacs-configuration-layer-path '()
+   dotspacemacs-configuration-layer-path '("~/.dotfiles/org/layers")
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     yaml
+     typescript
      shell-scripts
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
@@ -39,17 +41,22 @@ values."
      ;; ----------------------------------------------------------------
      ;; tools
      osx
+     finance
      org
+     ;; org-brain
      helm
-     auto-completion
+     (auto-completion :variables auto-completion-enable-sort-by-usage nil
+                                 auto-completion-enable-snippets-in-popup t)
      ;; dev
      shell
      python
      emacs-lisp
      git
+     version-control
      latex
-     markdown
+     (markdown :variables markdown-live-preview-engine 'vmd)
      bibtex
+     typescript
      ;; web
      javascript
      html
@@ -57,7 +64,7 @@ values."
              shell-default-height 30
              shell-default-position 'bottom)
      spell-checking
-     syntax-checking
+     (syntax-checking :variables syntax-checking-enable-tooltips nil)
      ;; media
      spotify
      )
@@ -65,11 +72,11 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(org-brain)
+   dotspacemacs-additional-packages '(yasnippet-snippets flycheck-prospector)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(org-bullets)
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and uninstall any
@@ -137,17 +144,17 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
+   dotspacemacs-themes '(dracula
                          spacemacs-light)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
+   dotspacemacs-default-font '("Fira Code"
                                :size 13
                                :weight normal
                                :width normal
-                               :powerline-scale 1.1)
+                               :powerline-scale 1.0)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
@@ -320,15 +327,66 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  (setq-default js2-basic-offset 4
+                js-indent-level 4
+                typescript-indent-level 4)
+
+  (if (spacemacs/system-is-mac)
+      (setq mac-command-modifier 'meta
+            mac-option-modifier  'none))
+
+  (global-prettify-symbols-mode t)
+  (setq powerline-default-separator 'bar)
+
+  (setq js2-mode-show-parse-errors nil js2-mode-show-strict-warnings nil)
+  (eval-after-load 'js2-mode
+    '(add-hook 'js2-mode-hook #'add-node-modules-path))
+
+  (global-visual-line-mode t)
+  ;; Make evil-mode up/down operate in screen lines instead of logical lines
+  (define-key evil-motion-state-map "j" 'evil-next-visual-line)
+  (define-key evil-motion-state-map "k" 'evil-previous-visual-line)
+  ;; Also in visual mode
+  (define-key evil-visual-state-map "j" 'evil-next-visual-line)
+  (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
+
+  (setq user-full-name "Oguz Serbetci"
+        user-mail-address "oguz.serbetci@gmail.com"
+        ;calendar-latitude 52.5
+        ;calendar-longitude 13.4
+        ;calendar-location-name "Berlin, Germany"
+        calendar-latitude 36.4
+        calendar-longitude 127.4
+        calendar-location-name "Daejeon, South Korea")
+
+  (setq js2-include-node-externs t)
+
   (setq-default evil-escape-key-sequence "jk")
   (setq org-startup-indented t)
-  (setq org-indent-mode t)
+  ;; (setq org-indent-mode t)
   (setq org-hide-leading-stars t)
+  ;; (setq org-agenda-files '(directory-files-recursively "~/org/" "\.org$"))
+  ;; (setq org-refile-targets '((nil :maxlevel . 9)
+  ;;                            (org-agenda-files :maxlevel . 9)))
 
-  (setq reftex-default-bibliography '("~/Resources/Papers/My Library.bib"))
-  (setq org-ref-default-bibliography '("~/Resources/Papers/My Library.bib")
+  ;; don't warn about large files
+  (setq vc-follow-symlinks nil)
+  (setq large-file-warning-threshold nil)
+  (add-to-list 'spacemacs-large-file-modes-list 'tags-table-mode)
+
+  ;; org-ref
+  (setq reftex-default-bibliography '("~/Resources/Papers/library.bib"))
+  (setq org-ref-open-pdf-function 'org-ref-get-mendeley-filename)
+  (setq org-ref-default-bibliography '("~/Resources/Papers/library.bib")
         org-ref-pdf-directory "~/Resources/Papers/"
         org-ref-bibliography-notes "~/org/papers.org")
+
+  (defun capture-file-name ()
+    (setq name (read-string "File name: "))
+    (expand-file-name (concat name ".org") "~/org"))
+
+  (defun org-file-path (name)
+    (expand-file-name name "~/org"))
 
   (setq org-capture-templates
         '(("b" "Blog idea"
@@ -336,7 +394,7 @@ you should place your code here."
            (file (org-file-path "/blog-ideas.org"))
            "* %?\n")
 
-          ("n" "note" entry (file (org-file-path "/refile.org"))
+          ("n" "note" entry (file "~/org/refile.org")
            "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
 
           ("e" "Email" entry
@@ -360,7 +418,66 @@ you should place your code here."
            "* %?\n%U\n" :clock-in t :clock-resume t)
 
           ("h" "Habit" entry (file (org-file-path "/refile.org"))
-           "* NEXT %?\n%U\n%a\nSCHEDULED: %(format-time-string \"%<<%Y-%m-%d %a .+1d/3d>>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n")))
+           "* NEXT %?\n%U\n%a\nSCHEDULED: %(format-time-string \"%<<%Y-%m-%d %a .+1d/3d>>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n")
+
+          ("T" "topic" plain (file capture-file-name)
+"#+TITLE: %?
+#+AUTHOR: Oğuz Şerbetci
+
+* <resource, course>
+~My summaries, thoughts and notes of consumed material.~
+
+
+* knowledge
+~My notes, summaries and synthesis of resourses on the topic.~
+
+* ideas
+~All thoughts of my own.~
+
+* projects
+~TODOs, exercises and any project ideas should fall under things here.~
+")
+
+          ("r" "resource" plain (file capture-file-name)
+           "* %^{title} %^g %^{AUTHOR}p %^{PROFESSOR}p %^{SEMESTER}p
+%U")
+          ("b" "Brain" plain (function org-brain-goto-end)
+           "* %i%?" :empty-lines 1)))
+
+
+          (setq org-ellipsis " ⤵")
+
+          (setq org-log-done 'time)
+          (setq org-todo-keywords
+                (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(dr)"))))
+
+          (setq org-todo-keyword-faces
+                (quote (("TODO" :foreground "pink" :weight bold)
+                        ("NEXT" :foreground "blue" :weight bold)
+                        ("DONE" :foreground "forest green" :weight bold))))
+
+          (setq org-download-screenshot-method "/usr/sbin/screencapture")
+          (setq org-download-image-dir "~/org/image")
+          ;; (setq org-download-screenshot-file (last (cl-sort (directory-files "~/Desktop" "full" "^Screenshot .*" nil) 'string-lessp)))
+
+          (add-hook 'markdown-mode-hook #'flycheck-mode)
+          (add-hook 'org-mode-hook #'flycheck-mode)
+          ;; (add-to-list 'python-shell-extra-pythonpaths "/Users/oguzserbetci/.pyenv/shims")
+          (setq flycheck-python-pylint-executable "/Users/oguzserbetci/.pyenv/shims/pylint")
+
+          (flycheck-define-checker proselint
+            "Flycheck checker using Proselint.
+            See URL `http://proselint.com/'."
+            :command ("proselint" "--json" "-")
+            :standard-input t
+            :error-parser flycheck-proselint-parse-errors
+            :modes (text-mode markdown-mode gfm-mode message-mode org-mode latex-mode))
+
+          (flycheck-prospector-setup)
+          (setq anaconda-mode-localhost-address "localhost")
+
+          (setq-default dotspacemacs-configuration-layers
+                        '((shell :variables shell-default-term-shell "/usr/local/bin/fish")))
   )
 
 (defun org-export-latex-no-toc (depth)
@@ -368,26 +485,6 @@ you should place your code here."
     (format "%% Org-mode is exporting headings to %s levels.\n"
             depth)))
 (setq org-export-latex-format-toc-function 'org-export-latex-no-toc)
-  ;org-brain
-;(use-package org-brain :ensure t
-  ;:init
-  ;(setq org-brain-path "brain")
-  ;;; For Evil users
-  ;(with-eval-after-load 'evil
-    ;(evil-set-initial-state 'org-brain-visualize-mode 'emacs))
-  ;:config
-  ;(setq org-id-track-globally t)
-  ;(setq org-id-locations-file "~/.emacs.d/.org-id-locations")
-  ;;(push '("b" "Brain" plain (function org-brain-goto-end)
-          ;;"* %i%?" :empty-lines 1)
-        ;;org-capture-templates)
-  ;(setq org-brain-visualize-default-choices 'all)
-  ;(setq org-brain-title-max-length 12))
-
-
-  (add-hook 'text-mode-hook 'visual-line-mode)
-  (add-hook 'gfm-mode-hook 'visual-line-mode)
-  (add-hook 'org-mode-hook 'visual-line-mode)
 
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -397,12 +494,36 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#0a0814" "#f2241f" "#67b11d" "#b1951d" "#4f97d7" "#a31db1" "#28def0" "#b2b2b2"])
  '(package-selected-packages
    (quote
-    (yasnippet-snippets web-mode web-beautify tagedit slim-mode scss-mode sass-mode pug-mode livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc helm-css-scss haml-mode emmet-mode company-web web-completion-data company-tern tern coffee-mode define-word yapfify xterm-color ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spotify spaceline smeargle shell-pop reveal-in-osx-finder restart-emacs rainbow-delimiters pyvenv pytest pyenv-mode py-isort popwin pip-requirements persp-mode pcre2el pbcopy paradox osx-trash osx-dictionary orgit org-ref org-projectile org-present org-pomodoro org-mime org-download org-bullets org-brain open-junk-file neotree multi-term move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum live-py-mode linum-relative link-hint launchctl insert-shebang indent-guide hy-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-spotify-plus helm-pydoc helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flyspell-correct-helm flycheck-pos-tip flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump diminish cython-mode company-statistics company-shell company-auctex company-anaconda column-enforce-mode clean-aindent-mode auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile auctex-latexmk aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
+    (goto-chg yaml-mode pipenv magit-popup typescript-mode flycheck request avy flycheck-prospector tern iedit evil company yasnippet-snippets pdf-tools ivy hydra helm-bibtex parsebib anaconda-mode smartparens flyspell-correct helm helm-core markdown-mode projectile org-plus-contrib magit git-commit ghub with-editor git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter diff-hl define-word yapfify xterm-color ws-butler winum which-key web-mode web-beautify volatile-highlights vmd-mode vi-tilde-fringe uuidgen use-package toc-org tide tagedit spotify spaceline smeargle slim-mode shell-pop scss-mode sass-mode reveal-in-osx-finder restart-emacs rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements persp-mode pcre2el pbcopy paradox osx-trash osx-dictionary orgit org-ref org-projectile org-present org-pomodoro org-mime org-download org-bullets org-brain open-junk-file neotree multi-term move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode live-py-mode linum-relative link-hint ledger-mode launchctl json-mode js2-refactor js-doc insert-shebang indent-guide hy-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-spotify-plus helm-pydoc helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flyspell-correct-helm flycheck-pos-tip flycheck-ledger flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump diminish cython-mode company-web company-tern company-statistics company-shell company-auctex company-anaconda column-enforce-mode coffee-mode clean-aindent-mode auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile auctex-latexmk aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((((min-colors 16777216)) (:background "#282a36" :foreground "#f8f8f2")) (t (:background "#000000" :foreground "#f8f8f2")))))
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#0a0814" "#f2241f" "#67b11d" "#b1951d" "#4f97d7" "#a31db1" "#28def0" "#b2b2b2"])
+ '(package-selected-packages
+   (quote
+    (writeroom-mode visual-fill-column symon string-inflection spaceline-all-the-icons powerline prettier-js pippel password-generator spinner overseer key-chord tablist org-category-capture alert log4e gntp nameless magit-svn skewer-mode json-navigator hierarchy json-snatcher json-reformat multiple-cursors js2-mode importmagic impatient-mode simple-httpd htmlize parent-mode helm-xref multi helm-purpose window-purpose imenu-list helm-org-rifle helm-git-grep haml-mode gitignore-templates gitignore-mode pos-tip flycheck-bashate flx evil-org treepy graphql evil-lion evil-ledger evil-goggles evil-cleverparens paredit anzu highlight editorconfig dracula-theme doom-modeline eldoc-eval shrink-path all-the-icons memoize counsel-projectile counsel swiper pkg-info epl web-completion-data dash-functional company-jedi jedi-core python-environment epc ctable concurrent deferred centered-cursor-mode browse-at-remote biblio biblio-core yasnippet packed auctex pythonic f dash s auto-complete popup font-lock+ undo-tree dotenv-mode bind-map bind-key async goto-chg yaml-mode pipenv magit-popup typescript-mode flycheck request avy flycheck-prospector tern iedit evil company yasnippet-snippets pdf-tools ivy hydra helm-bibtex parsebib anaconda-mode smartparens flyspell-correct helm helm-core markdown-mode projectile org-plus-contrib magit git-commit ghub with-editor git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter diff-hl define-word yapfify xterm-color ws-butler winum which-key web-mode web-beautify volatile-highlights vmd-mode vi-tilde-fringe uuidgen use-package toc-org tide tagedit spotify spaceline smeargle slim-mode shell-pop scss-mode sass-mode reveal-in-osx-finder restart-emacs rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements persp-mode pcre2el pbcopy paradox osx-trash osx-dictionary orgit org-ref org-projectile org-present org-pomodoro org-mime org-download org-bullets org-brain open-junk-file neotree multi-term move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode live-py-mode linum-relative link-hint ledger-mode launchctl json-mode js2-refactor js-doc insert-shebang indent-guide hy-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-spotify-plus helm-pydoc helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flyspell-correct-helm flycheck-pos-tip flycheck-ledger flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump diminish cython-mode company-web company-tern company-statistics company-shell company-auctex company-anaconda column-enforce-mode coffee-mode clean-aindent-mode auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile auctex-latexmk aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((((min-colors 16777216)) (:background "#282a36" :foreground "#f8f8f2")) (t (:background "#000000" :foreground "#f8f8f2")))))
+)

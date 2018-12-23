@@ -7,7 +7,7 @@ ctrl + alt - s           : khd -e "mode activate boxing"
 boxing + ctrl + alt - s  : khd -e "mode activate default"
 
 # Rotate Tree
-#alt - r 			     : chunkc tiling::desktop --rotate 90
+boxing - r 			     : chunkc tiling::desktop --rotate 90
 ctrl + alt - r           : chunkc tiling::window --grid-layout width:900
 
 # mirror tree y-axis
@@ -76,8 +76,14 @@ ctrl + cmd - j  		 : chunkc tiling::window --send-to-monitor 1; chunkc monitor -
 ctrl + cmd - k  		 : chunkc tiling::window --send-to-monitor 2; chunkc monitor -f 2
 
 # float / unfloat window and center on screen
-alt - t : chunkc tiling::window --toggle float;\
+lalt - t : chunkc tiling::window --toggle float;\
           chunkc tiling::window --grid-layout 5:5:1:0:3:4
+
+#########
+# SCRIPTS
+ralt - n : safari-new-window
+ralt - f : finder-new-window
+ralt - b : kitty-new-window
 
 ##########
 # VIM MODE
