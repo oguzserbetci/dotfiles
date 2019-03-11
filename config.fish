@@ -10,8 +10,9 @@ case Darwin
 end
 
 # PYENV
-status --is-interactive; and source (pyenv init -|psub)
-status --is-interactive; and source (pyenv virtualenv-init -|psub)
+status --is-interactive; and . (pyenv init -|psub)
+# status --is-interactive; and . (pyenv virtualenv-init -|psub)
+#pyenv virtualenvwrapper_lazy
 set -x PYENV_ROOT $HOME/.pyenv
 
 # GENERAL
@@ -52,3 +53,7 @@ egrep "^export " ~/.profile | while read e
 	  #echo "set -xg '$var' '$value' (via '$e')"
 	  set -xg $var $value
 end
+
+# added by pipsi (https://github.com/mitsuhiko/pipsi)
+set -x PATH /Users/oguzserbetci/.local/bin $PATH
+

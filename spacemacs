@@ -32,7 +32,7 @@ This function should only modify configuration layer settings."
    dotspacemacs-configuration-layer-path '("~/.dotfiles/org/layers")
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
+   '(csv
      yaml
      typescript
      shell-scripts
@@ -43,12 +43,13 @@ This function should only modify configuration layer settings."
      ;; ----------------------------------------------------------------
      ;; tools
      org
+     finance
      noting
      osx
      finance
      (org :variables
           org-enable-trello-support t
-          org-projectile-file "TODOs.org")
+          org-projectile-file "TODO.org")
      multiple-cursors
      neotree
      helm
@@ -71,7 +72,7 @@ This function should only modify configuration layer settings."
              shell-default-height 30
              shell-default-position 'bottom
              shell-default-term-shell "/usr/local/bin/fish")
-     spell-checking
+     (spell-checking :variables enable-flyspell-auto-completion t)
      (syntax-checking :variables syntax-checking-enable-tooltips nil)
      ;; media
      spotify
@@ -84,7 +85,7 @@ This function should only modify configuration layer settings."
    ;; To use a local version of a package, use the `:location' property:
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(yasnippet-snippets flycheck-prospector dracula-theme doom-themes traad)
+   dotspacemacs-additional-packages '(yasnippet-snippets flycheck-prospector dracula-theme doom-themes traad anki-editor)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -524,19 +525,21 @@ before packages are loaded."
   (setq flycheck-python-pylint-executable "/Users/oguzserbetci/.pyenv/shims/pylint")
 
   ;;; prose
-  (flycheck-define-checker proselint
-    "A linter for prose."
-    :command ("proselint" source-inplace)
-    :error-patterns
-    ((warning line-start (file-name) ":" line ":" column ": "
-              (id (one-or-more (not (any " "))))
-              (message) line-end))
-    :modes (text-mode markdown-mode gfm-mode))
+  (with-eval-after-load 'flycheck
+    (flycheck-define-checker proselint
+      "A linter for prose."
+      :command ("proselint" source-inplace)
+      :error-patterns
+      ((warning line-start (file-name) ":" line ":" column ": "
+                (id (one-or-more (not (any " "))))
+                (message) line-end))
+      :modes (text-mode markdown-mode gfm-mode))
 
-  (add-to-list 'flycheck-checkers 'proselint)
+    (add-to-list 'flycheck-checkers 'proselint)
 
-  (add-hook 'markdown-mode-hook #'flycheck-mode)
-  (add-hook 'org-mode-hook #'flycheck-mode)
+    (add-hook 'markdown-mode-hook #'flycheck-mode)
+    (add-hook 'org-mode-hook #'flycheck-mode)
+  )
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -551,10 +554,10 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(evil-want-Y-yank-to-eol nil)
+ '(org-trello-current-prefix-keybinding "C-c o" nil (org-trello))
  '(package-selected-packages
    (quote
-    (org-trello org-ref dracula-theme flycheck org-bullets doom-modeline eldoc-eval define-word aggressive-indent goto-chg helm helm-core powerline yasnippet-snippets yapfify yaml-mode xterm-color ws-butler writeroom-mode winum which-key web-mode web-beautify volatile-highlights vmd-mode vi-tilde-fringe uuidgen use-package traad toc-org tide tagedit symon string-inflection spotify spaceline-all-the-icons smeargle slim-mode shrink-path shell-pop scss-mode sass-mode reveal-in-osx-finder restart-emacs rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode prettier-js popwin pippel pipenv pip-requirements persp-mode pdf-tools pcre2el password-generator paradox overseer osx-trash osx-dictionary orgit org-projectile org-present org-pomodoro org-mime org-download org-brain open-junk-file neotree nameless multi-term move-text mmm-mode markdown-toc magit-svn magit-gitflow macrostep lorem-ipsum livid-mode live-py-mode link-hint launchctl key-chord json-navigator json-mode js2-refactor js-doc insert-shebang indent-guide importmagic impatient-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-spotify-plus helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-gitignore helm-git-grep helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-bibtex helm-ag google-translate golden-ratio gnuplot gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy font-lock+ flyspell-correct-helm flycheck-prospector flycheck-pos-tip flycheck-ledger flycheck-bashate flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-ledger evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav editorconfig dumb-jump dotenv-mode doom-themes diminish diff-hl cython-mode counsel-projectile company-web company-tern company-statistics company-shell company-auctex company-anaconda column-enforce-mode clean-aindent-mode centered-cursor-mode browse-at-remote auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile auctex-latexmk ace-window ace-link ace-jump-helm-line ac-ispell))))
+    (csv-mode anki-editor flyspell-popup yasnippet-snippets yapfify yaml-mode xterm-color ws-butler writeroom-mode winum which-key web-mode web-beautify volatile-highlights vmd-mode vi-tilde-fringe uuidgen use-package traad toc-org tide tagedit symon string-inflection spotify spaceline-all-the-icons smeargle slim-mode shell-pop scss-mode sass-mode reveal-in-osx-finder restart-emacs rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode prettier-js popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator paradox overseer osx-trash osx-dictionary orgit org-trello org-ref org-projectile org-present org-pomodoro org-mime org-download org-brain open-junk-file neotree nameless multi-term move-text mmm-mode markdown-toc magit-svn magit-gitflow macrostep lorem-ipsum livid-mode live-py-mode link-hint launchctl json-navigator json-mode js2-refactor js-doc insert-shebang indent-guide importmagic impatient-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-spotify-plus helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-gitignore helm-git-grep helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy font-lock+ flyspell-correct-helm flycheck-prospector flycheck-pos-tip flycheck-ledger flycheck-bashate flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-ledger evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav editorconfig dumb-jump dracula-theme dotenv-mode doom-themes doom-modeline diminish diff-hl cython-mode counsel-projectile company-web company-tern company-statistics company-shell company-auctex company-anaconda column-enforce-mode clean-aindent-mode centered-cursor-mode browse-at-remote auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile auctex-latexmk aggressive-indent ace-window ace-link ace-jump-helm-line ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
