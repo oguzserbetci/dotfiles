@@ -11,7 +11,6 @@ end
 
 # PYENV
 status --is-interactive; and . (pyenv init -|psub)
-# status --is-interactive; and . (pyenv virtualenv-init -|psub)
 #pyenv virtualenvwrapper_lazy
 set -x PYENV_ROOT $HOME/.pyenv
 

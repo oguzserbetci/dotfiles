@@ -32,9 +32,11 @@ then
   curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
 fi
 
+# setup matplotlib
 mkdir -p ~/.matplotlib
 echo 'backend:TkAgg' >> ~/.matplotlib/matplotlibrc
 
+# setup spacemacs
 rm ~/.emacs.d
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 (cd ~/.emacs.d; git checkout develop; git pull --rebase)
