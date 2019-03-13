@@ -9,11 +9,6 @@ case Darwin
   set -x PATH $JAVA_HOME/jre/bin $PATH
 end
 
-# PYENV
-status --is-interactive; and . (pyenv init -|psub)
-#pyenv virtualenvwrapper_lazy
-set -x PYENV_ROOT $HOME/.pyenv
-
 # GENERAL
 set -x LC_ALL en_US.UTF-8
 set -x LANG en_US.UTF-8 LANGUAGE=en.UTF-8
@@ -55,4 +50,8 @@ end
 
 # added by pipsi (https://github.com/mitsuhiko/pipsi)
 set -x PATH /Users/oguzserbetci/.local/bin $PATH
+
+status --is-interactive; and pyenv init - | source
+status --is-interactive; and pyenv virtualenv-init - | source
+eval (/Users/oguzserbetci/.pyenv/versions/3.7.2/envs/tools/bin/python -m virtualfish projects auto_activation compat_aliases)
 

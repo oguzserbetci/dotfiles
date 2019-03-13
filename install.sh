@@ -48,6 +48,8 @@ echo 'run :PlugInstall in vim'
 
 fisher add jethrokuan/z matchai/spacefish jethrokuan/fzf fisherman/grc
 
+echo 'setup python: https://medium.com/@henriquebastos/the-definitive-guide-to-setup-my-python-workspace-628d68552e14 and install virtual fish: pip install virtualfish'
+
 # Bunch of symlinks
 mkdir -p ~/.config
 ln -svf $DOTFILES_DIR/vim ~/.config/nvim
@@ -66,3 +68,4 @@ ln -svf $DOTFILES_DIR/ctags ~/.ctags
 ln -svf $DOTFILES_DIR/alias ~/.alias
 ln -svf $DOTFILES_DIR/flake8 ~/.config/flake8
 ln -svf $DOTFILES_DIR/functions ~/.functions
+ln -sfv $DOTFILES_DIR/profile ~/.profile
