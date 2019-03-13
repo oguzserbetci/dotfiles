@@ -36,11 +36,6 @@ This function should only modify configuration layer settings."
      yaml
      typescript
      shell-scripts
-     ;; ----------------------------------------------------------------
-     ;; Example of useful layers you may want to use right away.
-     ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
-     ;; <M-m f e R> (Emacs style) to install them.
-     ;; ----------------------------------------------------------------
      ;; tools
      org
      finance
@@ -76,8 +71,6 @@ This function should only modify configuration layer settings."
              shell-default-term-shell "/usr/local/bin/fish")
      (spell-checking :variables enable-flyspell-auto-completion t)
      (syntax-checking :variables syntax-checking-enable-tooltips nil)
-     ;; media
-     spotify
      )
 
    ;; List of additional packages that will be installed without being
