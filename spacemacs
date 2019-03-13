@@ -60,7 +60,9 @@ This function should only modify configuration layer settings."
      emacs-lisp
      ;; development
      git
-     version-control
+     '(version-control :variables
+                       version-control-diff-tool 'diff-hl
+                       version-control-global-margin t)
      latex
      (markdown :variables markdown-live-preview-engine 'vmd)
      bibtex
