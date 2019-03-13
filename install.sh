@@ -39,6 +39,11 @@ rm ~/.emacs.d
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 (cd ~/.emacs.d; git checkout develop; git pull --rebase)
 
+# install vim plug
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+echo 'run :PlugInstall in vim'
+
 fisher add jethrokuan/z matchai/spacefish jethrokuan/fzf fisherman/grc
 
 # Bunch of symlinks
