@@ -39,6 +39,8 @@ rm ~/.emacs.d
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 (cd ~/.emacs.d; git checkout develop; git pull --rebase)
 
+fisher add jethrokuan/z matchai/spacefish jethrokuan/fzf fisherman/grc
+
 # Bunch of symlinks
 mkdir -p ~/.config
 ln -svf $DOTFILES_DIR/vim ~/.config/nvim
