@@ -17,6 +17,8 @@ brew "pyenv-virtualenv"
 # Shell
 brew "fish"
 brew "tmux"
+brew "fzf"
+brew "grc"
 
 # OSX
 tap "koekeishiya/formulae"
