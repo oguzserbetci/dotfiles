@@ -69,3 +69,5 @@ ln -svf $DOTFILES_DIR/alias ~/.alias
 ln -svf $DOTFILES_DIR/flake8 ~/.config/flake8
 ln -svf $DOTFILES_DIR/functions ~/.functions
 ln -sfv $DOTFILES_DIR/profile ~/.profile
+
+echo 'setup org notes by syncing dropbox and running ln -svf ~/Dropbox/org ~'

@@ -16,7 +16,6 @@ set -x HOMEBREW_CASK_OPTS '--appdir=/Applications --fontdir=/Library/Fonts'
 
 set PROMPT_TITLE 'echo -ne "\033]0;$USER@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
 set -x PROMPT_COMMAND "$PROMPT_TITLE; $PROMPT_COMMAND"
-set -x PIPSI_HOME $HOME/.local/venvs/pipsi/bin
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 
@@ -47,9 +46,6 @@ egrep "^export " ~/.profile | while read e
 	  #echo "set -xg '$var' '$value' (via '$e')"
 	  set -xg $var $value
 end
-
-# added by pipsi (https://github.com/mitsuhiko/pipsi)
-set -x PATH /Users/oguzserbetci/.local/bin $PATH
 
 status --is-interactive; and pyenv init - | source
 status --is-interactive; and pyenv virtualenv-init - | source
