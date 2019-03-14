@@ -6,8 +6,10 @@ brew "ctags"
 brew "curl"
 
 # Helpers
+brew "ledger"
 brew "coreutils"
 brew "autojump"
+brew "imagemagick"
 
 # Python
 brew "pipenv"
@@ -60,9 +62,11 @@ cask "firefox"
 # Tools
 cask "skim"
 cask "numi"
+cask "omnidisksweeper"
 cask "alfred"
 cask "contexts"
 cask "appcleaner"
+cask "zotero"
 cask "dropbox"
 cask "google-backup-and-sync"
 
