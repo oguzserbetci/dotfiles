@@ -480,6 +480,9 @@ before packages are loaded."
 
   (global-prettify-symbols-mode t)
 
+  (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+  (add-to-list 'default-frame-alist '(ns-appearance . dark))
+
   ;; don't warn about large files
   (setq vc-follow-symlinks nil)
   (setq large-file-warning-threshold nil)
