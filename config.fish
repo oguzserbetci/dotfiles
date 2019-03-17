@@ -51,3 +51,4 @@ status --is-interactive; and pyenv init - | source
 status --is-interactive; and pyenv virtualenv-init - | source
 eval (/Users/oguzserbetci/.pyenv/versions/3.7.2/envs/tools/bin/python -m virtualfish projects auto_activation compat_aliases)
 
+set -U FZF_LEGACY_KEYBINDINGS 0
