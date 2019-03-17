@@ -545,6 +545,15 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ledger-reports
+   (quote
+    (("rest budget" "%(binary) -f %(ledger-file) budget expenses")
+     ("expenses monthly" "%(binary) -f %(ledger-file) -p \"this year\" --monthly balance ^expenses")
+     ("monthly budget" "%(binary) -f %(ledger-file) --budget --monthly -E register ^expenses")
+     ("bal" "%(binary) -f %(ledger-file) bal")
+     ("reg" "%(binary) -f %(ledger-file) reg")
+     ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
+     ("account" "%(binary) -f %(ledger-file) reg %(account)"))))
  '(org-trello-current-prefix-keybinding "C-c o" nil (org-trello))
  '(package-selected-packages
    (quote
