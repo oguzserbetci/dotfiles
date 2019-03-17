@@ -419,7 +419,7 @@ It should only modify the values of Spacemacs settings."
    ;; %z - mnemonics of buffer, terminal, and keyboard coding systems
    ;; %Z - like %z, but including the end-of-line format
    ;; (default "%I@%S")
-   dotspacemacs-frame-title-format "%I@%S"
+   dotspacemacs-frame-title-format "%t"
 
    ;; Format specification for setting the icon title format
    ;; (default nil - same as frame-title-format)
@@ -474,12 +474,9 @@ before packages are loaded."
   ; EMACS
   (setq user-full-name "Oguz Serbetci"
         user-mail-address "oguz.serbetci@gmail.com"
-        ;calendar-latitude 52.5
-        ;calendar-longitude 13.4
-        ;calendar-location-name "Berlin, Germany"
-        calendar-latitude 36.4
-        calendar-longitude 127.4
-        calendar-location-name "Daejeon, South Korea")
+        calendar-latitude 52.5
+        calendar-longitude 13.4
+        calendar-location-name "Berlin, Germany")
 
   (global-prettify-symbols-mode t)
 
