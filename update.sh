@@ -8,7 +8,7 @@ brew upgrade
 brew cleanup
 
 echo 'updating fish shell'
-fisher up
+fisher
 fish_update_completions
 
 echo 'updating spacemacs'
