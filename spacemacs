@@ -479,6 +479,7 @@ before packages are loaded."
   (setq vc-follow-symlinks nil)
   (setq large-file-warning-threshold nil)
   (add-to-list 'spacemacs-large-file-modes-list 'tags-table-mode)
+  (add-to-list 'spacemacs-large-file-modes-list 'csv-mode)
 
   ;; navigation
   (setq-default evil-escape-key-sequence "jk")
@@ -540,6 +541,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(fast-but-imprecise-scrolling t)
  '(ledger-reports
    (quote
     (("rest budget" "%(binary) -f %(ledger-file) budget expenses")
