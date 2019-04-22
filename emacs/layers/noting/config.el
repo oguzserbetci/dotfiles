@@ -40,19 +40,20 @@
   (setq org-log-done 'time)
 
   (setq org-todo-keywords
-        (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
+        (quote ((sequence "TODO(t)" "NEXT(x)" "CURRENT(c)" "|" "DONE(d)")
                 (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)")
+                (sequence "NOTE(n)" "IDEA(i)" "DRAFT(f)")
                 )))
 
   (setq org-todo-keyword-faces
         (quote (("TODO" :foreground "red" :weight bold)
                 ("IDEA" :foreground "red" :weight bold)
+                ("NOTE" :foreground "yellow" :weight bold)
                 ("NEXT" :foreground "deep sky blue" :weight bold)
-                ("DRAFT" :foreground "deep sky blue" :weight bold)
+                ("CURRENT" :foreground "purple" :weight bold)
                 ("DONE" :foreground "forest green" :weight bold)
                 ("WAITING" :foreground "orange" :weight bold)
                 ("HOLD" :foreground "magenta" :weight bold)
-                ("PUBLISHED" :foreground "forest green" :weight bold)
                 ("CANCELLED" :foreground "forest green" :weight bold))))
 
   (setq org-archive-mark-done nil)
@@ -60,16 +61,16 @@
 )
 
 (with-eval-after-load 'org-ref
-  (setq reftex-default-bibliography '("~/Resources/Papers/library.bib"))
-  ;; (setq org-ref-open-pdf-function 'org-ref-get-mendeley-filename)
-  (setq org-ref-default-bibliography '("~/Resources/Papers/library.bib")
-        org-ref-pdf-directory "~/Resources/Papers/"
+  (setq reftex-default-bibliography '("~/Resources/Papers/library3.bib"))
+  (setq org-ref-open-pdf-function 'org-ref-get-mendeley-filename)
+  (setq org-ref-default-bibliography '("~/Resources/Papers/library3.bib")
+        ;; org-ref-pdf-directory "~/Resources/Papers/"
         org-ref-bibliography-notes "~/org/papers.org")
 
-  ;; open pdf with system pdf viewer (works on mac)
-  (setq bibtex-completion-pdf-open-function
-        (lambda (fpath)
-          (start-process "open" "*open*" "open" fpath)))
+  ;; ;; open pdf with system pdf viewer (works on mac)
+  ;; (setq bibtex-completion-pdf-open-function
+  ;;       (lambda (fpath)
+  ;;         (start-process "open" "*open*" "open" fpath)))
 )
 
 (with-eval-after-load 'org-download
@@ -85,7 +86,7 @@
 )
 
 (with-eval-after-load 'org-agenda
-  (setq org-agenda-files '("~/org"))
+  (setq org-agenda-files '("~/org" "~/org/brain"))
 
   (setq org-refile-targets '((nil :maxlevel . 9)
                              (org-agenda-files :maxlevel . 9)))
