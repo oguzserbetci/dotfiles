@@ -34,25 +34,22 @@ This function should only modify configuration layer settings."
    dotspacemacs-configuration-layers
    '(csv
      yaml
-     typescript
-     shell-scripts
      ;; tools
      org
-     finance
      noting
      osx
      finance
      (org :variables
-          org-enable-trello-support t
           org-projectile-file "TODO.org")
-     multiple-cursors
-     neotree
      helm
-     (auto-completion :variables auto-completion-enable-sort-by-usage nil
+     (auto-completion :variables auto-completion-enable-sort-by-usage t
                                  auto-completion-enable-snippets-in-popup t)
+     spell-checking
+     (syntax-checking :variables syntax-checking-enable-tooltips nil)
      ;; langs
      python
      emacs-lisp
+     typescript
      ;; development
      git
      (version-control :variables version-control-diff-tool 'git-gutter
@@ -61,15 +58,8 @@ This function should only modify configuration layer settings."
      (markdown :variables markdown-live-preview-engine 'vmd)
      bibtex
      typescript
-     ;; web
      javascript
      html
-     (shell :variables
-             shell-default-height 30
-             shell-default-position 'bottom
-             shell-default-term-shell "/usr/local/bin/fish")
-     (spell-checking :variables enable-flyspell-auto-completion t)
-     (syntax-checking :variables syntax-checking-enable-tooltips nil)
      )
 
    ;; List of additional packages that will be installed without being
@@ -79,7 +69,9 @@ This function should only modify configuration layer settings."
    ;; To use a local version of a package, use the `:location' property:
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(yasnippet-snippets flycheck-prospector dracula-theme doom-themes traad anki-editor)
+   dotspacemacs-additional-packages '(yasnippet-snippets
+                                      dracula-theme
+                                      doom-themes)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
