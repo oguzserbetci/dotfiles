@@ -43,4 +43,4 @@ alias showdesktop='defaults write com.apple.finder CreateDesktop -bool true; kil
 alias doml='open "https://isis.tu-berlin.de/course/view.php?id=8410"; open ~/University/Machine\ Learning\ 1; atom -n ~/University/Machine\ Learning\ 1/exercises'
 
 # FIX
-alias ssh='TERM=screen-256color ssh'
+alias ssh='env TERM=screen-256color ssh'
