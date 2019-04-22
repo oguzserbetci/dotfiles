@@ -71,3 +71,4 @@ ln -svf $DOTFILES_DIR/functions ~/.functions
 ln -sfv $DOTFILES_DIR/profile ~/.profile
 
 echo 'setup org notes by syncing dropbox and running ln -svf ~/Dropbox/org ~'
+ln -svf .dotfiles/pylintrc ~/.pylintrc
