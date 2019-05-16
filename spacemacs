@@ -473,6 +473,10 @@ before packages are loaded."
         calendar-longitude 13.4
         calendar-location-name "Berlin, Germany")
 
+  ;; UI
+  (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+  (add-to-list 'default-frame-alist '(ns-appearance . dark))
+
   ;; navigation
   (setq-default evil-escape-key-sequence "jk")
 
