@@ -1,4 +1,4 @@
-;; -*- mode: emacs-lisp -*-
+;; -*- mode: emacs-lisp; lexical-binding: t -*-
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
@@ -30,9 +30,12 @@ This function should only modify configuration layer settings."
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
    dotspacemacs-configuration-layer-path '("~/.dotfiles/emacs/layers")
+
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(csv
+   '(
+     shell-scripts
+     csv
      yaml
      ;; tools
      org
@@ -42,25 +45,25 @@ This function should only modify configuration layer settings."
      (org :variables
           org-projectile-file "TODO.org")
      helm
+     lsp
      (auto-completion :variables auto-completion-enable-sort-by-usage t
-                                 auto-completion-enable-snippets-in-popup t)
+                      auto-completion-enable-snippets-in-popup t)
      spell-checking
      (syntax-checking :variables syntax-checking-enable-tooltips nil)
      ;; langs
-     python
+     (python :variables python-backend 'lsp)
      emacs-lisp
      typescript
      ;; development
      git
      (version-control :variables version-control-diff-tool 'git-gutter
-                                 version-control-global-margin t)
+                      version-control-global-margin t)
      latex
      (markdown :variables markdown-live-preview-engine 'vmd)
      bibtex
      typescript
      javascript
-     html
-     )
+     html)
 
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -77,7 +80,8 @@ This function should only modify configuration layer settings."
    dotspacemacs-frozen-packages '()
 
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '(org-bullets)
+   dotspacemacs-excluded-packages '()
+
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and deletes any unused
@@ -193,8 +197,8 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(doom-dracula
-                         doom-nord-light)
+   dotspacemacs-themes '(spacemacs-dark
+                         spacemacs-light)
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
    ;; `all-the-icons', `custom', `doom', `vim-powerline' and `vanilla'. The
@@ -211,7 +215,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Fira Code"
+   dotspacemacs-default-font '("Source Code Pro"
                                :size 13
                                :weight normal
                                :width normal)
@@ -259,12 +263,12 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil, auto-generate layout name when creating new layouts. Only has
    ;; effect when using the "jump to layout by number" commands. (default nil)
-   dotspacemacs-auto-generate-layout-names t
+   dotspacemacs-auto-generate-layout-names nil
 
    ;; Size (in MB) above which spacemacs will prompt to open the large file
    ;; literally to avoid performance issues. Opening a file literally means that
    ;; no major mode or minor modes are active. (default is 1)
-   dotspacemacs-large-file-size 1
+   dotspacemacs-large-file-size 10
 
    ;; Location where to auto-save files. Possible values are `original' to
    ;; auto-save the file in-place, `cache' to auto-save the file to another
@@ -463,24 +467,6 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
-  ; EMACS
-  (setq user-full-name "Oguz Serbetci"
-        user-mail-address "oguz.serbetci@gmail.com"
-        calendar-latitude 52.5
-        calendar-longitude 13.4
-        calendar-location-name "Berlin, Germany")
-
-  (global-prettify-symbols-mode t)
-
-  (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
-  (add-to-list 'default-frame-alist '(ns-appearance . dark))
-
-  ;; don't warn about large files
-  (setq vc-follow-symlinks nil)
-  (setq large-file-warning-threshold nil)
-  (add-to-list 'spacemacs-large-file-modes-list 'tags-table-mode)
-  (add-to-list 'spacemacs-large-file-modes-list 'csv-mode)
-
   ;; navigation
   (setq-default evil-escape-key-sequence "jk")
 
@@ -491,76 +477,7 @@ before packages are loaded."
   ;; Also in visual mode
   (define-key evil-visual-state-map "j" 'evil-next-visual-line)
   (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
-
-  ; OS
-  (if (spacemacs/system-is-mac)
-      (setq mac-command-modifier 'meta
-            mac-option-modifier  'none))
-
-  ; LANGS
-  (setq-default js2-basic-offset 4
-                js-indent-level 4
-                typescript-indent-level 4)
-
-  (setq js2-mode-show-parse-errors nil js2-mode-show-strict-warnings nil)
-  (setq js2-include-node-externs t)
-
-  (eval-after-load 'js2-mode
-    '(add-hook 'js2-mode-hook #'add-node-modules-path))
-
-  ;; flycheck
-  (setq flycheck-python-pylint-executable "/Users/oguzserbetci/.pyenv/shims/pylint")
-
-  ;;; prose
-  (with-eval-after-load 'flycheck
-    (flycheck-define-checker proselint
-      "A linter for prose."
-      :command ("proselint" source-inplace)
-      :error-patterns
-      ((warning line-start (file-name) ":" line ":" column ": "
-                (id (one-or-more (not (any " "))))
-                (message) line-end))
-      :modes (text-mode markdown-mode gfm-mode))
-
-    (add-to-list 'flycheck-checkers 'proselint)
-
-    (add-hook 'markdown-mode-hook #'flycheck-mode)
-    (add-hook 'org-mode-hook #'flycheck-mode)
   )
-)
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
-(defun dotspacemacs/emacs-custom-settings ()
-  "Emacs custom settings.
-This is an auto-generated function, do not modify its content directly, use
-Emacs customize menu instead.
-This function is called at the very end of Spacemacs initialization."
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(fast-but-imprecise-scrolling t)
- '(ledger-reports
-   (quote
-    (("rest budget" "%(binary) -f %(ledger-file) budget expenses")
-     ("expenses monthly" "%(binary) -f %(ledger-file) -p \"this year\" --monthly balance ^expenses")
-     ("monthly budget" "%(binary) -f %(ledger-file) --budget --monthly -E register ^expenses")
-     ("bal" "%(binary) -f %(ledger-file) bal")
-     ("reg" "%(binary) -f %(ledger-file) reg")
-     ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
-     ("account" "%(binary) -f %(ledger-file) reg %(account)"))))
- '(org-trello-current-prefix-keybinding "C-c o" nil (org-trello))
- '(package-selected-packages
-   (quote
-    (fringe-helper git-gutter+ git-gutter csv-mode anki-editor flyspell-popup yasnippet-snippets yapfify yaml-mode xterm-color ws-butler writeroom-mode winum which-key web-mode web-beautify volatile-highlights vmd-mode vi-tilde-fringe uuidgen use-package traad toc-org tide tagedit symon string-inflection spotify spaceline-all-the-icons smeargle slim-mode shell-pop scss-mode sass-mode reveal-in-osx-finder restart-emacs rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode prettier-js popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator paradox overseer osx-trash osx-dictionary orgit org-trello org-ref org-projectile org-present org-pomodoro org-mime org-download org-brain open-junk-file neotree nameless multi-term move-text mmm-mode markdown-toc magit-svn magit-gitflow macrostep lorem-ipsum livid-mode live-py-mode link-hint launchctl json-navigator json-mode js2-refactor js-doc insert-shebang indent-guide importmagic impatient-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-spotify-plus helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-gitignore helm-git-grep helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy font-lock+ flyspell-correct-helm flycheck-prospector flycheck-pos-tip flycheck-ledger flycheck-bashate flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-ledger evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav editorconfig dumb-jump dracula-theme dotenv-mode doom-themes doom-modeline diminish diff-hl cython-mode counsel-projectile company-web company-tern company-statistics company-shell company-auctex company-anaconda column-enforce-mode clean-aindent-mode centered-cursor-mode browse-at-remote auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile auctex-latexmk aggressive-indent ace-window ace-link ace-jump-helm-line ac-ispell))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-)
-
-
