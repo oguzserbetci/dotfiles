@@ -467,6 +467,11 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  (setq user-full-name "Oguz Serbetci"
+        user-mail-address "oguz.serbetci@gmail.com"
+        calendar-latitude 52.5
+        calendar-longitude 13.4
+        calendar-location-name "Berlin, Germany")
 
   ;; navigation
   (setq-default evil-escape-key-sequence "jk")
