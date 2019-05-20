@@ -3,6 +3,7 @@ brew "git"
 brew "git-extras"
 brew "neovim"
 brew "ctags"
+brew "--HEAD universal-ctags/universal-ctags/universal-ctags"
 brew "curl"
 
 # Helpers

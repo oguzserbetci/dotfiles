@@ -65,11 +65,12 @@ ln -svf $DOTFILES_DIR/eslintrc.json ~/.eslintrc.json
 ln -svf $DOTFILES_DIR/khdrc ~/.khdrc
 ln -svf $DOTFILES_DIR/chunkwmrc ~/.chunkwmrc
 
-ln -svf $DOTFILES_DIR/ctags ~/.ctags
 ln -svf $DOTFILES_DIR/alias ~/.alias
 ln -svf $DOTFILES_DIR/flake8 ~/.config/flake8
 ln -svf $DOTFILES_DIR/functions ~/.functions
 ln -sfv $DOTFILES_DIR/profile ~/.profile
+mkdir $HOME/.ctags.d
+ln -svf $DOTFILES_DIR/ctags $HOME/.ctags.d/default.ctags
 
 echo 'setup org notes by syncing dropbox and running ln -svf ~/Dropbox/org ~'
 ln -svf .dotfiles/pylintrc ~/.pylintrc
