@@ -47,7 +47,7 @@ This function should only modify configuration layer settings."
      helm
      lsp
      (auto-completion :variables auto-completion-enable-sort-by-usage t
-                      auto-completion-enable-snippets-in-popup t)
+                                 auto-completion-enable-snippets-in-popup t)
      spell-checking
      (syntax-checking :variables syntax-checking-enable-tooltips nil)
      ;; langs
@@ -57,7 +57,7 @@ This function should only modify configuration layer settings."
      ;; development
      git
      (version-control :variables version-control-diff-tool 'git-gutter
-                      version-control-global-margin t)
+                                 version-control-global-margin t)
      latex
      (markdown :variables markdown-live-preview-engine 'vmd)
      bibtex
@@ -198,7 +198,6 @@ It should only modify the values of Spacemacs settings."
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(doom-dracula
-                         spacemacs-dark
                          spacemacs-light)
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
@@ -492,7 +491,7 @@ before packages are loaded."
   ; JS
   (setq js2-mode-show-parse-errors nil)
   (setq js2-mode-show-strict-warnings nil)
-  )
+)
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
