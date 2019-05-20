@@ -19,6 +19,7 @@ brew "pyenv-virtualenv"
 
 # Shell
 brew "fish"
+brew "ripgrep"
 brew "tmux"
 brew "fzf"
 brew "grc"
