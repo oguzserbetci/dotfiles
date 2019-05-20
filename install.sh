@@ -60,6 +60,7 @@ ln -svf $DOTFILES_DIR/git ~/.config
 ln -svf $DOTFILES_DIR/config.fish ~/.config/fish
 ln -svf $DOTFILES_DIR/zshrc ~/.zshrc
 ln -svf $DOTFILES_DIR/kitty ~/.config
+ln -svf $DOTFILES_DIR/eslintrc.json ~/.eslintrc.json
 
 ln -svf $DOTFILES_DIR/khdrc ~/.khdrc
 ln -svf $DOTFILES_DIR/chunkwmrc ~/.chunkwmrc

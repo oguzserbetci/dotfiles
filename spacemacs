@@ -487,6 +487,11 @@ before packages are loaded."
   ;; Also in visual mode
   (define-key evil-visual-state-map "j" 'evil-next-visual-line)
   (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
+
+  ;; LANGUAGE SETTINGS
+  ; JS
+  (setq js2-mode-show-parse-errors nil)
+  (setq js2-mode-show-strict-warnings nil)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
