@@ -472,6 +472,10 @@ before packages are loaded."
         calendar-longitude 13.4
         calendar-location-name "Berlin, Germany")
 
+  ;; Large Files
+  (add-to-list 'spacemacs-large-file-modes-list 'tags-table-mode)
+  (add-to-list 'spacemacs-large-file-modes-list 'csv-mode)
+
   ;; UI
   (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
   (add-to-list 'default-frame-alist '(ns-appearance . dark))
