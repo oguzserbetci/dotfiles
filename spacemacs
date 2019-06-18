@@ -476,6 +476,8 @@ before packages are loaded."
   (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
   (add-to-list 'default-frame-alist '(ns-appearance . dark))
 
+  (setq frame-resize-pixelwise t)
+
   ;; navigation
   (setq-default evil-escape-key-sequence "jk")
 
