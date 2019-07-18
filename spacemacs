@@ -489,6 +489,8 @@ before packages are loaded."
         calendar-longitude 13.4
         calendar-location-name "Berlin, Germany")
 
+  (setq paradox-github-token "9aadb771f166e505943cacad9e336d048dca0519")
+
   ;; Large Files
   (add-to-list 'spacemacs-large-file-modes-list 'tags-table-mode)
   (add-to-list 'spacemacs-large-file-modes-list 'csv-mode)
