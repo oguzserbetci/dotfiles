@@ -40,7 +40,9 @@ This function should only modify configuration layer settings."
      ;; tools
      org
      noting
-     osx
+     (osx :variables
+          osx-option-as 'meta
+          osx-right-option-as 'none)
      finance
      (org :variables
           org-projectile-file "TODO.org")
