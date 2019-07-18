@@ -9,7 +9,6 @@ brew "curl"
 # Helpers
 brew "ledger"
 brew "coreutils"
-brew "autojump"
 brew "imagemagick"
 
 # Python
