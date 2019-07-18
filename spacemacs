@@ -50,11 +50,11 @@ This function should only modify configuration layer settings."
                                  auto-completion-enable-snippets-in-popup t)
      spell-checking
      (syntax-checking :variables syntax-checking-enable-tooltips nil)
-     ;; langs
+     ;; LANGS
      (python :variables python-backend 'lsp)
      emacs-lisp
      typescript
-     ;; development
+     ;; DEVELOPMENT
      git
      (version-control :variables version-control-diff-tool 'git-gutter
                                  version-control-global-margin t)
@@ -73,7 +73,6 @@ This function should only modify configuration layer settings."
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages '(yasnippet-snippets
-                                      dracula-theme
                                       doom-themes)
 
    ;; A list of packages that cannot be updated.

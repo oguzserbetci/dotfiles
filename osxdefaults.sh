@@ -30,7 +30,6 @@ defaults write com.apple.dock showhidden -bool true
 
 #defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
 
-# disable app nap for emacs
 defaults write org.gnu.Emacs NSAppSleepDisabled -bool YES
 
 killall Dock
