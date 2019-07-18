@@ -82,7 +82,7 @@
 
 (with-eval-after-load 'org-agenda
   (require 'org-projectile)
-  (mapcar '(lambda (file)
+  (mapcar #'(lambda (file)
                  (when (file-exists-p file)
                    (push file org-agenda-files)))
           (org-projectile-todo-files)))
