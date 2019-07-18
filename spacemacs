@@ -40,6 +40,7 @@ This function should only modify configuration layer settings."
      ;; tools
      org
      noting
+     gtags
      spotify
      (osx :variables
           osx-option-as 'meta
