@@ -62,10 +62,49 @@
 (setq org-archive-location "%s_archive::* Archived Tasks")
 
 (setq reftex-default-bibliography '("~/Resources/Papers/library3.bib"))
-(setq org-ref-open-pdf-function 'org-ref-get-mendeley-filename)
 (setq org-ref-default-bibliography '("~/Resources/Papers/library3.bib")
-      org-ref-pdf-directory "~/Resources/Papers/"
-      org-ref-bibliography-notes "~/org/papers.org")
+      org-ref-pdf-directory ""
+      bibtex-completion-pdf-field "file"
+      org-ref-get-pdf-filename-function 'org-ref-get-zotero-pdf-filename)
+
+(defun org-ref-get-zotero-pdf-filename (key)
+  "Return the pdf filename indicated by zotero file field.
+Argument KEY is the bibtex key."
+  (let* ((results (org-ref-get-bibtex-key-and-file key))
+         (bibfile (cdr results))
+         entry)
+    (with-temp-buffer
+      (insert-file-contents bibfile)
+      (bibtex-set-dialect (parsebib-find-bibtex-dialect) t)
+      (bibtex-search-entry key nil 0)
+      (setq entry (bibtex-parse-entry))
+      (let ((e (org-ref-reftex-get-bib-field "file" entry)))
+        (if (> (length e) 4)
+            (let ((clean-field (replace-regexp-in-string "/+" "/" e)))
+              (let ((first-file (car (split-string clean-field ";" t))))
+                (concat org-ref-pdf-directory first-file)))
+          (message "PDF filename not found.")
+          )))))
+
+(defun org-ref-open-bibtex-pdf ()
+  "Open pdf for a bibtex entry, if it exists.
+assumes point is in
+the entry of interest in the bibfile.  but does not check that."
+  (interactive)
+  (save-excursion
+    (bibtex-beginning-of-entry)
+    (let* ((bibtex-expand-strings t)
+           (entry (bibtex-parse-entry t))
+           (key (reftex-get-bib-field "=key=" entry))
+           (pdf (org-ref-get-zotero-pdf-filename key)))
+      (message "%s" pdf)
+      (if (file-exists-p pdf)
+          (org-open-link-from-string (format "[[file:%s]]" pdf))
+        (ding)))))
+
+(setq bibtex-completion-pdf-open-function
+      (lambda (fpath)
+        (start-process "open" "*open*" "open" fpath)))
 
 (setq org-download-screenshot-method "/usr/sbin/screencapture")
 (setq org-download-image-dir "~/org/image")
