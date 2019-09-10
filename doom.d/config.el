@@ -53,4 +53,7 @@
 (setq org-directory "~/org")
 (add-hook! org-mode
   (setq visual-line-mode t
-        auto-fill-mode nil))
+        truncate-lines t
+        auto-fill-mode nil
+        org-tags-column -40
+        ))
