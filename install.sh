@@ -54,6 +54,7 @@ echo 'setup python: https://medium.com/@henriquebastos/the-definitive-guide-to-s
 mkdir -p ~/.config
 ln -svf $DOTFILES_DIR/vim ~/.config/nvim
 ln -svf $DOTFILES_DIR/spacemacs ~/.spacemacs
+ln -svf $DOTFILES_DIR/doom.d ~/.doom.d
 ln -svf $DOTFILES_DIR/proselintrc ~/.proselintrc
 ln -svf $DOTFILES_DIR/bin ~/.bin
 ln -svf $DOTFILES_DIR/git ~/.config
