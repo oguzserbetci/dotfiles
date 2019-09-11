@@ -64,16 +64,16 @@ ctrl + alt - k           : chunkc tiling::window --swap north
 ctrl + alt - l           : chunkc tiling::window --swap east
 
 # move window
-shift + cmd - h 		 : chunkc tiling::window --warp west
-shift + cmd - j 		 : chunkc tiling::window --warp south
-shift + cmd - k 		 : chunkc tiling::window --warp north
-shift + cmd - l 	     : chunkc tiling::window --warp east
+#shift + cmd - h 		 : chunkc tiling::window --warp west
+#shift + cmd - j 		 : chunkc tiling::window --warp south
+#shift + cmd - k 		 : chunkc tiling::window --warp north
+#shift + cmd - l 	     : chunkc tiling::window --warp east
 
 # Move Focused Windows through Screens and Spaces
-ctrl + cmd - h 			 : chunkc tiling::window --send-to-desktop prev
-ctrl + cmd - l 			 : chunkc tiling::window --send-to-desktop next
-ctrl + cmd - j  		 : chunkc tiling::window --send-to-monitor 1; chunkc monitor -f 1
-ctrl + cmd - k  		 : chunkc tiling::window --send-to-monitor 2; chunkc monitor -f 2
+#ctrl + cmd - h 			 : chunkc tiling::window --send-to-desktop prev
+#ctrl + cmd - l 			 : chunkc tiling::window --send-to-desktop next
+#ctrl + cmd - j  		 : chunkc tiling::window --send-to-monitor 1; chunkc monitor -f 1
+#ctrl + cmd - k  		 : chunkc tiling::window --send-to-monitor 2; chunkc monitor -f 2
 
 # float / unfloat window and center on screen
 lalt - t : chunkc tiling::window --toggle float;\
