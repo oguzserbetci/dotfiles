@@ -55,5 +55,9 @@
   (setq visual-line-mode t
         truncate-lines t
         auto-fill-mode nil
-        org-tags-column -40
-        ))
+        org-tags-column -40))
+
+
+
+(provide 'config)
+;;; config.el ends here
