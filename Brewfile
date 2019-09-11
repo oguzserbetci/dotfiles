@@ -37,7 +37,14 @@ brew "exercism"
 
 # Writing
 brew "proselint"
-brew "ispell"
+
+# Emacs
+cask "xquartz" # dependency for wordnet
+brew "wordnet"
+brew "languagetool"
+brew "fd"
+brew "shellcheck"
+brew "aspell"
 
 #######################
 
@@ -48,7 +55,7 @@ tap "caskroom/fonts"
 
 # Development
 tap "railwaycat/emacsmacport"
-cask "emacs-mac"
+brew emacs-plus --with-no-frame-refocus --without-spacemacs-icon
 cask "dash"
 cask "gitup"
 cask "kitty"

@@ -71,4 +71,6 @@ chunkc tiling::rule --owner Finder --name Info --state float
 chunkc tiling::rule --owner \"Keychain Access\" --state float
 chunkc tiling::rule --name \"PDF Metadata Retrieval\" --state float
 
-chunkc tiling::rule --owner Emacs --except "^$" --state tile
+chunkc tiling::rule --owner Emacs --subrole "AXStandardWindow" --except "^$" --state tile
+chunkc tiling::rule --owner Emacs --subrole "AXUnknown" --state float
+
