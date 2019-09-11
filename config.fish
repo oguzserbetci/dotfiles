@@ -19,6 +19,7 @@ bind \cj "commandline -f accept-autosuggestion execute"
 
 . $HOME/.alias
 
+# TODO export env variables with `fish -ic env`
 egrep "^export " ~/.profile | while read e
 	  set var (echo $e | sed -E "s/^export ([A-Za-z_]+)=(.*)\$/\1/")
 	  set value (echo $e | sed -E "s/^export ([A-Za-z_]+)=(.*)\$/\2/")
@@ -50,3 +51,5 @@ eval (/Users/oguzserbetci/.pyenv/versions/3.7.2/envs/tools/bin/python -m virtual
 set -U FZF_LEGACY_KEYBINDINGS 0
 
 kitty + complete setup fish | source
+
+#TODO Define env variables here

@@ -28,7 +28,6 @@ then
   dscl . -read /Users/$USER UserShell
   sudo sh -c "echo $(which fish) >> /etc/shells"
   chsh -s $(which fish)
-  tic "$DOTFILES_DIR/xterm-256color-italic.terminfo"
   curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
 fi
 
@@ -61,6 +60,8 @@ ln -svf $DOTFILES_DIR/git ~/.config
 ln -svf $DOTFILES_DIR/config.fish ~/.config/fish
 ln -svf $DOTFILES_DIR/zshrc ~/.zshrc
 ln -svf $DOTFILES_DIR/kitty ~/.config
+git clone --depth 1 git@github.com:dexpota/kitty-themes.git ~/.config/kitty/kitty-themes
+ln -s ~/.config/kitty/kitty-themes/themes/Dracula.conf ~/.config/kitty/theme.conf
 ln -svf $DOTFILES_DIR/eslintrc.json ~/.eslintrc.json
 
 ln -svf $DOTFILES_DIR/khdrc ~/.khdrc
