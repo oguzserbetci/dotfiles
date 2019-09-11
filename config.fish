@@ -51,5 +51,6 @@ eval (/Users/oguzserbetci/.pyenv/versions/3.7.2/envs/tools/bin/python -m virtual
 set -U FZF_LEGACY_KEYBINDINGS 0
 
 kitty + complete setup fish | source
+set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
 #TODO Define env variables here
