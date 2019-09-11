@@ -57,6 +57,38 @@
         auto-fill-mode nil
         org-tags-column -40))
 
+(defun oguz/timestamped-file ()
+  (interactive)
+  (let ((filename (expand-file-name (format "%s-%s.txt"
+                              (format-time-string "%Y-%m-%d")
+                              (read-string "Name: ")) "~/org/blog")))
+    (if (called-interactively-p)
+        (insert filename)
+      filename)))
+
+
+(after! org
+  (add-to-list 'org-capture-templates '("l" "Blog" plain (file (oguz/timestamped-file))
+          "hello")))
+
+(require 'ox-publish)
+(setq org-publish-project-alist
+    '(("org-notes"
+       :base-directory "~/org/blog"
+       :base-extension "org"
+       :publishing-directory "~/Workspace/oguzserbetci.github.io/_posts/"
+       :recursive t
+       :publishing-function org-html-publish-to-html
+       :headline-levels 4             ; Just the default for this project.
+       :auto-preamble t
+       )
+      ("org-static"
+       :base-directory "~/org/blog"
+       :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+       :publishing-directory "~/Workspace/oguzserbetci.github.io/assets/"
+       :recursive t
+       :publishing-function org-publish-attachment
+       )))
 
 
 (provide 'config)
