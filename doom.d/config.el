@@ -51,11 +51,11 @@
 )
 
 (setq org-directory "~/org")
-(add-hook! org-mode
-  (setq visual-line-mode t
-        truncate-lines t
-        auto-fill-mode nil
-        org-tags-column -40))
+
+; wrapping
+(setq visual-line-mode t
+      truncate-lines nil
+      auto-fill-mode nil)
 
 (defun oguz/timestamped-file ()
   (interactive)
