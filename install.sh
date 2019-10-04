@@ -53,28 +53,29 @@ echo 'run :PlugInstall in vim'
 fisher add jethrokuan/z matchai/spacefish jethrokuan/fzf fisherman/grc
 
 echo 'setup python: https://medium.com/@henriquebastos/the-definitive-guide-to-setup-my-python-workspace-628d68552e14 and install virtual fish: pip install virtualfish'
+echo 'install zotero plugins at: http://zotfile.com/ http://retorque.re/zotero-better-bibtex/'
 
 # Bunch of symlinks
 mkdir -p ~/.config
-ln -svf $DOTFILES_DIR/vim ~/.config/nvim
-ln -svf $DOTFILES_DIR/proselintrc ~/.proselintrc
-ln -svf $DOTFILES_DIR/bin ~/.bin
-ln -svf $DOTFILES_DIR/git ~/.config
-ln -svf $DOTFILES_DIR/config.fish ~/.config/fish
-ln -svf $DOTFILES_DIR/zshrc ~/.zshrc
-ln -svf $DOTFILES_DIR/kitty ~/.config
+ln -sf $DOTFILES_DIR/vim ~/.config/nvim
 ln -sf $DOTFILES_DIR/doom.d ~/.doom.d
+ln -sf $DOTFILES_DIR/proselintrc ~/.proselintrc
+ln -sf $DOTFILES_DIR/bin ~/.bin
+ln -sf $DOTFILES_DIR/git ~/.config
+ln -sf $DOTFILES_DIR/config.fish ~/.config/fish
+ln -sf $DOTFILES_DIR/zshrc ~/.zshrc
+ln -sf $DOTFILES_DIR/kitty ~/.config
 git clone --depth 1 git@github.com:dexpota/kitty-themes.git ~/.config/kitty/kitty-themes
-ln -s ~/.config/kitty/kitty-themes/themes/Dracula.conf ~/.config/kitty/theme.conf
-ln -svf $DOTFILES_DIR/eslintrc.json ~/.eslintrc.json
+ln -sf ~/.config/kitty/kitty-themes/themes/Dracula.conf ~/.config/kitty/theme.conf
+ln -sf $DOTFILES_DIR/eslintrc.json ~/.eslintrc.json
 
 ln -sf $DOTFILES_DIR/skhdrc ~/.skhdrc
 ln -sf $DOTFILES_DIR/yabairc ~/.yabairc
 
-ln -svf $DOTFILES_DIR/alias ~/.alias
-ln -svf $DOTFILES_DIR/flake8 ~/.config/flake8
-ln -svf $DOTFILES_DIR/functions ~/.functions
-ln -sfv $DOTFILES_DIR/profile ~/.profile
+ln -sf $DOTFILES_DIR/alias ~/.alias
+ln -sf $DOTFILES_DIR/flake8 ~/.config/flake8
+ln -sf $DOTFILES_DIR/functions ~/.functions
+ln -sf $DOTFILES_DIR/profile ~/.profile
 mkdir $HOME/.ctags.d
 ln -svf $DOTFILES_DIR/ctags $HOME/.ctags.d/default.ctags
 
