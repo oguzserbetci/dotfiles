@@ -26,8 +26,8 @@ brew "grc"
 
 # OSX
 tap "koekeishiya/formulae"
-brew "khd"
-brew "chunkwm"
+brew "skhd"
+brew "yabai"
 brew "contacts"
 
 # Services

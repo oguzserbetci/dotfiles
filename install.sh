@@ -18,8 +18,8 @@ fi
 brew bundle
 
 if [ "$(uname 2> /dev/null)" != "Linux" ]; then
-  brew services start khd
-  brew services start chunkwm
+  brew services start skhd
+  brew services start yabai
   sh $DOTFILES_DIR/osxdefaults.sh
 fi
 
@@ -64,8 +64,8 @@ git clone --depth 1 git@github.com:dexpota/kitty-themes.git ~/.config/kitty/kitt
 ln -s ~/.config/kitty/kitty-themes/themes/Dracula.conf ~/.config/kitty/theme.conf
 ln -svf $DOTFILES_DIR/eslintrc.json ~/.eslintrc.json
 
-ln -svf $DOTFILES_DIR/khdrc ~/.khdrc
-ln -svf $DOTFILES_DIR/chunkwmrc ~/.chunkwmrc
+ln -sf $DOTFILES_DIR/skhdrc ~/.skhdrc
+ln -sf $DOTFILES_DIR/yabairc ~/.yabairc
 
 ln -svf $DOTFILES_DIR/alias ~/.alias
 ln -svf $DOTFILES_DIR/flake8 ~/.config/flake8
