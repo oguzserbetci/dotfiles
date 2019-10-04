@@ -36,9 +36,14 @@ mkdir -p ~/.matplotlib
 echo 'backend:TkAgg' >> ~/.matplotlib/matplotlibrc
 
 # setup spacemacs
-rm ~/.emacs.d
-git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
-(cd ~/.emacs.d; git checkout develop; git pull --rebase)
+if test -f "~/.emacs.d/bin/doom";
+then 
+    echo "DOOM ALREADY INSTALLED"
+else
+    rm -fr ~/.emacs.d
+    git clone https://github.com/hlissner/doom-emacs.git ~/.emacs.d
+    (cd ~/.emacs.d; git checkout develop; git pull;./bin/doom install)
+fi
 
 # install vim plug
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
@@ -52,14 +57,13 @@ echo 'setup python: https://medium.com/@henriquebastos/the-definitive-guide-to-s
 # Bunch of symlinks
 mkdir -p ~/.config
 ln -svf $DOTFILES_DIR/vim ~/.config/nvim
-ln -svf $DOTFILES_DIR/spacemacs ~/.spacemacs
-ln -svf $DOTFILES_DIR/doom.d ~/.doom.d
 ln -svf $DOTFILES_DIR/proselintrc ~/.proselintrc
 ln -svf $DOTFILES_DIR/bin ~/.bin
 ln -svf $DOTFILES_DIR/git ~/.config
 ln -svf $DOTFILES_DIR/config.fish ~/.config/fish
 ln -svf $DOTFILES_DIR/zshrc ~/.zshrc
 ln -svf $DOTFILES_DIR/kitty ~/.config
+ln -sf $DOTFILES_DIR/doom.d ~/.doom.d
 git clone --depth 1 git@github.com:dexpota/kitty-themes.git ~/.config/kitty/kitty-themes
 ln -s ~/.config/kitty/kitty-themes/themes/Dracula.conf ~/.config/kitty/theme.conf
 ln -svf $DOTFILES_DIR/eslintrc.json ~/.eslintrc.json

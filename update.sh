@@ -11,7 +11,7 @@ echo 'updating fish shell'
 fisher
 fish_update_completions
 
-echo 'updating spacemacs'
-(cd ~/.emacs.d; git pull --rebase)
+echo 'updating emacs'
+(cd ~/.emacs.d; ./bin/doom up)
 
 exit 0
