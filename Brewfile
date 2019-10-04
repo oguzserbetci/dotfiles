@@ -3,8 +3,9 @@ brew "git"
 brew "git-extras"
 brew "neovim"
 brew "ctags"
-brew "--HEAD universal-ctags/universal-ctags/universal-ctags"
+brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 brew "curl"
+brew "npm"
 
 # Helpers
 brew "ledger"
@@ -41,7 +42,6 @@ brew "proselint"
 # Emacs
 cask "xquartz" # dependency for wordnet
 brew "wordnet"
-brew "languagetool"
 brew "fd"
 brew "shellcheck"
 brew "aspell"
@@ -54,18 +54,20 @@ tap "caskroom/versions"
 tap "caskroom/fonts"
 
 # Development
-tap "railwaycat/emacsmacport"
-brew emacs-plus --with-no-frame-refocus --without-spacemacs-icon
+tap "d12frosted/emacs-plus"
+brew "emacs-plus", args: ["with-no-frame-refocus", "without-spacemacs-icon"]
 cask "dash"
 cask "gitup"
 cask "kitty"
 cask "sublime-text"
 cask "font-fira-code"
+cask "java"
+brew "languagetool"
 
 cask "spotify"
 cask "soulseek"
 cask "google-chrome"
-cask "firefox"
+cask "firefox-beta"
 
 # Tools
 cask "skim"
