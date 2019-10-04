@@ -91,5 +91,9 @@
        )))
 
 
+(menu-bar-mode t)
+
+(server-start)
+
 (provide 'config)
 ;;; config.el ends here

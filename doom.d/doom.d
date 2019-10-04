@@ -1,0 +1,1 @@
+/Users/necipoguz/.dotfiles/doom.d
