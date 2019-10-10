@@ -8,6 +8,7 @@ brew "curl"
 brew "npm"
 
 # Helpers
+brew "wget"
 brew "ledger"
 brew "coreutils"
 brew "imagemagick"
