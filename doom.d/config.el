@@ -95,5 +95,8 @@
 
 (server-start)
 
+(setq magit-repository-directories '(("~/Workspace" . 2)
+                                     ("~/.dotfiles" . 0)))
+
 (provide 'config)
 ;;; config.el ends here
