@@ -52,11 +52,6 @@
 
 (setq org-directory "~/org")
 
-; wrapping
-(setq visual-line-mode t
-      truncate-lines nil
-      auto-fill-mode nil)
-
 (defun oguz/timestamped-file ()
   (interactive)
   (let ((filename (expand-file-name (format "%s-%s.txt"
@@ -97,6 +92,13 @@
 
 (setq magit-repository-directories '(("~/Workspace" . 2)
                                      ("~/.dotfiles" . 0)))
+
+(add-hook! '(text-mode-hook
+             org-mode-hook
+             org-capture-mode-hook
+             elisp-mode-hook
+             python-mode-hook)
+           +word-wrap-mode)
 
 (provide 'config)
 ;;; config.el ends here
