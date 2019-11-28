@@ -1,6 +1,5 @@
 ;;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
 
-(add-to-list 'exec-path "~/.pyenv/shims")
 (setq frame-resize-pixelwise t)
 
 (load-theme 'doom-dracula t)
@@ -14,9 +13,6 @@
         insert-directory-program "/usr/local/bin/gls"
         dired-listing-switches "-aBhl --group-directories-first"))
 
-;; deft
-(setq deft-extensions '("org"))
-(setq deft-directory "~/org")
 
 (def-package! org-ref
     :after org
@@ -33,7 +29,6 @@
 (def-package! org-brain
     :after org
     :init
-    ; code to run before loading org-ref
     (setq org-brain-path "~/org/brain")
     ;; For Evil users
     (with-eval-after-load 'evil
@@ -61,7 +56,6 @@
         (insert filename)
       filename)))
 
-
 (after! org
   (add-to-list 'org-capture-templates '("l" "Blog" plain (file (oguz/timestamped-file))
           "hello")))
@@ -85,10 +79,6 @@
        :publishing-function org-publish-attachment
        )))
 
-
-(menu-bar-mode t)
-
-(server-start)
 
 (setq magit-repository-directories '(("~/Workspace" . 2)
                                      ("~/.dotfiles" . 0)))
