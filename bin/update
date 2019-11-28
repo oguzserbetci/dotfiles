@@ -12,6 +12,6 @@ fisher
 fish_update_completions
 
 echo 'updating emacs'
-(cd ~/.emacs.d; ./bin/doom up)
+cd ~/.emacs.d; ./bin/doom up
 
 exit 0

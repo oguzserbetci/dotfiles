@@ -31,9 +31,6 @@ brew "skhd"
 brew "yabai"
 brew "contacts"
 
-# Services
-brew "awscli"
-
 # Learning Tools
 brew "exercism"
 
@@ -72,6 +69,7 @@ cask "firefox-beta"
 
 # Tools
 cask "skim"
+cask "anki"
 cask "numi"
 cask "omnidisksweeper"
 cask "alfred"
@@ -79,7 +77,6 @@ cask "contexts"
 cask "appcleaner"
 cask "zotero"
 cask "dropbox"
-cask "google-backup-and-sync"
 
 # Create
 cask "mactex"
