@@ -1,5 +1,11 @@
 ;;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
 
+;; UI
+(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+(add-to-list 'default-frame-alist '(ns-appearance . dark))
+(setq ns-auto-hide-menu-bar t)
+(setq ns-toggle-toolbar nil)
+
 (setq frame-resize-pixelwise t)
 
 (load-theme 'doom-dracula t)
@@ -89,6 +95,8 @@
              elisp-mode-hook
              python-mode-hook)
            +word-wrap-mode)
+
+(setq +latex-viewers '(skim))
 
 (provide 'config)
 ;;; config.el ends here
