@@ -19,6 +19,12 @@
         insert-directory-program "/usr/local/bin/gls"
         dired-listing-switches "-aBhl --group-directories-first"))
 
+; LAYER CONFIG
+;; :tools
+;; ein
+(map! :map ein:notebook-mode-map
+      :localleader
+      "," #'+ein/hydra/body)
 
 ;; org-mode setup
 (setq org-directory "~/org")
