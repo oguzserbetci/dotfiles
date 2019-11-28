@@ -20,16 +20,27 @@
         dired-listing-switches "-aBhl --group-directories-first"))
 
 
+;; org-mode setup
+(setq org-directory "~/org")
 (def-package! org-ref
     :after org
     :init
-    ; code to run before loading org-ref
     :config
-    (setq reftex-default-bibliography '("~/Resources/Papers/Library.bib"))
     (setq org-ref-bibliography-notes "~/org/papers.org"
           org-ref-default-bibliography '("~/Resources/Papers/Library.bib")
           org-ref-pdf-directory "~/Resources/Papers/")
-    ; code to run after loading org-ref
+
+    (setq org-latex-pdf-process (list "latexmk -shell-escape -bibtex -f -pdf %f"))
+
+    (setq bibtex-completion-bibliography "~/Resources/Papers/Library.bib"
+          bibtex-completion-library-path "~/Resources/Papers/"
+          bibtex-completion-notes-path "~/org/papers.org")
+
+
+    ;; open pdf with system pdf viewer (works on mac)
+    (setq bibtex-completion-pdf-open-function
+      (lambda (fpath)
+        (start-process "open" "*open*" "open" fpath)))
     )
 
 (def-package! org-brain
@@ -50,8 +61,6 @@
     (setq org-brain-include-file-entries nil
           org-brain-file-entries-use-title nil)
 )
-
-(setq org-directory "~/org")
 
 (defun oguz/timestamped-file ()
   (interactive)
