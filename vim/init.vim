@@ -20,7 +20,7 @@
     "autocmd CompleteDone * silent! pclose!
     Plug 'zchee/deoplete-jedi'
     let g:deoplete#sources#jedi#show_docstring=1
-    let g:deoplete#sources#jedi#python_path=$HOME . '/.pyenv/versions/neovim3/bin/python'
+    let g:deoplete#sources#jedi#python_path=$HOME . '/.pyenv/.shims/python'
     Plug 'shougo/neco-vim'
     Plug 'wellle/tmux-complete.vim'
 
