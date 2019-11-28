@@ -54,6 +54,7 @@
        ;;parinfer          ; turn lisp into python, sort of
        rotate-text       ; cycle region at point between text candidates
        snippets          ; my elves. They type so I don't have to
+       word-wrap
 
        :emacs
        dired             ; making dired pretty [functional]
@@ -71,7 +72,7 @@
        debugger          ; FIXME stepping through code, to help you add bugs
        ;;direnv
        ;;docker
-       ;;editorconfig      ; let someone else argue about tabs vs spaces
+       editorconfig      ; let someone else argue about tabs vs spaces
        ein               ; tame Jupyter notebooks with emacs
        eval              ; run code, run (also, repls)
        flycheck          ; tasing you for every semicolon you forget
@@ -125,9 +126,11 @@
        ;;nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
        (org              ; organize your plain life in plain text
+        +pomodoro
         +dragndrop       ; file drag & drop support
         +ipython         ; ipython support for babel
         +pandoc          ; pandoc integration into org's exporter
+        +journal
         +present)        ; using Emacs for presentations
        ;;perl              ; write code no one else can comprehend
        ;;php               ; perl's insecure younger brother
@@ -165,9 +168,9 @@
        ;;irc               ; how neckbeards socialize
        ;;(rss +org)        ; emacs as an RSS reader
        ;;twitter           ; twitter client https://twitter.com/vnought
-       (write            ; emacs for writers (fiction, notes, papers, etc.)
-        +wordnut         ; wordnet (wn) search
-        +langtool)       ; a proofreader (grammar/style check) for Emacs
+       ;; (write            ; emacs for writers (fiction, notes, papers, etc.)
+       ;;  +wordnut         ; wordnet (wn) search
+       ;;  +langtool)       ; a proofreader (grammar/style check) for Emacs
 
        :config
        ;; For literate config users. This will tangle+compile a config.org

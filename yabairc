@@ -4,18 +4,20 @@
 yabai -m config status_bar                   off
 
 # global settings
+yabai -m config focus_follows_mouse          autofocus # autoraise
 yabai -m config mouse_follows_focus          on
-yabai -m config focus_follows_mouse          autoraise
 yabai -m config window_placement             second_child
 yabai -m config window_topmost               off
 yabai -m config window_opacity               off
 yabai -m config window_opacity_duration      0.0
 yabai -m config window_shadow                off
-yabai -m config window_border                off
-yabai -m config window_border_width          0
-yabai -m config active_window_border_color   0xff775759
-yabai -m config normal_window_border_color   0xff505050
-yabai -m config insert_window_border_color   0xffd75f5f
+yabai -m config window_border                on
+yabai -m config window_border_width          2
+yabai -m config window_border_radius         5
+yabai -m config window_border_placement      inset
+yabai -m config active_window_border_color   0xffff375f
+yabai -m config normal_window_border_color   0xff1e1f28
+yabai -m config insert_window_border_color   0xffffd60a
 yabai -m config active_window_opacity        1.0
 yabai -m config normal_window_opacity        0.50
 yabai -m config split_ratio                  0.50
@@ -26,7 +28,7 @@ yabai -m config mouse_action2                resize
 
 # general space settings
 yabai -m config layout                       bsp
-yabai -m config top_padding                  10
+yabai -m config top_padding                  20
 yabai -m config bottom_padding               10
 yabai -m config left_padding                 10
 yabai -m config right_padding                10
@@ -39,9 +41,19 @@ yabai -m rule --add app=Zotero sticky=on
 yabai -m rule --add app=Zotero title="Zotero" manage=on
 yabai -m rule --add app="^System Preferences$" sticky=on
 
-yabai -m rule --add app=Mail display=1 space=1
-yabai -m rule --add app=Messages display=1 space=1
-yabai -m rule --add app=Signal display=1 space=1
-yabai -m rule --add app=Calendar display=1 space=1
+yabai -m space 1 --label chat
+yabai -m space 2 --label dev
+yabai -m space 3 --label dev
+yabai -m space 4 --label dev
+yabai -m space 5 --label music
+
+yabai -m rule --add app=Mail space=^1
+yabai -m rule --add app=Messages space=^1
+yabai -m rule --add app=Signal space=^1
+yabai -m rule --add app=Calendar space=^1
+yabai -m rule --add app=Spotify space=^5
+yabai -m rule --add app=Music space=^5
+
+# TODO signal uebersicht
 
 echo "yabai configuration loaded.."

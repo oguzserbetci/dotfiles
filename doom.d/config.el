@@ -1,6 +1,11 @@
 ;;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
 
-(add-to-list 'exec-path "~/.pyenv/shims")
+;; UI
+(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+(add-to-list 'default-frame-alist '(ns-appearance . dark))
+(setq ns-auto-hide-menu-bar t)
+(setq ns-toggle-toolbar nil)
+
 (setq frame-resize-pixelwise t)
 
 (load-theme 'doom-dracula t)
@@ -14,26 +19,39 @@
         insert-directory-program "/usr/local/bin/gls"
         dired-listing-switches "-aBhl --group-directories-first"))
 
-;; deft
-(setq deft-extensions '("org"))
-(setq deft-directory "~/org")
+; LAYER CONFIG
+;; :tools
+;; ein
+(map! :map ein:notebook-mode-map
+      :localleader
+      "," #'+ein/hydra/body)
 
+;; org-mode setup
+(setq org-directory "~/org")
 (def-package! org-ref
     :after org
     :init
-    ; code to run before loading org-ref
     :config
-    (setq reftex-default-bibliography '("~/Resources/Papers/Library.bib"))
     (setq org-ref-bibliography-notes "~/org/papers.org"
           org-ref-default-bibliography '("~/Resources/Papers/Library.bib")
           org-ref-pdf-directory "~/Resources/Papers/")
-    ; code to run after loading org-ref
+
+    (setq org-latex-pdf-process (list "latexmk -shell-escape -bibtex -f -pdf %f"))
+
+    (setq bibtex-completion-bibliography "~/Resources/Papers/Library.bib"
+          bibtex-completion-library-path "~/Resources/Papers/"
+          bibtex-completion-notes-path "~/org/papers.org")
+
+
+    ;; open pdf with system pdf viewer (works on mac)
+    (setq bibtex-completion-pdf-open-function
+      (lambda (fpath)
+        (start-process "open" "*open*" "open" fpath)))
     )
 
 (def-package! org-brain
     :after org
     :init
-    ; code to run before loading org-ref
     (setq org-brain-path "~/org/brain")
     ;; For Evil users
     (with-eval-after-load 'evil
@@ -50,13 +68,6 @@
           org-brain-file-entries-use-title nil)
 )
 
-(setq org-directory "~/org")
-
-; wrapping
-(setq visual-line-mode t
-      truncate-lines nil
-      auto-fill-mode nil)
-
 (defun oguz/timestamped-file ()
   (interactive)
   (let ((filename (expand-file-name (format "%s-%s.txt"
@@ -65,7 +76,6 @@
     (if (called-interactively-p)
         (insert filename)
       filename)))
-
 
 (after! org
   (add-to-list 'org-capture-templates '("l" "Blog" plain (file (oguz/timestamped-file))
@@ -91,9 +101,17 @@
        )))
 
 
-(menu-bar-mode t)
+(setq magit-repository-directories '(("~/Workspace" . 2)
+                                     ("~/.dotfiles" . 0)))
 
-(server-start)
+(add-hook! '(text-mode-hook
+             org-mode-hook
+             org-capture-mode-hook
+             elisp-mode-hook
+             python-mode-hook)
+           +word-wrap-mode)
+
+(setq +latex-viewers '(skim))
 
 (provide 'config)
 ;;; config.el ends here
