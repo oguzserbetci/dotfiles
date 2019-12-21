@@ -1,14 +1,11 @@
 ;;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
 
 ;; UI
-(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
-(add-to-list 'default-frame-alist '(ns-appearance . dark))
-(setq ns-auto-hide-menu-bar t)
-(setq ns-toggle-toolbar nil)
-
 (setq frame-resize-pixelwise t)
 
-(load-theme 'doom-dracula t)
+(fset 'battery-update #'ignore)
+
+(load-theme 'doom-opera t)
 
 ;; Corrects (and improves) org-mode's native fontification.
 (doom-themes-org-config)
@@ -28,28 +25,35 @@
 
 ;; org-mode setup
 (setq org-directory "~/org")
-(def-package! org-ref
+(use-package! org-ref
     :after org
     :init
     :config
     (setq org-ref-bibliography-notes "~/org/papers.org"
-          org-ref-default-bibliography '("~/Resources/Papers/Library.bib")
-          org-ref-pdf-directory "~/Resources/Papers/")
+          org-ref-default-bibliography '("/home/oguz/Resources/Papers/Library.bib")
+          org-ref-pdf-directory "/home/oguz/Resources/Papers/")
 
     (setq org-latex-pdf-process (list "latexmk -shell-escape -bibtex -f -pdf %f"))
 
-    (setq bibtex-completion-bibliography "~/Resources/Papers/Library.bib"
-          bibtex-completion-library-path "~/Resources/Papers/"
+    (setq bibtex-completion-bibliography "/home/oguz/Resources/Papers/Library.bib"
+          bibtex-completion-library-path "/home/oguz/Resources/Papers/"
           bibtex-completion-notes-path "~/org/papers.org")
+
+    (push '("IEEE Transactions on Visualization and Computer Graphics" "T-VCG") org-ref-bibtex-journal-abbreviations)
+    (setq bibtex-dialect 'biblatex
+          org-latex-pdf-process '("latexmk -shell-escape -bibtex -pdf %f"))
+
+    (key-chord-define-global "kk" 'org-ref-cite-hydra/body)
 
 
     ;; open pdf with system pdf viewer (works on mac)
     (setq bibtex-completion-pdf-open-function
       (lambda (fpath)
         (start-process "open" "*open*" "open" fpath)))
-    )
+  )
 
-(def-package! org-brain
+
+(use-package! org-brain
     :after org
     :init
     (setq org-brain-path "~/org/brain")
@@ -76,6 +80,16 @@
     (if (called-interactively-p)
         (insert filename)
       filename)))
+
+(after! pdf-tools
+  (setq pdf-annot-list-highlight-type t)
+  ;; (push '("f1fa8c" "ffb86c" "#50fa7b" "ff5555" "#8be9fd" "bd93f9" "ff79c6") pdf-annot-color-history)
+    ;; https://github.com/politza/pdf-tools/issues/35
+  ;; (push '(color . "#000000") pdf-annot-default-markup-annotation-properties)
+  )
+
+(use-package! org-pdftools
+  :config (setq org-pdftools-root-dir "~/Resources/Papers"))
 
 (after! org
   (add-to-list 'org-capture-templates '("l" "Blog" plain (file (oguz/timestamped-file))
