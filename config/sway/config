@@ -1,6 +1,6 @@
 ### Variables
-#
-set $mod Mod4  # Logo key
+# Logo key
+set $mod Mod4
 
 # Workspaces
 set $ws1 1:chat
