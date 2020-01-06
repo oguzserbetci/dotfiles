@@ -5,10 +5,16 @@
 (add-to-list 'default-frame-alist '(ns-appearance . dark))
 (setq ns-auto-hide-menu-bar t)
 (setq ns-toggle-toolbar nil)
+(setq ns-right-alternate-modifier 'none)
 
 (setq frame-resize-pixelwise t)
 
 (load-theme 'doom-dracula t)
+
+(setq doom-font (font-spec :family "Fira Code" :size 14 :weight 'semi-light)
+      doom-variable-pitch-font (font-spec :family "Fira Sans") ; inherits `doom-font''s :size
+      doom-unicode-font (font-spec :family "Fira Code" :size 12)
+      doom-big-font (font-spec :family "Fira Code" :size 19))
 
 ;; Corrects (and improves) org-mode's native fontification.
 (doom-themes-org-config)
