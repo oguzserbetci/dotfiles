@@ -58,7 +58,7 @@ cask "dash"
 cask "gitup"
 cask "kitty"
 cask "sublime-text"
-cask "font-fira-code"
+cask "font-firacode-nerd-font"
 cask "java"
 brew "languagetool"
 
