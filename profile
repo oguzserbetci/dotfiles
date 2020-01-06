@@ -6,4 +6,16 @@ export GTAGSLABEL=pygments
 export PATH=/usr/local/opt/ruby/bin:$HOME/.gem/ruby/2.6.0/bin:/usr/local/bin:/usr/sbin:/sbin:/Library/TeX/texbin:$HOME/.dotfiles/tex:$HOME/.bin:$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH
 export PATH=/Applications/kitty.app/Contents/MacOS:$PATH
 export PATH=~/.emacs.d/bin:$PATH
+export PATH=~/.local/bin:$PATH
+# export PATH=/usr/sbin:$PATH
 export EDITOR=emacs
+export TERMINAL=kitty
+# export QT_QPA_PLATFORM=wayland-egl
+export QT_QPA_PLATFORM=xcb
+export MOZ_ENABLE_WAYLAND=1
+export BEMENU_BACKEND=wayland
+# GTK applications set wayland if it's supported well: https://www.reddit.com/r/swaywm/comments/bsx0lk/gtk_cannot_open_display/eotvn9a?utm_source=share&utm_medium=web2x
+# export GDK_BACKEND=wayland
+export CLUTTER_BACKEND=wayland
+export XDG_CURRENT_DESKTOP=Unity
+export VISUAL=emacsclient

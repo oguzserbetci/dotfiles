@@ -1,8 +1,10 @@
 ;; -*- no-byte-compile: t; -*-
 ;;; ~/.doom.d/packages.el
 
-;;; Examples:
 (package! org-brain)
 (package! org-ref)
-;; (package! another-package :recipe (:fetcher github :repo "username/repo"))
+(package! org-noter)
+(package! org-pdftools :recipe (:host github :repo "fuxialexander/org-pdftools"))
+
+;;; Examples:
 ;; (package! builtin-package :disable t)

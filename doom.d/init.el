@@ -57,7 +57,9 @@
        word-wrap
 
        :emacs
-       dired             ; making dired pretty [functional]
+       (dired             ; making dired pretty [functional]
+        +ranger
+        )
        electric          ; smarter, keyword-based electric-indent
        vc                ; version-control and Emacs, sitting in a tree
 
@@ -81,13 +83,13 @@
        (lookup           ; helps you navigate your code and documentation
         +docsets)        ; ...or in Dash docsets locally
        lsp
-       macos             ; MacOS-specific commands
+       ;;macos             ; MacOS-specific commands
        magit             ; a git porcelain for Emacs
        ;;make              ; run make tasks from Emacs
        ;;pass              ; password manager for nerds
        pdf               ; pdf enhancements
        ;;prodigy           ; FIXME managing external services & code builders
-       ;;rgb               ; creating color strings
+       rgb               ; creating color strings
        ;;terraform         ; infrastructure as code
        tmux              ; an API for interacting with tmux
        ;;upload            ; map local to remote projects via ssh/ftp
@@ -181,3 +183,20 @@
        ;; provides a Spacemacs-inspired keybinding scheme and a smartparens
        ;; config. Use it as a reference for your own modules.
        (default +bindings +smartparens))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("9d54f3a9cf99c3ffb6ac8e84a89e8ed9b8008286a81ef1dbd48d24ec84efb2f1" "de43de35da390617a5b3e39b6b27c107cc51271eb95cceb1f43d13d9647c911d" default)))
+ '(org-agenda-files
+   (quote
+    ("/home/oguz/org/master.org" "/home/oguz/org/ML2.org" "/home/oguz/org/MLL.org" "/home/oguz/org/RAUM.org" "/home/oguz/org/art.org" "/home/oguz/org/blank.org" "/home/oguz/org/blog.org" "/home/oguz/org/cheatsheet.org" "/home/oguz/org/climate.org" "/home/oguz/org/computing.org" "/home/oguz/org/config.org" "/home/oguz/org/cook.org" "/home/oguz/org/culture.org" "/home/oguz/org/diary.org" "/home/oguz/org/hackathons.org" "/home/oguz/org/hci.org" "/home/oguz/org/history.org" "/home/oguz/org/home.org" "/home/oguz/org/home_bak.org" "/home/oguz/org/inbox.org" "/home/oguz/org/index.org" "/home/oguz/org/knowledge.org" "/home/oguz/org/life.org" "/home/oguz/org/lisp.org" "/home/oguz/org/m_thesis.org" "/home/oguz/org/machinelearning.org" "/home/oguz/org/math.org" "/home/oguz/org/me.org" "/home/oguz/org/ml.org" "/home/oguz/org/notes.org" "/home/oguz/org/notes.org:Inbox.org" "/home/oguz/org/organization.org" "/home/oguz/org/papers.org" "/home/oguz/org/rasa.org" "/home/oguz/org/refile.org" "/home/oguz/org/searchwing.org" "/home/oguz/org/skills.org" "/home/oguz/org/todo.org" "/home/oguz/org/tools.org" "/home/oguz/org/valencia.org" "/home/oguz/org/work.org"))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

@@ -9,7 +9,9 @@
 
 (setq frame-resize-pixelwise t)
 
-(load-theme 'doom-dracula t)
+(fset 'battery-update #'ignore)
+
+(load-theme 'doom-opera t)
 
 (setq doom-font (font-spec :family "Fira Code" :size 14 :weight 'semi-light)
       doom-variable-pitch-font (font-spec :family "Fira Sans") ; inherits `doom-font''s :size
@@ -48,12 +50,18 @@
           bibtex-completion-library-path "~/Resources/Papers/"
           bibtex-completion-notes-path (concat org-directory "/papers.org"))
 
+    (push '("IEEE Transactions on Visualization and Computer Graphics" "T-VCG") org-ref-bibtex-journal-abbreviations)
+    (setq bibtex-dialect 'biblatex
+          org-latex-pdf-process '("latexmk -shell-escape -bibtex -pdf %f"))
+
+    (key-chord-define-global "kk" 'org-ref-cite-hydra/body)
+
 
     ;; open pdf with system pdf viewer (works on mac)
     (setq bibtex-completion-pdf-open-function
       (lambda (fpath)
         (start-process "open" "*open*" "open" fpath)))
-    )
+  )
 
 (use-package! org-brain
     :after org
@@ -82,6 +90,16 @@
     (if (called-interactively-p)
         (insert filename)
       filename)))
+
+(after! pdf-tools
+  (setq pdf-annot-list-highlight-type t)
+  ;; (push '("f1fa8c" "ffb86c" "#50fa7b" "ff5555" "#8be9fd" "bd93f9" "ff79c6") pdf-annot-color-history)
+    ;; https://github.com/politza/pdf-tools/issues/35
+  ;; (push '(color . "#000000") pdf-annot-default-markup-annotation-properties)
+  )
+
+(use-package! org-pdftools
+  :config (setq org-pdftools-root-dir "~/Resources/Papers"))
 
 (after! org
   (add-to-list 'org-capture-templates '("l" "Blog" plain (file (oguz/timestamped-file))

@@ -1,0 +1,104 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Fira Code";
+    font-size: 12px;
+    min-height: 1em;
+    /* text-shadow: 1px 1px 2px #282a36; */
+    text-shadow: 0px 1px 3px #44475a;
+}
+
+window#waybar {
+    background: transparent;
+    color: #f8f8f2;
+}
+
+#window {
+    font-weight: bold;
+    font-family: "Fira Code";
+}
+/*
+#workspaces {
+    padding: 0 5px;
+}
+*/
+
+#workspaces button {
+    padding: 0 0em;
+    margin: 0.2em 0.5em;
+    background: transparent;
+    color: #f8f8f2;
+    border-bottom: 3px solid transparent;
+}
+
+#workspaces button.focused {
+    color: #f8f8f2;
+    border-bottom: 2px solid #f8f8f2;
+}
+
+#mode {
+    margin-left: 5em;
+    color: #ff79c6;
+    font-weight: bold;
+}
+
+#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode {
+    padding: 0 3px;
+    margin: 0 2px;
+}
+
+#clock {
+    font-weight: bold;
+}
+
+#battery {
+}
+
+#battery icon {
+    color: #ff5555;
+}
+
+#battery.charging {
+}
+
+@keyframes blink {
+    to {
+        background-color: #f8f8f2;
+        color: #282a36;
+    }
+}
+
+#battery.warning:not(.charging) {
+    color: #f8f8f2;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#cpu {
+}
+
+#memory {
+}
+
+#network {
+}
+
+#network.disconnected {
+    background: #f53c3c;
+}
+
+#pulseaudio {
+}
+
+#pulseaudio.muted {
+}
+
+#custom-spotify {
+    color: rgb(102, 220, 105);
+}
+
+#tray {
+}

@@ -1,21 +1,11 @@
-switch (uname)
-case Linux
-  set -x PATH $HOME/.linuxbrew/bin $PATH
-  set -x MANPATH $HOME/.linuxbrew/share/man $MANPATH
-  set -x INFOPATH $HOME/.linuxbrew/share/info $INFOPATH
-end
-
 # GENERAL
 set -x LC_ALL en_US.UTF-8
 set -x LANG en_US.UTF-8 LANGUAGE=en.UTF-8
 set -x HOMEBREW_CASK_OPTS '--appdir=/Applications --fontdir=/Library/Fonts'
 
 set PROMPT_TITLE 'echo -ne "\033]0;$USER@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
+
 set -x PROMPT_COMMAND "$PROMPT_TITLE; $PROMPT_COMMAND"
-
-test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
-
-bind \cj "commandline -f accept-autosuggestion execute"
 
 . $HOME/.alias
 
@@ -52,4 +42,5 @@ set -U FZF_LEGACY_KEYBINDINGS 0
 kitty + complete setup fish | source
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
-#TODO Define env variables here
+set -g GTK_DEBUG interactive waybar
+# TODO Define env variables here

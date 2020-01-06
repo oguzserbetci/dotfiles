@@ -57,27 +57,22 @@ echo 'install zotero plugins at: http://zotfile.com/ http://retorque.re/zotero-b
 
 # Bunch of symlinks
 mkdir -p ~/.config
-ln -sf $DOTFILES_DIR/vim ~/.config/nvim
+ln -sf $DOTFILES_DIR/config/* ~/.config/
 ln -sf $DOTFILES_DIR/doom.d ~/.doom.d
-ln -sf $DOTFILES_DIR/proselintrc ~/.proselintrc
 ln -sf $DOTFILES_DIR/bin ~/.bin
-ln -sf $DOTFILES_DIR/git ~/.config
-ln -sf $DOTFILES_DIR/config.fish ~/.config/fish
 ln -sf $DOTFILES_DIR/zshrc ~/.zshrc
-ln -sf $DOTFILES_DIR/kitty ~/.config
 git clone --depth 1 git@github.com:dexpota/kitty-themes.git ~/.config/kitty/kitty-themes
 ln -sf ~/.config/kitty/kitty-themes/themes/Dracula.conf ~/.config/kitty/theme.conf
-ln -sf $DOTFILES_DIR/eslintrc.json ~/.eslintrc.json
 
 ln -sf $DOTFILES_DIR/skhdrc ~/.skhdrc
 ln -sf $DOTFILES_DIR/yabairc ~/.yabairc
 
+ln -sf $DOTFILES_DIR/proselintrc ~/.proselintrc
+ln -sf $DOTFILES_DIR/pylintrc ~/.pylintrc
+
 ln -sf $DOTFILES_DIR/alias ~/.alias
-ln -sf $DOTFILES_DIR/flake8 ~/.config/flake8
 ln -sf $DOTFILES_DIR/functions ~/.functions
 ln -sf $DOTFILES_DIR/profile ~/.profile
-mkdir $HOME/.ctags.d
-ln -svf $DOTFILES_DIR/ctags $HOME/.ctags.d/default.ctags
+ln -svf $DOTFILES_DIR/ctags.d $HOME/.ctags.d
 
 echo 'setup org notes by syncing dropbox and running ln -svf ~/Dropbox/org ~'
-ln -svf .dotfiles/pylintrc ~/.pylintrc
