@@ -28,11 +28,11 @@
 
 ;; org-mode setup
 (setq org-directory "~/org")
-(def-package! org-ref
+(use-package! org-ref
     :after org
     :init
     :config
-    (setq org-ref-bibliography-notes "~/org/papers.org"
+    (setq org-ref-bibliography-notes (concat org-directory "/papers.org")
           org-ref-default-bibliography '("~/Resources/Papers/Library.bib")
           org-ref-pdf-directory "~/Resources/Papers/")
 
@@ -40,7 +40,7 @@
 
     (setq bibtex-completion-bibliography "~/Resources/Papers/Library.bib"
           bibtex-completion-library-path "~/Resources/Papers/"
-          bibtex-completion-notes-path "~/org/papers.org")
+          bibtex-completion-notes-path (concat org-directory "/papers.org"))
 
 
     ;; open pdf with system pdf viewer (works on mac)
@@ -49,16 +49,16 @@
         (start-process "open" "*open*" "open" fpath)))
     )
 
-(def-package! org-brain
+(use-package! org-brain
     :after org
     :init
-    (setq org-brain-path "~/org/brain")
+    (setq org-brain-path (concat org-directory "/brain"))
     ;; For Evil users
     (with-eval-after-load 'evil
       (evil-set-initial-state 'org-brain-visualize-mode 'emacs))
     :config
     (setq org-id-track-globally t)
-    (setq org-id-locations-file "~/.emacs.d/.org-id-locations")
+    (setq org-id-locations-file (concat org-directory "/.org-id-locations"))
     (push '("b" "Brain" plain (function org-brain-goto-end)
             "* %i%?" :empty-lines 1)
           org-capture-templates)
@@ -84,7 +84,7 @@
 (require 'ox-publish)
 (setq org-publish-project-alist
     '(("org-notes"
-       :base-directory "~/org/blog"
+       :base-directory (concat org-directory "/blog")
        :base-extension "org"
        :publishing-directory "~/Workspace/oguzserbetci.github.io/_posts/"
        :recursive t
@@ -93,7 +93,7 @@
        :auto-preamble t
        )
       ("org-static"
-       :base-directory "~/org/blog"
+       :base-directory (concat org-directory "/blog")
        :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
        :publishing-directory "~/Workspace/oguzserbetci.github.io/assets/"
        :recursive t
