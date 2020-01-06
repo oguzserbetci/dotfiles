@@ -12,9 +12,9 @@ yabai -m config window_opacity               off
 yabai -m config window_opacity_duration      0.0
 yabai -m config window_shadow                off
 yabai -m config window_border                on
-yabai -m config window_border_width          2
+yabai -m config window_border_width          1
 yabai -m config window_border_radius         5
-yabai -m config window_border_placement      inset
+yabai -m config window_border_placement      offset
 yabai -m config active_window_border_color   0xffff375f
 yabai -m config normal_window_border_color   0xff1e1f28
 yabai -m config insert_window_border_color   0xffffd60a
