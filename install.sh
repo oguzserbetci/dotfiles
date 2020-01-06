@@ -36,13 +36,13 @@ mkdir -p ~/.matplotlib
 echo 'backend:TkAgg' >> ~/.matplotlib/matplotlibrc
 
 # setup spacemacs
-if test -f "~/.emacs.d/bin/doom";
+if test -f "~/.config/emacs/bin/doom";
 then 
     echo "DOOM ALREADY INSTALLED"
 else
-    rm -fr ~/.emacs.d
-    git clone https://github.com/hlissner/doom-emacs.git ~/.emacs.d
-    (cd ~/.emacs.d; git checkout develop; git pull;./bin/doom install)
+    rm -fr ~/.config/emacs
+    git clone https://github.com/hlissner/doom-emacs.git ~/.config/emacs
+    (cd ~/.config/emacs; git checkout develop; git pull;./bin/doom install)
 fi
 
 # install vim plug
@@ -58,7 +58,6 @@ echo 'install zotero plugins at: http://zotfile.com/ http://retorque.re/zotero-b
 # Bunch of symlinks
 mkdir -p ~/.config
 ln -sf $DOTFILES_DIR/config/* ~/.config/
-ln -sf $DOTFILES_DIR/doom.d ~/.doom.d
 ln -sf $DOTFILES_DIR/bin ~/.bin
 ln -sf $DOTFILES_DIR/zshrc ~/.zshrc
 git clone --depth 1 git@github.com:dexpota/kitty-themes.git ~/.config/kitty/kitty-themes
