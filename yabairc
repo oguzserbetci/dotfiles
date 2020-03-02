@@ -47,8 +47,11 @@ yabai -m rule --add app=Mail space=^1
 yabai -m rule --add app=Messages space=^1
 yabai -m rule --add app=Signal space=^1
 yabai -m rule --add app=Calendar space=^1
-yabai -m rule --add app=Spotify space=^2
-yabai -m rule --add app=Music space=^2
+yabai -m rule --add app=Firefox space=^2
+yabai -m rule --add app=Safari space=^2
+yabai -m rule --add app=Spotify space=^3
+yabai -m rule --add app=Music space=^3
+yabai -m rule --add app=Emacs space=^4
 
 # TODO signal uebersicht
 
