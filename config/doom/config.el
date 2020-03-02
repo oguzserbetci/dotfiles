@@ -11,12 +11,14 @@
 
 (fset 'battery-update #'ignore)
 
-(load-theme 'doom-opera t)
+; (load-theme 'doom-dracula t)
 
-(setq doom-font (font-spec :family "Fira Code" :size 14 :weight 'semi-light)
+(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
       doom-variable-pitch-font (font-spec :family "Fira Sans") ; inherits `doom-font''s :size
       doom-unicode-font (font-spec :family "Fira Code" :size 12)
       doom-big-font (font-spec :family "Fira Code" :size 19))
+
+(setq org-ellipsis " ↩")
 
 ;; Corrects (and improves) org-mode's native fontification.
 (doom-themes-org-config)
@@ -33,9 +35,8 @@
 (map! :map ein:notebook-mode-map
       :localleader
       "," #'+ein/hydra/body)
+;; (setq ein:console-args '("--simple-prompt" "--ssh" "jupyter-remote"))
 
-;; org-mode setup
-(setq org-directory "~/org")
 (use-package! org-ref
     :after org
     :init
@@ -62,6 +63,19 @@
       (lambda (fpath)
         (start-process "open" "*open*" "open" fpath)))
   )
+
+(use-package! org-roam
+      :after org
+      :hook
+      (after-init . org-roam-mode)
+      :custom
+      (org-roam-directory "~/org/roam")
+      :bind (:map org-roam-mode-map
+              (("C-c n l" . org-roam)
+               ("C-c n f" . org-roam-find-file)
+               ("C-c n g" . org-roam-show-graph))
+              :map org-mode-map
+              (("C-c n i" . org-roam-insert))))
 
 (use-package! org-brain
     :after org
@@ -93,6 +107,8 @@
 
 (after! pdf-tools
   (setq pdf-annot-list-highlight-type t)
+  (setq-default pdf-view-display-size 'fit-width)
+
   ;; (push '("f1fa8c" "ffb86c" "#50fa7b" "ff5555" "#8be9fd" "bd93f9" "ff79c6") pdf-annot-color-history)
     ;; https://github.com/politza/pdf-tools/issues/35
   ;; (push '(color . "#000000") pdf-annot-default-markup-annotation-properties)
@@ -101,9 +117,28 @@
 (use-package! org-pdftools
   :config (setq org-pdftools-root-dir "~/Resources/Papers"))
 
+;; (add-to-list 'org-capture-templates '("l" "Blog" plain (file (oguz/timestamped-file))
+  ;;         "hello"))
 (after! org
-  (add-to-list 'org-capture-templates '("l" "Blog" plain (file (oguz/timestamped-file))
-          "hello")))
+  (setq org-directory "~/org/"
+        org-refile-targets '((org-agenda-files :maxlevel . 3)))
+  (setq org-todo-keywords
+        '((sequence
+           "TODO(t)"   ; A task that needs doing & is ready to do
+           "NEXT(n)"   ; A task that is to be started ASAP
+           "PROJ(p)"   ; An ongoing project that cannot be completed in one step
+           "STRT(s)"   ; A task that is in progress
+           "WAIT(w)"   ; Something is holding up this task; or it is paused
+           "|"
+           "DONE(d)"    ; Task successfully completed
+           "KILL(k)")   ; Task was cancelled, aborted or is no longer applicable
+           (sequence
+            "[ ](T)"    ; A task that needs doing
+            "[-](S)"    ; Task is in progress
+            "[?](W)"    ; Task is being held up or paused
+            "|"
+            "[X](D)"))  ; Task was completed
+        ))
 
 (require 'ox-publish)
 (setq org-publish-project-alist
@@ -123,7 +158,6 @@
        :recursive t
        :publishing-function org-publish-attachment
        )))
-
 
 (setq magit-repository-directories '(("~/Workspace" . 2)
                                      ("~/.dotfiles" . 0)))
