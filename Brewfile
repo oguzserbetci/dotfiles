@@ -38,6 +38,7 @@ brew "exercism"
 brew "proselint"
 
 # Emacs
+cask "emacsclient"
 cask "xquartz" # dependency for wordnet
 brew "wordnet"
 brew "fd"
