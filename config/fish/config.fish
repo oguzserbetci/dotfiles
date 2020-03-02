@@ -9,7 +9,8 @@ set -x PROMPT_COMMAND "$PROMPT_TITLE; $PROMPT_COMMAND"
 
 . $HOME/.alias
 
-# TODO export env variables with `fish -ic env`
+register-python-argcomplete --shell fish pipx | .
+
 egrep "^export " ~/.profile | while read e
 	  set var (echo $e | sed -E "s/^export ([A-Za-z_]+)=(.*)\$/\1/")
 	  set value (echo $e | sed -E "s/^export ([A-Za-z_]+)=(.*)\$/\2/")
@@ -43,4 +44,3 @@ kitty + complete setup fish | source
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
 set -g GTK_DEBUG interactive waybar
-# TODO Define env variables here

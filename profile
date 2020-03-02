@@ -7,6 +7,7 @@ export PATH=/usr/local/opt/ruby/bin:$HOME/.gem/ruby/2.6.0/bin:/usr/local/bin:/us
 export PATH=/Applications/kitty.app/Contents/MacOS:$PATH
 export PATH=~/.emacs.d/bin:$PATH
 export PATH=~/.local/bin:$PATH
+export PATH=/usr/local/opt/sqlite/bin:$PATH
 # export PATH=/usr/sbin:$PATH
 export EDITOR=emacs
 export TERMINAL=kitty
