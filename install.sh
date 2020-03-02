@@ -10,7 +10,6 @@ which -s brew
 if [[ $? != 0 ]] ; then
     # Install Homebrew
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    curl https://raw.githubusercontent.com/mitsuhiko/pipsi/master/get-pipsi.py | python
 else
     brew update
 fi
@@ -25,30 +24,40 @@ fi
 
 if [ ${SHELL: -4} != "fish" ]
 then
-  dscl . -read /Users/$USER UserShell
-  sudo sh -c "echo $(which fish) >> /etc/shells"
-  chsh -s $(which fish)
-  curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
+    dscl . -read /Users/$USER UserShell
+    sudo sh -c "echo $(which fish) >> /etc/shells"
+    chsh -s $(which fish)
+    curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
 fi
 
-# setup matplotlib
-mkdir -p ~/.matplotlib
-echo 'backend:TkAgg' >> ~/.matplotlib/matplotlibrc
+if [ -d "$HOME/.matplotlib" ]
+then
+    echo "matplotlib is already setup"
+else
+    # setup matplotlib
+    mkdir -p ~/.matplotlib
+    echo 'backend:TkAgg' >> ~/.matplotlib/matplotlibrc
+fi
 
-# setup spacemacs
-if test -f "~/.config/emacs/bin/doom";
+# setup doom
+if [ -e "$HOME/.config/emacs/bin/doom" ]
 then 
-    echo "DOOM ALREADY INSTALLED"
+    echo "DOOM is already installed"
 else
     rm -fr ~/.config/emacs
     git clone https://github.com/hlissner/doom-emacs.git ~/.config/emacs
     (cd ~/.config/emacs; git checkout develop; git pull;./bin/doom install)
 fi
 
+if [ -e "$HOME/.local/share/nvim/site/autoload/plug.vim" ]
+then
+    echo "Vim plug is already installed"
+else
 # install vim plug
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 echo 'run :PlugInstall in vim'
+fi
 
 fisher add jethrokuan/z matchai/spacefish jethrokuan/fzf fisherman/grc
 
@@ -60,8 +69,12 @@ mkdir -p ~/.config
 ln -sf $DOTFILES_DIR/config/* ~/.config/
 ln -sf $DOTFILES_DIR/bin ~/.bin
 ln -sf $DOTFILES_DIR/zshrc ~/.zshrc
-git clone --depth 1 git@github.com:dexpota/kitty-themes.git ~/.config/kitty/kitty-themes
-ln -sf ~/.config/kitty/kitty-themes/themes/Dracula.conf ~/.config/kitty/theme.conf
+
+if ! [ -e "$HOME/.config/kitty/kitty-themes" ]
+then 
+    git clone --depth 1 git@github.com:dexpota/kitty-themes.git ~/.config/kitty/kitty-themes
+    ln -sf ~/.config/kitty/kitty-themes/themes/Dracula.conf ~/.config/kitty/theme.conf
+fi
 
 ln -sf $DOTFILES_DIR/skhdrc ~/.skhdrc
 ln -sf $DOTFILES_DIR/yabairc ~/.yabairc
