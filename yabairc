@@ -29,30 +29,26 @@ yabai -m config mouse_action2                resize
 # general space settings
 yabai -m config layout                       bsp
 yabai -m config top_padding                  20
-yabai -m config bottom_padding               10
-yabai -m config left_padding                 10
-yabai -m config right_padding                10
-yabai -m config window_gap                   5
+yabai -m config bottom_padding               5
+yabai -m config left_padding                 5
+yabai -m config right_padding                5
+yabai -m config window_gap                   3
 
 # window rules
 yabai -m rule --add app=Emacs manage=on
 yabai -m rule --add app=iTunes title="^Mini" manage=off
-yabai -m rule --add app=Zotero sticky=on
-yabai -m rule --add app=Zotero title="Zotero" manage=on
 yabai -m rule --add app="^System Preferences$" sticky=on
 
 yabai -m space 1 --label chat
-yabai -m space 2 --label dev
-yabai -m space 3 --label dev
-yabai -m space 4 --label dev
-yabai -m space 5 --label music
+yabai -m space 2 --label web
+yabai -m space 3 --label music
 
 yabai -m rule --add app=Mail space=^1
 yabai -m rule --add app=Messages space=^1
 yabai -m rule --add app=Signal space=^1
 yabai -m rule --add app=Calendar space=^1
-yabai -m rule --add app=Spotify space=^5
-yabai -m rule --add app=Music space=^5
+yabai -m rule --add app=Spotify space=^2
+yabai -m rule --add app=Music space=^2
 
 # TODO signal uebersicht
 
