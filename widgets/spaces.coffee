@@ -34,12 +34,14 @@ render: (output) ->
   """
 
 style: """
-  position: relative
-  margin-top: 5px
-  //text-align: center
-  font: 10px "Fira Code", "SF Pro", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif
-  color: white
-  font-weight: 400
+  position: relative;
+  margin-top: 4px;
+  //text-align: center;
+  font-size: 12px;
+  //font-family: "FiraCode Nerd Font";
+  font-family: "Menlo";
+  color: #f8f8f2;
+  font-weight: Bold;
 
   ul
     list-style: none
@@ -50,7 +52,7 @@ style: """
     display: inline-block
     text-align: center
     margin: 0 0.5em
-    text-shadow: 2px 2px black;
+    text-shadow: 2px 2px 20px black;
 
   li.visible
     color: #c83079

@@ -1,8 +1,18 @@
+cask_args appdir: "/Applications"
+tap "homebrew/cask-versions"
+tap "homebrew/cask-fonts"
+
+# Priority
+tap "d12frosted/emacs-plus"
+brew "emacs-plus", args: ["with-no-frame-refocus", "without-spacemacs-icon", "HEAD"]
+cask "karabiner-elements"
+cask "firefox-beta"
+cask "kitty"
+
 # Development
 brew "git"
 brew "git-extras"
 brew "neovim"
-brew "ctags"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 brew "curl"
 brew "npm"
@@ -47,17 +57,9 @@ brew "aspell"
 
 #######################
 
-cask_args appdir: "/Applications"
-tap "caskroom/cask"
-tap "caskroom/versions"
-tap "caskroom/fonts"
-
 # Development
-tap "d12frosted/emacs-plus"
-brew "emacs-plus", args: ["with-no-frame-refocus", "without-spacemacs-icon"]
 cask "dash"
 cask "gitup"
-cask "kitty"
 cask "sublime-text"
 cask "font-firacode-nerd-font"
 cask "java"
@@ -66,10 +68,10 @@ brew "languagetool"
 cask "spotify"
 cask "soulseek"
 cask "google-chrome"
-cask "firefox-beta"
 
 # Tools
 cask "skim"
+cask "calibre"
 cask "anki"
 cask "numi"
 cask "omnidisksweeper"

@@ -1,5 +1,29 @@
 #!/usr/bin/env bash
 
+# Bunch of symlinks
+mkdir -p ~/.config
+ln -sf $DOTFILES_DIR/config/* ~/.config/
+ln -sf $DOTFILES_DIR/config/fish/* ~/.config/fish/
+ln -sf $DOTFILES_DIR/bin ~/.bin
+ln -sf $DOTFILES_DIR/zshrc ~/.zshrc
+
+if ! [ -e "$HOME/.config/kitty/kitty-themes" ]
+then
+    git clone --depth 1 git@github.com:dexpota/kitty-themes.git ~/.config/kitty/kitty-themes
+    ln -sf ~/.config/kitty/kitty-themes/themes/Dracula.conf ~/.config/kitty/theme.conf
+fi
+
+ln -sf $DOTFILES_DIR/skhdrc ~/.skhdrc
+ln -sf $DOTFILES_DIR/yabairc ~/.yabairc
+
+ln -sf $DOTFILES_DIR/proselintrc ~/.proselintrc
+ln -sf $DOTFILES_DIR/pylintrc ~/.pylintrc
+
+ln -sf $DOTFILES_DIR/alias ~/.alias
+ln -sf $DOTFILES_DIR/functions ~/.functions
+ln -sf $DOTFILES_DIR/profile ~/.profile
+ln -svf $DOTFILES_DIR/ctags.d $HOME/.ctags.d
+
 # Get current dir (so run this script from anywhere)
 DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 export DOTFILES_DIR
@@ -15,6 +39,8 @@ else
 fi
 
 brew bundle
+
+pipx install pygments
 
 if [ "$(uname 2> /dev/null)" != "Linux" ]; then
   brew services start skhd
@@ -63,28 +89,5 @@ fisher add jethrokuan/z matchai/spacefish jethrokuan/fzf fisherman/grc
 
 echo 'setup python: https://medium.com/@henriquebastos/the-definitive-guide-to-setup-my-python-workspace-628d68552e14 and install virtual fish: pip install virtualfish'
 echo 'install zotero plugins at: http://zotfile.com/ http://retorque.re/zotero-better-bibtex/'
-
-# Bunch of symlinks
-mkdir -p ~/.config
-ln -sf $DOTFILES_DIR/config/* ~/.config/
-ln -sf $DOTFILES_DIR/bin ~/.bin
-ln -sf $DOTFILES_DIR/zshrc ~/.zshrc
-
-if ! [ -e "$HOME/.config/kitty/kitty-themes" ]
-then 
-    git clone --depth 1 git@github.com:dexpota/kitty-themes.git ~/.config/kitty/kitty-themes
-    ln -sf ~/.config/kitty/kitty-themes/themes/Dracula.conf ~/.config/kitty/theme.conf
-fi
-
-ln -sf $DOTFILES_DIR/skhdrc ~/.skhdrc
-ln -sf $DOTFILES_DIR/yabairc ~/.yabairc
-
-ln -sf $DOTFILES_DIR/proselintrc ~/.proselintrc
-ln -sf $DOTFILES_DIR/pylintrc ~/.pylintrc
-
-ln -sf $DOTFILES_DIR/alias ~/.alias
-ln -sf $DOTFILES_DIR/functions ~/.functions
-ln -sf $DOTFILES_DIR/profile ~/.profile
-ln -svf $DOTFILES_DIR/ctags.d $HOME/.ctags.d
 
 echo 'setup org notes by syncing dropbox and running ln -svf ~/Dropbox/org ~'

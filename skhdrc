@@ -1,5 +1,5 @@
 # open terminal
-ctrl + alt - return : /Applications/Kitty.app/Contents/MacOS/kitty --single-instance -d ~
+ctrl + alt - return : open /Applications/Kitty.app
 ctrl + alt - f : firefox-new-window
 ctrl + alt - x : ~/.config/emacs/bin/org-capture
 
@@ -51,6 +51,8 @@ cmd + ctrl - w : yabai -m space --destroy
 # ctrl - alt - x : yabai -m space --focus recent
 ctrl + alt - p : yabai -m space --focus prev
 ctrl + alt - n : yabai -m space --focus next
+ctrl + alt - u : yabai -m display --focus 2
+ctrl + alt - o : yabai -m display --focus 1
 pageup         : yabai -m space --focus prev
 pagedown       : yabai -m space --focus next
 ctrl + alt - n : yabai -m space --focus next

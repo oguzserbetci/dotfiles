@@ -28,7 +28,6 @@
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
        (ivy +prescient
-            +fuzzy
             +childframe
             +icons)      ; a search engine for love and life
 
@@ -48,7 +47,7 @@
        (popup            ; tame sudden yet inevitable temporary windows
         +all             ; catch all popups that start with an asterix
         +defaults)       ; default popup rules
-       pretty-code       ; replace bits of code with pretty symbols
+       ;; pretty-code       ; replace bits of code with pretty symbols
        ;;tabbar            ; FIXME an (incomplete) tab bar for Emacs
        treemacs          ; a project drawer, like neotree but cooler
        unicode           ; extended unicode support for various languages
@@ -79,7 +78,7 @@
        vc                ; version-control and Emacs, sitting in a tree
 
        :term
-       ;eshell            ; a consistent, cross-platform shell (WIP)
+       eshell            ; a consistent, cross-platform shell (WIP)
        ;;shell             ; a terminal REPL for Emacs
        ;;term              ; terminals in Emacs
        vterm             ; another terminals in Emacs
@@ -137,7 +136,7 @@
        ;;julia             ; a better, faster MATLAB
        ;;kotlin            ; a better, slicker Java(Script)
        latex             ; writing papers in Emacs has never been so fun
-       ;;ledger            ; an accounting system in Emacs
+       ledger            ; an accounting system in Emacs
        ;;lua               ; one-based indices? one-based indices
        markdown          ; writing docs for people to ignore
        ;;nim               ; python + lisp at the speed of c
@@ -146,7 +145,6 @@
        (org              ; organize your plain life in plain text
         +pomodoro
         +dragndrop       ; file drag & drop support
-        +ipython         ; ipython support for babel
         +jupyter
         +pandoc          ; pandoc integration into org's exporter
         +journal
@@ -156,6 +154,7 @@
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
        (python
+        +conda
         +lsp
         +pyenv)            ; beautiful is better than ugly
        ;;qt                ; the 'cutest' gui framework ever
@@ -169,9 +168,7 @@
        ;;solidity          ; do you need a blockchain? No.
        swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
-       (web               ; the tubes
-        +html
-        +css)
+       web               ; the tubes
        ;;vala              ; GObjective-C
 
        :email
