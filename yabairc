@@ -34,22 +34,27 @@ yabai -m config left_padding                 5
 yabai -m config right_padding                5
 yabai -m config window_gap                   3
 
+# Ubersicht update
+yabai -m signal --add event=space_changed \
+    action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"spaces-coffee\"'"
+yabai -m signal --add event=display_changed \
+    action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"spaces-coffee\"'"
+
 # window rules
 yabai -m rule --add app=Emacs manage=on
 yabai -m rule --add app=iTunes title="^Mini" manage=off
 yabai -m rule --add app="^System Preferences$" sticky=on
 
 yabai -m space 1 --label chat
-yabai -m space 2 --label web
-yabai -m space 3 --label music
+yabai -m space 2 --label music
 
 yabai -m rule --add app=Mail space=^1
 yabai -m rule --add app=Messages space=^1
 yabai -m rule --add app=Signal space=^1
 yabai -m rule --add app=Calendar space=^1
 yabai -m rule --add app=Telegram space=^1
-yabai -m rule --add app=Spotify space=^3
-yabai -m rule --add app=Music space=^3
+yabai -m rule --add app=Spotify space=^2
+yabai -m rule --add app=Music space=^2
 yabai -m rule --add app="Civilization V" manage=off
 yabai -m rule --add app="Civilization VI" manage=off
 # TODO signal uebersicht

@@ -1,6 +1,6 @@
 command: "/usr/local/bin/yabai -m query --spaces"
 
-refreshFrequency: 100
+refreshFrequency: false
 
 removeDuplicates: (ar) ->
   if ar.length == 0
@@ -35,11 +35,11 @@ render: (output) ->
 
 style: """
   position: relative;
-  margin-top: 4px;
+  margin-top: 2px;
   //text-align: center;
-  font-size: 12px;
-  //font-family: "FiraCode Nerd Font";
-  font-family: "Menlo";
+  font-size: 13px;
+  font-family: "Noto Sans";
+  //font-family: "Menlo";
   color: #f8f8f2;
   font-weight: Bold;
 
@@ -52,10 +52,13 @@ style: """
     display: inline-block
     text-align: center
     margin: 0 0.5em
-    text-shadow: 2px 2px 20px black;
+    text-shadow: 2px 2px 30px black;
 
   li.visible
-    color: #c83079
+    color: #ff79c6
+
+  li.focused
+    color: #ff5555
 """
 
 update: (output, domEl) ->
@@ -65,5 +68,8 @@ update: (output, domEl) ->
     $(domEl).find('ul').html(@generateIcons(spaces))
   else
     $(domEl).find('li.visible').removeClass('visible')
+    $(domEl).find('li.focused').removeClass('focused')
   for space in spaces when space['visible'] == 1
     $(domEl).find("li#desktop#{space['index']}").addClass('visible')
+  for space in spaces when space['focused'] == 1
+    $(domEl).find("li#desktop#{space['index']}").addClass('focused')
