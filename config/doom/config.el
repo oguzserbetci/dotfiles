@@ -17,7 +17,7 @@
       display-line-numbers nil)
 
 (setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
-      doom-variable-pitch-font (font-spec :family "Fira Sans") ; inherits `doom-font''s :size
+      doom-variable-pitch-font (font-spec :family "Noto Sans") ; inherits `doom-font''s :size
       doom-unicode-font (font-spec :family "Fira Code" :size 12)
       doom-big-font (font-spec :family "Fira Code" :size 19))
 
