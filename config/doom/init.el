@@ -148,6 +148,7 @@
         +jupyter
         +pandoc          ; pandoc integration into org's exporter
         +journal
+        +roam
         +present)        ; using Emacs for presentations
        ;;perl              ; write code no one else can comprehend
        ;;php               ; perl's insecure younger brother

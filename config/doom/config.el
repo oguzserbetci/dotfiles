@@ -125,38 +125,6 @@
 
   )
 
-(use-package! org-roam
-  :after org
-  :hook
-  (after-init . org-roam-mode)
-  :custom
-  (org-roam-directory "~/org/roam")
-  :bind (:map org-roam-mode-map
-          (("C-c n l" . org-roam)
-           ("C-c n f" . org-roam-find-file)
-           ("C-c n g" . org-roam-show-graph))
-          :map org-mode-map
-          (("C-c n i" . org-roam-insert))))
-
-;; (use-package! org-brain
-;;     :after org
-;;     :init
-;;     (setq org-brain-path (concat org-directory "/brain"))
-;;     ;; For Evil users
-;;     (with-eval-after-load 'evil
-;;       (evil-set-initial-state 'org-brain-visualize-mode 'emacs))
-;;     :config
-;;     (setq org-id-track-globally t)
-;;     (setq org-id-locations-file (concat org-directory "/.org-id-locations"))
-;;     (push '("b" "Brain" plain (function org-brain-goto-end)
-;;             "* %i%?" :empty-lines 1)
-;;           org-capture-templates)
-;;     (setq org-brain-visualize-default-choices 'all)
-;;     (setq org-brain-title-max-length 12)
-;;     (setq org-brain-include-file-entries nil
-;;           org-brain-file-entries-use-title nil)
-;; )
-
 (defun oguz/timestamped-file ()
   (interactive)
   (let ((filename (expand-file-name (format "%s-%s.txt"
@@ -196,9 +164,11 @@
            "|"
            "[X](D)"))                   ; Task was completed
         )
+
 ;; (add-to-list 'org-capture-templates '("l" "Blog" plain (file (oguz/timestamped-file))
   ;;         "hello"))
-(after org
+
+(after! org
   (setq org-directory "~/org/"
         org-refile-targets '((org-agenda-files :maxlevel  3))))
 
