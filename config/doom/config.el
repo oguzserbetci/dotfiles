@@ -41,31 +41,110 @@
 ;; (setq ein:console-args '("--simple-prompt" "--ssh" "jupyter-remote"))
 
 (use-package! org-ref
-    :after org
-    :init
-    :config
-    (setq org-ref-bibliography-notes (concat org-directory "/papers.org")
-          org-ref-show-broken-links nil
-          org-ref-default-bibliography '("~/org/Library.bib")
-          org-ref-pdf-directory "~/Resources/Papers/")
+  :after bibtex-completion
+  :init
+  (setq org-ref-completion-library 'org-ref-ivy-cite)
 
-    (setq org-latex-pdf-process (list "latexmk -shell-escape -bibtex -f -pdf %f"))
+  :config
+  (setq
+   orhc-bibtex-cache-file (concat doom-cache-dir "org-ref.cache")
+   org-ref-get-pdf-filename-function
+   (lambda (key) (car (bibtex-completion-find-pdf key)))
+   org-ref-notes-function
+   (lambda (thekey)
+     (let ((bibtex-completion-bibliography (org-ref-find-bibliography)))
+       (bibtex-completion-edit-notes
+        (list (car (org-ref-get-bibtex-key-and-file thekey))))))
+   org-ref-show-broken-links nil)
 
-    (setq bibtex-completion-bibliography "~/org/Library.bib"
-          bibtex-completion-library-path "~/Resources/Papers/"
-          bibtex-completion-notes-path (concat org-directory "/papers.org"))
+  (setq org-ref-bibtex-hydra-key-binding "\C-c j")
+  (global-set-key (kbd "\C-c l") #'org-ref-bibtex-hydra/body)
+  (global-set-key (kbd "\C-c j") #'org-ref-open-pdf-at-point)
+  (global-set-key (kbd "\C-c k") #'org-ref-open-notes-at-point)
 
-    (push '("IEEE Transactions on Visualization and Computer Graphics" "T-VCG") org-ref-bibtex-journal-abbreviations)
-    (setq bibtex-dialect 'biblatex
-          org-latex-pdf-process '("latexmk -shell-escape -bibtex -pdf %f"))
+  (setq org-ref-bibliography-notes org-directory
+        org-ref-default-bibliography '("~/Resources/Papers/Library.bib")
+        org-ref-pdf-directory "~/Resources/Papers/")
 
-    (key-chord-define-global "kk" 'org-ref-cite-hydra/body)
-
-    ;; open pdf with system pdf viewer (works on mac)
-    ;; (setq bibtex-completion-pdf-open-function
-    ;;   (lambda (fpath)
-    ;;     (start-process "open" "*open*" "open" fpath)))
+  (setq orhc-candidate-formats
+   '(("article" . "${pdf}${note} ${author} ${year} ${title} ${keywords}")
+     ("book" . "${pdf}${note} ${author} ${year} ${title} ${keywords}")
+     ("inbook" . "${pdf}${note} ${author} ${year} ${title} ${keywords}")
+     ("techreport" . "${pdf}${note} ${author} ${year} ${title} ${keywords}")
+     ("inproceedings" . "${pdf}${note} ${author} ${year} ${title} ${keywords}")
+     ("incollection" . "${pdf}${note} ${author} ${year} ${title} ${keywords}")
+     ("phdthesis" . "${pdf}${note} ${author} ${year} ${title} ${keywords}")
+     ("mastersthesis" . "${pdf}${note} ${author} ${year} ${title} ${keywords}")
+     ("misc" . "${pdf}${note} ${author} ${year} ${title} ${keywords}")
+     ("unpublished" . "${pdf}${note} ${author} ${year} ${title} ${keywords}"))
+   )
   )
+
+(use-package! bibtex
+  :defer t
+  :config
+  (setq bibtex-dialect 'biblatex)
+  (map! :map bibtex-mode-map
+        [fill-paragraph] #'bibtex-fill-entry))
+
+(use-package! bibtex-completion
+  :after org
+  :config
+  (setq bibtex-completion-format-citation-functions
+        '((org-mode . bibtex-completion-format-citation-pandoc-citeproc)
+          (latex-mode . bibtex-completion-format-citation-cite)
+          (default . bibtex-completion-format-citation-default))
+        bibtex-completion-pdf-field "file"
+        bibtex-completion-additional-search-fields '("journaltitle")
+        bibtex-completion-pdf-symbol "@"
+        bibtex-completion-notes-symbol "#"
+        bibtex-completion-display-formats '((t . "${=has-pdf=:1}${=has-note=:1} ${author:20} ${year:4} ${title:*} ${=type=:3} ${journaltitle:10}")))
+
+  (setq bibtex-completion-bibliography '("~/Resources/Papers/Library.bib")
+        bibtex-completion-library-path "~/Resources/Papers/"
+        bibtex-completion-notes-path org-directory)
+
+  (setq bibtex-completion-notes-template-multiple-files
+        "${author-abbrev} – ${title}
+#+ROAM_KEY: cite:${=key=}
+- tags ::
+- keywords :: ${keywords}
+* cite:${=key=}
+  :PROPERTIES:
+  :Custom_ID: ${=key=}
+  :URL: ${url}
+  :NOTER_DOCUMENT: ~/Resources/Papers/${file}
+  :NOTER_PAGE:
+  :END:\n\n")
+
+  (cond
+   (IS-MAC
+    (setq bibtex-completion-pdf-open-function
+          (lambda (fpath)
+            (async-start-process "open" "open" "open" fpath))))
+   (IS-LINUX
+    (setq bibtex-completion-pdf-open-function
+          (lambda (fpath)
+            (async-start-process "open-pdf" "/usr/bin/xdg-open" nil fpath))))))
+
+(setq reftex-default-bibliography '("~/Resources/Papers/Library.bib"))
+
+(use-package! ivy-bibtex
+  :when (featurep! :completion ivy)
+  :commands (ivy-bibtex)
+  :config
+  (setq ivy-bibtex-default-action 'ivy-bibtex-insert-key)
+  (add-to-list 'ivy-re-builders-alist '(ivy-bibtex . ivy--regex-plus))
+  (global-set-key (kbd "\C-c \C-]") ivy-bibtex)
+  (when IS-MAC
+    (ivy-bibtex-ivify-action bibtex-completion-quicklook ivy-bibtex-quicklook)
+    (ivy-add-actions 'ivy-bibtex '(("SPC" ivy-bibtex-quicklook "Quick look")))))
+
+(use-package! org-noter
+  :defer t
+  :init
+  :config
+  (setq org-noter-notes-search-path '("~/org")))
 
 (custom-set-variables
  '(conda-anaconda-home "/usr/local/Caskroom/miniconda/base/")
