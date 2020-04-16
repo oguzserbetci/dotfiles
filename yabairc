@@ -43,7 +43,10 @@ yabai -m signal --add event=display_changed \
 # window rules
 yabai -m rule --add app=Emacs manage=on
 yabai -m rule --add app=iTunes title="^Mini" manage=off
-yabai -m rule --add app="^System Preferences$" sticky=on
+yabai -m rule --add app="^System Preferences$" sticky=on layer=above
+yabai -m rule --add title="^Install" sticky=on layer=above
+yabai -m rule --add app=Firefox title="^Opening" sticky=on layer=above
+yabai -m rule --add app="Zotero" title!="^Zotero$" sticky=on layer=above
 
 yabai -m space 1 --label chat
 yabai -m space 2 --label music
