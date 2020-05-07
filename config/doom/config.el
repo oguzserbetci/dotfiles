@@ -1,4 +1,24 @@
 ;;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
+(setq user-mail-address "oguz.serbetci@gmail.com"
+      user-full-name "Oğuz Şerbetçi")
+
+;; https://github.com/tecosaur/emacs-config/blob/master/config.org
+(setq-default
+ delete-by-moving-to-trash t                      ; Delete files to trash
+ tab-width 4                                      ; Set width for tabs
+ uniquify-buffer-name-style 'forward              ; Uniquify buffer names
+ window-combination-resize t                      ; take new window space from all other windows (not just current)
+ x-stretch-cursor t)                              ; Stretch cursor to the glyph width
+
+(setq undo-limit 80000000                         ; Raise undo-limit to 80Mb
+      evil-want-fine-undo t                       ; By default while in insert all changes are one big blob. Be more granular
+      auto-save-default t                         ; Nobody likes to loose work, I certainly don't
+      inhibit-compacting-font-caches t)           ; When there are lots of glyphs, keep them in memory
+
+(delete-selection-mode 1)                         ; Replace selection when inserting text
+(display-time-mode 1)                             ; Enable time in the mode-line
+(display-battery-mode 1)                          ; On laptops it's nice to know how much power you have
+(global-subword-mode 1)                           ; Iterate through CamelCase words
 
 ;; UI
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
@@ -9,17 +29,20 @@
 
 (setq frame-resize-pixelwise t)
 
-(fset 'battery-update #'ignore)
+;; Performance improvement
+(setq display-line-numbers-type nil)
+(add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
+(setq hl-line-mode nil)
 
 (load-theme 'doom-dracula t)
 
 (setq avy-all-windows t
       display-line-numbers nil)
 
-(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
-      doom-variable-pitch-font (font-spec :family "Noto Sans") ; inherits `doom-font''s :size
-      doom-unicode-font (font-spec :family "Fira Code" :size 12)
-      doom-big-font (font-spec :family "Fira Code" :size 19))
+(setq doom-font (font-spec :family "Monaco" :size 12 :weight 'semi-light)
+      doom-variable-pitch-font (font-spec :family "Monaco") ; inherits `doom-font''s :size
+      doom-unicode-font (font-spec :family "Monaco" :size 12)
+      doom-big-font (font-spec :family "Monaco" :size 19))
 
 (setq org-ellipsis " ↩")
 
@@ -38,10 +61,9 @@
 (map! :map ein:notebook-mode-map
       :localleader
       "," #'+ein/hydra/body)
-;; (setq ein:console-args '("--simple-prompt" "--ssh" "jupyter-remote"))
 
 (use-package! org-ref
-  :after bibtex-completion
+  :after org
   :init
   (setq org-ref-completion-library 'org-ref-ivy-cite)
 
@@ -65,39 +87,18 @@
   (setq org-ref-bibliography-notes org-directory
         org-ref-default-bibliography '("~/Resources/Papers/Library.bib")
         org-ref-pdf-directory "~/Resources/Papers/")
-
-  (setq orhc-candidate-formats
-   '(("article" . "${pdf}${note} ${author} ${year} ${title} ${keywords}")
-     ("book" . "${pdf}${note} ${author} ${year} ${title} ${keywords}")
-     ("inbook" . "${pdf}${note} ${author} ${year} ${title} ${keywords}")
-     ("techreport" . "${pdf}${note} ${author} ${year} ${title} ${keywords}")
-     ("inproceedings" . "${pdf}${note} ${author} ${year} ${title} ${keywords}")
-     ("incollection" . "${pdf}${note} ${author} ${year} ${title} ${keywords}")
-     ("phdthesis" . "${pdf}${note} ${author} ${year} ${title} ${keywords}")
-     ("mastersthesis" . "${pdf}${note} ${author} ${year} ${title} ${keywords}")
-     ("misc" . "${pdf}${note} ${author} ${year} ${title} ${keywords}")
-     ("unpublished" . "${pdf}${note} ${author} ${year} ${title} ${keywords}"))
-   )
+  (setq org-latex-compiler "lualatex"
+        org-latex-pdf-process (list
+   "latexmk -pdflatex='lualatex -shell-escape -interaction nonstopmode' -pdf -f  %f"))
   )
 
-(use-package! bibtex
-  :defer t
-  :config
-  (setq bibtex-dialect 'biblatex)
-  (map! :map bibtex-mode-map
-        [fill-paragraph] #'bibtex-fill-entry))
-
-(use-package! bibtex-completion
-  :after org
-  :config
+(after! bibtex-completion
+  (add-to-list 'bibtex-completion-additional-search-fields "journaltitle")
   (setq bibtex-completion-format-citation-functions
         '((org-mode . bibtex-completion-format-citation-pandoc-citeproc)
           (latex-mode . bibtex-completion-format-citation-cite)
           (default . bibtex-completion-format-citation-default))
         bibtex-completion-pdf-field "file"
-        bibtex-completion-additional-search-fields '("journaltitle")
-        bibtex-completion-pdf-symbol "@"
-        bibtex-completion-notes-symbol "#"
         bibtex-completion-display-formats '((t . "${=has-pdf=:1}${=has-note=:1} ${author:20} ${year:4} ${title:*} ${=type=:3} ${journaltitle:10}")))
 
   (setq bibtex-completion-bibliography '("~/Resources/Papers/Library.bib")
@@ -110,12 +111,12 @@
 - tags ::
 - keywords :: ${keywords}
 * cite:${=key=}
-  :PROPERTIES:
-  :Custom_ID: ${=key=}
-  :URL: ${url}
-  :NOTER_DOCUMENT: ~/Resources/Papers/${file}
-  :NOTER_PAGE:
-  :END:\n\n")
+:PROPERTIES:
+:Custom_ID: ${=key=}
+:URL: ${url}
+:NOTER_DOCUMENT: ~/Resources/Papers/${file}
+:NOTER_PAGE:
+:END:\n\n")
 
   (cond
    (IS-MAC
@@ -129,22 +130,39 @@
 
 (setq reftex-default-bibliography '("~/Resources/Papers/Library.bib"))
 
-(use-package! ivy-bibtex
-  :when (featurep! :completion ivy)
-  :commands (ivy-bibtex)
-  :config
+(doom-themes-set-faces 'user '(org-roam-link :foreground green :slant 'italic :underline t :weight 'medium))
+
+;; (advice-add #'org-journal-update-auto-mode-alist :override #'ignore)
+
+;; (after! org-journal
+;;   :custom
+;;   (org-journal-file-format "%Y-%M-.org")
+;;   (org-journal-dir "~/org/")
+;;   :config
+;;   (setq org-journal-file-header "#+TITLE: %Y – W%W")
+;;   (setq org-journal-file-type 'weekly)
+;;   (setq org-journal-date-format "%A, %d %B %Y")
+;;   (setq org-journal-cache-file (concat doom-cache-dir "org-journal"))
+;;   )
+;;
+
+;; TODO
+;; (after! org
+;;   (add-to-list 'org-capture-templates
+;;                '("j" "Journal Entry"
+;;                  entry (file+datetree "~/journal.org")
+;;                  "* %?"
+;;                  :empty-lines 1)
+;;                )
+;;   )
+
+(after! ivy-bibtex
   (setq ivy-bibtex-default-action 'ivy-bibtex-insert-key)
-  (add-to-list 'ivy-re-builders-alist '(ivy-bibtex . ivy--regex-plus))
-  (global-set-key (kbd "\C-c \C-]") ivy-bibtex)
+
   (when IS-MAC
     (ivy-bibtex-ivify-action bibtex-completion-quicklook ivy-bibtex-quicklook)
-    (ivy-add-actions 'ivy-bibtex '(("SPC" ivy-bibtex-quicklook "Quick look")))))
-
-(use-package! org-noter
-  :defer t
-  :init
-  :config
-  (setq org-noter-notes-search-path '("~/org")))
+    (ivy-add-actions 'ivy-bibtex '(("SPC" ivy-bibtex-quicklook "Quick look"))))
+  )
 
 (custom-set-variables
  '(conda-anaconda-home "/usr/local/Caskroom/miniconda/base/")
@@ -154,64 +172,32 @@
 (remove-hook 'text-mode-hook #'auto-fill-mode)
 (add-hook 'message-mode-hook #'word-wrap-mode)
 
+(setq +lsp-company-backend 'company-capf)
 (after! lsp
+  ;; (setq lsp-ui-doc-mode t)
   (setq lsp-print-io t)
   (setq company-minimum-prefix-length 1
         company-idle-delay 0.0)
+
   ;; Performance
   (setq read-process-output-max (* 1024 1024) ; 1mb
-        lsp-prefer-capf t
+        gc-cons-threshold 100000000
+        company-backends '(company-capf company-yasnippet)
         lsp-idle-delay 0.500
         )
 
-  (add-hook 'lsp-mode #'lsp-ui-doc-mode)
+  (lsp-register-client
+    (make-lsp-client :new-connection (lsp-tramp-connection "pyls")
+                     :major-modes '(python-mode)
+                     :remote? t
+                     :server-id 'pyls-remote))
 
-  (setq ;; lsp-pyls-configuration-sources ["flake8"]
-   ;; lsp-pyls-plugins-pylint-enabled t
-   ;; lsp-pyls-plugins-pycodestyle-enabled t
-   ;; lsp-pyls-plugins-yapf-enabled t
-   ;; lsp-pyls-plugins-flake8-enabled t
-   lsp-ui-doc-enable t
-   lsp-ui-sideline-enable t)
-
-  ;; (defun get-python-ver-and-syspath (workspace-root)
-  ;;   "return list with pyver-string and json-encoded list of python search paths."
-  ;;   (let ((python (executable-find python-shell-interpreter))
-  ;;         (init "from __future__ import print_function; import sys; import json;")
-  ;;         (ver "print(\"%s.%s\" % (sys.version_info[0], sys.version_info[1]));")
-  ;;         (sp (concat "sys.path.insert(0, '" workspace-root "'); print(json.dumps(sys.path))")))
-  ;;     (with-temp-buffer
-  ;;       (call-process python nil t nil "-c" (concat init ver sp))
-  ;;       (subseq (split-string (buffer-string) "\n") 0 2))))
-
-  ;; (defun ms-pyls-extra-init-params (workspace)
-  ;;   (destructuring-bind (pyver pysyspath) (get-python-ver-and-syspath (lsp--workspace-root workspace))
-  ;;     `(:interpreter (
-  ;;                     :properties (
-  ;;                                  :InterpreterPath ,(executable-find python-shell-interpreter)
-  ;;                                                   ;; this database dir will be created if required
-  ;;                                  :DatabasePath ,(expand-file-name (concat ms-pyls-dir "db/"))
-  ;;                                  :Version ,pyver))
-  ;;                    ;; preferredFormat "markdown" or "plaintext"
-  ;;                    ;; experiment to find what works best -- over here mostly plaintext
-  ;;                    :displayOptions (
-  ;;                                     :preferredFormat "plaintext"
-  ;;                                     :trimDocumentationLines :json-false
-  ;;                                     :maxDocumentationLineLength 0
-  ;;                                     :trimDocumentationText :json-false
-  ;;                                     :maxDocumentationTextLength 0)
-  ;;                    :searchPaths ,(json-read-from-string pysyspath))))
-
-  )
-
-(defun oguz/timestamped-file ()
-  (interactive)
-  (let ((filename (expand-file-name (format "%s-%s.txt"
-                              (format-time-string "%Y-%m-%d")
-                              (read-string "Name: ")) "~/org/blog")))
-    (if (called-interactively-p)
-        (insert filename)
-      filename)))
+   (setq lsp-pyls-configuration-sources ["flake8"]
+         lsp-pyls-plugins-pylint-enabled t
+         lsp-pyls-plugins-pycodestyle-enabled t
+         lsp-pyls-plugins-yapf-enabled t
+         lsp-pyls-plugins-flake8-enabled t)
+    )
 
 (after! pdf-tools
   (setq pdf-annot-list-highlight-type t)
@@ -222,10 +208,12 @@
   ;; (push '(color . "#000000") pdf-annot-default-markup-annotation-properties)
   )
 
-(use-package! org-pdftools
-  :config (setq org-pdftools-root-dir "/Users/oguz/Library/Mobile Documents/com~apple~CloudDocs/Resources/Papers"))
+(after! org-pdftools
+  (setq org-pdftools-root-dir "~/Resources/Papers"))
 
+(setq org-directory "~/org/")
 
+(after! org
   (setq org-todo-keywords
         '((sequence
            "TODO(t)"   ; A task that needs doing & is ready to do
@@ -241,33 +229,26 @@
            "[-](S)"                     ; Task is in progress
            "[?](W)"                     ; Task is being held up or paused
            "|"
-           "[X](D)"))                   ; Task was completed
-        )
-
-;; (add-to-list 'org-capture-templates '("l" "Blog" plain (file (oguz/timestamped-file))
-  ;;         "hello"))
-
-(after! org
-  (setq org-directory "~/org/"
-        org-refile-targets '((org-agenda-files :maxlevel  3))))
+           "[X](D)")))                  ; Task was completed
+  )
 
 (use-package! org-super-agenda
+  :after org
   :config
-  (setq org-super-agenda-groups '((:name "Today"
-                                         :time-grid t
-                                         :scheduled today)
-                                  (:name "Due today"
-                                         :deadline today)
-                                  (:name "Important"
-                                         :priority "A")
-                                  (:name "Overdue"
-                                         :deadline past)
-                                  (:name "Computer"
-                                         :tag "@computer")
-                                  (:name "Due soon"
-                                         :deadline future)
-                                  (:name "Big Outcomes"
-                                         :tag "bo"))))
+  (setq org-super-agenda-mode t)
+
+  (add-to-list 'org-agenda-custom-commands
+       '("u" "Super view"
+          ((agenda "" ((org-super-agenda-groups
+                        '((:name "Today"
+                                 :time-grid t)))))
+           (todo "" ((org-agenda-overriding-header "NEXT")
+                     (org-super-agenda-groups
+                      '((:name none
+                               :todo "NEXT")
+                        (:discard (:anything t))
+                        )))))))
+  )
 
 (setq org-publish-project-alist
       '(("org-notes"
