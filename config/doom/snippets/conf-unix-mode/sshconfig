@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: sshconfig
+# key: sshcon
+# expand-env: ((yas-indent-line 'fixed) (yas-wrap-around-region 'nil))
+# --
+
+Host $1
+  HostName ${2:$1.com}
+  ${3:User $4}
+  IdentityFile .ssh/ed24419_$5
+  AddKeysToAgent yes
+  UseKeychain yes
+  ${6:LocalForward ${7:localport} 127.0.0.1:${8:localport}}
+  ${9:ForwardAgent yes}
+  ${10:ForwardX11 yes}
+  $0

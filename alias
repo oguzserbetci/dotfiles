@@ -7,8 +7,8 @@ alias op='openn'
 alias s='subl'
 alias sn='subl -n'
 alias sm='s --project /Users/oguzserbetci/Library/Mobile\ Documents/com~apple~CloudDocs/note-taking.sublime-project'
-alias j='tmux new -s jupyter -d;tmux send-keys -t jupyter "cd ~; jupyter notebook" C-m'
-alias jl='tmux new -s jupyter -d;tmux send-keys -t jupyter "cd ~; jupyter lab" C-m'
+alias j='tmux new -s jupyter -d;tmux send-keys -t jupyter "cd ~; jupyter lab" C-m'
+alias jl='jupyter notebook list'
 
 alias llt='ls -1t | head -5'
 
@@ -21,7 +21,6 @@ alias d='dirs -v'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias ls='command ls -G'
 
 # GIT
 alias gs='git status -s'
@@ -45,4 +44,4 @@ alias showdesktop='defaults write com.apple.finder CreateDesktop -bool true; kil
 alias doml='open "https://isis.tu-berlin.de/course/view.php?id=8410"; open ~/University/Machine\ Learning\ 1; atom -n ~/University/Machine\ Learning\ 1/exercises'
 
 # FIX
-alias ssh='env TERM=screen-256color ssh'
+alias ssh='kitty +kitten ssh'

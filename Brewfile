@@ -1,12 +1,24 @@
+cask_args appdir: "/Applications"
+tap "homebrew/cask-versions"
+tap "homebrew/cask-fonts"
+
+# Priority
+tap "d12frosted/emacs-plus"
+brew "emacs-plus", args: ["with-no-frame-refocus", "without-spacemacs-icon", "HEAD"]
+cask "karabiner-elements"
+cask "firefox-beta"
+cask "kitty"
+
 # Development
 brew "git"
 brew "git-extras"
 brew "neovim"
-brew "ctags"
-brew "--HEAD universal-ctags/universal-ctags/universal-ctags"
+brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 brew "curl"
+brew "npm"
 
 # Helpers
+brew "wget"
 brew "ledger"
 brew "coreutils"
 brew "imagemagick"
@@ -25,43 +37,42 @@ brew "grc"
 
 # OSX
 tap "koekeishiya/formulae"
-brew "khd"
-brew "chunkwm"
+brew "skhd"
+brew "yabai"
 brew "contacts"
-
-# Services
-brew "awscli"
 
 # Learning Tools
 brew "exercism"
 
 # Writing
 brew "proselint"
-brew "ispell"
+
+# Emacs
+cask "emacsclient"
+cask "xquartz" # dependency for wordnet
+brew "wordnet"
+brew "fd"
+brew "shellcheck"
+brew "aspell"
 
 #######################
 
-cask_args appdir: "/Applications"
-tap "caskroom/cask"
-tap "caskroom/versions"
-tap "caskroom/fonts"
-
 # Development
-tap "railwaycat/emacsmacport"
-cask "emacs-mac"
 cask "dash"
 cask "gitup"
-cask "kitty"
 cask "sublime-text"
-cask "font-fira-code"
+cask "font-firacode-nerd-font"
+cask "java"
+brew "languagetool"
 
 cask "spotify"
 cask "soulseek"
 cask "google-chrome"
-cask "firefox"
 
 # Tools
 cask "skim"
+cask "calibre"
+cask "anki"
 cask "numi"
 cask "omnidisksweeper"
 cask "alfred"
@@ -69,7 +80,6 @@ cask "contexts"
 cask "appcleaner"
 cask "zotero"
 cask "dropbox"
-cask "google-backup-and-sync"
 
 # Create
 cask "mactex"

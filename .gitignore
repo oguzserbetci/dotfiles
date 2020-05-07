@@ -12,9 +12,8 @@ Package\ Control.last-run
 .zsh_history
 *.system-ca-bundle
 *.log
-vim/plugged/
-vim/.netrwhist
-vim
+config/nvim/plugged/
+config/nvim/.netrwhist
 .vim_runtime
 .python-environments
 eshell/
@@ -32,3 +31,5 @@ bookmarks
 /setup_python.sh
 /setup_tmux.sh
 tags
+/kitty/kitty-themes/
+/kitty/theme.conf

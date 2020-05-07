@@ -1,0 +1,7 @@
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec nm-applet
+exec xfce4-power-manager
+exec pamac-tray
+exec_always ff-theme-util
+exec mako --width=400 --height=10000 --default-timeout 10000
+exec owncloud

@@ -1,0 +1,5 @@
+# doom-emacs python module
+isort
+pyflakes
+nose
+black
