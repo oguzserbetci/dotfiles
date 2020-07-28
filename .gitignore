@@ -12,8 +12,8 @@ Package\ Control.last-run
 .zsh_history
 *.system-ca-bundle
 *.log
-config/nvim/plugged/
-config/nvim/.netrwhist
+nvim/plugged/
+nvim/.netrwhist
 .vim_runtime
 .python-environments
 eshell/
