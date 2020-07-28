@@ -53,8 +53,6 @@ ctrl + alt - p : yabai -m space --focus prev
 ctrl + alt - n : yabai -m space --focus next
 ctrl + alt - u : yabai -m display --focus 2
 ctrl + alt - o : yabai -m display --focus 1
-pageup         : yabai -m space --focus prev
-pagedown       : yabai -m space --focus next
 ctrl + alt - n : yabai -m space --focus next
 ctrl + alt - 1 : yabai -m space --focus 1
 ctrl + alt - 2 : yabai -m space --focus 2
@@ -131,22 +129,22 @@ ctrl + alt - w : yabai -m window --insert north
 ctrl + alt - d : yabai -m window --insert east
 
 # rotate tree
-cmd + alt - r : yabai -m space --rotate 90
+fn - r : yabai -m space --rotate 90
 
 # mirror tree y-axis
-cmd + alt - y : yabai -m space --mirror y-axis
+fn - y : yabai -m space --mirror y-axis
 
 # mirror tree x-axis
-cmd + alt - x : yabai -m space --mirror x-axis
+fn - x : yabai -m space --mirror x-axis
 
 # toggle desktop offset
-cmd + alt - a : yabai -m space --toggle padding; yabai -m space --toggle gap
+fn - a : yabai -m space --toggle padding; yabai -m space --toggle gap
 
 # toggle window parent zoom
-cmd + alt - d : yabai -m window --toggle zoom-parent
+fn - d : yabai -m window --toggle zoom-parent
 
 # toggle window fullscreen zoom
-cmd + alt - f : yabai -m window --toggle zoom-fullscreen
+fn - f : yabai -m window --toggle zoom-fullscreen
 
 # toggle window native fullscreen
 shift + alt - f : yabai -m window --toggle native-fullscreen
@@ -155,17 +153,17 @@ shift + alt - f : yabai -m window --toggle native-fullscreen
 shift + alt - b : yabai -m window --toggle border
 
 # toggle window split type
-cmd + alt - e : yabai -m window --toggle split
+fn - e : yabai -m window --toggle split
 
 # float / unfloat window and center on screen
-cmd + alt - t : yabai -m window --toggle float;\
+fn - t : yabai -m window --toggle float;\
           yabai -m window --grid 4:4:1:1:2:2
 
 # toggle sticky
-cmd + alt - s : yabai -m window --toggle sticky
+fn - s : yabai -m window --toggle sticky
 
 # toggle sticky, float and resize to picture-in-picture size
-cmd + alt - p : yabai -m window --toggle sticky;\
+fn - p : yabai -m window --toggle sticky;\
           yabai -m window --grid 5:5:4:0:1:1
 
 # change layout of desktop
