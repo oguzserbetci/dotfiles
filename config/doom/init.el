@@ -15,8 +15,7 @@
        :checkers
        (syntax
         +childframe)
-       (spell 
-        +everywhere)
+       spell
        grammar
 
        :completion
@@ -34,19 +33,19 @@
        doom                   ; what makes DOOM look the way it does
        doom-dashboard         ; a nifty splash screen for Emacs
        doom-quit              ; DOOM quit-message prompts when you quit Emacs
-       ;;fill-column       ; a `fill-column' indicator
+       ;; fill-column         ; a `fill-column' indicator
        hl-todo                ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
        hydra
-       indent-guides              ; highlighted indent columns
+       ;; indent-guides              ; highlighted indent columns
        modeline                   ; snazzy, Atom-inspired modeline, plus API
-       nav-flash                  ; blink the current line after jumping
+       ;; nav-flash                  ; blink the current line after jumping
        neotree                    ; a project drawer, like NERDTree for vim
        ophints                    ; highlight the region an operation acts on
        (popup                     ; tame sudden yet inevitable temporary windows
         +all                      ; catch all popups that start with an asterix
         +defaults)                ; default popup rules
        ;; pretty-code       ; replace bits of code with pretty symbols
-       ;;tabbar            ; FIXME an (incomplete) tab bar for Emacs
+       ;; tabs                ; FIXME an (incomplete) tab bar for Emacs
        treemacs               ; a project drawer, like neotree but cooler
        unicode                ; extended unicode support for various languages
        vc-gutter              ; vcs diff in the fringe
@@ -67,7 +66,7 @@
        ;;parinfer          ; turn lisp into python, sort of
        rotate-text               ; cycle region at point between text candidates
        snippets                  ; my elves. They type so I don't have to
-       word-wrap
+       ;; word-wrap
 
        :emacs
        (dired                           ; making dired pretty [functional]
@@ -89,7 +88,7 @@
        direnv
        ;;docker
        editorconfig                ; let someone else argue about tabs vs spaces
-       ein                         ; tame Jupyter notebooks with emacs
+       ;;ein                         ; tame Jupyter notebooks with emacs
        biblio
        (eval
         +overlay)            ; run code, run (also, repls)
@@ -115,7 +114,8 @@
        :lang
        ;;agda              ; types of types of types of types...
        ;;assembly          ; assembly for fun or debugging
-       ;;cc                ; C/C++/Obj-C madness
+       (cc
+        +lsp)                ; C/C++/Obj-C madness
        ;;clojure           ; java with a lisp
        ;;common-lisp       ; if you've seen one lisp, you've seen them all
        ;;coq               ; proofs-as-programs
@@ -162,7 +162,9 @@
        (python
         +conda
         +poetry
+        +pyenv
         +lsp
+        +pyright
         )            ; beautiful is better than ugly
        ;;qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
@@ -198,10 +200,10 @@
        :config
        ;; For literate config users. This will tangle+compile a config.org
        ;; literate config in your `doom-private-dir' whenever it changes.
-       ;;literate
+       ;; literate
 
        ;; The default module sets reasonable defaults for Emacs. It also
        ;; provides a Spacemacs-inspired keybinding scheme and a smartparens
        ;; config. Use it as a reference for your own modules.
-       (default +bindings +smartparens)
+       (default +bindings)
        )

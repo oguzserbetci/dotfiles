@@ -1,8 +1,15 @@
 ;; -*- no-byte-compile: t; -*-
-;;; ~/.doom.d/packages.el
+;;; ~/.dotfiles/config/doom/packages.el
 
-(package! org-super-agenda)
 (package! org-ref)
+(package! org-analyzer)
 
-;;; Examples:
-;; (package! builtin-package :disable t)
+(package! org-analyzer)
+
+(unpin! org-roam-bibtex)
+
+;; When using org-roam via the `+roam` flag
+(unpin! org-roam company-org-roam)
+
+;; When using bibtex-completion via the `biblio` module
+(unpin! bibtex-completion helm-bibtex ivy-bibtex)
