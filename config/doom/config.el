@@ -20,6 +20,11 @@
 (display-battery-mode 1)                          ; On laptops it's nice to know how much power you have
 (global-subword-mode 1)                           ; Iterate through CamelCase words
 
+(setenv "LIBRARY_PATH" (concat (getenv "LIBRARY_PATH")
+                                 (when (getenv "LIBRARY_PATH") ":")
+                                 ;; This is where Homebrew puts gcc libraries.
+                                 (car (file-expand-wildcards "/usr/local/opt/gcc/lib/gcc/*"))))
+
 (server-start)
 
 ; UI
