@@ -32,6 +32,10 @@
 ;; Corrects (and improves) org-mode's native fontification.
 (doom-themes-org-config)
 
+;; Doom modeline
+(setq doom-modeline-buffer-encoding nil
+      doom-modeline-percent-position nil)
+
 (setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
       doom-variable-pitch-font (font-spec :family "Fira Code") ; inherits `doom-font''s :size
       doom-unicode-font (font-spec :family "Fira Code" :size 12)

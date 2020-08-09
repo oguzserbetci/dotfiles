@@ -46,6 +46,9 @@ yabai -m rule --add app="DeepL" title!="^DeepL$" sticky=on layer=above
 yabai -m space 1 --label chat
 yabai -m space 2 --label music
 
+yabai -m config --space 1 layout stack
+yabai -m config --space 2 layout stack
+
 yabai -m rule --add app=Mail space=^1
 yabai -m rule --add app=Messages space=^1
 yabai -m rule --add app=Signal space=^1
