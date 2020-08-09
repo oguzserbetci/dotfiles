@@ -41,7 +41,7 @@ register-python-argcomplete --shell fish pipx | .
 
 kitty + complete setup fish | source
 set -g fish_user_paths /usr/local/sbin $fish_user_paths
-set -g fish_user_paths /usr/local/Caskroom/miniconda/base/bin /usr/local/Caskroom/miniconda/base/condabin $HOME/.local/bin $fish_user_paths
+set -g fish_user_paths ~/.dotfiles/bin /usr/local/Caskroom/miniconda/base/bin /usr/local/Caskroom/miniconda/base/condabin $HOME/.local/bin $fish_user_paths
 
 # set -g GTK_DEBUG interactive waybar
 

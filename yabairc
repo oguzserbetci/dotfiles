@@ -1,27 +1,18 @@
 #!/usr/bin/env sh
-
-# bar settings
-yabai -m config status_bar                   off
+yabai -m config debug_output on
 
 # global settings
-yabai -m config focus_follows_mouse          autofocus # autoraise
-yabai -m config mouse_follows_focus          off
+yabai -m config focus_follows_mouse          autoraise
+yabai -m config mouse_follows_focus          on
 yabai -m config window_placement             second_child
-yabai -m config window_topmost               off
-yabai -m config window_opacity               off
+yabai -m config window_topmost               on
+yabai -m config window_opacity               on
 yabai -m config window_opacity_duration      0.0
 yabai -m config window_shadow                on
-yabai -m config window_border                on
-yabai -m config window_border_width          1
-yabai -m config window_border_radius         5
-yabai -m config window_border_placement      offset
-yabai -m config active_window_border_color   0xffff375f
-yabai -m config normal_window_border_color   0xff1e1f28
-yabai -m config insert_window_border_color   0xffffd60a
 yabai -m config active_window_opacity        1.0
-yabai -m config normal_window_opacity        0.50
+yabai -m config normal_window_opacity        0.90
 yabai -m config split_ratio                  0.50
-yabai -m config auto_balance                 off
+yabai -m config auto_balance                 on
 yabai -m config mouse_modifier               fn
 yabai -m config mouse_action1                move
 yabai -m config mouse_action2                resize
@@ -35,21 +26,28 @@ yabai -m config right_padding                5
 yabai -m config window_gap                   3
 
 # Ubersicht update
-yabai -m signal --add event=space_changed \
-    action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"spaces-coffee\"'"
-yabai -m signal --add event=display_changed \
-    action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"spaces-coffee\"'"
+# yabai -m signal --add event=space_changed \
+#     action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"spaces-coffee\"'"
+# yabai -m signal --add event=display_changed \
+#     action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"spaces-coffee\"'"
 
 # window rules
 yabai -m rule --add app=Emacs manage=on
 yabai -m rule --add app=iTunes title="^Mini" manage=off
+yabai -m rule --add app=Stickies manage=off
 yabai -m rule --add app="^System Preferences$" sticky=on layer=above
+yabai -m rule --add app="^QuickTime Player$" title="Movie Recording" sticky=on layer=above
 yabai -m rule --add title="^Install" sticky=on layer=above
 yabai -m rule --add app=Firefox title="^Opening" sticky=on layer=above
+yabai -m rule --add app=Firefox title="^File Upload" sticky=on layer=above
 yabai -m rule --add app="Zotero" title!="^Zotero$" sticky=on layer=above
+yabai -m rule --add app="DeepL" title!="^DeepL$" sticky=on layer=above
 
 yabai -m space 1 --label chat
 yabai -m space 2 --label music
+
+yabai -m config --space 1 layout stack
+yabai -m config --space 2 layout stack
 
 yabai -m rule --add app=Mail space=^1
 yabai -m rule --add app=Messages space=^1
@@ -57,9 +55,7 @@ yabai -m rule --add app=Signal space=^1
 yabai -m rule --add app=Calendar space=^1
 yabai -m rule --add app=Telegram space=^1
 yabai -m rule --add app=Spotify space=^2
-yabai -m rule --add app=Music space=^2
 yabai -m rule --add app="Civilization V" manage=off
 yabai -m rule --add app="Civilization VI" manage=off
-# TODO signal uebersicht
 
 echo "yabai configuration loaded.."

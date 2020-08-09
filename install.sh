@@ -3,7 +3,6 @@
 # Bunch of symlinks
 mkdir -p ~/.config
 ln -sf $DOTFILES_DIR/config/* ~/.config/
-ln -sf $DOTFILES_DIR/config/fish/* ~/.config/fish/
 ln -sf $DOTFILES_DIR/bin ~/.bin
 ln -sf $DOTFILES_DIR/zshrc ~/.zshrc
 
@@ -86,6 +85,8 @@ echo 'run :PlugInstall in vim'
 fi
 
 fisher add jethrokuan/z matchai/spacefish jethrokuan/fzf fisherman/grc
+
+npm install -g pyright
 
 echo 'setup python: https://medium.com/@henriquebastos/the-definitive-guide-to-setup-my-python-workspace-628d68552e14 and install virtual fish: pip install virtualfish'
 echo 'install zotero plugins at: http://zotfile.com/ http://retorque.re/zotero-better-bibtex/'
