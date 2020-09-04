@@ -79,15 +79,14 @@
 
 (use-package! org-ref
   :after org
-  :init
-  (setq org-ref-completion-library 'org-ref-ivy-cite)
-
+  :preface
+  (setq org-ref-completion-library #'org-ref-ivy-cite)
   :config
-  (setq bibtex-dialect 'biblatex)
   (setq bibtex-dialect 'biblatex
         orhc-bibtex-cache-file (concat doom-cache-dir "org-ref.cache")
-        org-ref-get-pdf-filename-function (lambda (key)
-                                            (car (bibtex-completion-find-pdf key)))
+        ;; org-ref-get-pdf-filename-function (lambda (key)
+        ;;                                     (car (bibtex-completion-find-pdf key)))
+        org-ref-open-pdf-function 'org-ref-get-pdf-filename-helm-bibtex
         org-ref-notes-function (lambda (thekey)
                                  (let ((bibtex-completion-bibliography (org-ref-find-bibliography)))
                                    (bibtex-completion-edit-notes
@@ -106,22 +105,21 @@
   (setq org-latex-compiler "lualatex"
         org-latex-pdf-process (list
                                "latexmk -pdflatex='lualatex -shell-escape -interaction nonstopmode' -pdf -f  %f"))
-  )
 
-(after! org-roam
-  (setq org-roam-tag-sources '(prop all-directories))
-  )
+ )
 
-(after! bibtex-completion
-  (add-to-list 'bibtex-completion-additional-search-fields "journaltitle")
-
+(after! org-ref
   (setq bibtex-completion-pdf-field "file"
         bibtex-completion-display-formats '((t . "${=has-pdf=:1}${=has-note=:1} ${author:20} ${year:4} ${title:*} ${=type=:3} ${journaltitle:10}")))
 
-  (setq bibtex-completion-bibliography '("~/Resources/Papers/Library.bib" "~/Resources/Calibre/My Books.bib")
+  (setq bibtex-completion-bibliography '("~/Resources/Papers/Library.bib"
+                                         "~/Resources/Calibre/My Books.bib")
         bibtex-completion-library-path "~/Resources/Papers/"
         bibtex-completion-notes-path (concat org-directory "roam"))
 
+  ;; (setf (cdr (assoc 'org-mode bibtex-completion-format-citation-functions)) 'org-ref-format-citation)
+
+  (add-to-list 'bibtex-completion-additional-search-fields "journaltitle")
   (setq bibtex-completion-notes-template-multiple-files
         "${author-abbrev} – ${title}
 #+roam_key: cite:${=key=}
@@ -140,14 +138,22 @@ Upon:
 :END:\n\n")
 
   (cond
-      (IS-MAC
-      (setq bibtex-completion-pdf-open-function
+   (IS-MAC
+    (setq bibtex-completion-pdf-open-function
           (lambda (fpath)
-              (async-start-process "open" "open" "open" fpath))))
-      (IS-LINUX
-      (setq bibtex-completion-pdf-open-function
+            (async-start-process "open" "open" "open" fpath))))
+   (IS-LINUX
+    (setq bibtex-completion-pdf-open-function
           (lambda (fpath)
-              (async-start-process "open-pdf" "/usr/bin/xdg-open" nil fpath))))))
+            (async-start-process "open-pdf" "/usr/bin/xdg-open" nil fpath)))))
+  )
+
+(after! org-roam
+  (setq org-roam-tag-sources '(prop all-directories))
+  )
+
+(after! lsp
+  (setq lsp-response-timeout 30))
 
 (setq reftex-default-bibliography '("~/Resources/Papers/Library.bib" "~/Resources/Calibre/My Books.bib"))
 

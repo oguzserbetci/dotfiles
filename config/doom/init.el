@@ -29,6 +29,7 @@
         +icons)                     ; a search engine for love and life
 
        :ui
+       macos                    ; MacOS-specific commands
        deft                   ; notational velocity for Emacs
        doom                   ; what makes DOOM look the way it does
        doom-dashboard         ; a nifty splash screen for Emacs
@@ -44,7 +45,6 @@
        (popup                     ; tame sudden yet inevitable temporary windows
         +all                      ; catch all popups that start with an asterix
         +defaults)                ; default popup rules
-       ;; pretty-code       ; replace bits of code with pretty symbols
        ;; tabs                ; FIXME an (incomplete) tab bar for Emacs
        treemacs               ; a project drawer, like neotree but cooler
        unicode                ; extended unicode support for various languages
@@ -99,7 +99,6 @@
         +offline)                       ; ...or in Dash docsets locally
        (lsp
         +bindings)
-       macos                    ; MacOS-specific commands
        magit                    ; a git porcelain for Emacs
        ;;make              ; run make tasks from Emacs
        ;;pass              ; password manager for nerds
@@ -193,9 +192,6 @@
        ;;irc               ; how neckbeards socialize
        ;;(rss +org)        ; emacs as an RSS reader
        ;;twitter           ; twitter client https://twitter.com/vnought
-       ;; (write            ; emacs for writers (fiction, notes, papers, etc.)
-       ;;  +wordnut         ; wordnet (wn) search
-       ;;  +langtool)       ; a proofreader (grammar/style check) for Emacs
 
        :config
        ;; For literate config users. This will tangle+compile a config.org
