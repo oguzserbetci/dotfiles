@@ -4,10 +4,6 @@ set -x LC_ALL en_US.UTF-8
 set -x LANG en_US.UTF-8 LANGUAGE=en.UTF-8
 set -x HOMEBREW_CASK_OPTS '--appdir=/Applications --fontdir=/Library/Fonts'
 
-set PROMPT_TITLE 'echo -ne "\033]0;$USER@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
-
-set -x PROMPT_COMMAND "$PROMPT_TITLE; $PROMPT_COMMAND"
-
 . $HOME/.alias
 
 register-python-argcomplete --shell fish pipx | .
@@ -39,8 +35,9 @@ register-python-argcomplete --shell fish pipx | .
 # status --is-interactive; and pyenv init - | source
 # status --is-interactive; and pyenv virtualenv-init - | source
 
-kitty + complete setup fish | source
+# kitty + complete setup fish | source
 set -g fish_user_paths /usr/local/sbin $fish_user_paths
+set -g fish_user_paths /Users/oguz/.gem/ruby/2.6.0/bin $fish_user_paths
 set -g fish_user_paths ~/.dotfiles/bin /usr/local/Caskroom/miniconda/base/bin /usr/local/Caskroom/miniconda/base/condabin $HOME/.local/bin $fish_user_paths
 
 # set -g GTK_DEBUG interactive waybar
@@ -79,3 +76,5 @@ end
 # !! Contents within this block are managed by 'conda init' !!
 eval /usr/local/Caskroom/miniconda/base/bin/conda "shell.fish" "hook" $argv | source
 # <<< conda initialize <<<
+
+starship init fish | source
