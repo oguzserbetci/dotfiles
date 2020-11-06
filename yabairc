@@ -38,6 +38,8 @@ yabai -m rule --add app=Stickies manage=off
 yabai -m rule --add app="^System Preferences$" sticky=on layer=above
 yabai -m rule --add app="^QuickTime Player$" title="Movie Recording" sticky=on layer=above
 yabai -m rule --add title="^Install" sticky=on layer=above
+yabai -m rule --add title="^Hot terminal" manage=off
+yabai -m rule --add title="Info$" app=Finder sticky=on layer=above
 yabai -m rule --add app=Firefox title="^Opening" sticky=on layer=above
 yabai -m rule --add app=Firefox title="^File Upload" sticky=on layer=above
 yabai -m rule --add app="Zotero" title!="^Zotero$" sticky=on layer=above
@@ -47,7 +49,6 @@ yabai -m space 1 --label chat
 yabai -m space 2 --label music
 
 yabai -m config --space 1 layout stack
-yabai -m config --space 2 layout stack
 
 yabai -m rule --add app=Mail space=^1
 yabai -m rule --add app=Messages space=^1
