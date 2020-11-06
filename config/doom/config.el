@@ -115,7 +115,7 @@
   (setq bibtex-completion-bibliography '("~/Resources/Papers/Library.bib"
                                          "~/Resources/Calibre/My Books.bib")
         bibtex-completion-library-path "~/Resources/Papers/"
-        bibtex-completion-notes-path (concat org-directory "roam"))
+        bibtex-completion-notes-path (concat org-directory "roam/bibliography/"))
 
   ;; (setf (cdr (assoc 'org-mode bibtex-completion-format-citation-functions)) 'org-ref-format-citation)
 
@@ -189,6 +189,7 @@ Upon:
 
 (setq org-directory "~/org/")
 (setq deft-directory org-directory)
+
 (after! org
   (setq org-todo-keywords
         '((sequence
@@ -206,6 +207,8 @@ Upon:
   (setq org-startup-folded t
         org-hide-block-startup t)
 
+  (add-hook 'org-mode-hook 'org-fragtog-mode)
+
   (defun org-archive-done-in-subtree ()
     (interactive)
     (org-map-entries
@@ -221,6 +224,7 @@ Upon:
        (org-archive-subtree)
        (setq org-map-continue-from (org-element-property :begin (org-element-at-point))))
      "/DONE|KILL" 'file))
+  (add-to-list 'org-modules 'org-id)
   )
 
 (after! org-agenda
@@ -283,6 +287,12 @@ Upon:
 ;;            +word-wrap-mode)
 
 (setq +latex-viewers '(skim))
+
+;; Auto update RSS feeds
+(add-hook! 'elfeed-search-mode-hook 'elfeed-update)
+
+(after! projectile
+  (setq projectile-enable-caching (not (executable-find doom-projectile-fd-binary))))
 
 (provide 'config)
 ;;; config.el ends here
