@@ -14,6 +14,8 @@
 
 (package! org-fragtog)
 
+(package! jupyter)
+
 ;; (package! org-analyzer)
 
 ;; (unpin! org-roam-bibtex)

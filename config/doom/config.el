@@ -21,13 +21,12 @@
 (global-subword-mode 1)                           ; Iterate through CamelCase words
 
 (setenv "LIBRARY_PATH" (concat (getenv "LIBRARY_PATH")
-                                 (when (getenv "LIBRARY_PATH") ":")
-                                 ;; This is where Homebrew puts gcc libraries.
-                                 (car (file-expand-wildcards "/usr/local/opt/gcc/lib/gcc/*"))))
+                               (when (getenv "LIBRARY_PATH") ":")
+                               ;; This is where Homebrew puts gcc libraries.
+                               (car (file-expand-wildcards "/usr/local/opt/gcc/lib/gcc/*"))))
 
-(server-start)
+;; (setq ispell-dictionary "en_US")
 
-; UI
 (load-theme 'doom-dracula t)
 ;; Corrects (and improves) org-mode's native fontification.
 (doom-themes-org-config)
@@ -36,10 +35,10 @@
 (setq doom-modeline-buffer-encoding nil
       doom-modeline-percent-position nil)
 
-(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
-      doom-variable-pitch-font (font-spec :family "Fira Code") ; inherits `doom-font''s :size
-      doom-unicode-font (font-spec :family "Fira Code" :size 12)
-      doom-big-font (font-spec :family "Fira Code" :size 19))
+;; (setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
+;;       doom-variable-pitch-font (font-spec :family "Fira Code") ; inherits `doom-font''s :size
+;;       doom-unicode-font (font-spec :family "Fira Code" :size 12)
+;;       doom-big-font (font-spec :family "Fira Code" :size 19))
 
 (setq +treemacs-git-mode 'deferred)
 
@@ -70,7 +69,7 @@
         insert-directory-program "/usr/local/bin/gls"
         dired-listing-switches "-aBhl --group-directories-first"))
 
-; MODULE CONFIG
+                                        ; MODULE CONFIG
 ;; :tools
 ;; ein
 (map! :map ein:notebook-mode-map
@@ -106,7 +105,7 @@
         org-latex-pdf-process (list
                                "latexmk -pdflatex='lualatex -shell-escape -interaction nonstopmode' -pdf -f  %f"))
 
- )
+  )
 
 (after! org-ref
   (setq bibtex-completion-pdf-field "file"
@@ -120,22 +119,20 @@
   ;; (setf (cdr (assoc 'org-mode bibtex-completion-format-citation-functions)) 'org-ref-format-citation)
 
   (add-to-list 'bibtex-completion-additional-search-fields "journaltitle")
-  (setq bibtex-completion-notes-template-multiple-files
-        "${author-abbrev} – ${title}
-#+roam_key: cite:${=key=}
-#+roam_tags: paper
-
-Keywords: ${keywords}
-Related:
-Upon:
-
-* Notes on cite:${=key=}
-:PROPERTIES:
-:Custom_ID: ${=key=}
-:URL: ${url}
-:NOTER_DOCUMENT: ~/Resources/Papers/${file}
-:NOTER_PAGE:
-:END:\n\n")
+  ;; (setq orb-templates
+  ;;       '(("r" "ref" plain (function org-roam-capture--get-point)
+  ;;          "Keywords: ${keywords}
+  ;;           Related:
+  ;;           Upon:
+  ;;           * Notes on cite:${=key=}
+  ;;           :PROPERTIES:
+  ;;           :Custom_ID: ${=key=}
+  ;;           :URL: ${url}
+  ;;           :NOTER_DOCUMENT: ~/Resources/Papers/${file}
+  ;;           :NOTER_PAGE:
+  ;;           :END:\n\n"
+  ;;          :file-name ${citekey}"
+  ;;          :head "#+TITLE: ${citekey}: ${title}\n#+ROAM_KEY: ${ref}\n ; <--
 
   (cond
    (IS-MAC
@@ -148,6 +145,7 @@ Upon:
             (async-start-process "open-pdf" "/usr/bin/xdg-open" nil fpath)))))
   )
 
+(add-hook! 'org-roam-mode 'org-roam-bibtex-mode)
 (after! org-roam
   (setq org-roam-tag-sources '(prop all-directories))
   )
@@ -180,7 +178,7 @@ Upon:
   (setq-default pdf-view-display-size 'fit-width)
 
   ;; (push '("f1fa8c" "ffb86c" "#50fa7b" "ff5555" "#8be9fd" "bd93f9" "ff79c6") pdf-annot-color-history)
-    ;; https://github.com/politza/pdf-tools/issues/35
+  ;; https://github.com/politza/pdf-tools/issues/35
   ;; (push '(color . "#000000") pdf-annot-default-markup-annotation-properties)
   )
 
@@ -194,20 +192,34 @@ Upon:
   (setq org-todo-keywords
         '((sequence
            "[ ](T)"    ; A task that needs proper definition, tagging, etc.
-           "TODO(t)"  ; A task that needs doing & is ready to do
-           "NEXT(n)"  ; A task that is to be started ASAP
-           "STRT(s)" ; A task that is in progress
+           "TODO(t)"   ; A task that needs doing & is ready to do
+           "NEXT(n)"   ; A task that is to be started ASAP
+           "STRT(s)"   ; A task that is in progress
            "PROJ(p)"   ; An ongoing project that cannot be completed in one step
-           "WAIT(w)" ; Something is holding up this task; or it is paused
+           "WAIT(w)"   ; Something is holding up this task; or it is paused
            "|"
            "DONE(d)"    ; Task successfully completed
            "KILL(k)"))) ; Task was cancelled, aborted or is no longer applicable
+
+  (add-to-list 'org-latex-classes
+    '("letter"
+      "\\documentclass{letter}[a4paper]
+       \\signature{Oğuz Şerbetçi}
+       \\address{Boxhagener Str. 111 \\\\ Berlin 10245}"
+      ("\\section{%s}" . "\\section*{%s}")
+      ("\\subsection{%s}" . "\\subsection*{%s}")
+      ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))
+
 
   (remove-hook 'org-mode-hook #'org-superstar-mode) ;; performance tip
   (setq org-startup-folded t
         org-hide-block-startup t)
 
   (add-hook 'org-mode-hook 'org-fragtog-mode)
+
+  ;; UI
+  (add-hook 'org-mode 'visual-fill-column-mode)
+  (setq fill-column 100)
 
   (defun org-archive-done-in-subtree ()
     (interactive)
@@ -286,13 +298,62 @@ Upon:
 ;;              python-mode-hook)
 ;;            +word-wrap-mode)
 
-(setq +latex-viewers '(skim))
+;; (setq +latex-viewers '(skim))
+(setq +latex-viewers '(pdf-tools))
 
 ;; Auto update RSS feeds
 (add-hook! 'elfeed-search-mode-hook 'elfeed-update)
 
-(after! projectile
-  (setq projectile-enable-caching (not (executable-find doom-projectile-fd-binary))))
+
+(setq python-shell-interpreter "python")
+
+(after! poetry
+  (setq poetry-tracking-strategy 'projectile)
+  )
+
+(use-package! jupyter
+  :demand t
+
+  :after ob
+
+  :init
+  (defun jupyter-run-repl-or-pop-to-buffer-dwim ()
+    "If a buffer is already associated with a jupyter buffer,
+then pop to it. Otherwise start a jupyter kernel."
+    (interactive)
+    (if (bound-and-true-p jupyter-current-client)
+        (jupyter-repl-pop-to-buffer)
+      (call-interactively #'jupyter-run-repl)))
+
+  ;; * eldoc integration
+  (defun scimax-jupyter-signature ()
+    "Try to return a function signature for the thing at point."
+    (when (and (eql major-mode 'org-mode)
+               (string= (or (get-text-property (point) 'lang) "") "jupyter-python"))
+      (save-window-excursion
+     ;;; Essentially copied from (jupyter-inspect-at-point).
+        (jupyter-org-with-src-block-client
+         (cl-destructuring-bind (code pos)
+             (jupyter-code-context 'inspect)
+           (jupyter-inspect code pos nil 0)))
+        (when (get-buffer "*Help*")
+          (with-current-buffer "*Help*"
+            (goto-char (point-min))
+            (prog1
+                (cond
+                 ((re-search-forward "Signature:" nil t 1)
+                  (buffer-substring (line-beginning-position) (line-end-position)))
+                 ((re-search-forward "Docstring:" nil t 1)
+                  (forward-line)
+                  (buffer-substring (line-beginning-position) (line-end-position)))
+                 (t
+                  nil))
+              ;; get rid of this so we don't accidentally show old results later
+              (with-current-buffer "*Help*"
+                (toggle-read-only)
+                (erase-buffer))))))))
+  )
+
 
 (provide 'config)
 ;;; config.el ends here

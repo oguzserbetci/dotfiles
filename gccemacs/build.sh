@@ -7,7 +7,13 @@ export LIBRARY_PATH="/usr/local/Cellar/gcc/10.2.0/lib/gcc/10:${LIBRARY_PATH:-}"
 cd emacs || exit
 
 git clean -xfd
-git pull
+# git reset --hard origin/feature/native-comp
+# git pull
+
+# Add patches from emacs-plus
+# git am ../homebrew-emacs-plus/patches/emacs-28/fix-window-role.patch
+# git am ../homebrew-emacs-plus/patches/emacs-28/no-frame-refocus-cocoa.patch
+# git apply ../homebrew-emacs-plus/patches/emacs-28/system-appearance.patch
 
 ./autogen.sh
 

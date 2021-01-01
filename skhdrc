@@ -1,5 +1,4 @@
 # open terminal
-ctrl + alt - return : open /Applications/Kitty.app
 ctrl + alt - f : firefox-new-window
 ctrl + alt - x : ~/.config/emacs/bin/org-capture
 

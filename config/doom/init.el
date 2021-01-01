@@ -15,7 +15,8 @@
        :checkers
        (syntax
         +childframe)
-       spell
+       (spell
+        +aspell)
        grammar
 
        :completion
