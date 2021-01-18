@@ -7,10 +7,7 @@ set -x LC_ALL en_US.UTF-8
 set -x LANG en_US.UTF-8 LANGUAGE=en.UTF-8
 set -x HOMEBREW_CASK_OPTS '--appdir=/Applications --fontdir=/Library/Fonts'
 
-set -g fish_user_paths $HOME/.local/bin $HOME/.bin $fish_user_paths
-
-# kitty + complete setup fish | source
-eval (ssh-agent -c)
+kitty + complete setup fish | source
 
 eval (direnv hook fish)
 
@@ -24,23 +21,13 @@ eval (direnv hook fish)
 # set -g TERMINAL iterm
 # set -g VISUAL emacsclient
 
-# set -x fish_user_paths /usr/local/opt/ruby/bin $HOME/.gem/ruby/2.6.0/bin $fish_user_paths
-
-# set -x fish_user_paths /usr/local/bin /usr/local/sbin /usr/sbin /sbin $fish_user_paths
-
-# set -x fish_user_paths /Applications/kitty.app/Contents/MacOS $fish_user_paths
-
-# Python
-# set -x fish_user_paths /usr/local/Caskroom/miniconda/base/bin /usr/local/Caskroom/miniconda/base/condabin $fish_user_paths
-# set -g PYENV_ROOT $HOME/.pyenv
-# set -x fish_user_paths $PYENV_ROOT/bin $fish_user_paths
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 eval /usr/local/Caskroom/miniconda/base/bin/conda "shell.fish" "hook" $argv | source
 # <<< conda initialize <<<
 
 pyenv init - | source
+pyenv virtualenv-init - | source
 
 starship init fish | source
 
@@ -60,5 +47,4 @@ function rm
     command rm $argv
 end
 
-test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
-
+# test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
