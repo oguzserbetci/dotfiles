@@ -4,3 +4,6 @@
 [submodule "config/kitty/kitty-themes"]
 	path = config/kitty/kitty-themes
 	url = git@github.com:dexpota/kitty-themes.git
+[submodule "misc/aspell-computer-dict"]
+	path = misc/aspell-computer-dict
+	url = git@github.com:alexey-martynov/aspell-dictionaries.git

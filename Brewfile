@@ -4,13 +4,22 @@ tap "homebrew/cask-versions"
 tap "homebrew/cask-fonts"
 
 # Priority
+cask "karabiner-elements"
+cask "firefox-nightly"
+cask "kitty"
+
+## Emacs
 tap "d12frosted/emacs-plus"
 brew "gcc"
 brew "libgccjit", args: ["build-from-source"]
 brew "emacs-plus@28", args: ["with-native-comp", "with-no-frame-refocus", "with-xwidgets"]
-cask "karabiner-elements"
-cask "firefox-nightly"
-cask "kitty"
+brew "fd"
+# cask "emacsclient"
+brew "proselint"
+brew "languagetool"
+brew "aspell"
+cask "xquartz" # dependency for wordnet
+brew "wordnet"
 
 # Development
 brew "git"
@@ -20,6 +29,12 @@ brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 brew "curl"
 brew "npm"
 brew "jq"
+brew "direnv"
+brew "starship"
+brew "pipx"
+brew "shfmt" # for formatting bash
+brew "editorconfig"
+brew "pngpaste"
 
 # Helpers
 brew "wget"
@@ -48,24 +63,16 @@ cask "anki"
 brew "exercism"
 
 # Writing
-brew "tectonic"
-brew "proselint"
-brew "aspell"
-brew "languagetool"
-
-# Emacs
-# cask "emacsclient"
-# cask "xquartz" # dependency for wordnet
-# brew "wordnet"
-# brew "fd"
-# brew "shellcheck"
-# brew "aspell"
+brew "tectonic" # tex
+## Emacs
+brew "ruby"
 
 #######################
 
 # Development
 cask "dash"
 cask "gitup"
+cask "maccy"
 cask "font-fira-code"
 
 # Media
@@ -76,6 +83,8 @@ cask "google-chrome"
 # Comms
 cask "zoom"
 cask "slack"  
+cask "screen"
+cask "skype"
 
 # Tools
 cask "skim"

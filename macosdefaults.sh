@@ -34,3 +34,4 @@ defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-ty
 # defaults write org.gnu.Emacs NSAppSleepDisabled -bool YES
 
 killall Dock
+ 
