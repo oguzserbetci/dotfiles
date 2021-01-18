@@ -45,7 +45,7 @@ if [ "$(uname 2>/dev/null)" != "Linux" ]; then
 	brew services start skhd
 	brew services start yabai
 
-    npm install --global stylelint js-beautify shellcheck pyright
+	npm install --global stylelint js-beautify shellcheck pyright
 fi
 
 # Fish Shell

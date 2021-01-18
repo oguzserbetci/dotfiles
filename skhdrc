@@ -1,5 +1,6 @@
 # open terminal
 ctrl + alt - f : firefox-new-window
+ctrl + alt - e : finder-new-window
 ctrl + alt - x : ~/.config/emacs/bin/org-capture
 
 # focus window
@@ -52,7 +53,6 @@ ctrl + alt - p : yabai -m space --focus prev
 ctrl + alt - n : yabai -m space --focus next
 ctrl + alt - u : yabai -m display --focus 2
 ctrl + alt - o : yabai -m display --focus 1
-ctrl + alt - n : yabai -m space --focus next
 ctrl + alt - 1 : yabai -m space --focus 1
 ctrl + alt - 2 : yabai -m space --focus 2
 ctrl + alt - 3 : yabai -m space --focus 3
@@ -98,7 +98,7 @@ ctrl + alt - u  : yabai -m display --focus 1
 # send window to monitor and follow focus
 ctrl + cmd - j  : yabai -m window --display 1; yabai -m display --focus 1
 ctrl + cmd - k  : yabai -m window --display 2; yabai -m display --focus 2
-#
+
 # send window to monitor but don't follow focus
 ctrl + cmd + shift - j  : yabai -m window --display 1; yabai -m display --focus 1
 ctrl + cmd + shift - k  : yabai -m window --display 2; yabai -m display --focus 2
@@ -108,24 +108,6 @@ shift + ctrl - a : yabai -m window --move rel:-20:0
 shift + ctrl - s : yabai -m window --move rel:0:20
 shift + ctrl - w : yabai -m window --move rel:0:-20
 shift + ctrl - d : yabai -m window --move rel:20:0
-
-# increase window size
-shift + alt - a : yabai -m window --resize left:-20:0
-shift + alt - s : yabai -m window --resize bottom:0:20
-shift + alt - w : yabai -m window --resize top:0:-20
-shift + alt - d : yabai -m window --resize right:20:0
-
-# decrease window size
-shift + cmd - a : yabai -m window --resize left:20:0
-shift + cmd - s : yabai -m window --resize bottom:0:-20
-shift + cmd - w : yabai -m window --resize top:0:20
-shift + cmd - d : yabai -m window --resize right:-20:0
-
-# set insertion point in focused container
-ctrl + alt - a : yabai -m window --insert west
-ctrl + alt - s : yabai -m window --insert south
-ctrl + alt - w : yabai -m window --insert north
-ctrl + alt - d : yabai -m window --insert east
 
 # rotate tree
 fn - r : yabai -m space --rotate 90
@@ -168,3 +150,7 @@ fn - p : yabai -m window --toggle sticky;\
 # change layout of desktop
 ctrl + cmd - a : yabai -m space --layout bsp
 ctrl + cmd - d : yabai -m space --layout float
+
+ctrl + cmd - f : yabai -m space --layout stack
+ctrl + cmd - s : yabai -m window --stack next
+ctrl + alt - s : yabai -m window --focus stack.next || yabai -m window --focus stack.first
