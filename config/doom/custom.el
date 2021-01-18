@@ -3,27 +3,41 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#fafafa" "#e45649" "#50a14f" "#986801" "#4078f2" "#a626a4" "#0184bc" "#383a42"])
  '(conda-anaconda-home "/usr/local/Caskroom/miniconda/base/")
  '(conda-env-autoactivate-mode t t)
- '(safe-local-variable-values
-   '((ispell-personal-dictionary concat doom-modeline--project-root "personal-dict.pws")
-     (ispell-personal-dictionary . "personal-dict.pws")
-     (eval let
-           ((emb-path "embeddings/sentences.mimic3.hourly.random.binned.100d.Fasttext.15ws.10neg.vec")
-            (vocab-path "embeddings/sentences.mimic3.hourly.random.binned.train.counts"))
-           (dap-register-debug-template "Python :: Finetune FastText"
-                                        (list :type "python" :args
-                                              (concat "debug_train" " --dev" " -e 2" " --emb_path=" emb-path " --vocab_file=" vocab-path)
-                                              :target-module "finetune.py" :request "launch" :name "Python :: Finetune FastText"))
-           (dap-register-debug-template "Python :: Pretrain MSE"
-                                        (list :type "python" :args
-                                              (concat "debug_train" " --dev" " -e 2" " --emb_path=" emb-path " --vocab_file=" vocab-path " --tasks=pred" " --modelcls=models.PredictionModel")
-                                              :target-module "finetune.py" :request "launch" :name "Python :: Finetune FastText")))
-     (LaTeX-item-indent . 0)
-     (org-export-preserve-breaks . t)
-     (org-latex-caption-above)
-     (TeX-engine quote xetex)
-     (org-startup-latex-with-latex-preview . t))))
+ '(fci-rule-color "#383a42")
+ '(jdee-db-active-breakpoint-face-colors (cons "#f0f0f0" "#4078f2"))
+ '(jdee-db-requested-breakpoint-face-colors (cons "#f0f0f0" "#50a14f"))
+ '(jdee-db-spec-breakpoint-face-colors (cons "#f0f0f0" "#9ca0a4"))
+ '(objed-cursor-color "#e45649")
+ '(pdf-view-midnight-colors (cons "#383a42" "#fafafa"))
+ '(rustic-ansi-faces
+   ["#fafafa" "#e45649" "#50a14f" "#986801" "#4078f2" "#a626a4" "#0184bc" "#383a42"])
+ '(safe-local-variable-values '((org-startup-latex-with-latex-preview . t)))
+ '(vc-annotate-background "#fafafa")
+ '(vc-annotate-color-map
+   (list
+    (cons 20 "#50a14f")
+    (cons 40 "#688e35")
+    (cons 60 "#807b1b")
+    (cons 80 "#986801")
+    (cons 100 "#ae7118")
+    (cons 120 "#c37b30")
+    (cons 140 "#da8548")
+    (cons 160 "#c86566")
+    (cons 180 "#b74585")
+    (cons 200 "#a626a4")
+    (cons 220 "#ba3685")
+    (cons 240 "#cf4667")
+    (cons 260 "#e45649")
+    (cons 280 "#d2685f")
+    (cons 300 "#c07b76")
+    (cons 320 "#ae8d8d")
+    (cons 340 "#383a42")
+    (cons 360 "#383a42")))
+ '(vc-annotate-very-old-color nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

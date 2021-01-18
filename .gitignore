@@ -36,3 +36,5 @@ tags
 /config/fish/functions/
 /config/fish/conf.d/
 /config/fish/completions/
+config/doom/packages.el
+config/doom/config.el
