@@ -1,0 +1,11 @@
+* Library
+~My summaries, thoughts and notes on courses, materials.~
+
+* Knowledge
+~My notes, summaries and synthesis of resourses on the topic.~
+
+* Ideas
+~Thoughts of my own.~
+
+* Projects
+~TODOs, exercises and any project ideas should fall under things here.~

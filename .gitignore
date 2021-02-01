@@ -39,3 +39,4 @@ tags
 config/doom/packages.el
 config/doom/config.el
 /misc/custom_scientific_US.dic
+.yas-compiled-snippets.el

@@ -167,6 +167,7 @@ CURRENT-NAME, if it does not already have them:
 
        :emacs
        (dired
+        +icons
         +ranger)         ; making dired pretty [functional]
        electric          ; smarter, keyword-based electric-indent
        (ibuffer 
@@ -175,7 +176,7 @@ CURRENT-NAME, if it does not already have them:
        vc                ; version-control and Emacs, sitting in a tree
 
        :term
-       ;;eshell            ; the elisp shell that works everywhere
+       eshell            ; the elisp shell that works everywhere
        ;;shell             ; simple shell REPL for Emacs
        ;;term              ; basic terminal emulator for Emacs
        ;;vterm             ; the best terminal emulation in Emacs
@@ -270,9 +271,9 @@ CURRENT-NAME, if it does not already have them:
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
        (python
+        +pyenv
         +conda
         +poetry
-        +pyenv
         +lsp
         +pyright)          ; beautiful is better than ugly
        ;;qt                ; the 'cutest' gui framework ever
