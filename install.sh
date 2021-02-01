@@ -23,6 +23,7 @@ ln -sf $DOTFILES_DIR/functions $HOME/.functions
 ln -sf $DOTFILES_DIR/profile $HOME/.profile
 ln -sf $DOTFILES_DIR/ctags.d $HOME/.ctags.d
 ln -sf $DOTFILES_DIR/condarc $HOME/.condarc
+ln -sf $DOTFILES_DIR/gitconfig $HOME/.gitconfig
 
 # Brew
 if [ "$(uname 2>/dev/null)" != "Linux" ]; then
@@ -45,6 +46,10 @@ if [ "$(uname 2>/dev/null)" != "Linux" ]; then
 	brew services start skhd
 	brew services start yabai
 
+	# For better git diff
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+	cargo install git-delta
+
 	npm install --global stylelint js-beautify shellcheck pyright
 fi
 
@@ -55,7 +60,7 @@ if [ ${SHELL: -4} != "fish" ]; then
 	chsh -s $(which fish)
 	curl -Lo $HOME/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
 
-	fisher install jethrokuan/z matchai/spacefish jethrokuan/fzf fisherman/grc danhper/fish-ssh-agent
+	fisher install jethrokuan/z matchai/spacefish jethrokuan/fzf fisherman/grc danhper/fish-ssh-agent goranmoomin/fish-rustup
 fi
 
 # Emacs Doom
