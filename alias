@@ -7,7 +7,7 @@ alias op='openn'
 alias s='subl'
 alias sn='subl -n'
 alias sm='s --project /Users/oguzserbetci/Library/Mobile\ Documents/com~apple~CloudDocs/note-taking.sublime-project'
-alias j='tmux new -s jupyter -d; tmux send-keys -t jupyter "cd ~; conda activate jupyterlab; jupyter lab" C-m'
+alias j='tmux new -s jupyter -d; tmux send-keys -t jupyter "cd ~; jupyter lab" C-m'
 alias jl='jupyter notebook list'
 
 alias llt='ls -1t | head -5'

@@ -8,3 +8,9 @@ stashed = "📦"
 modified = "📝"
 renamed = "👅"
 deleted = "🗑"
+
+[python]
+scan_for_pyfiles = false
+
+[gcloud]
+format = "[$symbol$active]($style) "

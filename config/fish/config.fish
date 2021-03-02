@@ -31,9 +31,9 @@ pyenv virtualenv-init - | source
 
 starship init fish | source
 
-function ssh
-  /usr/bin/ssh -t $argv "tmux attach || tmux new";
-end
+#function ssh
+#  /usr/bin/ssh -t $argv "tmux attach || tmux new";
+#end
 
 # https://github.com/fish-shell/fish-shell/issues/1511
 # Ask if removing more than 5 files

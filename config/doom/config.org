@@ -13,6 +13,11 @@
 
 
 * FIXES
+#+begin_src elisp :tangle packages.el
+(package! spinner
+  :recipe (:host github :repo "Malabarba/spinner.el")
+  )
+#+end_src
 ** MacOS
 Use gnu-ls https://stackoverflow.com/questions/25125200/emacs-error-ls-does-not-support-dired.
 #+begin_src elisp
@@ -45,6 +50,7 @@ Use beautiful title-bar in macOS.
 (setq ns-right-alternate-modifier nil)
 #+end_src
 
+TWA
 For better cooperation with window manager.
 #+begin_src elisp
 (setq frame-resize-pixelwise t)
@@ -64,10 +70,10 @@ Add time and battery to modeline.
 
 Set fonts, doom-*-font inherits from doom-font.
 #+begin_src elisp
-(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
-      doom-variable-pitch-font (font-spec :family "Fira Code")
-      doom-unicode-font (font-spec :family "Fira Code")
-      doom-big-font (font-spec :family "Fira Code" :size 19))
+(setq doom-font (font-spec :family "Iosevka SS05" :size 14 :weight 'medium)
+      doom-variable-pitch-font (font-spec :family "Iosevka Aile")
+      doom-unicode-font (font-spec :family "Iosevka SS05")
+      doom-big-font (font-spec :family "Iosevka Etoile" :size 22))
 #+end_src
 
 ** Theme
@@ -89,6 +95,20 @@ Pick theme using the macOS settings provided by emacs-plus.
 
 (load-theme 'doom-one-light t)
 (add-hook 'ns-system-appearance-change-functions #'oguz/apply-theme)
+#+end_src
+
+** Custom
+Use display font for org-headers
+#+begin_src elisp
+(custom-set-faces!
+  '(outline-1 :family "Iosevka Etoile")
+  '(outline-2 :family "Iosevka Etoile")
+  '(outline-3 :family "Iosevka Etoile")
+  '(outline-4 :family "Iosevka Etoile")
+  '(outline-5 :family "Iosevka Etoile")
+  '(outline-6 :family "Iosevka Etoile")
+  '(outline-7 :family "Iosevka Etoile")
+  '(outline-8 :family "Iosevka Etoile"))
 #+end_src
 ** Splash screen
 #+begin_src elisp
@@ -198,10 +218,14 @@ Pick theme using the macOS settings provided by emacs-plus.
 #+end_src
 
 
+
+
 * Editor
 Set dictionary language.
 #+begin_src elisp
-;; (setq ispell-dictionary "en_US")
+(setq ispell-dictionary "english")
+(after! spell-fu
+  (setq spell-fu-idle-delay 0.5))  ; default is 0.25
 #+end_src
 
 Speed up key help.
@@ -263,11 +287,11 @@ LSP mode config.
 
 Use git-delta for syntax highlighting in magit-diff
 #+begin_src elisp :tangle packages.el
-(package! magit-delta :recipe (:host github :repo "dandavison/magit-delta"))
+;; (package! magit-delta :recipe (:host github :repo "dandavison/magit-delta"))
 #+end_src
 #+begin_src elisp
-(use-package! magit-delta
-  :hook (magit-mode . magit-delta-mode))
+;; (use-package! magit-delta
+;;   :hook (magit-mode . magit-delta-mode))
 #+end_src
 
 ** Navigation
@@ -326,6 +350,16 @@ then pop to it. Otherwise start a jupyter kernel."
                 (toggle-read-only)
                 (erase-buffer))))))))
   )
+#+end_src
+
+** JS
+#+begin_src elisp :tangle packages.el
+(package! vue-mode)
+
+(use-package! vue-mode
+  :mode "\\.vue\\'"
+  :config
+  (add-hook 'vue-mode-hook #'lsp))
 #+end_src
 
 ** Python
@@ -585,7 +619,7 @@ Configure PDF.
   (setq org-pdftools-root-dir "~/Resources/Papers"))
 #+end_src
 
-*** org-roam
+** org-roam
 Install org-roam-bibtex as defined in [[https://github.com/org-roam/org-roam-bibtex#doom-emacs][org-roam/org-roam-bibtex]].
 #+begin_src elisp :tangle packages.el
 (package! org-roam-bibtex
@@ -635,18 +669,35 @@ Configure org-roam.
 (after! org-roam
   (add-hook! 'org-roam-mode 'org-roam-bibtex-mode)
   (setq org-roam-tag-sources '(prop all-directories))
+  (setq org-roam-dailies-directory "daily/")
   )
 #+end_src
 
 Roam templates
 #+begin_src elisp
 (setq org-roam-capture-templates
-      '(("d" "default" plain #'org-roam-capture--get-point "%?" :file-name "slip-box/%<%Y%m%d%H%M%S>-${slug}" :head "#+title: ${title}\n" :unnarrowed t)
-        ("x" "index" plain #'org-roam-capture--get-point (file (cat doom-private-dir "templates/index.org")) :file-name "%<%Y%m%d%H%M%S>-${slug}" :head "#+title: ${title}\n" :unnarrowed t))
+      '(("d" "default" plain #'org-roam-capture--get-point "%?" :file-name "%<%Y%m%d%H%M%S>-${slug}" :head "#+title: ${title}\n" :unnarrowed t)
+        ("x" "index" plain #'org-roam-capture--get-point (file "~/.config/doom/templates/index.org") :file-name "../%<%Y%m%d%H%M%S>-${slug}" :head "#+title: ${title}\n" :unnarrowed t))
       org-roam-dailies-capture-templates
-      '(("d" "default" entry #'org-roam-capture--get-point "* %?" :file-name "slip-box/daily/%<%Y-%m-%d>" :head "#title: %<%Y-%m-%d>"))
+      '(("l" "lab" entry
+         #'org-roam-capture--get-point
+         "* %?"
+         :file-name "daily/%<%Y-%m-%d>"
+         :head "#+title: %<%Y-%m-%d>\n"
+         :olp ("Lab notes"))
+        ("j" "journal" entry
+         #'org-roam-capture--get-point
+         "* %?"
+         :file-name "daily/%<%Y-%m-%d>"
+         :head "#+title: %<%Y-%m-%d>\n"
+         :olp ("Journal")))
       org-roam-capture-ref-templates
-      '(("r" "ref" plain #'org-roam-capture--get-point "%?" :file-name "slip-box/refs/${slug}" :head "#+title: ${title}\n#+roam_key: ${ref}" :unnarrowed t)))
+      '(("r" "ref" plain #'org-roam-capture--get-point
+         "${body}\n"
+         :file-name "refs/${slug}"
+         :head "#+title: ${title}\n#+roam_key: ${ref}"
+         :unnarrowed t
+         :empty-lines 1)))
 #+end_src
 
 

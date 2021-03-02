@@ -7,3 +7,6 @@
 [submodule "misc/aspell-computer-dict"]
 	path = misc/aspell-computer-dict
 	url = git@github.com:alexey-martynov/aspell-dictionaries.git
+[submodule "github-gitignore"]
+	path = config/doom/templates/gitignore
+	url = git@github.com:github/gitignore.git
