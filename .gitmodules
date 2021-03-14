@@ -10,3 +10,9 @@
 [submodule "github-gitignore"]
 	path = config/doom/templates/gitignore
 	url = git@github.com:github/gitignore.git
+[submodule "fedora/pop-theme/gtk-theme"]
+	path = gnome/pop-theme/gtk-theme
+	url = https://github.com/pop-os/gtk-theme
+[submodule "gnome/firefox-gnome-theme"]
+	path = gnome/firefox-gnome-theme
+	url = https://github.com/rafaelmardojai/firefox-gnome-theme/
