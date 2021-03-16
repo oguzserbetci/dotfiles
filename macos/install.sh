@@ -19,9 +19,7 @@ ln -sf $DOTFILES_DIR/proselintrc $HOME/.proselintrc
 ln -sf $DOTFILES_DIR/pylintrc $HOME/.pylintrc
 
 ln -sf $DOTFILES_DIR/alias $HOME/.alias
-ln -sf $DOTFILES_DIR/functions $HOME/.functions
 ln -sf $DOTFILES_DIR/profile $HOME/.profile
-ln -sf $DOTFILES_DIR/ctags.d $HOME/.ctags.d
 ln -sf $DOTFILES_DIR/condarc $HOME/.condarc
 ln -sf $DOTFILES_DIR/gitconfig $HOME/.gitconfig
 
@@ -60,22 +58,22 @@ if [ ${SHELL: -4} != "fish" ]; then
 	chsh -s $(which fish)
 	curl -Lo $HOME/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
 
-	fisher install jethrokuan/z matchai/spacefish jethrokuan/fzf fisherman/grc danhper/fish-ssh-agent goranmoomin/fish-rustup
+	fisher install jethrokuan/z matchai/spacefish jethrokuan/fzf danhper/fish-ssh-agent goranmoomin/fish-rustup
 fi
 
 # Emacs Doom
 if [ -e "$HOME/.config/emacs/bin/doom" ]; then
-	echo "DOOM is already installed"
+  echo "DOOM is already installed"
 else
-	rm -fr $HOME/.config/emacs
-	git clone https://github.com/hlissner/doom-emacs.git $HOME/.config/emacs
-	(
-		cd $HOME/.config/emacs
-		git checkout develop
-		git pull
-		./bin/doom install
-	)
-	ln -sf $HOME/.config/emacs/bin/* $HOME/.bin/
+  rm -fr $HOME/.config/emacs
+  git clone https://github.com/hlissner/doom-emacs.git $HOME/.config/emacs
+  (
+    cd $HOME/.config/emacs
+    git checkout develop
+    git pull
+    ./bin/doom install
+  )
+ln -sf $HOME/.config/emacs/bin/* $HOME/.bin/
 fi
 
 # Development

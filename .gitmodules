@@ -16,3 +16,6 @@
 [submodule "gnome/firefox-gnome-theme"]
 	path = linux/gnome/firefox-gnome-theme
 	url = https://github.com/rafaelmardojai/firefox-gnome-theme/
+[submodule "linux/gnome/pop-shell"]
+	path = linux/gnome/pop-shell
+	url = https://github.com/pop-os/shell

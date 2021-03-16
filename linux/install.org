@@ -1,0 +1,7 @@
+* Kitty
+#+begin_src sh
+kitty + complete setup fish | source
+#+end_src
+
+
+# set -x fish_user_paths /Library/TeX/texbin $HOME/.dotfiles/tex $fish_user_paths
