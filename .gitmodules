@@ -19,3 +19,6 @@
 [submodule "linux/gnome/pop-shell"]
 	path = linux/gnome/pop-shell
 	url = https://github.com/pop-os/shell
+[submodule "emacs/build/emacs"]
+	path = emacs/build/emacs
+	url = git@github.com:emacs-mirror/emacs.git

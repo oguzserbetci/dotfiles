@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =5
-let g:netrw_dirhist_5='/home/oguz/.config/sway'
-let g:netrw_dirhist_4='/home/oguz/.dotfiles/doom.d'
-let g:netrw_dirhist_3='/home/oguz/ownCloud'
-let g:netrw_dirhist_2='/home/oguz/.config/i3status'
-let g:netrw_dirhist_1='/home/oguz/.config/sway'

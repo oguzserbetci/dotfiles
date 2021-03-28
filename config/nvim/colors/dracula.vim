@@ -1,1 +1,0 @@
-/Users/oguz/.config/nvim/plugged/dracula/colors/dracula.vim
