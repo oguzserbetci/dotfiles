@@ -37,10 +37,20 @@
     (cons 320 "#ae8d8d")
     (cons 340 "#383a42")
     (cons 360 "#383a42")))
- '(vc-annotate-very-old-color nil))
+ '(vc-annotate-very-old-color nil)
+ '(warning-suppress-types '((comp) (:warning))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(fixed-pitch ((t (:font #<font-spec nil nil Iosevka\ SS05 nil nil medium nil nil 14 nil nil nil nil>))))
+ '(outline-1 ((t (:family "Iosevka Etoile"))))
+ '(outline-2 ((t (:family "Iosevka Etoile"))))
+ '(outline-3 ((t (:family "Iosevka Etoile"))))
+ '(outline-4 ((t (:family "Iosevka Etoile"))))
+ '(outline-5 ((t (:family "Iosevka Etoile"))))
+ '(outline-6 ((t (:family "Iosevka Etoile"))))
+ '(outline-7 ((t (:family "Iosevka Etoile"))))
+ '(outline-8 ((t (:family "Iosevka Etoile"))))
+ '(variable-pitch ((t (:font #<font-spec nil nil Iosevka\ Aile nil nil nil nil nil nil nil nil nil nil>)))))

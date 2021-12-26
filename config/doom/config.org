@@ -1,41 +1,30 @@
 #+TITLE: Dooz
 #+TODO: TODO NEWSETUP
 
-gccemacs
-#+begin_src elisp
-(when (fboundp 'native-compile-async)
-  (setq comp-deferred-compilation t
-        comp-deferred-compilation-black-list '("/mu4e.*\\.el$")))
-#+end_src
-
-* Resources
+* References & Resources
 + Doom config: https://github.com/tecosaur/emacs-config/blob/master/config.org
 
 
-* Me
+* Defaults
+#+begin_src elisp
+(setq org-directory "~/not-defteri/"
+      org-use-property-inheritance t
+      org-log-done 'time
+      org-list-allow-alphabetical t)
+#+end_src
+
+For better cooperation with window manager.
+#+begin_src elisp
+(setq frame-resize-pixelwise t)
+#+end_src
+
+** Me
 #+begin_src elisp
 (setq user-mail-address "oguz.serbetci@gmail.com"
       user-full-name "Oğuz Şerbetçi")
 #+end_src
 
-
-* FIXES
-#+begin_src elisp :tangle packages.el
-(package! spinner
-  :recipe (:host github :repo "Malabarba/spinner.el")
-  )
-#+end_src
-** MacOS
-Use gnu-ls https://stackoverflow.com/questions/25125200/emacs-error-ls-does-not-support-dired.
-#+begin_src elisp
-(when (string= system-type "darwin")
-  (setq dired-use-ls-dired t
-        insert-directory-program "/usr/local/bin/gls"
-        dired-listing-switches "-aBhl --group-directories-first"))
-#+end_src
-
-
-* Performance
+** Performance
 #+begin_src elisp
 (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
 (setq display-line-numbers-type nil)
@@ -45,23 +34,226 @@ Use gnu-ls https://stackoverflow.com/questions/25125200/emacs-error-ls-does-not-
 (run-with-idle-timer 2 t (lambda () (garbage-collect)))
 #+end_src
 
+** Fixes
+*** MacOS
+Use gnu-ls https://stackoverflow.com/questions/25125200/emacs-error-ls-does-not-support-dired.
+#+begin_src elisp
+(when (string= system-type "darwin")
+  (setq dired-use-ls-dired t
+        insert-directory-program "/usr/local/bin/gls"
+        dired-listing-switches "-aBhl --group-directories-first"))
+#+end_src
+
+
+* Note taking
+Set dictionary language.
+#+begin_src elisp
+(setq ispell-dictionary "english")
+(after! spell-fu
+  (setq spell-fu-idle-delay 0.5))  ; default is 0.25
+
+(setq ispell-program-name "aspell")
+(setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_US"))
+(setq spell-fu-directory (concat doom-emacs-dir ".local/etc/spell-fu/dictionary"))
+(setq ispell-personal-dictionary (concat doom-emacs-dir ".local/etc/spell-fu/dictionary/.pws"))
+#+end_src
+
+Encription
+#+begin_src elisp
+(setq org-crypt-key "476C864EF4C2235DF2177345F2EBCD5DEFEFC0A2")
+(setenv "GPG_AGENT_INFO" nil)
+
+(setq epa-file-encrypt-to "oguz.serbetci@posteo.net")
+#+end_src
+
+#+begin_src elisp
+(doom-themes-org-config)
+
+(setq deft-directory org-directory)
+
+(setq ispell-dictionary "en_US")
+
+(remove-hook 'text-mode-hook #'auto-fill-mode)
+(add-hook 'message-mode-hook #'word-wrap-mode)
+#+end_src
+
+#+begin_src elisp
+(setq +latex-viewers '(pdf-tools))
+#+end_src
+
+** org-roam & bibliography
+*** Bibliography
+
+Configure bibtex-completion.
+#+begin_src elisp
+(setq! citar-library-paths '("~/Resources/Papers/Library.bib")
+       citar-notes-paths '("~/not-defteri/"))
+;; (use-package! bibtex-completion
+;;   :config
+;;   (add-to-list 'bibtex-completion-additional-search-fields 'journaltitle)
+
+;;   (setq bibtex-completion-bibliography '("~/Resources/Papers/Library.bib"
+;;                                          "~/Resources/Papers/ImpactNexus/ImpactNexus.bib")
+;;         bibtex-completion-library-path "~/Resources/Papers/")
+;;   )
+
+#+end_src
+
+#+begin_src elisp
+(setq reftex-default-bibliography '("~/Resources/Papers/Library.bib"
+                                    "~/Resources/Papers/ImpactNexus/ImpactNexus.bib"))
+#+end_src
+
+Configure PDF.
+#+begin_src elisp
+(after! pdf-tools
+  (setq pdf-annot-list-highlight-type t)
+  (setq-default pdf-view-display-size 'fit-width)
+
+  ;; (push '("f1fa8c" "ffb86c" "#50fa7b" "ff5555" "#8be9fd" "bd93f9" "ff79c6") pdf-annot-color-history)
+  ;; https://github.com/politza/pdf-tools/issues/35
+  ;; (push '(color . "#000000") pdf-annot-default-markup-annotation-properties)
+  )
+
+(after! org-pdftools
+  (setq org-pdftools-root-dir "~/Resources/Papers"))
+#+end_src
+
+
+*** org-roam
+Use org-ref for citation in org-mode.
+#+begin_src elisp :tangle packages.el
+;; (package! org-ref :recipe (:host github :repo "jkitchin/org-ref"))
+#+end_src
+
+#+begin_src elisp
+;; (use-package! org-ref
+;;   :config
+;;   (setq org-ref-completion-library 'org-ref-ivy-cite))
+#+end_src
+
+#+begin_src elisp :tangle packages.el
+;; (package! org-roam-bibtex
+;;   :recipe (:host github :repo "org-roam/org-roam-bibtex")
+;;   )
+
+;; (unpin! org-roam)
+
+;; (unpin! bibtex-completion helm-bibtex ivy-bibtex)
+#+end_src
+
+#+begin_src elisp
+;; (after! org-roam
+  ;; :config
+  ;; (setq org-roam-capture-templates
+  ;;       '(("d" "default" plain "%?"
+  ;;          :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org.gpg"
+  ;;                             "#+title: ${title}\n")
+  ;;          :unnarrowed t)
+  ;;         ;; bibliography note template
+  ;;         ("r" "bibliography reference" plain "%?"
+  ;;          :if-new
+  ;;          (file+head "bibliography/${citekey}.org.gpg" "#+title: ${title}\n")
+  ;;          :unnarrowed t)
+  ;;         ("m" "meeting" entry
+  ;;          "* %T %?" :clock-in t
+  ;;          :target (file+head "%<%Y-%m-%d>.org.gpg"
+  ;;                             "#+title: %<%Y-%m-%d>\n"))))
+  ;; )
+
+;; If you cloned the repository
+;; (use-package! org-roam-bibtex
+  ;; :after org-roam
+  ;; ;; :hook (org-roam-mode . org-roam-bibtex-mode)
+  ;; :bind (:map org-mode-map
+  ;;        (("C-c n a" . orb-note-actions)))
+  ;; )
+#+end_src
+
+
+*** Roam server
+#+begin_src elisp :tangle packages.el
+;; (package! org-roam-server
+;;   :recipe (:host github :repo "org-roam/org-roam-server"))
+#+end_src
+
+#+begin_src elisp
+;; (use-package! org-roam-server
+;;   :config
+;;   (setq org-roam-server-host "127.0.0.1"
+;;         org-roam-server-port 7070
+;;         org-roam-server-authenticate nil
+;;         org-roam-server-export-inline-images t
+;;         org-roam-server-serve-files nil
+;;         org-roam-server-served-file-extensions '("pdf" "mp4" "ogv")
+;;         org-roam-server-network-poll t
+;;         org-roam-server-network-arrows nil
+;;         org-roam-server-network-label-truncate t
+;;         org-roam-server-network-label-truncate-length 60
+;;         org-roam-server-network-label-wrap-length 20))
+#+end_src
+
+* Task Management
+** Agenda
+#+begin_src elisp
+(after! org-agenda
+  (setq org-stuck-projects
+        '("/+PROJ" ("NEXT" "WAIT" "STRT") nil "")
+        org-agenda-skip-deadline-prewarning-if-scheduled t)
+
+  (add-to-list 'org-agenda-custom-commands
+               '("W" "Weekly review"
+                 ((tags "PRIORITY=\"A\""
+                        ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                         (org-agenda-overriding-header "High-priority unfinished tasks:")))
+                  (agenda "" ((org-agenda-span 7)
+                              (org-agenda-start-day "0d")
+                              (org-agenda-start-on-weekday 1))) ; review upcoming deadlines and appointments
+                                        ; type "l" in the agenda to review logged items
+                  (stuck "") ; review stuck projects as designated by org-stuck-projects
+                  (todo "STRT")
+                  (todo "NEXT")
+                  (todo "WAIT")
+                  (todo "PROJ")
+                  (todo "TODO"))
+                 )
+               )
+
+  (add-to-list 'org-agenda-custom-commands
+               '("T" "Daily planing"
+                 ((agenda "" ((org-agenda-span 7)                      ;; overview of appointments
+                              (org-agenda-start-on-weekday nil)
+                              (org-agenda-start-day "0d"))         ;; calendar begins today
+                          ) ; type "l" in the agenda to review logged items
+                  (todo "STRT")
+                  (todo "NEXT")
+                  (todo "WAIT"))
+                 )
+               )
+
+  (add-to-list 'org-agenda-custom-commands
+               '("t" "Daily tasks"
+                  ((agenda "" ((org-agenda-overriding-header "Today's agenda")
+                               (org-agenda-span 1)
+                               (org-agenda-start-day "0d")
+                               (org-agenda-start-on-weekday nil))
+                           ))
+                  )
+               )
+  )
+#+end_src
+
 
 * Appearance
-
 Use beautiful title-bar in macOS.
 #+begin_src elisp
-(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
-(add-to-list 'default-frame-alist '(ns-appearance . dark))
-(setq ns-auto-hide-menu-bar t)
-(setq ns-toggle-toolbar nil)
-(setq ns-right-alternate-modifier nil)
-#+end_src
-
-TWA
-For better cooperation with window manager.
-#+begin_src elisp
-(setq frame-resize-pixelwise t)
-#+end_src
+(when (string= system-type "darwin")
+  (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+  (add-to-list 'default-frame-alist '(ns-appearance . dark))
+  (setq ns-auto-hide-menu-bar t)
+  (setq ns-toggle-toolbar nil)
+  (setq ns-right-alternate-modifier nil))
+ #+end_src
 
 Simplify mode-line.
 #+begin_src elisp
@@ -84,11 +276,6 @@ Set fonts, doom-*-font inherits from doom-font.
 #+end_src
 
 ** Theme
-Same theme system-wide:
-#+begin_src elisp :tangle packages.el
-(package! theme-magic :pin "844c4311bd26ebafd4b6a1d72ddcc65d87f074e3")
-#+end_src
-
 Pick theme using the macOS settings provided by emacs-plus.
 #+begin_src elisp
 (defun oguz/apply-theme (appearance)
@@ -98,11 +285,10 @@ Pick theme using the macOS settings provided by emacs-plus.
     ('light (load-theme 'doom-one-light t))
     ('dark (load-theme 'doom-dracula t))))
 
-(doom-themes-org-config)
-
-(load-theme 'doom-one-light t)
-(add-hook 'ns-system-appearance-change-functions #'oguz/apply-theme)
+(when (string= system-type "darwin")
+  (add-hook 'ns-system-appearance-change-functions #'oguz/apply-theme))
 #+end_src
+
 
 ** Custom
 Use display font for org-headers
@@ -117,124 +303,9 @@ Use display font for org-headers
   '(outline-7 :family "Iosevka Etoile")
   '(outline-8 :family "Iosevka Etoile"))
 #+end_src
-** Splash screen
-#+begin_src elisp
-(defvar fancy-splash-image-template
-  (expand-file-name "misc/splash-images/blackhole-lines-template.svg" doom-private-dir)
-  "Default template svg used for the splash image, with substitutions from ")
-(defvar fancy-splash-image-nil
-  (expand-file-name "misc/splash-images/transparent-pixel.png" doom-private-dir)
-  "An image to use at minimum size, usually a transparent pixel")
-
-(setq fancy-splash-sizes
-      `((:height 500 :min-height 50 :padding (0 . 4) :template ,(expand-file-name "misc/splash-images/blackhole-lines-0.svg" doom-private-dir))
-        (:height 440 :min-height 42 :padding (1 . 4) :template ,(expand-file-name "misc/splash-images/blackhole-lines-0.svg" doom-private-dir))
-        (:height 400 :min-height 38 :padding (1 . 4) :template ,(expand-file-name "misc/splash-images/blackhole-lines-1.svg" doom-private-dir))
-        (:height 350 :min-height 36 :padding (1 . 3) :template ,(expand-file-name "misc/splash-images/blackhole-lines-2.svg" doom-private-dir))
-        (:height 300 :min-height 34 :padding (1 . 3) :template ,(expand-file-name "misc/splash-images/blackhole-lines-3.svg" doom-private-dir))
-        (:height 250 :min-height 32 :padding (1 . 2) :template ,(expand-file-name "misc/splash-images/blackhole-lines-4.svg" doom-private-dir))
-        (:height 200 :min-height 30 :padding (1 . 2) :template ,(expand-file-name "misc/splash-images/blackhole-lines-5.svg" doom-private-dir))
-        (:height 100 :min-height 24 :padding (1 . 2) :template ,(expand-file-name "misc/splash-images/emacs-e-template.svg" doom-private-dir))
-        (:height 0   :min-height 0  :padding (0 . 0) :file ,fancy-splash-image-nil)))
-
-(defvar fancy-splash-sizes
-  `((:height 500 :min-height 50 :padding (0 . 2))
-    (:height 440 :min-height 42 :padding (1 . 4))
-    (:height 330 :min-height 35 :padding (1 . 3))
-    (:height 200 :min-height 30 :padding (1 . 2))
-    (:height 0   :min-height 0  :padding (0 . 0) :file ,fancy-splash-image-nil))
-  "list of plists with the following properties
-  :height the height of the image
-  :min-height minimum `frame-height' for image
-  :padding `+doom-dashboard-banner-padding' to apply
-  :template non-default template file
-  :file file to use instead of template")
-
-(defvar fancy-splash-template-colours
-  '(("$colour1" . keywords) ("$colour2" . type) ("$colour3" . base5) ("$colour4" . base8))
-  "list of colour-replacement alists of the form (\"$placeholder\" . 'theme-colour) which applied the template")
-
-(unless (file-exists-p (expand-file-name "theme-splashes" doom-cache-dir))
-  (make-directory (expand-file-name "theme-splashes" doom-cache-dir) t))
-
-(defun fancy-splash-filename (theme-name height)
-  (expand-file-name (concat (file-name-as-directory "theme-splashes")
-                            theme-name
-                            "-" (number-to-string height) ".svg")
-                    doom-cache-dir))
-
-(defun fancy-splash-clear-cache ()
-  "Delete all cached fancy splash images"
-  (interactive)
-  (delete-directory (expand-file-name "theme-splashes" doom-cache-dir) t)
-  (message "Cache cleared!"))
-
-(defun fancy-splash-generate-image (template height)
-  "Read TEMPLATE and create an image if HEIGHT with colour substitutions as
-   described by `fancy-splash-template-colours' for the current theme"
-  (with-temp-buffer
-    (insert-file-contents template)
-    (re-search-forward "$height" nil t)
-    (replace-match (number-to-string height) nil nil)
-    (dolist (substitution fancy-splash-template-colours)
-      (goto-char (point-min))
-      (while (re-search-forward (car substitution) nil t)
-        (replace-match (doom-color (cdr substitution)) nil nil)))
-    (write-region nil nil
-                  (fancy-splash-filename (symbol-name doom-theme) height) nil nil)))
-
-(defun fancy-splash-generate-images ()
-  "Perform `fancy-splash-generate-image' in bulk"
-  (dolist (size fancy-splash-sizes)
-    (unless (plist-get size :file)
-      (fancy-splash-generate-image (or (plist-get size :file)
-                                       (plist-get size :template)
-                                       fancy-splash-image-template)
-                                   (plist-get size :height)))))
-
-(defun ensure-theme-splash-images-exist (&optional height)
-  (unless (file-exists-p (fancy-splash-filename
-                          (symbol-name doom-theme)
-                          (or height
-                              (plist-get (car fancy-splash-sizes) :height))))
-    (fancy-splash-generate-images)))
-
-(defun get-appropriate-splash ()
-  (let ((height (frame-height)))
-    (cl-some (lambda (size) (when (>= height (plist-get size :min-height)) size))
-             fancy-splash-sizes)))
-
-(setq fancy-splash-last-size nil)
-(setq fancy-splash-last-theme nil)
-(defun set-appropriate-splash (&rest _)
-  (let ((appropriate-image (get-appropriate-splash)))
-    (unless (and (equal appropriate-image fancy-splash-last-size)
-                 (equal doom-theme fancy-splash-last-theme)))
-    (unless (plist-get appropriate-image :file)
-      (ensure-theme-splash-images-exist (plist-get appropriate-image :height)))
-    (setq fancy-splash-image
-          (or (plist-get appropriate-image :file)
-              (fancy-splash-filename (symbol-name doom-theme) (plist-get appropriate-image :height))))
-    (setq +doom-dashboard-banner-padding (plist-get appropriate-image :padding))
-    (setq fancy-splash-last-size appropriate-image)
-    (setq fancy-splash-last-theme doom-theme)
-    (+doom-dashboard-reload)))
-
-(add-hook 'window-size-change-functions #'set-appropriate-splash)
-(add-hook 'doom-load-theme-hook #'set-appropriate-splash)
-#+end_src
-
-
 
 
 * Editor
-Set dictionary language.
-#+begin_src elisp
-(setq ispell-dictionary "english")
-(after! spell-fu
-  (setq spell-fu-idle-delay 0.5))  ; default is 0.25
-#+end_src
-
 Speed up key help.
 #+begin_src elisp
 (setq which-key-idle-delay 0.5)
@@ -308,66 +379,34 @@ Use avy on all windows, e.g. open panels.
 #+end_src
 
 
-** Jupyter
-
+** JS
+*** Vue
 #+begin_src elisp :tangle packages.el
-(package! jupyter :recipe (:host github :repo "nnicandro/emacs-jupyter"))
-#+end_src
-
-#+begin_src elisp
-(use-package! jupyter
-  :demand t
-
-  :after ob
-
-  :init
-  (defun jupyter-run-repl-or-pop-to-buffer-dwim ()
-    "If a buffer is already associated with a jupyter buffer,
-then pop to it. Otherwise start a jupyter kernel."
-    (interactive)
-    (if (bound-and-true-p jupyter-current-client)
-        (jupyter-repl-pop-to-buffer)
-      (call-interactively #'jupyter-run-repl)))
-
-  ;; * eldoc integration
-  (defun scimax-jupyter-signature ()
-    "Try to return a function signature for the thing at point."
-    (when (and (eql major-mode 'org-mode)
-               (string= (or (get-text-property (point) 'lang) "") "jupyter-python"))
-      (save-window-excursion
-     ;;; Essentially copied from (jupyter-inspect-at-point).
-        (jupyter-org-with-src-block-client
-         (cl-destructuring-bind (code pos)
-             (jupyter-code-context 'inspect)
-           (jupyter-inspect code pos nil 0)))
-        (when (get-buffer "*Help*")
-          (with-current-buffer "*Help*"
-            (goto-char (point-min))
-            (prog1
-                (cond
-                 ((re-search-forward "Signature:" nil t 1)
-                  (buffer-substring (line-beginning-position) (line-end-position)))
-                 ((re-search-forward "Docstring:" nil t 1)
-                  (forward-line)
-                  (buffer-substring (line-beginning-position) (line-end-position)))
-                 (t
-                  nil))
-              ;; get rid of this so we don't accidentally show old results later
-              (with-current-buffer "*Help*"
-                (toggle-read-only)
-                (erase-buffer))))))))
+(package! vue-mode
+  :recipe (:host github :repo "AdamNiederer/vue-mode")
   )
 #+end_src
 
-** JS
-#+begin_src elisp :tangle packages.el
-(package! vue-mode)
-
+#+begin_src elisp
 (use-package! vue-mode
   :mode "\\.vue\\'"
   :config
   (add-hook 'vue-mode-hook #'lsp))
 #+end_src
+
+*** Prettier
+#+begin_src elisp :tangle packages.el
+(package! prettier
+  :recipe (:host github :repo "jscheid/prettier.el")
+  )
+#+end_src
+
+#+begin_src elisp
+(use-package! prettier
+  :config
+  (add-hook 'after-init-hook #'global-prettier-mode))
+#+end_src
+
 
 ** Python
 Always use python binary to allow version controlling handling by pyenv.
@@ -394,6 +433,7 @@ Configure Conda to use brew PATH on MacOS.
  )
 #+end_src
 
+
 ** Gitignore
 # https://www.hoowl.se/auto_inserting_gitignore_templates_in_emacs.html
 
@@ -412,307 +452,9 @@ Insert github .gitignore templates on file creation.
 #+end_src
 
 
-* Note taking
-#+begin_src elisp
-(setq ispell-dictionary "en_US")
-
-(after! ivy-bibtex
-  ;; (setq ivy-bibtex-default-action 'ivy-bibtex-insert-key)
-  (ivy-set-display-transformer 'org-ref-ivy-insert-cite-link
-                               'ivy-bibtex-display-transformer)
-
-  (when IS-MAC
-    (ivy-bibtex-ivify-action bibtex-completion-quicklook ivy-bibtex-quicklook)
-    (ivy-add-actions 'ivy-bibtex '(("SPC" ivy-bibtex-quicklook "Quick look"))))
-  )
-
-(remove-hook 'text-mode-hook #'auto-fill-mode)
-(add-hook 'message-mode-hook #'word-wrap-mode)
-
-(setq org-directory "~/not-defteri/")
-(setq org-roam-directory (concat org-directory "slip-box"))
-
-(setq deft-directory org-directory)
-#+end_src
-
-#+begin_src elisp :tangle packages.el
-(package! org-fragtog)
-#+end_src
-
-** org-mode
-
-#+begin_src elisp
-(after! org
-  (setq org-todo-keywords
-        '((sequence
-           "[ ](T)"    ; A task that needs proper definition, tagging, etc.
-           "TODO(t)"   ; A task that needs doing & is ready to do
-           "NEXT(n)"   ; A task that is to be started ASAP
-           "STRT(s)"   ; A task that is in progress
-           "PROJ(p)"   ; An ongoing project that cannot be completed in one step
-           "WAIT(w)"   ; Something is holding up this task; or it is paused
-           "|"
-           "DONE(d)"    ; Task successfully completed
-           "KILL(k)"))) ; Task was cancelled, aborted or is no longer applicable
-
-  (remove-hook 'org-mode-hook #'org-superstar-mode) ;; performance tip
-  (setq org-startup-folded t
-        org-hide-block-startup t)
-
-  (add-hook 'org-mode-hook 'org-fragtog-mode)
-
-  ;; UI
-  ;; (add-hook 'org-mode 'visual-fill-column-mode)
-  ;; (setq fill-column 100)
-
-  (defun org-archive-done-in-subtree ()
-    (interactive)
-    (org-map-entries
-     (lambda ()
-       (org-archive-subtree)
-       (setq org-map-continue-from (org-element-property :begin (org-element-at-point))))
-     "/DONE|KILL" 'tree))
-
-  (defun org-archive-done-in-file ()
-    (interactive)
-    (org-map-entries
-     (lambda ()
-       (org-archive-subtree)
-       (setq org-map-continue-from (org-element-property :begin (org-element-at-point))))
-     "/DONE|KILL" 'file))
-  (add-to-list 'org-modules 'org-id)
-  )
-#+end_src
-
-Use biblatex with latexmk per default.
-#+begin_src elisp
-(after! org
-  ;; (add-to-list 'org-latex-classes
-  ;;              '("letter"
-  ;;                "\\documentclass{letter}[a4paper]
-  ;;      \\signature{Oğuz Şerbetçi}
-  ;;      \\address{Boxhagener Str. 111 \\\\ Berlin 10245}"
-  ;;                ("\\section{%s}" . "\\section*{%s}")
-  ;;                ("\\subsection{%s}" . "\\subsection*{%s}")
-  ;;                ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))
-
-  (setq  org-latex-pdf-process
-         '("latexmk -shell-escape -bibtex -pdf %f"))
-  )
-#+end_src
-
-*** Agenda
-#+begin_src elisp
-(after! org-agenda
-  (setq org-stuck-projects
-        '("/+PROJ" ("NEXT" "WAIT" "STRT") nil "")
-        org-agenda-skip-deadline-prewarning-if-scheduled t)
-
-  (add-to-list 'org-agenda-custom-commands
-               '("W" "Weekly Review"
-                 ((agenda "" ((org-agenda-span 7))) ; review upcoming deadlines and appointments
-                                        ; type "l" in the agenda to review logged items
-                  (stuck "") ; review stuck projects as designated by org-stuck-projects
-                  (todo "STRT")
-                  (todo "NEXT")
-                  (todo "WAIT")
-                  (todo "PROJ")
-                  ))
-               )
-  (add-to-list 'org-agenda-custom-commands
-               '("T" "Daily Planing"
-                 ((agenda "" ((org-agenda-span 1))) ; review upcoming deadlines and appointments
-                                        ; type "l" in the agenda to review logged items
-                  (todo "STRT")
-                  (todo "NEXT")
-                  (todo "WAIT")
-                  ))
-               )
-  (append
-   '(("g" . "GTD contexts")
-     ("gw" "@unterwegs" tags-todo "@unterwegs")
-     ("gu" "@uni" tags-todo "@uni")
-     ("go" "@office" tags-todo "@office")
-     ("gh" "@home" tags-todo "@home")
-     ("gc" "@computer" tags-todo "@computer")
-     ("gp" "@phone" tags-todo "@phone")
-     ("G" "GTD Block Agenda"
-      ((tags-todo "@unterwegs")
-       (tags-todo "@uni")
-       (tags-todo "@office")
-       (tags-todo "@home")
-       (tags-todo "@computer")
-       (tags-todo "@phone"))
-      nil)) ;; i.e., no local settings
-   'org-agenda-custom-commands)
-  )
-#+end_src
-
-
-*** NEWSETUP execute =pdf-tools-install=
-
-
-*** Capture
-Meeting note with clock-in
-#+begin_src elisp
-(after! org
-  (add-to-list 'org-capture-templates
-               '("m" "Meeting" entry (file "~/not-defteri/notes.org")
-                 "* %T %?" :prepend t :clock-in t)))
-#+end_src
-
-
-** bibliography
-
-#+begin_src elisp
-(setq +latex-viewers '(pdf-tools))
-#+end_src
-
-#+begin_src elisp
-(setq reftex-default-bibliography '("~/Resources/Papers/Library.bib"
-                                    "~/Resources/Papers/ImpactNexus/ImpactNexus.bib"
-                                    "~/Resources/Calibre/My Books.bib"))
-#+end_src
-
-Use org-ref for citation in org-mode.
-#+begin_src elisp :tangle packages.el
-(package! org-ref :recipe (:host github :repo "jkitchin/org-ref"))
-#+end_src
-
-#+begin_src elisp
-(use-package! org-ref
-  :after org
-  :config
-  (setq org-ref-completion-library 'org-ref-ivy-cite))
-#+end_src
-
-Configure bibtex-completion.
-#+begin_src elisp
-(after! bibtex-completion
-  ;; (setq bibtex-completion-display-formats '((t . "${=has-pdf=:1}${=has-note=:1} ${author:20} ${year:4} ${title:*} ${=type=:3} ${journaltitle:10}")))
-
-  (add-to-list 'bibtex-completion-additional-search-fields "journaltitle")
-
-  (setq bibtex-completion-bibliography '("~/Resources/Papers/Library.bib"
-                                         "~/Resources/Papers/ImpactNexus/ImpactNexus.bib"
-                                         "~/Resources/Calibre/My Books.bib")
-        bibtex-completion-library-path "~/Resources/Papers/"
-        bibtex-completion-notes-path (concat org-directory "bibliography/"))
-
-  ;; (cond
-  ;;  (IS-MAC
-  ;;   (setq bibtex-completion-pdf-open-function
-  ;;         (lambda (fpath)
-  ;;           (async-start-process "open" "open" "open" fpath))))
-  ;;  (IS-LINUX
-  ;;   (setq bibtex-completion-pdf-open-function
-  ;;         (lambda (fpath)
-  ;;           (async-start-process "open-pdf" "/usr/bin/xdg-open" nil fpath)))))
-  )
-#+end_src
-
-Configure PDF.
-#+begin_src elisp
-(after! pdf-tools
-  (setq pdf-annot-list-highlight-type t)
-  (setq-default pdf-view-display-size 'fit-width)
-
-  ;; (push '("f1fa8c" "ffb86c" "#50fa7b" "ff5555" "#8be9fd" "bd93f9" "ff79c6") pdf-annot-color-history)
-  ;; https://github.com/politza/pdf-tools/issues/35
-  ;; (push '(color . "#000000") pdf-annot-default-markup-annotation-properties)
-  )
-
-(after! org-pdftools
-  (setq org-pdftools-root-dir "~/Resources/Papers"))
-#+end_src
-
-** org-roam
-Install org-roam-bibtex as defined in [[https://github.com/org-roam/org-roam-bibtex#doom-emacs][org-roam/org-roam-bibtex]].
-#+begin_src elisp :tangle packages.el
-(package! org-roam-bibtex
-  :recipe (:host github :repo "org-roam/org-roam-bibtex")
-  )
-
-(unpin! org-roam)
-
-(unpin! bibtex-completion helm-bibtex ivy-bibtex)
-#+end_src
-
-#+begin_src elisp
-(use-package! org-roam-bibtex
-  :load-path "~/Resources/Papers/Library.bib"
-  :hook (org-roam-mode . org-roam-bibtex-mode)
-  :bind (:map org-mode-map
-         (("C-c n a" . orb-note-actions))))
-
-(setq orb-templates
-      '(("r" "ref" plain (function org-roam-capture--get-point) ""
-         :file-name "bib/${citekey}"
-         :head "#+TITLE: ${citekey}: ${title}\n#+ROAM_KEY: ${ref}\n" ; <--
-         :unnarrowed t)))
-(setq orb-preformat-keywords   '(("citekey" . "=key=") "title" "url" "file" "author-or-editor" "keywords"))
-
-(setq orb-templates
-      '(("n" "ref+noter" plain (function org-roam-capture--get-point)
-         ""
-         :file-name "bib/${slug}"
-         :head "#+TITLE: ${citekey}: ${title}\n#+ROAM_KEY: ${ref}\n#+ROAM_TAGS:
-
-- tags ::
-- keywords :: ${keywords}
-\* ${title}
-:PROPERTIES:
-:Custom_ID: ${citekey}
-:URL: ${url}
-:AUTHOR: ${author-or-editor}
-:NOTER_DOCUMENT: %(orb-process-file-field \"${citekey}\")
-:NOTER_PAGE:
-:END:")))
-#+end_src
-
-
-Configure org-roam.
-#+begin_src elisp
-(after! org-roam
-  (add-hook! 'org-roam-mode 'org-roam-bibtex-mode)
-  (setq org-roam-tag-sources '(prop all-directories))
-  (setq org-roam-dailies-directory "daily/")
-  )
-#+end_src
-
-Roam templates
-#+begin_src elisp
-(setq org-roam-capture-templates
-      '(("d" "default" plain #'org-roam-capture--get-point "%?" :file-name "%<%Y%m%d%H%M%S>-${slug}" :head "#+title: ${title}\n" :unnarrowed t)
-        ("x" "index" plain #'org-roam-capture--get-point (file "~/.config/doom/templates/index.org") :file-name "../%<%Y%m%d%H%M%S>-${slug}" :head "#+title: ${title}\n" :unnarrowed t))
-      org-roam-dailies-capture-templates
-      '(("l" "lab" entry
-         #'org-roam-capture--get-point
-         "* %?"
-         :file-name "daily/%<%Y-%m-%d>"
-         :head "#+title: %<%Y-%m-%d>\n"
-         :olp ("Lab notes"))
-        ("j" "journal" entry
-         #'org-roam-capture--get-point
-         "* %?"
-         :file-name "daily/%<%Y-%m-%d>"
-         :head "#+title: %<%Y-%m-%d>\n"
-         :olp ("Journal")))
-      org-roam-capture-ref-templates
-      '(("r" "ref" plain #'org-roam-capture--get-point
-         "${body}\n"
-         :file-name "refs/${slug}"
-         :head "#+title: ${title}\n#+roam_key: ${ref}"
-         :unnarrowed t
-         :empty-lines 1)))
-#+end_src
-
-
 * Apps
 ** TODO RSS
-
 Auto update RSS feeds
-
 #+begin_src elisp
 (add-hook! 'elfeed-search-mode-hook 'elfeed-update)
 #+end_src
