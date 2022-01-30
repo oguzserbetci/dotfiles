@@ -22,3 +22,6 @@
 [submodule "emacs/build/emacs"]
 	path = emacs/build/emacs
 	url = git@github.com:emacs-mirror/emacs.git
+[submodule "i3-starterpack"]
+	path = i3-starterpack
+	url = https://github.com/addy-dclxvi/i3-starterpack.git
