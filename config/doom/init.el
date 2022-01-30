@@ -1,16 +1,9 @@
 ;;; init.el -*- lexical-binding: t; -*-
 
-
-(doom! :input
-       ;;chinese
-       ;;japanese
-       ;;layout            ; auie,ctsrnm is the superior home row
-
-       :completion
+(doom! :completion
        (company
         +childframe)
-       (vertico
-        +icon)           ; the ultimate code completion backend
+       (vertico +icons)           ; the ultimate code completion backend
 
        :ui
        deft              ; notational velocity for Emacs
@@ -18,10 +11,9 @@
        doom-dashboard    ; a nifty splash screen for Emacs
        doom-quit         ; DOOM quit-message prompts when you quit Emacs
        (emoji +unicode)  ; 🙂
-       fill-column       ; a `fill-column' indicator
        hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
        hydra
-       ;;indent-guides     ; highlighted indent columns
+       indent-guides     ; highlighted indent columns
        ;;ligatures         ; ligatures and symbols to make your code pretty again
        ;;minimap           ; show a map of the code on the side
        modeline          ; snazzy, Atom-inspired modeline, plus API
@@ -41,11 +33,11 @@
        zen               ; distraction-free coding or writing
 
        :editor
-       (evil 
+       (evil
         +everywhere)     ; come to the dark side, we have cookies
        file-templates    ; auto-snippets for empty files
        fold              ; (nigh) universal code folding
-       (format)  ; automated prettiness
+       format  ; automated prettiness
        ;;god               ; run Emacs commands without modifier keys
        ;;lispy             ; vim for lisp, for people who don't like vim
        multiple-cursors  ; editing in many places at once
@@ -57,8 +49,7 @@
 
        :emacs
        (dired
-        +icons
-        +ranger)         ; making dired pretty [functional]
+        +icons)         ; making dired pretty [functional]
        electric          ; smarter, keyword-based electric-indent
        ;; (ibuffer
        ;;  +icons)          ; interactive buffer management
@@ -78,7 +69,7 @@
 
        :tools
        ;;ansible
-       (debugger 
+       (debugger
         +lsp)              ; FIXME stepping through code, to help you add bugs
        direnv
        docker
@@ -102,11 +93,11 @@
        rgb               ; creating color strings
        ;;taskrunner        ; taskrunner for all your projects
        ;;terraform         ; infrastructure as code
-       tmux              ; an API for interacting with tmux
+       ;;tmux              ; an API for interacting with tmux
        ;;upload            ; map local to remote projects via ssh/ftp
 
        :os
-       (:if IS-MAC macos)  ; improve compatibility with macOS
+       ;; (:if IS-MAC macos)  ; improve compatibility with macOS
        ;;tty               ; improve the terminal Emacs experience
 
        :lang
@@ -171,8 +162,8 @@
        ;;raku              ; the artist formerly known as perl6
        rest              ; Emacs as a REST client
        ;;rst               ; ReST in peace
-       ;;(ruby +rails)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
-       ;;rust              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
+       ;;(ruby +rails)
+       rust
        ;;scala             ; java, but good
        ;;scheme            ; a fully conniving family of lisps
        sh                ; she sells {ba,z,fi}sh shells on the C xor
@@ -196,4 +187,5 @@
 
        :config
        literate
-       (default +bindings +smartparens))
+       (default +bindings +smartparens)
+       )

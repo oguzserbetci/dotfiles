@@ -133,64 +133,64 @@ Use org-ref for citation in org-mode.
 #+end_src
 
 #+begin_src elisp :tangle packages.el
-;; (package! org-roam-bibtex
-;;   :recipe (:host github :repo "org-roam/org-roam-bibtex")
-;;   )
+(package! org-roam-bibtex
+  :recipe (:host github :repo "org-roam/org-roam-bibtex")
+  )
 
-;; (unpin! org-roam)
+(unpin! org-roam)
 
-;; (unpin! bibtex-completion helm-bibtex ivy-bibtex)
+(unpin! bibtex-completion helm-bibtex ivy-bibtex)
 #+end_src
 
 #+begin_src elisp
-;; (after! org-roam
-  ;; :config
-  ;; (setq org-roam-capture-templates
-  ;;       '(("d" "default" plain "%?"
-  ;;          :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org.gpg"
-  ;;                             "#+title: ${title}\n")
-  ;;          :unnarrowed t)
-  ;;         ;; bibliography note template
-  ;;         ("r" "bibliography reference" plain "%?"
-  ;;          :if-new
-  ;;          (file+head "bibliography/${citekey}.org.gpg" "#+title: ${title}\n")
-  ;;          :unnarrowed t)
-  ;;         ("m" "meeting" entry
-  ;;          "* %T %?" :clock-in t
-  ;;          :target (file+head "%<%Y-%m-%d>.org.gpg"
-  ;;                             "#+title: %<%Y-%m-%d>\n"))))
-  ;; )
+(after! org-roam
+  :config
+  (setq org-roam-capture-templates
+        '(("d" "default" plain "%?"
+           :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org.gpg"
+                              "#+title: ${title}\n")
+           :unnarrowed t)
+          ;; bibliography note template
+          ("r" "bibliography reference" plain "%?"
+           :if-new
+           (file+head "bibliography/${citekey}.org.gpg" "#+title: ${title}\n")
+           :unnarrowed t)
+          ("m" "meeting" entry
+           "* %T %?" :clock-in t
+           :target (file+head "%<%Y-%m-%d>.org.gpg"
+                              "#+title: %<%Y-%m-%d>\n"))))
+  )
 
-;; If you cloned the repository
-;; (use-package! org-roam-bibtex
-  ;; :after org-roam
-  ;; ;; :hook (org-roam-mode . org-roam-bibtex-mode)
-  ;; :bind (:map org-mode-map
-  ;;        (("C-c n a" . orb-note-actions)))
-  ;; )
+If you cloned the repository
+(use-package! org-roam-bibtex
+  :after org-roam
+  ;; :hook (org-roam-mode . org-roam-bibtex-mode)
+  :bind (:map org-mode-map
+         (("C-c n a" . orb-note-actions)))
+  )
 #+end_src
 
 
 *** Roam server
 #+begin_src elisp :tangle packages.el
-;; (package! org-roam-server
-;;   :recipe (:host github :repo "org-roam/org-roam-server"))
+(package! org-roam-server
+  :recipe (:host github :repo "org-roam/org-roam-server"))
 #+end_src
 
 #+begin_src elisp
-;; (use-package! org-roam-server
-;;   :config
-;;   (setq org-roam-server-host "127.0.0.1"
-;;         org-roam-server-port 7070
-;;         org-roam-server-authenticate nil
-;;         org-roam-server-export-inline-images t
-;;         org-roam-server-serve-files nil
-;;         org-roam-server-served-file-extensions '("pdf" "mp4" "ogv")
-;;         org-roam-server-network-poll t
-;;         org-roam-server-network-arrows nil
-;;         org-roam-server-network-label-truncate t
-;;         org-roam-server-network-label-truncate-length 60
-;;         org-roam-server-network-label-wrap-length 20))
+(use-package! org-roam-server
+  :config
+  (setq org-roam-server-host "127.0.0.1"
+        org-roam-server-port 7070
+        org-roam-server-authenticate nil
+        org-roam-server-export-inline-images t
+        org-roam-server-serve-files nil
+        org-roam-server-served-file-extensions '("pdf" "mp4" "ogv")
+        org-roam-server-network-poll t
+        org-roam-server-network-arrows nil
+        org-roam-server-network-label-truncate t
+        org-roam-server-network-label-truncate-length 60
+        org-roam-server-network-label-wrap-length 20))
 #+end_src
 
 * Task Management
